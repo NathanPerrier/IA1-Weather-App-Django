@@ -19,8 +19,10 @@ The application's design is user-friendly and intuitive, making it easy for user
 - View current weather information for various locations.
 - User authentication.
 - Responsive design that works on desktop, tablets, and mobile.
-- AI-powered weather predictions.
-- Integration with various weather APIs for accurate information.
+- API-powered weather predictions.
+- Integration with various AI's for a better user experience.
+- User-friendly and intuitive design inspired by Netflix.
+- Routes and directions based on local weather.
 
 ## How to Run
 
@@ -66,12 +68,14 @@ The application's design is user-friendly and intuitive, making it easy for user
 
 4. Run the Docker container:
 
+    For Deployment:
     ```sh
     docker run -p 8000:8000 weather_app
     ```
 
     or 
 
+    For Deveopment:
     '''sh
     docker run -p 8000:8000 -v "$(pwd):/app" weather_app
     '''
