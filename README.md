@@ -28,37 +28,49 @@ The application's design is user-friendly and intuitive, making it easy for user
 
 1. Ensure you have Python 3.8 installed on your machine. You can download it from [here](https://www.python.org/downloads/).
 
-2. Install the required Python packages using pip:
+2. Clone the Github repository using:
+
+    '''sh
+    git clone https://github.com/nathan-perrier23/IA1-Weather-App-Django
+    '''
+
+3. Install the required Python packages using pip:
 
     ```sh
     pip install -r requirements.txt
     ```
 
-3. Navigate to the project directory and run the Django server:
+4. Navigate to the project directory and run the Django server:
 
     ```sh
     python manage.py runserver
     ```
 
-4. Open your web browser and visit `http://127.0.0.1:8000/`.
+5. Open your web browser and visit `http://127.0.0.1:8000/`.
 
 ### Running the Application Using Docker
 
 1. Ensure you have Docker installed on your machine. You can download it from [here](https://www.docker.com/products/docker-desktop).
 
-2. Build the Docker image:
+2. Clone the Github repository using:
+
+    '''sh
+    git clone https://github.com/nathan-perrier23/IA1-Weather-App-Django
+    '''
+
+3. Build the Docker image:
 
     ```sh
-    docker build -t weather-app .
+    docker build -t weather_app -f DockerFile .
     ```
 
-3. Run the Docker container:
+4. Run the Docker container:
 
     ```sh
     docker run -p 8000:8000 weather-app
     ```
 
-4. Open your web browser and visit `http://localhost:8000/`.
+5. Open your web browser and visit `http://localhost:8000/`.
 
 ## Resources and References
 
