@@ -67,7 +67,7 @@ The application's design is user-friendly and intuitive, making it easy for user
 4. Run the Docker container:
 
     ```sh
-    docker run -p 8000:8000 weather-app
+    docker run -p 8000:8000 weather_app
     ```
 
 5. Open your web browser and visit `http://localhost:8000/`.

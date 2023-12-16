@@ -23,7 +23,7 @@ def login_view(request):
     
     
 def stream_video(request, video_path):
-    video_path = os.path.join(settings.BASE_DIR, 'weather_app\\frontend\\static\\videos', video_path)
+    video_path = os.path.join(settings.BASE_DIR, 'weather_app/frontend/static/videos', video_path)
     def play_video(video_path):
         with open(video_path, 'rb') as video:
             for chunk in iter(lambda: video.read(4096), b""):
