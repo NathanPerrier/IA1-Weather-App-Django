@@ -32,9 +32,7 @@ The application's design is user-friendly and intuitive, making it easy for user
 
 2. Clone the Github repository using:
 
-    '''sh
     git clone https://github.com/nathan-perrier23/IA1-Weather-App-Django
-    '''
 
 3. Install the required Python packages using pip:
 
@@ -56,9 +54,7 @@ The application's design is user-friendly and intuitive, making it easy for user
 
 2. Clone the Github repository using:
 
-    '''sh
     git clone https://github.com/nathan-perrier23/IA1-Weather-App-Django
-    '''
 
 3. Build the Docker image:
 
@@ -69,13 +65,15 @@ The application's design is user-friendly and intuitive, making it easy for user
 4. Run the Docker container:
 
     For Deployment:
+
     ```sh
     docker run -p 8000:8000 weather_app
     ```
 
     or 
 
-    For Deveopment:
+    For Development:
+
     '''sh
     docker run -p 8000:8000 -v "$(pwd):/app" weather_app
     '''
