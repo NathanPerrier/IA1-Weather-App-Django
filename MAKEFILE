@@ -2,7 +2,7 @@
 IMAGE_NAME = weather_app
 
 # Name of your Docker container
-CONTAINER_NAME = your-container-name #! needed
+CONTAINER_NAME = your-container-name #! needed (change)
 
 # Your GitHub repository
 GITHUB_REPO = https://github.com/nathan-perrier23/IA1-Weather-App-Django.git
