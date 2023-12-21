@@ -97,7 +97,7 @@ i{
 
 .hero-background {
     margin-left: 50px;
-    height: 50vh;
+    height: max-content;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -109,11 +109,10 @@ i{
 .hero-header {
     width:40%;
     z-index: 20;
-    height: 50vh;
     background: #000;
 }
 .hero-header .content{
-    position: relative;
+    position: absolute;
     top: 0%;
     width: 100%;
     max-height: 50vh;
@@ -121,9 +120,20 @@ i{
     z-index: 100;
     display: flex;
 }
+
+.hero-header .content .left{
+    position: relative;
+    top: 0%;
+    width: 100%;
+    max-height: 50vh;
+    /* background-color: #fff; */
+    z-index: 100;
+    display: block;
+}
+
 .netflix-home-video{
     width: 60%;
-    height: 100%;
+    max-height: 60vh;
     z-index: 10;
     position: relative;
 }
