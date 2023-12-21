@@ -75,7 +75,7 @@ The application's design is user-friendly and intuitive, making it easy for user
     For Development:
 
     '''sh
-    docker run -p 8000:8000 -v '$(pwd):/app' weather_app
+    docker run -p 8000:8000 -v "$(pwd):/app" weather_app
     '''
 
 5. Open your web browser and visit `http://localhost:8000/`.
