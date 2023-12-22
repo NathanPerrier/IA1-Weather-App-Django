@@ -2,11 +2,21 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 
+from .subjects import *
+from .errors import *
+from .terms import *
+
 def index(request):
     return render(request, 'atc_site//index.html')
 
 def erea(request):
     return render(request, 'atc_site//erea.html')
+
+def subjects(request):
+    return render(request, 'atc_site//subjects.html')
+
+def terms(request):
+    return render(request, 'atc_site//terms and policies.html')
 
 @require_POST
 #@handle_newsletter
