@@ -14,10 +14,13 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
+from django.conf.urls.static import static
 
 from django.contrib.auth import views as auth_views
 from django.contrib import admin
 from django.urls import include, path
+
 from .backend import main, views
 from .backend.views import stream_video
 
@@ -36,3 +39,6 @@ urlpatterns = [
     
     path('stream_video/<str:video_path>/', stream_video, name='stream_video'),
 ]
+
+if not settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
