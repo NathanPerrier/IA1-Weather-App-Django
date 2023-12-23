@@ -153,9 +153,9 @@ EMAIL_HOST_PASSWORD = 'NathanP2305'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'weather_app/frontend/static'),
-]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'weather_app/frontend/static'),
+# ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
