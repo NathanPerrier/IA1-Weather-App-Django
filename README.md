@@ -80,6 +80,19 @@ The application's design is user-friendly and intuitive, making it easy for user
 
 5. Open your web browser and visit `http://localhost:8000/`.
 
+6. If you make changes to the Nginx configuration, you will need to rebuild the Docker images and restart the  
+    Docker containers. You can do this with 
+    
+    '''sh
+    docker-compose down
+    '''
+
+    and then
+
+    '''sh
+    docker-compose up --build
+    '''
+
 ## Resources and References
 
 This Project utilised various projects and resources, that can be seen in the [REFERENCES](REFERENCES.md) file.
