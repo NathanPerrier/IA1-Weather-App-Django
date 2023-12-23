@@ -157,13 +157,6 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'weather_app/frontend/static'),
 ]
 
-# Error handling for /atc
-HANDLER400 = 'weather_app.backend.atc_site.errors.handler400'
-HANDLER404 = 'weather_app.backend.atc_site.errors.handler404'
-HANDLER500 = 'weather_app.backend.atc_site.errors.handler500'
-HANDLER401 = 'weather_app.backend.atc_site.errors.handler401'
-HANDLER403 = 'weather_app.backend.atc_site.errors.handler403'
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
