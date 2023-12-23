@@ -3,7 +3,6 @@ from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 
 from .subjects import *
-from .errors import *
 from .terms import *
 
 def index(request):

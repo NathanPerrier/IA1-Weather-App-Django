@@ -15,11 +15,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
+#** SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-_@8c=m2aimoga43jzw#h3w4%t)4+s(@guy1&s_v08h_)yjl-o1"
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#** SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False
 
 ALLOWED_HOSTS = [socket.gethostbyname(socket.gethostname()), '127.0.0.1', 'localhost', '192.168.68.67', '192.168.0.178']
 
@@ -156,6 +156,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'weather_app/frontend/static'),
 ]
+
+# Error handling for /atc
+HANDLER400 = 'weather_app.backend.atc_site.errors.handler400'
+HANDLER404 = 'weather_app.backend.atc_site.errors.handler404'
+HANDLER500 = 'weather_app.backend.atc_site.errors.handler500'
+HANDLER401 = 'weather_app.backend.atc_site.errors.handler401'
+HANDLER403 = 'weather_app.backend.atc_site.errors.handler403'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

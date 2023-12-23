@@ -3,13 +3,6 @@ from django.urls import include, path
 from .views import stream_video_atc_site
 from . import main
 
-
-handler400 = 'weather_app.backend.atc_site.main.handler400'
-handler404 = 'weather_app.backend.atc_site.main.handler404'
-handler500 = 'weather_app.backend.atc_site.main.handler500'
-handler401 = 'weather_app.backend.atc_site.main.handler401'
-handler403 = 'weather_app.backend.atc_site.main.handler403'
-
 urlpatterns = [
     path("", main.index, name="atc_index"),
     path("erea", main.erea, name="erea"),
