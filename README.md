@@ -102,7 +102,7 @@ The application's design is user-friendly and intuitive, making it easy for user
 
 If you are using Docker Toolbox, you will need to visit the IP address of the Docker Machine instead of `localhost`. You can find the IP address by running `docker-machine ip` in the terminal.
 
- Use 'docker system prune -a` to remove all unused containers, networks, images (both dangling and unreferenced), and optionally, volumes.
+ Use `docker system prune -a` to remove all unused containers, networks, images (both dangling and unreferenced), and optionally, volumes.
 
 ## Resources and References
 
