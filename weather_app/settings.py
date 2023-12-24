@@ -7,6 +7,8 @@ from pathlib import Path
 import socket
 import os
 
+from decouple import config, Csv
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -16,7 +18,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 #** SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-_@8c=m2aimoga43jzw#h3w4%t)4+s(@guy1&s_v08h_)yjl-o1"
+SECRET_KEY = config("SECRET_KEY")
 
 #** SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -26,6 +28,7 @@ ALLOWED_HOSTS = [socket.gethostbyname(socket.gethostname()), '127.0.0.1', 'local
 # Application definition
 
 INSTALLED_APPS = [
+    "daphne",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -43,6 +46,13 @@ INSTALLED_APPS = [
     'two_factor',
     'axes',
     "weather_app",
+    
+    "chatterbot.ext.django_chatterbot",
+    "tailwind",
+    "django_browser_reload",
+    # Local apps
+    
+    "weather_app.backend.chatbot",
 ]
 
 MIDDLEWARE = [
@@ -54,6 +64,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     'django_otp.middleware.OTPMiddleware',  # Required for django_two_factor_auth
+    "allauth.account.middleware.AccountMiddleware",
     'axes.middleware.AxesMiddleware',  # Required for axes
 ]
 
@@ -88,7 +99,7 @@ print("BASE_DIR:", BASE_DIR)
 print("TEMPLATES DIR:", os.path.join(BASE_DIR, 'weather_app/frontend/templates/'))
 
 WSGI_APPLICATION = "weather_app.wsgi.application"
-
+ASGI_APPLICATION = 'weather_app.asgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -139,6 +150,37 @@ USE_TZ = True
 
 # Add the following to specify your site ID
 SITE_ID = 1
+
+# celery
+CELERY_BROKER_URL = config("CELERY_BROKER_URL")
+CELERY_RESULT_BACKEND = config("REDIS_BACKEND")
+
+# Redis Cache
+# Redis Cache
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": config("REDIS_BACKEND"),
+    },
+}
+
+# Django Channels
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [config("REDIS_BACKEND")],
+        },
+    },
+}
+
+# Chatterbot
+CHATTERBOT = {
+    "name": "User Support Bot",
+    "logic_adapters": [
+        "chatterbot.logic.BestMatch",
+    ],
+}
 
 #Email settings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
