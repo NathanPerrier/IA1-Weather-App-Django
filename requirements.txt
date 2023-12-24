@@ -17,3 +17,6 @@ python-decouple==3.6
 redis==4.3.4
 chatterbot==1.0.4
 django-tailwind==3.4.0
+openai==1.6.1
+python-ipware==2.0.1
+tenacity==8.2.3

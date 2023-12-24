@@ -3,7 +3,11 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import render
 from django.http import StreamingHttpResponse
 from django.conf import settings
+from ipware import get_client_ip
 
+
+def get_user_ip(request):
+    return get_client_ip(request)
 
 def login_view(request):
     if request.method == 'POST':
