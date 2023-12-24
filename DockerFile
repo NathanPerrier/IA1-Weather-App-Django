@@ -16,10 +16,13 @@ RUN pip install -r requirements.txt
 COPY . /app/
 
 # Copy static files
-COPY staticfiles /usr/src/app/staticfiles/
+COPY staticfiles . /staticfiles/
+
+# Create nginx user and group
+RUN groupadd -r nginx && useradd -r -g nginx nginx
 
 # Change ownership to nginx
-RUN chown -R nginx:nginx /usr/src/app/staticfiles/
+RUN chown -R nginx:nginx . /staticfiles/
 
 # Install Git
 RUN apt-get update && apt-get install -y git

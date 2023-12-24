@@ -81,6 +81,10 @@ The application's design is user-friendly and intuitive, making it easy for user
 6. When you make changes , you will need to rebuild the Docker images and restart the Docker containers. You 
     can do this with `docker-compose down` and then `docker-compose up --build`.
 
+NOTE: If you are using Docker Toolbox, you will need to visit the IP address of the Docker Machine instead of `localhost`. You can find the IP address by running `docker-machine ip` in the terminal.
+
+NOTE: Use `docker system prune -a` to remove all unused containers, networks, images (both dangling and unreferenced), and optionally, volumes.
+
 ## Resources and References
 
 This Project utilised various projects and resources, that can be seen in the [REFERENCES](REFERENCES.md) file.

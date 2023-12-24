@@ -40,5 +40,5 @@ urlpatterns = [
     path('stream_video/<str:video_path>/', stream_video, name='stream_video'),
 ]
 
-# if not settings.DEBUG:
-#     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+if not settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
