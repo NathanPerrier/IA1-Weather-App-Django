@@ -101,7 +101,7 @@ The application's design is user-friendly and intuitive, making it easy for user
 # NOTE
 
 If you are using Docker Toolbox, you will need to visit the IP address of the Docker Machine instead of `localhost`. You can find the IP address by running the following in the terminal:
-
+    
     ```sh
     docker-machine ip
     ```
