@@ -98,7 +98,7 @@ The application's design is user-friendly and intuitive, making it easy for user
 6. When you make changes , you will need to rebuild the Docker images and restart the Docker containers. You 
     can do this with `docker-compose down` and then `docker-compose up --build`.
 
-# NOTE
+### NOTE
 
 If you are using Docker Toolbox, you will need to visit the IP address of the Docker Machine instead of `localhost`. You can find the IP address by running `docker-machine ip` in the terminal.
 
