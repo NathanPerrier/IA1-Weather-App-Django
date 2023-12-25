@@ -29,9 +29,9 @@ class BotData(models.Model):
             print('location info:', location_info)
             return location_info['city']
 
-    # def get_current_weather(self, location=None, unit="metric"):
+    # def get_current_weather(self, location=None, unit="metric", fields="temperature,humidity"):
     #     location = self.get_city_from_ip() if location is None else location
-    #     url = f'https://api.tomorrow.io/v4/weather/realtime?location={location}&units={unit}&apikey={config("TOMORROWIO_API_KEY")}'
+    #     url = f'https://api.tomorrow.io/v4/weather/realtime?location={location}&fields={fields}&units={unit}&apikey={config("TOMORROWIO_API_KEY")}'
     #     headers = {"accept": "application/json"}
     #     response = requests.get(url, headers=headers)
     #     print('response:', response)
@@ -56,14 +56,39 @@ class BotData(models.Model):
         url = f'https://api.tomorrow.io/v4/timelines?location={location}&fields={fields}&timesteps=1d&units={unit}&apikey={config("TOMORROWIO_API_KEY")}'
         headers = {"accept": "application/json"}
         response = requests.get(url, headers=headers)
-        print('response:', response.text)
-        return response.text
+        print('response (daily):', response.text)
+        return self.format_response_daily(json.loads(response.text), location, unit)
         
-    def get_hourly_weather_forecast(self, location=None, unit="metric"):
+    def get_hourly_weather_forecast(self, location=None, unit="metric", fields="temperature,humidity"):
         location = self.get_city_from_ip() if location is None else location
-        url = f'https://api.tomorrow.io/v4/timelines?location={location}&fields=temperature,humidity&timesteps=1h&units={unit}&apikey={config("TOMORROWIO_API_KEY")}'
+        url = f'https://api.tomorrow.io/v4/timelines?location={location}&fields={fields}&timesteps=1h&units={unit}&apikey={config("TOMORROWIO_API_KEY")}'
         headers = {"accept": "application/json"}
         response = requests.get(url, headers=headers)
-        print('response:', response)
+        print('response (hourly):', response.text)
         print(response.text)
-        return response.text
+        return  self.format_response_daily(json.loads(response.text), location, unit)
+    
+    def format_response_daily(self, json_data, location, unit):
+        tool_results = [
+            {
+                "name": "your_function_name",
+                "results": [
+                    {
+                        "location": location,  # Replace with the actual location
+                        "unit": unit,  # Replace with the desired unit
+                        "fields": list(json_data["data"]["timelines"][0]["intervals"][0]["values"].keys()),
+                        "data": [
+                            {
+                                "timestamp": interval["startTime"],
+                                **interval["values"],
+                            }
+                            for interval in json_data["data"]["timelines"][0]["intervals"]
+                        ],
+                    }
+                ],
+            }
+        ]
+        formatted_data = {"tool_results": tool_results}
+        json_response = json.dumps(formatted_data, indent=2)
+        print(json_response)
+        return json_response

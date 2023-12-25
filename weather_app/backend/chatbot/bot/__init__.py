@@ -24,7 +24,7 @@ TOOLS = [
                     "unit": {
                         "type": "string",
                         "enum": ["metric", "imperial"],
-                        "description": "The temperature unit to use. Infer this from the users location.",
+                        "description": "The temperature unit to use. Defualt is metric. Infer this from the users location.",
                     },
                     'fields': {
                         'type': 'string',
@@ -51,7 +51,7 @@ TOOLS = [
                     "unit": {
                         "type": "string",
                         "enum": ["metric", "imperial"],
-                        "description": "The temperature unit to use. Infer this from the users location.",
+                        "description": "The temperature unit to use. Defualt is metric. Infer this from the users location.",
                     },
                     'fields': {
                         'type': 'string',
@@ -78,7 +78,7 @@ TOOLS = [
                     "unit": {
                         "type": "string",
                         "enum": ["metric", "imperial"],
-                        "description": "The temperature unit to use. Infer this from the users location.",
+                        "description": "The temperature unit to use. Defualt is metric. Infer this from the users location.",
                     },
                     'fields': {
                         'type': 'string',
