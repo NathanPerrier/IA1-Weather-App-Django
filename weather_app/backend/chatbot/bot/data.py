@@ -3,22 +3,32 @@ from requests import get
 from decouple import config
 from django.db import models
 from ipware import get_client_ip
+from django.core.cache import cache
 import json
-class BotData(models.Model):     
+class BotData(models.Model):
+    def __init__(self):
+        self.ip_address = None
+             
     def get_user_ip(self, request):
-        request.session['ip_address'] = get_client_ip(request)[0]
-        print(request.session['ip_address'])
+        self.ip_address = get_client_ip(request)[0]
+        cache.set('ip_address', self.ip_address)
+        print(self.ip_address)
         
-    def get_city_from_ip(self, session_data):
-        ip_address = session_data['ip_address']
-        try:
+    def get_city_from_ip(self, ip_address=None):
+        ip_address = self.ip_address if self.ip_address is not None else cache.get('ip_address')
+        print('ip address:', ip_address)
+        if ip_address is None:
+            try:
+                print('ip address:', ip_address)
+                location_info = get(f'http://ip-api.com/json/{str(ip_address)}').json()
+                print('location info:', location_info)
+                return location_info['city']
+            except Exception as e:
+                print(e)
+                return 'brisbane' #! fix
+        else:
+            ip_address = get(f'https://api.ipify.org/')
             print('ip address:', ip_address)
-            location_info = get(f'http://ip-api.com/json/{str(ip_address)}').json()
-            print('location info:', location_info)
-            return location_info['city']
-        except Exception as e:
-            print(e)
-            return 'brisbane' #! fix
 
     # def get_current_weather(self, location=None, unit="metric"):
     #     location = self.get_city_from_ip() if location is None else location

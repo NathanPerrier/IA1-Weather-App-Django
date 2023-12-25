@@ -5,7 +5,7 @@ import requests
 from .__init__ import *
 from .data import BotData
 
-@retry(wait=wait_random_exponential(multiplier=1, max=60), stop=stop_after_attempt(3))
+#*@retry(wait=wait_random_exponential(multiplier=1, max=60), stop=stop_after_attempt(3))
 def chat_completion_request(messages, tools=None):
     
     response = client.chat.completions.create(
