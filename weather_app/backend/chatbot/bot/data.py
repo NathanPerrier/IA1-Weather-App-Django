@@ -16,19 +16,18 @@ class BotData(models.Model):
         
     def get_city_from_ip(self, ip_address=None):
         ip_address = self.ip_address if self.ip_address is not None else cache.get('ip_address')
-        print('ip address:', ip_address)
-        if ip_address is None:
-            try:
-                print('ip address:', ip_address)
-                location_info = get(f'http://ip-api.com/json/{str(ip_address)}').json()
-                print('location info:', location_info)
-                return location_info['city']
-            except Exception as e:
-                print(e)
-                return 'brisbane' #! fix
-        else:
-            ip_address = get(f'https://api.ipify.org/')
+        print('ip address!:', ip_address)
+        try:
             print('ip address:', ip_address)
+            location_info = get(f'http://ip-api.com/json/{str(ip_address)}').json()
+            print('location info:', location_info)
+            return location_info['city']
+        except Exception as e:
+            ip_address = get('https://api.ipify.org?format=json').json()['ip']
+            print('ip addressss:', ip_address)
+            location_info = get(f'http://ip-api.com/json/{str(ip_address)}').json()
+            print('location info:', location_info)
+            return location_info['city']
 
     # def get_current_weather(self, location=None, unit="metric"):
     #     location = self.get_city_from_ip() if location is None else location
@@ -51,10 +50,10 @@ class BotData(models.Model):
             return json.dumps({"location": location, "temperature": "unknown"})
 
 
-    def get_daily_weather_forecast(self, location=None, unit="metric"):
+    def get_daily_weather_forecast(self, location=None, unit="metric", fields="temperature,humidity"):
         location = self.get_city_from_ip() if location is None else location
         print('location:', location)
-        url = f'https://api.tomorrow.io/v4/timelines?location={location}&timesteps=1d&units={unit}&apikey={config("TOMORROWIO_API_KEY")}'
+        url = f'https://api.tomorrow.io/v4/timelines?location={location}&fields={fields}&timesteps=1d&units={unit}&apikey={config("TOMORROWIO_API_KEY")}'
         headers = {"accept": "application/json"}
         response = requests.get(url, headers=headers)
         print('response:', response.text)
@@ -62,7 +61,7 @@ class BotData(models.Model):
         
     def get_hourly_weather_forecast(self, location=None, unit="metric"):
         location = self.get_city_from_ip() if location is None else location
-        url = f'https://api.tomorrow.io/v4/timelines?location={location}&timesteps=1h&units={unit}&apikey={config("TOMORROWIO_API_KEY")}'
+        url = f'https://api.tomorrow.io/v4/timelines?location={location}&fields=temperature,humidity&timesteps=1h&units={unit}&apikey={config("TOMORROWIO_API_KEY")}'
         headers = {"accept": "application/json"}
         response = requests.get(url, headers=headers)
         print('response:', response)
