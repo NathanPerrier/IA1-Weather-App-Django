@@ -8,7 +8,7 @@ client = OpenAI(api_key=config("OPENAI_API_KEY"))
 
 GPT_MODEL = "gpt-3.5-turbo-1106"
 
-tools = [
+TOOLS = [
     {
         "type": "function",
         "function": {

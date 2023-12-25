@@ -28,7 +28,6 @@ ALLOWED_HOSTS = [socket.gethostbyname(socket.gethostname()), '127.0.0.1', 'local
 # Application definition
 
 INSTALLED_APPS = [
-    "daphne",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -48,7 +47,6 @@ INSTALLED_APPS = [
     "weather_app",
     
     "chatterbot.ext.django_chatterbot",
-    "tailwind",
     "django_browser_reload",
     # Local apps
     

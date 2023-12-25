@@ -3,7 +3,7 @@ from tenacity import retry, wait_random_exponential, stop_after_attempt
 import requests
 
 from .__init__ import *
-from .data import *
+from .data import BotData
 
 @retry(wait=wait_random_exponential(multiplier=1, max=60), stop=stop_after_attempt(3))
 def chat_completion_request(messages, tools=None):
@@ -11,7 +11,7 @@ def chat_completion_request(messages, tools=None):
     response = client.chat.completions.create(
         model=GPT_MODEL,
         messages=messages,
-        tools=tools,
+        tools=TOOLS,
         tool_choice="auto",  # auto is default, but we'll be explicit
     )
     response_message = response.choices[0].message
@@ -23,10 +23,11 @@ def chat_completion_request(messages, tools=None):
         # Step 3: call the function
         # Note: the JSON response may not always be valid; be sure to handle errors
         available_functions = {
-            "get_current_weather": get_current_weather,
-            "get_daily_weather_forecast": get_daily_weather_forecast,
-            "get_hourly_weather_forecast": get_hourly_weather_forecast,
+            "get_current_weather": BotData().get_current_weather,
+            "get_daily_weather_forecast": BotData().get_daily_weather_forecast,
+            "get_hourly_weather_forecast": BotData().get_hourly_weather_forecast,
         }  
+        
         messages.append(response_message)  # extend conversation with assistant's reply
         
         # Step 4: send the info for each function call and function response to the model
@@ -50,5 +51,6 @@ def chat_completion_request(messages, tools=None):
             model=GPT_MODEL,
             messages=messages,
         )  # get a new response from the model where it can see the function response
-        return second_response
-
+        return second_response.choices[0].message.content
+    else:
+        return response_message.content

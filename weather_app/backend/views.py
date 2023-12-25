@@ -3,11 +3,13 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import render
 from django.http import StreamingHttpResponse
 from django.conf import settings
-from ipware import get_client_ip
+from .chatbot.bot.data import BotData
 
-
-def get_user_ip(request):
-    return get_client_ip(request)
+# def get_user_ip(request):
+#     ip, is_routable = get_client_ip(request)
+#     if ip is not None:
+#         BotData.objects.create(ip_address=ip)
+#     else: pass
 
 def login_view(request):
     if request.method == 'POST':
