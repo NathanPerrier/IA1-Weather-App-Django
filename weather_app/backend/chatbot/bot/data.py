@@ -31,6 +31,7 @@ class BotData(models.Model):
 
     def get_current_weather(self, location=None, unit="metric", fields="temperature,humidity,cloudCover,dewPoint,epaHealthConcern,epaIndex,epaPrimaryPollutant,fireIndex,hailBinary,humidity,iceAccumilation,moonPhase,pollutantCO,pollutantNO2,pollutantO3,pollutantSO2,precipitationIntensity,precipitationProbability,precipitationType,snowAccumulation,temperature,temperatureApparent,visibility,waveSignificantHeight,windDirection,windGust,windSpeed,weatherCode,weatherCodeFullDay"):
         try:
+            print('fields: \n', fields)
             location = self.get_city_from_ip() if location is None else location
             url = f'https://api.tomorrow.io/v4/weather/realtime?location={location}&fields={fields}&units={unit}&apikey={config("TOMORROWIO_API_KEY")}'
             headers = {"accept": "application/json"}

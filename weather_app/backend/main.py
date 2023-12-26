@@ -44,5 +44,12 @@ def index(request):
     print('--------------------------------------------------------------------------------------------------------------------')
     print('AI:', chat_completion_request([{"role": "user", "content": "What is air quality like in Anstead, what is the main pollutant?"}]))
     print('--------------------------------------------------------------------------------------------------------------------')
+    
+    
+    print('--------------------------------------------------------------------------------------------------------------------')
+    print('prompt: i have allergy\'s is the a lot of pollen around in chuwar t the moment?')
+    print('--------------------------------------------------------------------------------------------------------------------')
+    print('AI:', chat_completion_request([{"role": "user", "content": "i have allergy\'s is the a lot of pollen around in chuwar t the moment?"}]))
+    print('--------------------------------------------------------------------------------------------------------------------')
     # print(chat_completion_request([{"role": "user", "content": "What's the expected rainfall like in Brisbane, AUS over the next few days?"}]))
     return render(request, 'landing.html', context)
