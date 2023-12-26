@@ -29,46 +29,49 @@ class BotData(models.Model):
             print('location info:', location_info)
             return location_info['city']
 
-    # def get_current_weather(self, location=None, unit="metric", fields="temperature,humidity"):
-    #     location = self.get_city_from_ip() if location is None else location
-    #     url = f'https://api.tomorrow.io/v4/weather/realtime?location={location}&fields={fields}&units={unit}&apikey={config("TOMORROWIO_API_KEY")}'
-    #     headers = {"accept": "application/json"}
-    #     response = requests.get(url, headers=headers)
-    #     print('response:', response)
-    #     print(response.text)
-    #     return response.text
+    def get_current_weather(self, location=None, unit="metric", fields="temperature,humidity,weatherCodeFullDay,precipitationIntensity,precipitationProbability,precipitationType,snowAccumulation,temperatureApparent,windSpeed"):
+        try:
+            location = self.get_city_from_ip() if location is None else location
+            url = f'https://api.tomorrow.io/v4/weather/realtime?location={location}&fields={fields}&units={unit}&apikey={config("TOMORROWIO_API_KEY")}'
+            headers = {"accept": "application/json"}
+            response = requests.get(url, headers=headers)
+            print(response.text)
+            print(json.loads(response.text))
+            return response.text
+        except Exception as e:
+            print('error:', e)
+            return json.loads(e)
     
-    def get_current_weather(self, location, unit="imperial"):
-        """Get the current weather in a given location"""
-        if "tokyo" in location.lower():
-            return json.dumps({"location": "Tokyo", "temperature": "10", "unit": unit})
-        elif "san francisco" in location.lower():
-            return json.dumps({"location": "San Francisco", "temperature": "72", "unit": unit})
-        elif "paris" in location.lower():
-            return json.dumps({"location": "Paris", "temperature": "22", "unit": unit})
-        else:
-            return json.dumps({"location": location, "temperature": "unknown"})
 
-
-    def get_daily_weather_forecast(self, location=None, unit="metric", fields="temperature,humidity"):
-        location = self.get_city_from_ip() if location is None else location
-        print('location:', location)
-        url = f'https://api.tomorrow.io/v4/timelines?location={location}&fields={fields}&timesteps=1d&units={unit}&apikey={config("TOMORROWIO_API_KEY")}'
-        headers = {"accept": "application/json"}
-        response = requests.get(url, headers=headers)
-        print('response (daily):', response.text)
-        return self.format_response_daily(json.loads(response.text), location, unit)
+    def get_daily_weather_forecast(self, location=None, unit="metric", fields="temperature,humidity,weatherCodeFullDay,precipitationIntensity,precipitationProbability,precipitationType,snowAccumulation,temperatureApparent,windSpeed"):
+        try:
+            location = self.get_city_from_ip() if location is None else location
+            print('location:', location)
+            url = f'https://api.tomorrow.io/v4/timelines?location={location}&fields={fields}&timesteps=1d&units={unit}&apikey={config("TOMORROWIO_API_KEY")}'
+            headers = {"accept": "application/json"}
+            response = requests.get(url, headers=headers)
+            print('response (daily):', response.text)
+            if 'code' in json.loads(response.text):
+                return json.loads(str(response.text['message']))
+            return self.format_response_forecast(json.loads(response.text), location, unit)
+        except Exception as e:
+            print('error:', e)
+            return json.loads(str(e))
         
-    def get_hourly_weather_forecast(self, location=None, unit="metric", fields="temperature,humidity"):
-        location = self.get_city_from_ip() if location is None else location
-        url = f'https://api.tomorrow.io/v4/timelines?location={location}&fields={fields}&timesteps=1h&units={unit}&apikey={config("TOMORROWIO_API_KEY")}'
-        headers = {"accept": "application/json"}
-        response = requests.get(url, headers=headers)
-        print('response (hourly):', response.text)
-        print(response.text)
-        return  self.format_response_daily(json.loads(response.text), location, unit)
+    def get_hourly_weather_forecast(self, location=None, unit="metric", fields="temperature,humidity,weatherCodeFullDay,precipitationIntensity,precipitationProbability,precipitationType,snowAccumulation,temperatureApparent,windSpeed"):
+        try:
+            location = self.get_city_from_ip() if location is None else location
+            url = f'https://api.tomorrow.io/v4/timelines?location={location}&fields={fields}&timesteps=1h&units={unit}&apikey={config("TOMORROWIO_API_KEY")}'
+            headers = {"accept": "application/json"}
+            response = requests.get(url, headers=headers)
+            print('response (hourly):', response.text)
+            print(response.text)
+            return self.format_response_forecast(json.loads(response.text), location, unit)
+        except Exception as e:
+            print('error:', e)
+            return json.loads(e)
     
-    def format_response_daily(self, json_data, location, unit):
+    def format_response_forecast(self, json_data, location, unit):
         tool_results = [
             {
                 "name": "your_function_name",

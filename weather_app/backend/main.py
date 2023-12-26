@@ -10,7 +10,21 @@ def index(request):
     context = {'is_authenticated': request.user.is_authenticated}
     #print(BotData().get_daily_weather_forecast())
     print('--------------------------------------------------------------------------------------------------------------------')
-    print('prompt 1:', chat_completion_request([{"role": "user", "content": "How are you?"}]))
+    print('prompt: "what is the current weather like near me?')
     print('--------------------------------------------------------------------------------------------------------------------')
-    print(chat_completion_request([{"role": "user", "content": "What's the expected rainfall like in Brisbane, AUS over the next few days?"}]))
+    print('AI:', chat_completion_request([{"role": "user", "content": "what is the current weather like near me?"}]))
+    print('--------------------------------------------------------------------------------------------------------------------')
+    
+    print('--------------------------------------------------------------------------------------------------------------------')
+    print('prompt: "what is the snow expectansy like in canada over the next few days?')
+    print('--------------------------------------------------------------------------------------------------------------------')
+    print('AI:', chat_completion_request([{"role": "user", "content": "what is the snow expectansy like in canada over the next few days?"}]))
+    print('--------------------------------------------------------------------------------------------------------------------')
+    
+    print('--------------------------------------------------------------------------------------------------------------------')
+    print('prompt: Will there be any storms in Brisbane over the next few days?')
+    print('--------------------------------------------------------------------------------------------------------------------')
+    print('AI:', chat_completion_request([{"role": "user", "content": "Will there be any storms in Brisbane over the next few days?"}]))
+    print('--------------------------------------------------------------------------------------------------------------------')
+    # print(chat_completion_request([{"role": "user", "content": "What's the expected rainfall like in Brisbane, AUS over the next few days?"}]))
     return render(request, 'landing.html', context)

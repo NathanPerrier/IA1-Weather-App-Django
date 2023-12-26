@@ -37,7 +37,8 @@ def chat_completion_request(messages, tools=None):
             function_args = json.loads(tool_call.function.arguments)
             function_response = function_to_call(
                 location=function_args.get("location"),
-                unit=function_args.get("unit"),
+                unit=function_args.get("unit", "metric"),
+                fields=function_args.get("fields", "temperature,humidity,weatherCodeFullDay,precipitationIntensity,precipitationProbability,precipitationType,snowAccumulation,temperatureApparent,windSpeed"),
             )
             messages.append(
                 {
@@ -51,6 +52,7 @@ def chat_completion_request(messages, tools=None):
             model=GPT_MODEL,
             messages=messages,
         )  # get a new response from the model where it can see the function response
+        print('------------------------------------------------------------------------------------------')
         return second_response.choices[0].message.content
     else:
         return response_message.content
