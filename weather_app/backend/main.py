@@ -34,7 +34,7 @@ def index(request):
     # print('--------------------------------------------------------------------------------------------------------------------')
     
     print('--------------------------------------------------------------------------------------------------------------------')
-    print('prompt: What is current weather like in Chuwar?')
+    print('prompt: What time is sunset today in Chuwar?')
     print('--------------------------------------------------------------------------------------------------------------------')
     print('AI:', chat_completion_request([{"role": "user", "content": "What is current weather like in Chuwar?"}]))
     print('--------------------------------------------------------------------------------------------------------------------')
@@ -47,9 +47,9 @@ def index(request):
     
     
     print('--------------------------------------------------------------------------------------------------------------------')
-    print('prompt: i have allergy\'s is the a lot of pollen around in chuwar t the moment?')
+    print('prompt: will i experience allergies in brisbane todays?')
     print('--------------------------------------------------------------------------------------------------------------------')
-    print('AI:', chat_completion_request([{"role": "user", "content": "i have allergy\'s is the a lot of pollen around in chuwar t the moment?"}]))
+    print('AI:', chat_completion_request([{"role": "user", "content": "will i experience allergies in brisbane todays?"}]))
     print('--------------------------------------------------------------------------------------------------------------------')
     # print(chat_completion_request([{"role": "user", "content": "What's the expected rainfall like in Brisbane, AUS over the next few days?"}]))
     return render(request, 'landing.html', context)

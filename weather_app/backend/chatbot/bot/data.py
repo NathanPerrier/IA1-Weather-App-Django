@@ -29,7 +29,7 @@ class BotData(models.Model):
             print('location info:', location_info)
             return location_info['city']
 
-    def get_current_weather(self, location=None, unit="metric", fields="temperature,humidity,cloudCover,dewPoint,epaHealthConcern,epaIndex,epaPrimaryPollutant,fireIndex,hailBinary,humidity,iceAccumilation,moonPhase,pollutantCO,pollutantNO2,pollutantO3,pollutantSO2,precipitationIntensity,precipitationProbability,precipitationType,snowAccumulation,temperature,temperatureApparent,visibility,waveSignificantHeight,windDirection,windGust,windSpeed,weatherCode,weatherCodeFullDay"):
+    def get_current_weather(self, location=None, unit="metric", fields="temperature,humidity,weatherCode"):
         try:
             print('fields: \n', fields)
             location = self.get_city_from_ip() if location is None else location
@@ -44,8 +44,9 @@ class BotData(models.Model):
             return json.loads(e)
     
 
-    def get_daily_weather_forecast(self, location=None, unit="metric", fields="temperature,humidity,weatherCodeFullDay,precipitationIntensity,precipitationProbability,precipitationType,snowAccumulation,temperatureApparent,windSpeed"):
+    def get_daily_weather_forecast(self, location=None, unit="metric", fields="temperature,humidity,weatherCode"):
         try:
+            print('fields: \n', fields)
             location = self.get_city_from_ip() if location is None else location
             print('location:', location)
             url = f'https://api.tomorrow.io/v4/timelines?location={location}&fields={fields}&timesteps=1d&units={unit}&apikey={config("TOMORROWIO_API_KEY")}'
@@ -59,8 +60,9 @@ class BotData(models.Model):
             print('error:', e)
             return json.loads(str(e))
         
-    def get_hourly_weather_forecast(self, location=None, unit="metric", fields="temperature,humidity,weatherCode,precipitationIntensity,precipitationProbability,precipitationType,snowAccumulation,temperatureApparent,windSpeed"):
+    def get_hourly_weather_forecast(self, location=None, unit="metric", fields="temperature,humidity,weatherCode"):
         try:
+            print('fields: \n', fields)
             location = self.get_city_from_ip() if location is None else location
             url = f'https://api.tomorrow.io/v4/timelines?location={location}&fields={fields}&timesteps=1h&units={unit}&apikey={config("TOMORROWIO_API_KEY")}'
             headers = {"accept": "application/json"}
