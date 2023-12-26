@@ -58,7 +58,7 @@ class BotData(models.Model):
             print('error:', e)
             return json.loads(str(e))
         
-    def get_hourly_weather_forecast(self, location=None, unit="metric", fields="temperature,humidity,weatherCodeFullDay,precipitationIntensity,precipitationProbability,precipitationType,snowAccumulation,temperatureApparent,windSpeed"):
+    def get_hourly_weather_forecast(self, location=None, unit="metric", fields="temperature,humidity,weatherCode,precipitationIntensity,precipitationProbability,precipitationType,snowAccumulation,temperatureApparent,windSpeed"):
         try:
             location = self.get_city_from_ip() if location is None else location
             url = f'https://api.tomorrow.io/v4/timelines?location={location}&fields={fields}&timesteps=1h&units={unit}&apikey={config("TOMORROWIO_API_KEY")}'
