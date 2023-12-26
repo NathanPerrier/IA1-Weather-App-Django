@@ -38,5 +38,11 @@ def index(request):
     print('--------------------------------------------------------------------------------------------------------------------')
     print('AI:', chat_completion_request([{"role": "user", "content": "What is current weather like in Chuwar?"}]))
     print('--------------------------------------------------------------------------------------------------------------------')
+    
+    print('--------------------------------------------------------------------------------------------------------------------')
+    print('prompt: What is the current air quality like in Anstead, what is the main pollutant?')
+    print('--------------------------------------------------------------------------------------------------------------------')
+    print('AI:', chat_completion_request([{"role": "user", "content": "What is air quality like in Anstead, what is the main pollutant?"}]))
+    print('--------------------------------------------------------------------------------------------------------------------')
     # print(chat_completion_request([{"role": "user", "content": "What's the expected rainfall like in Brisbane, AUS over the next few days?"}]))
     return render(request, 'landing.html', context)
