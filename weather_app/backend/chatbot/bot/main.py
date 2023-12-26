@@ -12,6 +12,7 @@ def chat_completion_request(messages, tools=None):
         model=GPT_MODEL,
         messages=messages,
         tools=TOOLS,
+        # temperature=0.01,
         tool_choice="auto",  # auto is default, but we'll be explicit
     )
     response_message = response.choices[0].message
@@ -29,8 +30,8 @@ def chat_completion_request(messages, tools=None):
         }  
         
         messages.append(response_message)  # extend conversation with assistant's reply
-        
         # Step 4: send the info for each function call and function response to the model
+        
         for tool_call in tool_calls:
             function_name = tool_call.function.name
             function_to_call = available_functions[function_name]
@@ -38,7 +39,8 @@ def chat_completion_request(messages, tools=None):
             function_response = function_to_call(
                 location=function_args.get("location"),
                 unit=function_args.get("unit", "metric"),
-                fields=function_args.get("fields", "temperature,humidity,weatherCodeFullDay,precipitationIntensity,precipitationProbability,precipitationType,snowAccumulation,temperatureApparent,windSpeed"),
+                fields=function_args.get("fields"),
+                
             )
             messages.append(
                 {
@@ -50,6 +52,7 @@ def chat_completion_request(messages, tools=None):
             )  # extend conversation with function response
         second_response = client.chat.completions.create(
             model=GPT_MODEL,
+            # temperature=0.2,
             messages=messages,
         )  # get a new response from the model where it can see the function response
         print('------------------------------------------------------------------------------------------')

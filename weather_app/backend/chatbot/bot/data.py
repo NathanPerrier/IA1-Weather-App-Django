@@ -31,9 +31,9 @@ class BotData(models.Model):
 
     def get_current_weather(self, location=None, unit="metric", fields="temperature,humidity,weatherCode"):
         try:
-            print('fields: \n', fields)
+            print('fields: \n', ','.join(list(fields.keys())))
             location = self.get_city_from_ip() if location is None else location
-            url = f'https://api.tomorrow.io/v4/weather/realtime?location={location}&fields={fields}&units={unit}&apikey={config("TOMORROWIO_API_KEY")}'
+            url = f"https://api.tomorrow.io/v4/weather/realtime?location={location}&fields={(','.join(list(fields.keys())))}&units={unit}&apikey={config('TOMORROWIO_API_KEY')}"
             headers = {"accept": "application/json"}
             response = requests.get(url, headers=headers)
             print(response.text)
@@ -46,10 +46,10 @@ class BotData(models.Model):
 
     def get_daily_weather_forecast(self, location=None, unit="metric", fields="temperature,humidity,weatherCode"):
         try:
-            print('fields: \n', fields)
+            print('fields: \n', fields.keys())
             location = self.get_city_from_ip() if location is None else location
             print('location:', location)
-            url = f'https://api.tomorrow.io/v4/timelines?location={location}&fields={fields}&timesteps=1d&units={unit}&apikey={config("TOMORROWIO_API_KEY")}'
+            url = f"https://api.tomorrow.io/v4/timelines?location={location}&fields={(','.join(list(fields.keys())))}&timesteps=1d&units={unit}&apikey={config('TOMORROWIO_API_KEY')}"
             headers = {"accept": "application/json"}
             response = requests.get(url, headers=headers)
             print('response (daily):', response.text)
@@ -64,7 +64,7 @@ class BotData(models.Model):
         try:
             print('fields: \n', fields)
             location = self.get_city_from_ip() if location is None else location
-            url = f'https://api.tomorrow.io/v4/timelines?location={location}&fields={fields}&timesteps=1h&units={unit}&apikey={config("TOMORROWIO_API_KEY")}'
+            url = f"https://api.tomorrow.io/v4/timelines?location={location}&fields={(','.join(list(fields.keys())))}&timesteps=1h&units={unit}&apikey={config('TOMORROWIO_API_KEY')}"
             headers = {"accept": "application/json"}
             response = requests.get(url, headers=headers)
             print('response (hourly):', response.text)
