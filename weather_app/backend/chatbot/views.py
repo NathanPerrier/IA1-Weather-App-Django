@@ -8,6 +8,12 @@ from .model import Message
 def chat(request):
     user_message = request.POST.get('message')
     Message.objects.create(role='user', content=user_message)
-    bot_response = chat_completion_request([{"role": "user", "content": user_message}])
+    previous_messages = Message.objects.all().order_by('timestamp')
+    
+    # Format previous messages
+    formatted_messages = [{'role': msg.role, 'content': msg.content} for msg in previous_messages]
+    
+    bot_response = chat_completion_request(formatted_messages)
+    Message.objects.create(role='assistant', content=bot_response)
     print('user_message:', user_message)
     return JsonResponse({'message': bot_response})
