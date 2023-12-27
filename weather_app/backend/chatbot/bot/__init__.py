@@ -4,8 +4,6 @@ from openai import OpenAI
 
 client = OpenAI(api_key=config("OPENAI_API_KEY"))
 
-#client.api_key = config("OPENAI_API_KEY")
-
 GPT_MODEL = "gpt-3.5-turbo-1106"
 
 TOOLS = [
@@ -19,7 +17,7 @@ TOOLS = [
                 "properties": {
                     "location": {
                         "type": "string",
-                        "description": "The city or town e.g. New York. return city/town name only",
+                        "description": "The name of a town or city. Defual is None. only return a location if specified by the user",
                     },
                     "unit": {
                         "type": "string",
@@ -258,13 +256,13 @@ TOOLS = [
         "type": "function",
         "function": {
             "name": "get_recent_weather_history",
-            "description": "Get the recent weather history over the past 24hrs (hourly) or few days (daily) of a location",
+            "description": "returns the recent weather history over the past 24hrs (hourly) or few days (daily)",
             "parameters": {
                 "type": "object",
                 "properties": {
                     "location": {
                         "type": "string",
-                        "description": "A name of a city or town. if no location was specified, return None",
+                        "description": "The name of a city or town. return city/town name only. return None if user doesn't specify",
                     },
                     "unit": {
                         "type": "string",
