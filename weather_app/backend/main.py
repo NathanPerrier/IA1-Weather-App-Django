@@ -45,11 +45,11 @@ def index(request):
     # print('AI:', chat_completion_request([{"role": "user", "content": "what is the weather like today?"}]))
     # print('--------------------------------------------------------------------------------------------------------------------')
     
-    print('--------------------------------------------------------------------------------------------------------------------')
-    print('prompt: how has the weather been near me the past few days?')
-    print('--------------------------------------------------------------------------------------------------------------------')
-    print('AI:', chat_completion_request([{"role": "user", "content": "how has the weather been near me the past few days?"}]))
-    print('--------------------------------------------------------------------------------------------------------------------')
+    # print('--------------------------------------------------------------------------------------------------------------------')
+    # print('prompt: how has the weather been near me the past few days?')
+    # print('--------------------------------------------------------------------------------------------------------------------')
+    # print('AI:', chat_completion_request([{"role": "user", "content": "how has the weather been near me the past few days?"}]))
+    # print('--------------------------------------------------------------------------------------------------------------------')
     
     # print(chat_completion_request([{"role": "user", "content": "What's the expected rainfall like in Brisbane, AUS over the next few days?"}]))
     return render(request, 'landing.html', context)

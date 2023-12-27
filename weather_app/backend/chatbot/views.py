@@ -1,5 +1,10 @@
-from django.views.generic import TemplateView
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
+from .bot.main import chat_completion_request
 
-class ChatView(TemplateView):
-    template_name: str = "chatbot/chat.html"
+@csrf_exempt
+def chat(request):
+    user_message = request.POST.get('message')
+    print('user_message:', user_message)
+    return JsonResponse({'message':chat_completion_request([{"role": "user", "content": user_message}])})

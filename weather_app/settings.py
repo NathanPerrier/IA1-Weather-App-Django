@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'axes',
     "weather_app",
     
-    "chatterbot.ext.django_chatterbot",
     "django_browser_reload",
     # Local apps
     

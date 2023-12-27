@@ -23,12 +23,13 @@ from django.urls import include, path
 
 from .backend import main, views
 from .backend.views import stream_video
+from .backend.chatbot.views import chat
 
 urlpatterns = [
     path("atc/", include("weather_app.backend.atc_site.urls"), name="atc_site"),
-    
-    path("chat/", include("weather_app.backend.chatbot.urls"), name="chatbot"),
-    
+
+    path("", include("weather_app.backend.chatbot.urls"), name="chatbot"),
+
     path("", main.index, name="index"),
     path('login/', views.login_view, name='login'),
     
