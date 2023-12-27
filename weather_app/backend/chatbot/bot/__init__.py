@@ -262,7 +262,7 @@ TOOLS = [
                 "properties": {
                     "location": {
                         "type": "string",
-                        "description": "if a location was provided in the prompt, use that location. if not return None",
+                        "description": "Defualt is None (gathers location for user's ip). if a location was provided in the prompt, use that location. if not return None or if the user wants to know the weather in their current location, return None",
                     },
                     "unit": {
                         "type": "string",

@@ -48,7 +48,7 @@ def chat_completion_request(messages, tools=None):
                 function_to_call = available_functions[function_name]
                 function_args = json.loads(tool_call.function.arguments)
                 function_response = function_to_call(
-                    location=function_args.get("location", None),
+                    location=function_args.get("location"),
                     unit=function_args.get("unit", "metric"),
                     timestep=function_args.get("timestep"),
                 )
