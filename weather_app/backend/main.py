@@ -5,9 +5,12 @@ from django.views.decorators.http import require_POST
 from .chatbot.bot.main import chat_completion_request
 from .chatbot.bot.data import BotData
 
+from .chatbot.model import Message
 def index(request):
     BotData().get_user_ip(request)
     context = {'is_authenticated': request.user.is_authenticated}
+    Message.objects.all().delete()
+    Message.objects.create(role='system', content='You Are a helpful weather assistant that has access to almost all weather data. you are to answer purely weather based questions. try include figures in your reposnse to justify yor reasoning')
     #print(BotData().get_daily_weather_forecast())
     # print('--------------------------------------------------------------------------------------------------------------------')
     # print('prompt: "what is the current weather like near me?')

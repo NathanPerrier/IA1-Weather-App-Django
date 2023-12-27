@@ -11,7 +11,11 @@
           <h4 class="Messenger_prompt">How can we help you?</h4> <span class="chat_close_icon"><i class="fa fa-window-close" aria-hidden="true"></i></span> </div>
         <div class="Messenger_content">
           <div class="Messages">
-            <div class="Messages_list"></div>
+            <div class="Messages_list">
+              <div class="bot-message">
+                <p class="message-content"><strong>RainCheck:</strong> Hello! I am RainCheck, your personal weather assistant. How can I help you?</p>
+              </div>
+            </div>
           </div>
           <div class="Input Input-blank">
             <textarea class="Input_field" placeholder="Send a message..." style="height: 15px;color:white"></textarea>
@@ -76,7 +80,7 @@
           },
           success: function(response) {
               // This is where you handle the chatbot's response
-              $('.Messages_list').append('<div class="bot-message"><p class="message-content"><strong>Chatbot:</strong> ' + response.message + '</p></div>');
+              $('.Messages_list').append('<div class="bot-message"><p class="message-content"><strong>RainCheck:</strong> ' + response.message + '</p></div>');
           }
       });
   });

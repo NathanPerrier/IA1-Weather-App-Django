@@ -12,7 +12,9 @@ def chat(request):
     
     # Format previous messages
     formatted_messages = [{'role': msg.role, 'content': msg.content} for msg in previous_messages]
-    
+    print('###############################################################################################')
+    print('formatted_messages:', formatted_messages)
+    print('###############################################################################################')
     bot_response = chat_completion_request(formatted_messages)
     Message.objects.create(role='assistant', content=bot_response)
     print('user_message:', user_message)
