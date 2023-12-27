@@ -17,7 +17,7 @@ TOOLS = [
                 "properties": {
                     "location": {
                         "type": "string",
-                        "description": "The name of a town or city. Defual is None. only return a location if specified by the user",
+                        "description": "if a location was provided in the prompt, use that location. if not return None",
                     },
                     "unit": {
                         "type": "string",
@@ -99,7 +99,7 @@ TOOLS = [
                 "properties": {
                     "location": {
                         "type": "string",
-                        "description": "The city or town e.g. New York. return city/town name only",
+                        "description": "if a location was provided in the prompt, use that location. if not return None",
                     },
                     "unit": {
                         "type": "string",
@@ -183,7 +183,7 @@ TOOLS = [
                 "properties": {
                     "location": {
                         "type": "string",
-                        "description": "The city or town e.g. New York. return city/town name only",
+                        "description": "if a location was provided in the prompt, use that location. if not return None",
                     },
                     "unit": {
                         "type": "string",
@@ -262,7 +262,7 @@ TOOLS = [
                 "properties": {
                     "location": {
                         "type": "string",
-                        "description": "The name of a city or town. return city/town name only. return None if user doesn't specify",
+                        "description": "if a location was provided in the prompt, use that location. if not return None",
                     },
                     "unit": {
                         "type": "string",
