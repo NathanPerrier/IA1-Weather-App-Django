@@ -29,47 +29,109 @@ class BotData(models.Model):
             print('location info:', location_info)
             return location_info['city']
 
-    def get_current_weather(self, location=None, unit="metric", fields="temperature,humidity,weatherCode"):
+    def get_current_weather(self, fields, location=None, unit="metric", timesteps='current'): #="temperature,humidity,weatherCode"
         try:
-            print('fields: \n', ','.join(list(fields.keys())))
+            print('current')
+            print(list(fields.keys()))
             location = self.get_city_from_ip() if location is None else location
-            url = f"https://api.tomorrow.io/v4/weather/realtime?location={location}&fields={(','.join(list(fields.keys())))}&units={unit}&apikey={config('TOMORROWIO_API_KEY')}"
-            headers = {"accept": "application/json"}
-            response = requests.get(url, headers=headers)
-            print(response.text)
-            print(json.loads(response.text))
+            print('location:', location)
+            if 'sunsetTime' or 'sunriseTime' in fields:
+                timesteps='1d'
+            url = f'https://api.tomorrow.io/v4/timelines?apikey={config("TOMORROWIO_API_KEY")}'
+            headers = {
+                'Accept-Encoding': 'gzip',
+                'accept': 'application/json',
+                'content-type': 'application/json',
+            }
+            data = {
+                "location": location,
+                "fields": list(fields.keys()),
+                "units": unit,
+                "timesteps": [
+                    timesteps
+                ],
+                "timezone": 'auto'
+            }
+
+            response = requests.post(url, headers=headers, data=json.dumps(data))
+            print('response:', response.text)
             return response.text
+
         except Exception as e:
             print('error:', e)
             return json.loads(e)
     
 
-    def get_daily_weather_forecast(self, location=None, unit="metric", fields="temperature,humidity,weatherCode"):
+    def get_daily_weather_forecast(self, fields, location=None, unit="metric"):
         try:
-            print('fields: \n', fields.keys())
+            print('daily')
+            print(list(fields.keys()))
             location = self.get_city_from_ip() if location is None else location
             print('location:', location)
-            url = f"https://api.tomorrow.io/v4/timelines?location={location}&fields={(','.join(list(fields.keys())))}&timesteps=1d&units={unit}&apikey={config('TOMORROWIO_API_KEY')}"
-            headers = {"accept": "application/json"}
-            response = requests.get(url, headers=headers)
-            print('response (daily):', response.text)
-            if 'code' in json.loads(response.text):
-                return json.loads(str(response.text['message']))
+            url = f'https://api.tomorrow.io/v4/timelines?apikey={config("TOMORROWIO_API_KEY")}'
+            headers = {
+                'Accept-Encoding': 'gzip',
+                'accept': 'application/json',
+                'content-type': 'application/json',
+            }
+            data = {
+                "location": location,
+                "fields": list(fields.keys()),
+                "units": unit,
+                "timesteps": [
+                    "1d"
+                ],
+                "timezone": "auto"
+            }
+
+            response = requests.post(url, headers=headers, data=json.dumps(data))
+            print('response (json):', json.loads(response.text))
             return self.format_response_forecast(json.loads(response.text), location, unit)
+
         except Exception as e:
             print('error:', e)
             return json.loads(str(e))
         
-    def get_hourly_weather_forecast(self, location=None, unit="metric", fields="temperature,humidity,weatherCode"):
+    def get_hourly_weather_forecast(self, fields, location=None, unit="metric"):
         try:
-            print('fields: \n', fields)
+            print(list(fields.keys()))
+            url = f'https://api.tomorrow.io/v4/timelines?apikey={config("TOMORROWIO_API_KEY")}'
+            headers = {
+                'Accept-Encoding': 'gzip',
+                'accept': 'application/json',
+                'content-type': 'application/json',
+            }
+            data = {
+                "location": location,
+                "fields": list(fields.keys()),
+                "units": unit,
+                "timesteps": [
+                    "1h"
+                ],
+                "timezone": "auto"
+            }
+
+            response = requests.post(url, headers=headers, data=json.dumps(data))
+            print('response (json):', json.loads(response.text))
+            return self.format_response_forecast(json.loads(response.text), location, unit)
+
+        except Exception as e:
+            print('error:', e)
+            return json.loads(e)
+        
+    def get_recent_weather_history(self, location=None, unit="metric", timestep='1d'):
+        try:
+            print('location:', location)
             location = self.get_city_from_ip() if location is None else location
-            url = f"https://api.tomorrow.io/v4/timelines?location={location}&fields={(','.join(list(fields.keys())))}&timesteps=1h&units={unit}&apikey={config('TOMORROWIO_API_KEY')}"
+            print('location:', location)
+            print('time step:', timestep)
+            url = f'https://api.tomorrow.io/v4/weather/history/recent?location={location}&timesteps={timestep}&units={unit}&apikey={config("TOMORROWIO_API_KEY")}'
             headers = {"accept": "application/json"}
             response = requests.get(url, headers=headers)
-            print('response (hourly):', response.text)
-            print(response.text)
-            return self.format_response_forecast(json.loads(response.text), location, unit)
+            print('response (dhistorical):', response.text)
+            if 'code' in json.loads(response.text):
+                return json.loads(str(response.text['message']))
+            return self.format_response_historical(json.loads(response.text), location, unit, timestep)
         except Exception as e:
             print('error:', e)
             return json.loads(e)
@@ -77,7 +139,7 @@ class BotData(models.Model):
     def format_response_forecast(self, json_data, location, unit):
         tool_results = [
             {
-                "name": "your_function_name",
+                "name": "weather_data",
                 "results": [
                     {
                         "location": location,  # Replace with the actual location
@@ -89,6 +151,32 @@ class BotData(models.Model):
                                 **interval["values"],
                             }
                             for interval in json_data["data"]["timelines"][0]["intervals"]
+                        ],
+                    }
+                ],
+            }
+        ]
+        formatted_data = {"tool_results": tool_results}
+        json_response = json.dumps(formatted_data, indent=2)
+        print(json_response)
+        return json_response
+    
+    def format_response_historical(self, json_data, location, unit, timestep):
+        intervals = 'daily' if timestep == '1d' else 'hourly'
+        tool_results = [
+            {
+                "name": "weather_data",
+                "results": [
+                    {
+                        "location": location,  # Replace with the actual location
+                        "unit": unit,  # Replace with the desired unit
+                        "fields": list(json_data["timelines"][intervals][0]["values"].keys()),
+                        "data": [
+                            {
+                                "timestamp": interval["time"],
+                                **interval["values"],
+                            }
+                            for interval in json_data["timelines"][intervals]
                         ],
                     }
                 ],

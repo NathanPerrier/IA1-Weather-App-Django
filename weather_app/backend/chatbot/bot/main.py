@@ -27,6 +27,7 @@ def chat_completion_request(messages, tools=None):
             "get_current_weather": BotData().get_current_weather,
             "get_daily_weather_forecast": BotData().get_daily_weather_forecast,
             "get_hourly_weather_forecast": BotData().get_hourly_weather_forecast,
+            'get_recent_weather_history': BotData().get_recent_weather_history,
         }  
         
         messages.append(response_message)  # extend conversation with assistant's reply
@@ -34,14 +35,23 @@ def chat_completion_request(messages, tools=None):
         
         for tool_call in tool_calls:
             function_name = tool_call.function.name
-            function_to_call = available_functions[function_name]
-            function_args = json.loads(tool_call.function.arguments)
-            function_response = function_to_call(
-                location=function_args.get("location"),
-                unit=function_args.get("unit", "metric"),
-                fields=function_args.get("fields"),
-                
-            )
+            print('function name:', function_name)
+            if function_name != 'get_recent_weather_history':
+                function_to_call = available_functions[function_name]
+                function_args = json.loads(tool_call.function.arguments)
+                function_response = function_to_call(
+                    location=function_args.get("location"),
+                    unit=function_args.get("unit", "metric"),
+                    fields=function_args.get("fields"),
+                )
+            else:
+                function_to_call = available_functions[function_name]
+                function_args = json.loads(tool_call.function.arguments)
+                function_response = function_to_call(
+                    location=function_args.get("location", None),
+                    unit=function_args.get("unit", "metric"),
+                    timestep=function_args.get("timestep"),
+                )
             messages.append(
                 {
                     "tool_call_id": tool_call.id,
