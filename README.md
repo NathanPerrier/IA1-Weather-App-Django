@@ -32,7 +32,7 @@ The application's design is user-friendly and intuitive, making it easy for user
 
 2. Clone the Github repository using:
 
-    git clone https://github.com/nathan-perrier23/IA1-Weather-App-Django
+    `git clone https://github.com/nathan-perrier23/IA1-Weather-App-Django`
 
 3. Set up environment variables for configuration. These are stored in a `.env` file at the root of the        
     project. You'll need to create this file and add the following parameters:
@@ -71,13 +71,28 @@ The application's design is user-friendly and intuitive, making it easy for user
 
     `git clone https://github.com/nathan-perrier23/IA1-Weather-App-Django`
 
-3. Build the Docker image:
+3. Set up environment variables for configuration. These are stored in a `.env` file at the root of the        
+    project. You'll need to create this file and add the following parameters:
+
+    ```properties
+    CELERY_BROKER_URL = 'redis://:NathanP2305@localhost:6379/0'
+    CELERY_RESULT_BACKEND = 'redis://:NathanP2305@localhost:6379/0'
+    REDIS_HOST = 'redis'
+    REDIS_BACKEND = 'redis://192.168.68.55:6379'
+
+    SECRET_KEY = 'your-secret-key'
+
+    OPENAI_API_KEY = 'your-openai-api-key'
+    TOMORROWIO_API_KEY = 'your-tomorrowio-api-key'
+    ```
+
+4. Build the Docker image:
 
     ```sh
     docker build -t weather_app -f DockerFile .
     ```
 
-4. Run the Docker container:
+5. Run the Docker container:
 
     For Deployment:
 
@@ -93,9 +108,9 @@ The application's design is user-friendly and intuitive, making it easy for user
     docker run -p 8000:8000 -v "$(pwd):/app" weather_app
     ```
 
-5. Open your web browser and visit `http://localhost:8000/`.
+6. Open your web browser and visit `http://localhost:8000/`.
 
-6. When you make changes , you will need to rebuild the Docker images and restart the Docker containers. You 
+7. When you make changes , you will need to rebuild the Docker images and restart the Docker containers. You 
     can do this with `docker-compose down` and then `docker-compose up --build`.
 
 ### NOTE
