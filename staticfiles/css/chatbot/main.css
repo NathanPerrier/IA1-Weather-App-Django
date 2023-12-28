@@ -5,95 +5,20 @@
 
 
 /*===========================
-     CHAT BOT MESSENGER
+     CHAT BOOT MESSENGER
    ===========================*/
-
    #chatbox {
     position: fixed;
     bottom: 0;
     left: 0;
 }
 
-#Smallchat .Messages,
-#Smallchat .Messages_list {
+#Smallchat .Messages, #Smallchat .Messages_list {
     -webkit-box-flex: 1;
     -webkit-flex-grow: 1;
     -ms-flex-positive: 1;
     flex-grow: 1;
 }
-
-#Smallchat .Messages {
-    overflow-y: auto;
-    max-height: 400px; /* Adjust this value as needed */
-}
-
-#Smallchat .Input {
-    position: relative;
-    width: 100%;
-    -webkit-box-flex: 0;
-    -webkit-flex-grow: 0;
-    -ms-flex-positive: 0;
-    flex-grow: 0;
-    -webkit-flex-shrink: 0;
-    -ms-flex-negative: 0;
-    flex-shrink: 0;
-    padding-top: 17px;
-    padding-bottom: 15px;
-    color: #96aab4;
-    background-color: #0d0d0d; /*! change*/
-    border-top: 1px solid #a60103;
-}
-
-#Smallchat .Messages,
-#Smallchat .Input {
-    padding: 10px;
-}
-
-#Smallchat .Messages_list {
-    padding-bottom: 60px; /* Adjust this value as needed */
-}
-
-#Smallchat .Input_field {
-    width: calc(100% - 95px);
-    /* Adjust the padding values as needed */
-    padding-left: 20px;
-    padding-right: 75px;
-}
-
-#Smallchat .Input_button-send {
-    right: 15px;
-}
-
-/* Add your scroll bar styles here */
-#Smallchat .Messages::-webkit-scrollbar {
-    width: 10px;
-}
-
-#Smallchat .Messages::-webkit-scrollbar-thumb {
-    background-color: #a60103;
-    border-radius: 5px;
-}
-
-#Smallchat .Messages::-webkit-scrollbar-track {
-    background-color: #0d0d0d;
-}
-
-/* Add any other styles you may need */
-
-/* User Message */
-.user-message,
-.bot-message {
-    max-width: 80%;
-    word-wrap: break-word;
-    max-height: 150px; /* Adjust this value as needed */
-    overflow-y: auto; /* Add a scrollbar if the content is too tall */
-    margin: 5px 0; /* Space around each message bubble */
-}
-
-/* Rest of your styling remains unchanged */
-
-
-
 .chat_close_icon {
    cursor:pointer;
     color: #fff;
@@ -305,15 +230,64 @@
   transform:translateX(0)
  }
 }
-/* #Smallchat .Messenger_content {
-    
-    background-color: #fff;
-} */
+#Smallchat .Messenger_content {
+    height: 450px;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    background-color: #fff; /*change*/
+}
+#Smallchat .Messages {
+    position: relative;
+    -webkit-flex-shrink: 1;
+    -ms-flex-negative: 1;
+    flex-shrink: 1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 10px;
+    background-color: #0d0d0d; /*change*/
+    -webkit-overflow-scrolling: touch;
+}
 
 
 
 
 
+#Smallchat .Input {
+    position: relative;
+    width: 100%;
+    -webkit-box-flex: 0;
+    -webkit-flex-grow: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    padding-top: 17px;
+    padding-bottom: 15px;
+    color: #96aab4;
+    background-color: #0d0d0d; /*! change*/
+    border-top: 1px solid #a60103;
+}
 #Smallchat .Input-blank .Input_field {
     max-height: 20px;
 }
@@ -358,5 +332,20 @@
 }
 #Smallchat .Input-emoji .Input_button-emoji .Icon path, #Smallchat .Input_button:hover .Icon path {
     fill: #a60103;
-    margin-bottom: 10px;
+    margin-bottom:15px;
+
+}
+
+.chat{
+	border: none;
+    color: white;
+	background: #a60301;
+	font-size: 13px;
+	border-radius: 20px;
+}
+.bg-white{
+	border: 1px solid #E7E7E9;
+	font-size: 13px;
+	border-radius: 20px;
+    color: black
 }
