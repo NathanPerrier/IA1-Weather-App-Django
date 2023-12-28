@@ -250,6 +250,7 @@
     padding: 10px;
     background-color: #0d0d0d; /*change*/
     -webkit-overflow-scrolling: touch;
+    height: calc(100% - 20px);
 }
 
 
@@ -265,6 +266,7 @@
     -ms-flex-negative: 0;
     flex-shrink: 0;
     padding-top: 17px;
+    bottom: 0;
     padding-bottom: 15px;
     color: #96aab4;
     background-color: #0d0d0d; /*! change*/
@@ -335,7 +337,7 @@
     color: #4a4a4a;
     margin-left: 10px;
 }    */
-/* 
+
 .user-message .message-content {
     height: 450px;
     -webkit-box-flex: 1;
@@ -352,7 +354,7 @@
     -ms-flex-direction: column;
     flex-direction: column;
     color: #4a4a4a;
-} */
+} 
 
 /* Bot Message */
 .bot-message {
@@ -369,7 +371,7 @@
     overflow-y: auto; /* Add a scrollbar if the content is too tall */
 }
 
-/* .user-message .message-content {
+.bot-message .message-content {
     height: 450px;
     -webkit-box-flex: 1;
     -webkit-flex-grow: 1;
@@ -385,4 +387,4 @@
     -ms-flex-direction: column;
     flex-direction: column;
     color: #4a4a4a;
-} */
+} 
