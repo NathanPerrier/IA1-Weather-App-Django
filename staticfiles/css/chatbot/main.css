@@ -314,25 +314,28 @@
 }
 #Smallchat .Input-emoji .Input_button-emoji .Icon path, #Smallchat .Input_button:hover .Icon path {
     fill: #a60103;
+    margin-bottom: 10px;
 }
 
 /* User Message */
 .user-message {
-    background-color: #e5e5ea; /* Light gray color for the background */
-    color: #4a4a4a; /* Dark gray color for the text */
-    border-radius: 18px; /* Rounded corners */
-    padding: 10px 15px; /* Space around the text */
-    margin: 5px 0; /* Space around each message bubble */
-    align-self: flex-end; /* Align to the right */
-    max-width: 80%; /* Maximum width */
-    word-wrap: break-word; /* Break words to prevent overflow */
+    background-color: #e5e5ea;
+    color: #4a4a4a;
+    border-radius: 18px;
+    padding: 10px 15px;
+    margin: 5px 0;
+    align-self: flex-end;
+    max-width: 80%;
+    word-wrap: break-word;
+    max-height: 150px; /* Adjust this value as needed */
+    overflow-y: auto; /* Add a scrollbar if the content is too tall */
 }
-.user-message .user-message-time {
+/* .user-message .user-message-time {
     font-size: 10px;
     color: #4a4a4a;
     margin-left: 10px;
-}   
-
+}    */
+/* 
 .user-message .message-content {
     height: 450px;
     -webkit-box-flex: 1;
@@ -349,7 +352,7 @@
     -ms-flex-direction: column;
     flex-direction: column;
     color: #4a4a4a;
-}
+} */
 
 /* Bot Message */
 .bot-message {
@@ -357,13 +360,16 @@
     color: #ffffff; /* White color for the text */
     border-radius: 18px; /* Rounded corners */
     padding: 10px 15px; /* Space around the text */
+    height: max-content;
     margin: 5px 0; /* Space around each message bubble */
     align-self: flex-end; /* Align to the right */
     max-width: 80%; /* Maximum width */
     word-wrap: break-word; /* Break words to prevent overflow */
+    max-height: 150px; /* Adjust this value as needed */
+    overflow-y: auto; /* Add a scrollbar if the content is too tall */
 }
 
-.user-message .message-content {
+/* .user-message .message-content {
     height: 450px;
     -webkit-box-flex: 1;
     -webkit-flex-grow: 1;
@@ -379,4 +385,4 @@
     -ms-flex-direction: column;
     flex-direction: column;
     color: #4a4a4a;
-}
+} */
