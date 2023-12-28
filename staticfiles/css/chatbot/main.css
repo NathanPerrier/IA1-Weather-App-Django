@@ -286,8 +286,18 @@
     padding-bottom: 15px;
     color: #96aab4;
     background-color: #0d0d0d; /*! change*/
-    border-top: 1px solid #a60103;
+    border-top: 3px solid #a60103;
 }
+
+#Smallchat .Input .top {
+    position: absolute;
+    bottom: 0%;
+    width: 100%;
+    height: 30px;
+    background: linear-gradient(to top, #a60301, #000000);
+    
+}
+
 #Smallchat .Input-blank .Input_field {
     max-height: 20px;
 }
