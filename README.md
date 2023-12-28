@@ -69,7 +69,7 @@ The application's design is user-friendly and intuitive, making it easy for user
 
 2. Clone the Github repository using:
 
-    'git clone https://github.com/nathan-perrier23/IA1-Weather-App-Django'
+    `git clone https://github.com/nathan-perrier23/IA1-Weather-App-Django`
 
 3. Build the Docker image:
 
