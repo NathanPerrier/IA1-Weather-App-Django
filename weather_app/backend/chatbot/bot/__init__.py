@@ -99,7 +99,7 @@ TOOLS = [
                 "properties": {
                     "location": {
                         "type": "string",
-                        "description": "Defualt is None (gathers location for user's ip). if a location was provided in the prompt, use that location (sould be just what the user imputted, nothing else. e.g. if user inputs 'gold coast' do not change it to 'gold coast, Australia', keep it as is). if not return None",
+                        "description": "Defualt is None (gathers location for user's ip). if a location was provided in the prompt, use that location (sould be just what the user imputted, nothing else. e.g. if user inputs 'gold coast' DO NOT change it to 'gold coast, Australia', keep it as is). if not return None",
                     },
                     "unit": {
                         "type": "string",
@@ -262,7 +262,7 @@ TOOLS = [
                 "properties": {
                     "location": {
                         "type": "string",
-                        "description": "Defualt is None (gathers location for user's ip). if a location was provided in the prompt, use that location (sould be just what the user imputted, nothing else. e.g. if user inputs 'gold coast' do not change it to 'gold coast, Australia', keep it as is). if not return None or if the user wants to know the weather in their current location, return None",
+                        "description": "Defualt is None (gathers location for user's ip). if a location was provided in the prompt, use that location (sould be just what the user imputted, nothing else. e.g. if user inputs 'gold coast' DO NOT change it to 'gold coast, Australia', keep it as is). if not return None or if the user wants to know the weather in their current location, return None",
                     },
                     "unit": {
                         "type": "string",

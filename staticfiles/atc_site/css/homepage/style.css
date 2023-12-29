@@ -1143,7 +1143,7 @@ p {
 }
 
 div.wrap-school > div:nth-of-type(1) {
-    background: url(../../../images/homepage/atc_website/junior.PNG) center center no-repeat;
+    background: url(../../../atc_site/images/homepage/junior.png);
     background-size: cover;
     object-fit: cover;
 }
