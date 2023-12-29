@@ -63,7 +63,14 @@
       }
     });
 
+    var requestInProgress = false;
+
     $('.Input_button-send').click(function() {
+      if (requestInProgress) {
+        $('.Input_field').val('');
+        return;
+      }
+
       var userMessage = $('.Input_field').val();
   
       // Check if the input field is not empty
@@ -75,8 +82,7 @@
       $('.Input_field').val(''); // Clear the input field
       $('.Messages_list').append('<div class="d-flex flex-row p-1"><div class="bg-white message ml-2 p-3"><small>You</small><br>' + userMessage + '</div></div>');
 
-      // Disable the send button
-      $('.Input_button-send').prop('disabled', true);
+      requestInProgress = true;
 
       $.ajax({
           url: '/chat/',  // The URL to your chat endpoint
@@ -89,9 +95,9 @@
               $('.Messages_list').append('<div class="d-flex flex-row p-1"><div class="chat message mr-2 p-3"><small>Raincheck</small><br>' + response.message + '</div></div>');
           },
           complete: function() {
-            // Re-enable the send button
-            $('.Input_button-send').prop('disabled', false);
-        }
+            // Set the flag back to false to indicate that the request is complete
+            requestInProgress = false;
+          }
       });
   });
 
