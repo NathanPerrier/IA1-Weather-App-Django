@@ -5,6 +5,16 @@
     --dark: #000;
 }
 
+h1, h2, h3, h4 {
+    color: var(--light);
+    font-family: url(../fonts/Tungsten-Bold.ttf);
+}
+
+p {
+    color: var(--light);
+    font-family: url(../fonts/Roboto-Regular.ttf);
+}
+
 body{
     background-image: linear-gradient(rgba(0, 0, 0, 0.491), rgba(0, 0, 0, 0.416)) , url(../images/login-bg.jpeg);
     height: 100vh;
