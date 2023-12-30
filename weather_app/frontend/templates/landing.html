@@ -4,16 +4,23 @@
   <link rel="stylesheet" href="{% static '//css//landing.css' %}">
 {% endblock %}
 {% block content %}
-  <div class="" style="position: absolute;margin-left:50px"></div>s
+  <div class="" style="position: absolute;margin-left:50px"></div>
   <!-- video -->
-    <div class="hero-background">
+    <div class="hero-background pt-0 mt-0">
       <section class="hero-header ps-3">
         <div class="content pt-3">
           <section class="left">
-              <h1 class="text-white pt-5 wow slideInLeft" style="font-size:100px; overflow-x:hidden">Brisbane</h1>
-              <div class="d-flex mt-2">
-                 <!-- weather data  -->
-              </div>
+            <div style="width: 62.5px; height: 0px; transform: rotate(90deg); transform-origin: 0 0; border: 1px white solid"></div>
+            <div class="ms-3" style="width: 116px; height: 56px; color: white; font-size: 20px; font-family: Netflix Sans; font-weight: 500; word-wrap: break-word">
+              <span id="time"></span>
+              <br/>
+              <span id="date"></span>
+            </div>
+            <h2 class="pt-3" style="color: #B9BBB9; font-size: 20px; font-family: Netflix Sans; font-weight: 500; letter-spacing: 8px; word-wrap: break-word">AUSTRALIA</h2>
+            <h1 class="text-white header-text pt-0 mt-0 wow slideInLeft" style="overflow-x:hidden">Brisbane</h1>
+            <div class="d-flex mt-2">
+                <!-- weather data  -->
+            </div>
           </section>         
       </div>
       </section>
@@ -22,7 +29,7 @@
           <div class="left-2"></div>
           <div class="top"></div>
           <div class="bottom"></div>
-          <img src="{% static '//images//brisbane.jpg' %}" style="height:60vh;top:0;width:100%" alt="">
+          <img src="{% static '//images//brisbane.jpg' %}" alt="">
           <!-- <video autoplay muted loop>
             <source src="{% url 'stream_video' video_path='video.mp4' %}" type="video/mp4">
               Your browser does not support the video tag.
@@ -1269,7 +1276,36 @@
       </div>
     </div>
     <!-- sliders-end -->
-
   </div>
   {% include 'chatbot/chat.html' %}
+  <script>
+    function getGeoLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            return {
+              latitude: position.coords.latitude,
+              longitude: position.coords.longitude
+            }
+        });
+      } else {
+        return {
+          latitude: 153.02207,
+          longitude: -27.46917
+        }
+      }
+    }
+
+    fetch('http://worldtimeapi.org/api/ip')
+    .then(response => response.json())
+    .then(data => {
+        const datetime = new Date(data.datetime);
+        document.getElementById('date').textContent = datetime.toLocaleDateString();
+        const timeOptions = { hour: '2-digit', minute: '2-digit' };
+        document.getElementById('time').textContent = datetime.toLocaleTimeString([], timeOptions);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+
+  </script>
 {% endblock %}  

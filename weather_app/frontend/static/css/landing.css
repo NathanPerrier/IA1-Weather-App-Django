@@ -103,6 +103,7 @@ i{
 }
 
 .hero-background {
+    top: 0;
     margin-left: 50px;
     height: max-content;
     display: flex;
@@ -110,11 +111,13 @@ i{
     justify-content: flex-start;
     flex-wrap: wrap;
     width: 100vw;
+    height: 70vh;
     z-index: 10;
     position: relative;
 }
 .hero-header {
     width:40%;
+    height: 70vh;
     z-index: 20;
     top: 0;
     background: var(--dark);
@@ -123,7 +126,7 @@ i{
     position: absolute;
     top: 0%;
     width: 100%;
-    max-height: 50vh;
+    max-height: 100%;
     /* background-color: #fff; */
     z-index: 100;
     display: flex;
@@ -133,15 +136,15 @@ i{
     position: relative;
     top: 0%;
     width: 100%;
-    max-height: 50vh;
+    max-height: 100%;
     /* background-color: #fff; */
     z-index: 100;
     display: block;
 }
 
-.weather-app-home-video{
+.weather-app-home-video {
     width: 60%;
-    max-height: 60vh;
+    max-height: 70vh;
     z-index: 10;
     top: 0;
     position: relative;
@@ -180,7 +183,15 @@ i{
     background: linear-gradient(to right, var(--dark), rgba(255, 255, 255, 0));
 }
 
-.weather-app-home-video img{
+.weather-app-home-video img {
+    z-index: -1;
+    width: 100%;
+    top: 0%;
+    height: 70vh;
+    object-fit: cover;
+}
+
+.weather-app-home-video video {
     z-index: -1;
     width: 100%;
     top: 0%;
