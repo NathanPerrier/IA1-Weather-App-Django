@@ -5,6 +5,18 @@
     --dark: #000;
 }
 
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.overflow-x-hidden {
+    overflow-x: hidden;
+}
+
+.overflow-y-hidden {
+    overflow-y: hidden;
+}
+
 .text-show {
     display: inline;
     transition: .5s ease-in-out;
