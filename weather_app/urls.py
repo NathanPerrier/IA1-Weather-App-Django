@@ -31,6 +31,8 @@ urlpatterns = [
     path("", include("weather_app.backend.chatbot.urls"), name="chatbot"),
 
     path("", main.index, name="index"),
+    path("radar/", main.radar, name="radar"),
+    
     path('login/', views.login_view, name='login'),
     
     path("admin", admin.site.urls),

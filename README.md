@@ -47,6 +47,7 @@ The application's design is user-friendly and intuitive, making it easy for user
 
     OPENAI_API_KEY = 'your-openai-api-key'
     TOMORROWIO_API_KEY = 'your-tomorrowio-api-key'
+    GOOGLE_MAPS_API_KEY = 'your-google-maps-api-key'
     ```
 
 3. Install the required Python packages using pip:
@@ -84,6 +85,7 @@ The application's design is user-friendly and intuitive, making it easy for user
 
     OPENAI_API_KEY = 'your-openai-api-key'
     TOMORROWIO_API_KEY = 'your-tomorrowio-api-key'
+    GOOGLE_MAPS_API_KEY = 'your-google-maps-api-key'
     ```
 
 4. Build the Docker image:
