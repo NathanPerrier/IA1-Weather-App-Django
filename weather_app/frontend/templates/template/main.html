@@ -25,15 +25,15 @@
   <body>
     <nav class="navbar flex-column align-items-center navbar-expand-lg p-0" id="sidebar">
         <!-- Logo on top -->
-        <div class="nav navbar-nav mb-auto">
+        <div class="nav navbar-nav mb-auto" id="atc-link">
             <a class="navbar-brand mt-2 mb-auto" href="/atc/">
-            <img src="{% static '//images//logos//atc//atc-crest-white.svg' %}" alt=""style="width:30px; margin-left: 22.5px">
+            <img src="{% static '//images//logos//atc//atc-crest-white.svg' %}" alt=""style="width:30px;">
             </a>
         </div>
         
 
         <!-- Navbar icons in the center -->
-        <div class="nav navbar-nav">
+        <div class="nav navbar-nav" id="pages-link">
             <a class="nav-item nav-link" href="#"><i class="bi bi-search"></i><span class="visually-hidden">TV Shows</span></a>
             <a class="nav-item nav-link" href="#"><i class="bi bi-map"></i><span class="visually-hidden">Movies</span></a>
             <a class="nav-item nav-link" href="#"><i class="bi bi-house-door"></i><span class="visually-hidden">Home</span></a>
@@ -43,13 +43,13 @@
 
         <!-- Account link on the bottom -->
         {% if is_authenticated %}
-          <div class="nav navbar-nav mt-auto">
+          <div class="nav navbar-nav mt-auto" id="account-link">
               <a class="nav-item nav-link mb-2 mt-auto" href="/account">
                   <i class="bi bi-person-circle"></i><span class="visually-hidden">Account</span>
               </a>
           </div>
         {% else %}
-          <div class="nav navbar-nav mt-auto">
+          <div class="nav navbar-nav mt-auto" id="account-link">
               <a class="nav-item nav-link mb-2 mt-auto" href="/login">
                   <i class="bi bi-person-circle"></i><span class="visually-hidden">Login</span> 
               </a>

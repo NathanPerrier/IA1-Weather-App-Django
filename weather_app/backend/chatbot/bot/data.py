@@ -59,7 +59,7 @@ class BotData(models.Model):
 
         except Exception as e:
             print('error:', e)
-            return json.loads(e)
+            return str(('error occured:', e))
     
 
     def get_daily_weather_forecast(self, fields, location=None, unit="metric"):
@@ -90,7 +90,7 @@ class BotData(models.Model):
 
         except Exception as e:
             print('error:', e)
-            return str('error occured:', e)
+            return str(('error occured:', e))
         
     def get_hourly_weather_forecast(self, fields, location=None, unit="metric"):
         try:
@@ -117,7 +117,7 @@ class BotData(models.Model):
 
         except Exception as e:
             print('error:', e)
-            return e
+            return str(('error occured:', e))
         
     def get_recent_weather_history(self, location=None, unit="metric", timestep='1d'):
         try:
@@ -134,7 +134,7 @@ class BotData(models.Model):
             return self.format_response_historical(json.loads(response.text), location, unit, timestep)
         except Exception as e:
             print('error:', e)
-            return json.loads(e)
+            return str(('error occured:', e))
     
     def format_response_forecast(self, json_data, location, unit):
         tool_results = [

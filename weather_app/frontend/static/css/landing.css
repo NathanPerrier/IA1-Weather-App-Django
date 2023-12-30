@@ -109,6 +109,7 @@ i{
 .hero-header {
     width:40%;
     z-index: 20;
+    top: 0;
     background: #000;
 }
 .hero-header .content{
@@ -135,7 +136,9 @@ i{
     width: 60%;
     max-height: 60vh;
     z-index: 10;
+    top: 0;
     position: relative;
+    object-fit: cover;
 }
 
 /* .netflix-home-video .top{
@@ -170,9 +173,10 @@ i{
     background: linear-gradient(to right, #000000, rgba(255, 255, 255, 0));
 }
 
-.netflix-home-video video{
+.netflix-home-video img{
     z-index: -1;
     width: 100%;
+    top: 0%;
     height: 100%;
     object-fit: cover;
 }

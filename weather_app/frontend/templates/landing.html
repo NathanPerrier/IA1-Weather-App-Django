@@ -6,12 +6,12 @@
 {% block content %}
   <div class="" style="position: absolute;margin-left:50px"></div>
   <!-- video -->
-    <div class="hero-background py-2">
+    <div class="hero-background">
       <section class="hero-header ps-3">
         <div class="content pt-3">
           <section class="left">
-              <img src="{% static '//images//image2.webp' %}" alt="">
-          
+              <!-- <img src="{% static '//images//image2.rm' %}" alt=""> -->
+              <h1 class="text-white pt-5" style="font-size:100px">Brisbane</h1>
               <div class="d-flex mt-2">
                 <button class="btn btn-light m-2" > <i class="bi bi-play-fill" style="color: black; padding: 0%;"></i> Play Now </button>
                 <button class="btn btn-secondary m-2"><i class="bi bi-info-circle" style=" padding: 0%;"></i> More Info</button>
@@ -24,10 +24,11 @@
           <div class="left-2"></div>
           <div class="top"></div>
           <div class="bottom"></div>
-          <video autoplay muted loop>
+          <img src="{% static '//images//brisbane.jpg' %}" style="height:60vh;top:0;width:100%" alt="">
+          <!-- <video autoplay muted loop>
             <source src="{% url 'stream_video' video_path='video.mp4' %}" type="video/mp4">
               Your browser does not support the video tag.
-          </video>
+          </video> -->
         </section>
       
     </div>
@@ -37,7 +38,7 @@
     <div class="slider-box mb-2" style="margin-left:50px">
       <div class="container-fluid  slide2">
         <section class="d-flex justify-content-between margin-right margin-title">
-          <p class="text-white"> <b>Hollywood</b> </p>
+          <p class="text-white"> <b>7 Day Forecast</b> </p>
           <div class="">
             <button  type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active tab-change-btn" aria-current="true" aria-label="Slide 1"></button>
             <button class="tab-change-btn" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -50,7 +51,7 @@
             <div class="carousel-item active">
               <section class="d-flex" >
                 <div class="card" >
-                  <img src="{% static '//images/trending/img6.jpeg' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img6.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                       <section class="d-flex justify-content-between">
                         <div>
@@ -70,7 +71,7 @@
                   </div>
                 </div>
                 <div class="card">
-                  <img src="{% static '//images/trending/img2.jpeg' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img2.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -90,7 +91,7 @@
                 </div>
                 </div>
                 <div class="card">
-                  <img src="{% static '//images/trending/img3.webp' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img3.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -126,7 +127,7 @@
                   </div>
                 </div>
                 <div class="card" >
-                  <img src="{% static '//images/trending/img4.jpeg' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img4.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -146,7 +147,7 @@
                 </div>
                 </div>
                 <div class="card" >
-                  <img src="{% static '//images/trending/img1.webp' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img1.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -166,7 +167,7 @@
                 </div>
                 </div>
                 <div class="card" >
-                  <img src="{% static '//images/trending/img2.jpeg' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img2.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -190,7 +191,7 @@
             <div class="carousel-item">
               <section class="d-flex ">
                 <div class="card">
-                  <img src="{% static '//images/trending/img1.webp' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img1.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -210,7 +211,7 @@
                 </div>
                 </div>
                 <div class="card" >
-                  <img src="{% static '//images/trending/img2.jpeg' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img2.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -230,7 +231,7 @@
                 </div>
                 </div>
                 <div class="card">
-                  <img src="{% static '//images/trending/img3.webp' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img3.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -250,7 +251,7 @@
                 </div>
                 </div>
                 <div class="card" >
-                  <img src="{% static '//images/trending/img4.jpeg' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img4.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -270,7 +271,7 @@
                 </div>
                 </div>
                 <div class="card" >
-                  <img src="{% static '//images/trending/img1.webp' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img1.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -290,7 +291,7 @@
                 </div>
                 </div>
                 <div class="card" >
-                  <img src="{% static '//images/trending/img2.jpeg' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img2.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -314,7 +315,7 @@
             <div class="carousel-item">
               <section class="d-flex ">
                 <div class="card" >
-                  <img src="{% static '//images/trending/img7.webp' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img7.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -334,7 +335,7 @@
                 </div>
                 </div>
                 <div class="card" >
-                  <img src="{% static '//images/trending/img2.jpeg' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img2.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -354,7 +355,7 @@
                 </div>
                 </div>
                 <div class="card" >
-                  <img src="{% static '//images/trending/img3.webp' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img3.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -374,7 +375,7 @@
                 </div>
                 </div>
                 <div class="card" >
-                  <img src="{% static '//images/trending/img4.jpeg' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img4.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -394,7 +395,7 @@
                 </div>
                 </div>
                 <div class="card" >
-                  <img src="{% static '//images/trending/img1.webp' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img1.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -414,7 +415,7 @@
                 </div>
                 </div>
                 <div class="card" >
-                  <img src="{% static '//images/trending/img2.jpeg' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img2.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -448,7 +449,7 @@
       </div>
       <div class="container-fluid  slide3">
         <section class="d-flex justify-content-between margin-right margin-title2">
-          <p class="text-white"> <b>Picks for You</b> </p>
+          <p class="text-white"> <b>Top Locations</b> </p>
           <div class="">
             <button  type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active tab-change-btn" aria-current="true" aria-label="Slide 1"></button>
             <button class="tab-change-btn" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -461,7 +462,7 @@
             <div class="carousel-item active">
               <section class="d-flex " >
                 <div class="card" >
-                  <img src="{% static '//images/trending/img6.jpeg' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img6.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                       <section class="d-flex justify-content-between">
                         <div>
@@ -481,7 +482,7 @@
                   </div>
                 </div>
                 <div class="card">
-                  <img src="{% static '//images/trending/img2.jpeg' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img2.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -501,7 +502,7 @@
                 </div>
                 </div>
                 <div class="card">
-                  <img src="{% static '//images/trending/img3.webp' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img3.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -537,7 +538,7 @@
                   </div>
                 </div>
                 <div class="card" >
-                  <img src="{% static '//images/trending/img4.jpeg' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img4.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -557,7 +558,7 @@
                 </div>
                 </div>
                 <div class="card" >
-                  <img src="{% static '//images/trending/img1.webp' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img1.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -577,7 +578,7 @@
                 </div>
                 </div>
                 <div class="card" >
-                  <img src="{% static '//images/trending/img2.jpeg' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img2.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -601,7 +602,7 @@
             <div class="carousel-item">
               <section class="d-flex">
                 <div class="card">
-                  <img src="{% static '//images/trending/img1.webp' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img1.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -621,7 +622,7 @@
                 </div>
                 </div>
                 <div class="card" >
-                  <img src="{% static '//images/trending/img2.jpeg' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img2.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -641,7 +642,7 @@
                 </div>
                 </div>
                 <div class="card">
-                  <img src="{% static '//images/trending/img3.webp' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img3.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -661,7 +662,7 @@
                 </div>
                 </div>
                 <div class="card" >
-                  <img src="{% static '//images/trending/img4.jpeg' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img4.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -681,7 +682,7 @@
                 </div>
                 </div>
                 <div class="card" >
-                  <img src="{% static '//images/trending/img1.webp' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img1.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -701,7 +702,7 @@
                 </div>
                 </div>
                 <div class="card" >
-                  <img src="{% static '//images/trending/img2.jpeg' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img2.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -725,7 +726,7 @@
             <div class="carousel-item">
               <section class="d-flex ">
                 <div class="card" >
-                  <img src="{% static '//images/trending/img7.webp' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img7.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -745,7 +746,7 @@
                 </div>
                 </div>
                 <div class="card" >
-                  <img src="{% static '//images/trending/img2.jpeg' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img2.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -765,7 +766,7 @@
                 </div>
                 </div>
                 <div class="card" >
-                  <img src="{% static '//images/trending/img3.webp' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img3.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -785,7 +786,7 @@
                 </div>
                 </div>
                 <div class="card" >
-                  <img src="{% static '//images/trending/img4.jpeg' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img4.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -805,7 +806,7 @@
                 </div>
                 </div>
                 <div class="card" >
-                  <img src="{% static '//images/trending/img1.webp' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img1.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -825,7 +826,7 @@
                 </div>
                 </div>
                 <div class="card" >
-                  <img src="{% static '//images/trending/img2.jpeg' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img2.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -859,7 +860,7 @@
       </div>
       <div class="container-fluid  slide4">
         <section class="d-flex justify-content-between margin-right margin-title2">
-          <p class="text-white"> <b>Top Picks</b> </p>
+          <p class="text-white"> <b>Weather Radar</b> </p>
           <div class="">
             <button  type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active tab-change-btn" aria-current="true" aria-label="Slide 1"></button>
             <button class="tab-change-btn" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -872,7 +873,7 @@
             <div class="carousel-item active">
               <section class="d-flex " >
                 <div class="card" >
-                  <img src="{% static '//images/trending/img6.jpeg' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img6.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                       <section class="d-flex justify-content-between">
                         <div>
@@ -892,7 +893,7 @@
                   </div>
                 </div>
                 <div class="card">
-                  <img src="{% static '//images/trending/img2.jpeg' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img2.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -912,7 +913,7 @@
                 </div>
                 </div>
                 <div class="card">
-                  <img src="{% static '//images/trending/img3.webp' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img3.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -948,7 +949,7 @@
                   </div>
                 </div>
                 <div class="card" >
-                  <img src="{% static '//images/trending/img4.jpeg' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img4.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -968,7 +969,7 @@
                 </div>
                 </div>
                 <div class="card" >
-                  <img src="{% static '//images/trending/img1.webp' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img1.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -988,7 +989,7 @@
                 </div>
                 </div>
                 <div class="card" >
-                  <img src="{% static '//images/trending/img2.jpeg' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img2.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -1012,7 +1013,7 @@
             <div class="carousel-item">
               <section class="d-flex">
                 <div class="card">
-                  <img src="{% static '//images/trending/img1.webp' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img1.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -1032,7 +1033,7 @@
                 </div>
                 </div>
                 <div class="card" >
-                  <img src="{% static '//images/trending/img2.jpeg' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img2.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -1052,7 +1053,7 @@
                 </div>
                 </div>
                 <div class="card">
-                  <img src="{% static '//images/trending/img3.webp' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img3.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -1072,7 +1073,7 @@
                 </div>
                 </div>
                 <div class="card" >
-                  <img src="{% static '//images/trending/img4.jpeg' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img4.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -1092,7 +1093,7 @@
                 </div>
                 </div>
                 <div class="card" >
-                  <img src="{% static '//images/trending/img1.webp' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img1.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -1112,7 +1113,7 @@
                 </div>
                 </div>
                 <div class="card" >
-                  <img src="{% static '//images/trending/img2.jpeg' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img2.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -1136,7 +1137,7 @@
             <div class="carousel-item">
               <section class="d-flex ">
                 <div class="card" >
-                  <img src="{% static '//images/trending/img7.webp' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img7.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -1156,7 +1157,7 @@
                 </div>
                 </div>
                 <div class="card" >
-                  <img src="{% static '//images/trending/img2.jpeg' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img2.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -1176,7 +1177,7 @@
                 </div>
                 </div>
                 <div class="card" >
-                  <img src="{% static '//images/trending/img3.webp' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img3.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -1196,7 +1197,7 @@
                 </div>
                 </div>
                 <div class="card" >
-                  <img src="{% static '//images/trending/img4.jpeg' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img4.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -1216,7 +1217,7 @@
                 </div>
                 </div>
                 <div class="card" >
-                  <img src="{% static '//images/trending/img1.webp' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img1.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>
@@ -1236,7 +1237,7 @@
                 </div>
                 </div>
                 <div class="card" >
-                  <img src="{% static '//images/trending/img2.jpeg' %}" class="card-img-top" alt="...">
+                  <img src="{% static '//images/trending/img2.rm' %}" class="card-img-top" alt="...">
                   <div class="card-body"> 
                     <section class="d-flex justify-content-between">
                       <div>

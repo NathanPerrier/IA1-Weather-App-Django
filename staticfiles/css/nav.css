@@ -2,6 +2,7 @@
 #sidebar {
     z-index: 1000;
     position: fixed;
+    margin-left: 10px;
     width: 50px;
     min-height: 100vh; /* full height */
     background-color: #000; /* Change as per your preference */
