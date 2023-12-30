@@ -1,3 +1,10 @@
+:root {
+    --primary: #144283;
+    --secondary: #37883e;
+    --light: #fff;
+    --dark: #000;
+}
+
 body{
     background-image: linear-gradient(rgba(0, 0, 0, 0.491), rgba(0, 0, 0, 0.416)) , url(../images/login-bg.jpeg);
     height: 100vh;
@@ -5,7 +12,7 @@ body{
 .login-top{
     width: 100vw;
     height: 70px;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: var(--dark);
     padding: 0px 20px;
     display: flex;
     align-items: center;

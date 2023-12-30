@@ -70,3 +70,8 @@
         gap: 1rem; /* space between icons */
     }
 }
+
+#sidebar .nav-link:active {
+    text-decoration: underline;
+    text-decoration-color: var(--primary);
+}
