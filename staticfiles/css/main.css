@@ -1,8 +1,20 @@
 :root {
-    --primary: #144283;
+    --primary: #144283;  /* #a60301 */
     --secondary: #37883e;
     --light: #fff;
     --dark: #000;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.overflow-x-hidden {
+    overflow-x: hidden;
+}
+
+.overflow-y-hidden {
+    overflow-y: hidden;
 }
 
 .text-show {
@@ -888,10 +900,6 @@ h6,
     margin-right: 0;
     padding-right: 0;
     border-right: none;
-}
-
-::-webkit-scrollbar-track {
-    background-color: var(--primary);
 }
 
 h1, h2, h3, h3, h5, h6 {
