@@ -352,7 +352,7 @@
 .chat{
 	border: none;
     color: var(--light);
-	background: var(--secondary);
+	background: var(--primary);
 	font-size: 13px;
 	border-radius: 20px;
     margin-left: auto;
