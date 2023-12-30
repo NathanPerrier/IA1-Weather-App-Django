@@ -12,12 +12,12 @@ body{
     /* position: relative; */
 }
 
-.netflix-padding-left{
+.weather-app-padding-left{
     padding-left: 57px;
 }
 
 
-.netflix-padding-right{
+.weather-app-padding-right{
     padding-right: 57px;
 }
 
@@ -26,31 +26,31 @@ body{
      width: 100px;
 }
 
-.netflix-row{
+.weather-app-row{
     width: 100%;
     display: flex;
     justify-content: space-between !important;
     align-items: center;
 }
-.netflix-row .left{
+.weather-app-row .left{
     width: max-content
 }
-.netflix-row .right{
+.weather-app-row .right{
     width: max-content
 }
 
-.netflix-dropdown-box{
+.weather-app-dropdown-box{
     display: none;
 }
 
-.netflix-dropdown{
+.weather-app-dropdown{
     background-color: transparent;
     color: #fff;
     border: none;
     font-size: 9px !important;
 }
 
-.netflix-dropdown-box .dropdown-menu{
+.weather-app-dropdown-box .dropdown-menu{
     background-color: rgba(0, 0, 0, 0.784);
     font-size: 9px !important;
     color: #fff !important;
@@ -59,7 +59,7 @@ body{
     margin-top: 30px;
 }
 
-.netflix-dropdown-box .dropdown-menu .dropdown-item{
+.weather-app-dropdown-box .dropdown-menu .dropdown-item{
      color: rgba(255, 255, 255, 0.646);
      text-align: center;
      width: 250px;
@@ -67,7 +67,7 @@ body{
      padding: 10px 20px;
 }
 
-.netflix-dropdown-box .dropdown-menu .dropdown-item:hover{
+.weather-app-dropdown-box .dropdown-menu .dropdown-item:hover{
     background-color: rgba(255, 255, 255, 0.133);
     color: #fff;
 }
@@ -78,7 +78,7 @@ i{
     padding: 5px 20px;
 }
 
-.netflix-profile{
+.weather-app-profile{
     width: 30px;
     height: 30px;
     background-color: gray;
@@ -86,19 +86,19 @@ i{
     margin-left: 20px;
     cursor: pointer;
 }
-.netflix-nav{
+.weather-app-nav{
     display: block ;
     align-items: center;
 }
 
-.netflix-nav button{
+.weather-app-nav button{
     background-color: transparent;
     color: rgba(255, 255, 255, 0.623);
     border: none;
     font-size: 13px;
 }
 
-.netflix-nav button:hover{
+.weather-app-nav button:hover{
     color: var(--light);
 }
 
@@ -139,7 +139,7 @@ i{
     display: block;
 }
 
-.netflix-home-video{
+.weather-app-home-video{
     width: 60%;
     max-height: 60vh;
     z-index: 10;
@@ -148,7 +148,7 @@ i{
     object-fit: cover;
 }
 
-/* .netflix-home-video .top{
+/* .weather-app-home-video .top{
     position: absolute;
     top: 0%;
     width: 100%;
@@ -156,7 +156,7 @@ i{
     background: linear-gradient(to top, rgba(255, 255, 255, 0), rgb(0, 0, 0));
 } */
 
-.netflix-home-video .bottom {
+.weather-app-home-video .bottom {
     position: absolute;
     bottom: 0%;
     width: 100%;
@@ -164,7 +164,7 @@ i{
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0), var(--dark));
 }
 
-.netflix-home-video .left {
+.weather-app-home-video .left {
     position: absolute;
     left: -100px;
     width: 200px;
@@ -172,7 +172,7 @@ i{
     background: linear-gradient(to right, var(--dark), rgba(255, 255, 255, 0));
 }
 
-.netflix-home-video .left-2 {
+.weather-app-home-video .left-2 {
     position: absolute;
     left: -25;
     width: 75px;
@@ -180,7 +180,7 @@ i{
     background: linear-gradient(to right, var(--dark), rgba(255, 255, 255, 0));
 }
 
-.netflix-home-video img{
+.weather-app-home-video img{
     z-index: -1;
     width: 100%;
     top: 0%;
@@ -189,14 +189,14 @@ i{
 }
 
 
-.netflix-home-video .content .left{
+.weather-app-home-video .content .left{
     margin-left: 80px;
 }
-.netflix-home-video .content .left img{
+.weather-app-home-video .content .left img{
    margin-top: 190px;
    
 }
-.netflix-home-video .content .right{
+.weather-app-home-video .content .right{
     width: 50%;
 }
 
@@ -282,7 +282,7 @@ i{
     margin-right: 100px;
 }
 
-.netflix-card-text{
+.weather-app-card-text{
     font-size: 12px ;
 }
 
@@ -329,3 +329,4 @@ ul{
       color: var(--secondary);
       margin-left: 28px;
 }
+
