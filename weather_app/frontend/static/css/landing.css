@@ -1,5 +1,12 @@
+:root {
+    --primary: #144283;
+    --secondary: #37883e;
+    --light: #fff;
+    --dark: #000;
+}
+
 body{
-    background-color: #000000;
+    background-color: var(--dark);
     overflow-x: hidden;
     width: 100vw;
     /* position: relative; */
@@ -92,7 +99,7 @@ i{
 }
 
 .netflix-nav button:hover{
-    color: #fff;
+    color: var(--light);
 }
 
 .hero-background {
@@ -110,7 +117,7 @@ i{
     width:40%;
     z-index: 20;
     top: 0;
-    background: #000;
+    background: var(--dark);
 }
 .hero-header .content{
     position: absolute;
@@ -154,7 +161,7 @@ i{
     bottom: 0%;
     width: 100%;
     height: 100px;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #000000);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), var(--dark));
 }
 
 .netflix-home-video .left {
@@ -162,7 +169,7 @@ i{
     left: -100px;
     width: 200px;
     height: 100%;
-    background: linear-gradient(to right, #000000, rgba(255, 255, 255, 0));
+    background: linear-gradient(to right, var(--dark), rgba(255, 255, 255, 0));
 }
 
 .netflix-home-video .left-2 {
@@ -170,7 +177,7 @@ i{
     left: -25;
     width: 75px;
     height: 100%;
-    background: linear-gradient(to right, #000000, rgba(255, 255, 255, 0));
+    background: linear-gradient(to right, var(--dark), rgba(255, 255, 255, 0));
 }
 
 .netflix-home-video img{
@@ -219,7 +226,7 @@ i{
 
 .card{
     width: 250px;
-    background-color: #000000;
+    background-color: var(--dark);
     border-radius: 4px;
     transition: 0.2s linear;
     margin: 3px;
@@ -238,14 +245,14 @@ i{
     /* height: 0px; */
     padding: 10px 15px;
     position: absolute;
-    background-color: #000000;
+    background-color: var(--dark);
     top: 120px;
     width: 100%;
 }
 
 
 .card-icon{
-    color: #fff;
+    color: var(--light);
     padding: 0px !important;
     font-size: 28px;
     border-radius: 50%;
@@ -319,6 +326,6 @@ ul{
 .copy-right{
     font-size: 15px;
       font-weight: 200;
-      color: rgb(249, 14, 14);
+      color: var(--secondary);
       margin-left: 28px;
 }
