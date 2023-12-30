@@ -155,14 +155,23 @@
         // set the ISO timestamp (now for all fields, up to 6 hour out for precipitationIntensity)
         const TIMESTAMP = (new Date()).toISOString(); 
         
+        var latitude = 153.02207;
+        var longitude = -27.46917;
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                latitude = position.coords.latitude;
+                longitude = position.coords.longitude;
+                directions.setOrigin([longitude, latitude]); // Replace with your origin coordinates
+            });
+        }
 
         // initialize the map
         function initMap() {
             var map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 7,
                 center: {
-                    lat: -27.4698,
-                    lng: 153.0251
+                    lat: latitude,
+                    lng: longitude
                 },
                 styles: mapStyle,
                 disableDefaultUI: true,
