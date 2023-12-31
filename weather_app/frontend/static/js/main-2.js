@@ -14,12 +14,11 @@
     // timedate
     var timedate = function () {
         setTimeout(function () {
-            if ($('#timedate').innerHTML > 0) {
-                $('#timedate').addClass('wow slideInLeft');
-                $('#timedate').removeClass('hide');
-                $('#divider').removeClass('hide');
+            var timedateElement = $('#timedate');
+            if (timedateElement.text() > 0) {
+                timedateElement.addClass('wow slideInLeft');
             }
-        }, 1);
+        }, 1000); // Delay of 1 second
     };
     timedate();
     

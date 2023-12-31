@@ -1303,6 +1303,9 @@
         document.getElementById('date').textContent = datetime.toLocaleDateString();
         const timeOptions = { hour: '2-digit', minute: '2-digit' };
         document.getElementById('time').textContent = datetime.toLocaleTimeString([], timeOptions);
+        document.getElementById('timedate').removeClass('hide')
+        document.getElementById('timedate').addClass('wow')
+        document.getElementById('timedate').addClass('slideInLeft')
     })
     .catch((error) => {
         console.error('Error:', error);
