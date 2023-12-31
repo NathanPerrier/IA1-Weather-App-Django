@@ -155,6 +155,7 @@ i{
     height: 56px; 
     color: var(--light); 
     font-size: 20px; 
+    margin-top: 0px;
     font-family: Netflix Sans; 
     font-weight: 500; 
     word-wrap: break-word
