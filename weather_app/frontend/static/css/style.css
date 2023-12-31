@@ -53,5 +53,9 @@ body{
 }
 
 .hide {
-    display: none;
+    display: none !important;
+}
+
+#welcome-screen {
+    display: none !important;
 }
