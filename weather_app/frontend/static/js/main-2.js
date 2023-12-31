@@ -10,6 +10,18 @@
         }, 1);
     };
     spinner();
+
+    // timedate
+    var timedate = function () {
+        setTimeout(function () {
+            if ($('#timedate').innerHTML > 0) {
+                $('#timedate').addClass('wow slideInLeft');
+                $('#timedate').removeClass('hide');
+                $('#divider').removeClass('hide');
+            }
+        }, 1);
+    };
+    timedate();
     
     
     // Initiate the wowjs
