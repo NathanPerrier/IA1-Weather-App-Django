@@ -35,11 +35,11 @@ The application's design is user-friendly and intuitive, making it easy for user
     `git clone https://github.com/nathan-perrier23/IA1-Weather-App-Django`
 
 3. Set up environment variables for configuration. These are stored in a `.env` file at the root of the        
-    project. You'll need to create this file and add the following parameters:
+    project. You'll need to create this file and add the following parameters. REMEMBER to replace the values with your own and to change set and change the password for the redis server:
 
     ```properties
-    CELERY_BROKER_URL = 'redis://:NathanP2305@localhost:6379/0'
-    CELERY_RESULT_BACKEND = 'redis://:NathanP2305@localhost:6379/0'
+    CELERY_BROKER_URL = 'redis://:{password}@localhost:6379/0'
+    CELERY_RESULT_BACKEND = 'redis://:{password}@localhost:6379/0'
     REDIS_HOST = 'redis'
     REDIS_BACKEND = 'redis://192.168.68.55:6379'
 
@@ -48,6 +48,7 @@ The application's design is user-friendly and intuitive, making it easy for user
     OPENAI_API_KEY = 'your-openai-api-key'
     TOMORROWIO_API_KEY = 'your-tomorrowio-api-key'
     GOOGLE_MAPS_API_KEY = 'your-google-maps-api-key'
+    MAPBOX_ACCESS_TOKEN = 'your-mapbox-access-token'
     ```
 
 3. Install the required Python packages using pip:
@@ -73,11 +74,11 @@ The application's design is user-friendly and intuitive, making it easy for user
     `git clone https://github.com/nathan-perrier23/IA1-Weather-App-Django`
 
 3. Set up environment variables for configuration. These are stored in a `.env` file at the root of the        
-    project. You'll need to create this file and add the following parameters:
+    project. You'll need to create this file and add the following parameters. REMEMBER to replace the values with your own and to change set and change the password for the redis server:
 
     ```properties
-    CELERY_BROKER_URL = 'redis://:NathanP2305@localhost:6379/0'
-    CELERY_RESULT_BACKEND = 'redis://:NathanP2305@localhost:6379/0'
+    CELERY_BROKER_URL = 'redis://:{password}@localhost:6379/0'
+    CELERY_RESULT_BACKEND = 'redis://:{password}@localhost:6379/0'
     REDIS_HOST = 'redis'
     REDIS_BACKEND = 'redis://192.168.68.55:6379'
 
@@ -85,7 +86,7 @@ The application's design is user-friendly and intuitive, making it easy for user
 
     OPENAI_API_KEY = 'your-openai-api-key'
     TOMORROWIO_API_KEY = 'your-tomorrowio-api-key'
-    GOOGLE_MAPS_API_KEY = 'your-google-maps-api-key'
+    MAPBOX_ACCESS_TOKEN = 'your-mapbox-access-token'
     ```
 
 4. Build the Docker image:
