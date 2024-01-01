@@ -1,9 +1,10 @@
 import os
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render
-from django.http import StreamingHttpResponse
+from django.http import StreamingHttpResponse, JsonResponse
 from django.conf import settings
 from .chatbot.bot.data import BotData
+from django.core.cache import cache
 
 # def get_user_ip(request):
 #     ip, is_routable = get_client_ip(request)
@@ -38,3 +39,13 @@ def stream_video(request, video_path):
     response = StreamingHttpResponse(play_video(video_path))
     response['Content-Type'] = 'video/mp4'
     return response
+
+def get_user_location(request):
+    if request.method == 'POST':
+        print(request.POST['latitude'], request.POST['longitude'])
+        cache.set('latitude', request.POST['latitude'])
+        cache.set('longitude', request.POST['longitude'])
+        return JsonResponse({'success': True})
+    else:
+        return JsonResponse({'success': False})
+    

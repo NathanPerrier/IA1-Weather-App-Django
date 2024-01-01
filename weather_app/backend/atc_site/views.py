@@ -32,8 +32,8 @@ def newsletter_ajax(request):
         if Newsletter.objects.filter(email=email).exists():
             return JsonResponse({'success': False})
         else:
-            Newsletter.objects.create(email=email)
             send_newsletter_emails(email, settings.EMAIL_HOST_USER)
+            Newsletter.objects.create(email=email)
             return JsonResponse({'success': True})
     else:
         return JsonResponse({'success': False})

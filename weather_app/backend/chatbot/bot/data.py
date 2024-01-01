@@ -15,6 +15,20 @@ class BotData(models.Model):
         print(self.ip_address)
         
     def get_city_from_ip(self, ip_address=None):
+        print(cache.get('latitude'), cache.get('longitude'))
+        if cache.get('latitude') is not None and cache.get('longitude') is not None:
+            
+            print('latitude:', cache.get('latitude'), 'longitude:', cache.get('longitude'))
+            try:
+                url = f'http://api.openweathermap.org/geo/1.0/reverse?lat={cache.get("latitude")}&lon={cache.get("longitude")}&limit=1&appid={config("OPENWEATHERMAP_API_KEY")}'
+                response = requests.get(url)
+                data = response.json()
+                print('data:', data)
+                city = data[0]['name']
+                return city
+            except Exception as e:
+                print('Error:', e)
+                pass       
         ip_address = self.ip_address if self.ip_address is not None else cache.get('ip_address')
         print('ip address!:', ip_address)
         try:

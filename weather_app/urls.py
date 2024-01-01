@@ -22,7 +22,7 @@ from django.contrib import admin
 from django.urls import include, path
 
 from .backend import main, views
-from .backend.views import stream_video
+from .backend.views import stream_video, get_user_location
 from .backend.chatbot.views import chat
 
 urlpatterns = [
@@ -43,6 +43,7 @@ urlpatterns = [
     path('reset/done/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
     
     path('stream_video/<str:video_path>/', stream_video, name='stream_video'),
+    path('get_user_location/', get_user_location, name='get_user_location'),
 ]
 
 if not settings.DEBUG:
