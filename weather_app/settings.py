@@ -9,6 +9,8 @@ import os
 
 from decouple import config, Csv
 
+from weather_app.backend import atc_site
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -50,6 +52,7 @@ INSTALLED_APPS = [
     # Local apps
     
     "weather_app.backend.chatbot",
+    "weather_app.backend.atc_site",
 ]
 
 MIDDLEWARE = [
