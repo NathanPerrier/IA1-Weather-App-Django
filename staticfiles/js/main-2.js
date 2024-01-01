@@ -21,8 +21,7 @@
         }, 1000); // Delay of 1 second
     };
     timedate();
-    
-    
+
     // Initiate the wowjs
     new WOW().init();
 

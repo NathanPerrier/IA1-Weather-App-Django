@@ -17,11 +17,13 @@
       <section class="hero-header ps-3">
         <div class="content pt-3">
           <section class="left">
-            <div class="datetime-divider"></div>
-            <div class="ms-3 datetime">
-              <span id="time"></span>
-              <br/>
-              <span id="date"></span>
+            <div class="datetime-div">
+              <div class="datetime-divider"></div>
+              <div class="ms-3 datetime">
+                <span id="time"></span>
+                <br/>
+                <span id="date"></span>
+              </div>
             </div>
             <div style="display: flex; flex-direction: column; align-items: left; justify-content: left;">
               <h2 class="ms-2 pt-5 mb-0 pb-0" style="color: #B9BBB9; font-size: 1.25rem; font-family: Netflix Sans; font-weight: 500; letter-spacing: 0.5rem; word-wrap: break-word; margin-bottom: 0; line-height: 0;">AUSTRALIA</h2>
@@ -1296,8 +1298,9 @@
           setTimeout(function () {
               document.getElementById('welcome-screen').style.display = 'none';
   
-              // Set a cookie to indicate that the welcome screen has been shown
-              document.cookie = 'welcomeScreenShown=true; expires=Fri, 31 Dec 5000 23:59:59 GMT; path=/';
+              var date = new Date();
+              date.setDate(date.getDate() + 1); // Set the date to one day in the future
+              document.cookie = 'welcomeScreenShown=true; expires=' + date.toUTCString() + '; path=/';
           }, 1600);
       } else {
         document.getElementById('welcome-screen').style.display = 'none';
