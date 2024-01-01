@@ -20,7 +20,7 @@ class BotData(models.Model):
             
             print('latitude:', cache.get('latitude'), 'longitude:', cache.get('longitude'))
             try:
-                url = f'http://api.openweathermap.org/geo/1.0/reverse?lat={cache.get("latitude")}&lon={cache.get("longitude")}&limit=1&appid={config("OPENWEATHERMAP_API_KEY")}'
+                url = f'http://api.openweathermap.org/geo/1.0/reverse?lat={cache.get("longitude")}&lon={cache.get("latitude")}&limit=1&appid={config("OPENWEATHERMAP_API_KEY")}'
                 response = requests.get(url)
                 data = response.json()
                 print('data:', data)
