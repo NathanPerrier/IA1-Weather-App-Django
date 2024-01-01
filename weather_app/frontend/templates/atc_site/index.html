@@ -326,7 +326,9 @@
                     <div class="wow fadeIn" data-wow-delay="0.3s">
                         <div class="contact-form">
                             <div id="alertMessage"></div>
-                            <form id="contactForm">
+                            <form action="{% url 'contact_ajax' %}" method="POST" id="contactForm">
+                                {% csrf_token %}
+                                {{ form }}
                                 <div class="row">
                                     <div class="col-sm-6 control-group">
                                         <input type="text" name="name" class="form-control py-2" id="name" value="{{user.first_name}}" placeholder="Your Name"

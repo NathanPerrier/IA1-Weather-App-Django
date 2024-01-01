@@ -7,16 +7,16 @@
         <div class="container pt-5">
             <div class="row g-5 pt-5">
                 <div class="col-lg-6 align-self-center text-center text-lg-start mb-lg-5">
-                    <h1 class="display-4 text-white mb-4 animated slideInRight">{{title}}</h1>
+                    <h1 class="display-4 text-white mb-4 animated slideInRight">Terms and Policies</h1>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center justify-content-lg-start mb-0">
                             <li class="breadcrumb-item"><a class="text-white" href="/atc/">Home</a></li>
-                            <li class="breadcrumb-item text-white active" aria-current="page">{{title}}</li>
+                            <li class="breadcrumb-item text-white active" aria-current="page">Terms and Policies</li>
                         </ol>
                     </nav>
                 </div>
                 <div class="col-lg-6 align-self-end text-center text-lg-end">
-                    <img class="img-fluid" src="{{ url_for('static', filename='/images/homepage/hero-img-2.png') }}" alt="" style="max-height: 465px;">
+                    <img class="img-fluid" src="{% static '/atc_site/images/homepage/hero-img-2.png' %}" alt="" style="max-height: 465px;">
                 </div>
             </div>
         </div>
@@ -137,7 +137,9 @@
                     <div class="wow fadeIn" data-wow-delay="0.3s">
                         <div class="contact-form">
                             <div id="alertMessage"></div>
-                            <form action="{{ url_for('terms.terms_and_policies') }}" method="POST" id="contactForm">
+                            <form action="{% url 'contact_ajax' %}" method="POST" id="contactForm">
+                                {% csrf_token %}
+                                {{ form }}
                                 <div class="row">
                                     <div class="col-sm-6 control-group">
                                         <input type="text" name="name" class="form-control py-2" id="name" value="{{user.first_name}}" placeholder="Your Name"
@@ -177,7 +179,7 @@
     <!-- Contact End -->
 
     <div class="container-fluid px-0 bg-primary">
-        <img style="padding:0;width:100%" src="{{ url_for('static', filename='images/homepage/peaks-1.svg') }}"></div>
+        <img style="padding:0;width:100%" src="{% static '/atc_site/images/homepage/peaks-1.svg' %}"></div>
     </div>
 
 {% endblock %}

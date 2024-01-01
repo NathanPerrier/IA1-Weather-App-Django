@@ -145,7 +145,8 @@ USE_I18N = True
 
 USE_TZ = True
 
-# Add the following to specify your site ID
+APPEND_SLASH=False
+
 SITE_ID = 1
 
 # celery
@@ -187,8 +188,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'contact.webgenieai@gmail.com'
-EMAIL_HOST_PASSWORD = 'NathanP2305'
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/

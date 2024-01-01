@@ -174,6 +174,24 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script>
+        var contactAjaxUrl = "{% url 'contact_ajax' %}";
+        var newsletterAjaxUrl = "{% url 'newsletter_ajax' %}";
+
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
         const list = document.querySelectorAll('.list')
         function activeLink() {
             list.forEach((item) => 
@@ -198,15 +216,15 @@
                 alert("Please enter a valid email address");
                 return;
             }
-            fetch('/', { // Replace with the correct URL
+            fetch('newsletter_ajax/', { // Replace with the correct URL
                 method: 'POST',
-                body: emailData
+                body: emailData,
+                headers: { 'X-CSRFToken': getCookie('csrftoken') },
             })
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
                     alert('Thank you for subscribing!');
-                    window.location.replace("/");
                     
                 } else {
                     alert(data.error);

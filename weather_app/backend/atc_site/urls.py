@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import include, path
-from .views import stream_video_atc_site
+from .views import stream_video_atc_site, contact_ajax, newsletter_ajax
 from . import main
 
 urlpatterns = [
@@ -23,6 +23,7 @@ urlpatterns = [
     path("terms and policies/terms and conditions", main.terms_conditions, name="terms and conditions"),
     path("terms and policies/privacy policy", main.privacy, name="privacy policy"),
     
-    
+    path('contact_ajax/', contact_ajax, name='contact_ajax'),
+    path('newsletter_ajax/', newsletter_ajax, name='newsletter_ajax'),
     path('stream_video/<str:video_path>/', stream_video_atc_site, name='stream_video_atc_site'),
 ]

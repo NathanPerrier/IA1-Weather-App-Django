@@ -6,17 +6,17 @@
         <div class="container pt-5">
             <div class="row g-5 pt-5">
                 <div class="col-lg-6 align-self-center text-center text-lg-start mb-lg-5">
-                    <h1 class="display-4 text-white mb-4 animated slideInRight">{{title}}</h1>
+                    <h1 class="display-4 text-white mb-4 animated slideInRight">Cookie Policy</h1>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center justify-content-lg-start mb-0">
                             <li class="breadcrumb-item"><a class="text-white" href="/">Home</a></li>
                             <li class="breadcrumb-item"><a class="text-white" href="/terms and policies">Terms & Policies</a></li>
-                            <li class="breadcrumb-item text-white active" aria-current="page">{{title}}</li>
+                            <li class="breadcrumb-item text-white active" aria-current="page">Cookie Policy</li>
                         </ol>
                     </nav>
                 </div>
                 <div class="col-lg-6 align-self-end text-center text-lg-end">
-                    <img class="img-fluid" src="{{ url_for('static', filename='/images/homepage/hero-img-2.png') }}" alt="" style="max-height: 465px;">
+                    <img class="img-fluid" src="{% static '/atc_site/images/homepage/hero-img-2.png' %}" alt="" style="max-height: 465px;">
                 </div>
             </div>
         </div>
@@ -113,7 +113,7 @@
                     <p class="text-left text-dark mb-4 wow fadeIn" data-wow-delay="0.3s">We may update this policy from time to time. If we make significant changes, we will let you know but please regularly check this policy to ensure you are aware of the most updated version.
                     </p>
                 </div>
-                <small class="mt-3 wow fadeIn" data-wow-delay="0.2s">If you have any questions about our {{title}}, please contact us at <a href="mailto:admin@atc.qld.edu.au">admin@atc.qld.edu.au</a> or by using the <a href="#contact">contact form</a> below and we'll try our best to reply as soon as posible.</small>
+                <small class="mt-3 wow fadeIn" data-wow-delay="0.2s">If you have any questions about our Cookie Policy, please contact us at <a href="mailto:admin@atc.qld.edu.au">admin@atc.qld.edu.au</a> or by using the <a href="#contact">contact form</a> below and we'll try our best to reply as soon as posible.</small>
             </div>
         </div>
     </div>
@@ -133,7 +133,9 @@
                     <div class="wow fadeIn" data-wow-delay="0.3s">
                         <div class="contact-form">
                             <div id="alertMessage"></div>
-                            <form action="{{ url_for('terms.cookie_policy') }}" method="POST" id="contactForm">
+                            <form action="{% url 'contact_ajax' %}" method="POST" id="contactForm">
+                                {% csrf_token %}
+                                {{ form }}
                                 <div class="row">
                                     <div class="col-sm-6 control-group">
                                         <input type="text" name="name" class="form-control py-2" id="name" value="{{user.first_name}}" placeholder="Your Name"
@@ -173,7 +175,7 @@
     <!-- Contact End -->
 
     <div class="container-fluid px-0 bg-primary">
-        <img style="padding:0;width:100%" src="{{ url_for('static', filename='images/homepage/peaks-1.svg') }}"></div>
+        <img style="padding:0;width:100%" src="{% static '/atc_site/images/homepage/peaks-1.svg' %}"></div>
     </div>
 
 {% endblock %}

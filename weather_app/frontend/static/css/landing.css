@@ -153,7 +153,7 @@ i{
 }
 
 .datetime-div .datetime-divider {
-    width: 100%; 
+    width: 50px; 
     height: 0px; 
     transform: rotate(90deg); 
     transform-origin: 0 0; 
