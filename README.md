@@ -74,7 +74,7 @@ The application's design is user-friendly and intuitive, making it easy for user
 
 ### Running the Application Using Docker
 
-1. Ensure you have Docker installed on your machine. You can download it from [here](https://www.docker.com/products/docker-desktop).
+1. Ensure you have Docker (and optionally Docker Desktop) installed on your machine. You can download it from [here](https://www.docker.com/products/docker-desktop). Make sure you start docker using `sudo service docker start`
 
 2. Clone the Github repository using:
 
