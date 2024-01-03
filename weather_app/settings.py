@@ -22,6 +22,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 #** SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config("SECRET_KEY")
 
+PORT = '8000'
+
 #** SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -108,6 +110,8 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
+        "HOST": "localhost",
+        "PORT": PORT,
     }
 }
 
