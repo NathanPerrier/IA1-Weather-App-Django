@@ -2,7 +2,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
 from .bot.main import chat_completion_request
-from .model import Message
+from .models import Message
 
 @csrf_exempt
 def chat(request):

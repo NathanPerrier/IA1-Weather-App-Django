@@ -6,7 +6,7 @@ from decouple import config
 from .chatbot.bot.main import chat_completion_request
 from .chatbot.bot.data import BotData
 
-from .chatbot.model import Message
+from .chatbot.models import Message
 
 def index(request):
     BotData().get_user_ip(request)
