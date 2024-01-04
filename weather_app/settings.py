@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'django_otp.plugins.otp_static',
     'django_otp.plugins.otp_totp',
     'two_factor',
-    'axes',
     "weather_app",
     
     "django_browser_reload",
@@ -67,14 +66,13 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     'django_otp.middleware.OTPMiddleware',  # Required for django_two_factor_auth
     "allauth.account.middleware.AccountMiddleware",
-    'axes.middleware.AxesMiddleware',  # Required for axes
 ]
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
     'axes.backends.AxesBackend',
-    'axes.backends.AxesStandaloneBackend',  
+    # 'axes.backends.AxesStandaloneBackend',  
 )
 
 ROOT_URLCONF = "weather_app.urls"
@@ -90,8 +88,8 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                # 'django.template.context_processors.request',  # Required for allauth
-                # 'django.contrib.auth.context_processors.auth',  # Required for django_two_factor_auth
+                'django.template.context_processors.request',  # Required for allauth
+                'django.contrib.auth.context_processors.auth',  # Required for django_two_factor_auth
             ],
         },
     },
