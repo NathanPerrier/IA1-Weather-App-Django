@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django_otp.plugins.otp_static',
     'django_otp.plugins.otp_totp',
     'two_factor',
+    # "axes",
     
     "weather_app.backend.chatbot",
         
@@ -66,12 +67,13 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     'django_otp.middleware.OTPMiddleware',  # Required for django_two_factor_auth
     "allauth.account.middleware.AccountMiddleware",
+    # "axes.middleware.AxesMiddleware",
 ]
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
-    'axes.backends.AxesBackend',
+    # 'axes.backends.AxesBackend',
     # 'axes.backends.AxesStandaloneBackend',  
 )
 

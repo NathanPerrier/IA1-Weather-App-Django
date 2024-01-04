@@ -1,8 +1,51 @@
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
 
+
+class CustomUserManager(BaseUserManager):
+    def create_user(self, email, password=None, **extra_fields):
+        if not email:
+            raise ValueError('The Email field must be set')
+        email = self.normalize_email(email)
+        user = self.model(email=email, **extra_fields)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+    
+    def authenticate(self, email, password):
+        user = self.get_by_email(email)
+        if user is not None and user.check_password(password):
+            return user
+        return None
+    
+    def get_by_email(self, email):
+        try:
+            return self.get(email=email)  #! issue so defualts to none
+        except:
+            return None
+
+    def get_by_id(self, id):
+        try:
+            return self.get(id=id)
+        except:
+            return None
+        
+    
+    
 class CustomUser(AbstractUser):
-    # your fields here
+    first_name = models.CharField(max_length=30, blank=False)
+    last_name = models.CharField(max_length=150, blank=False)
+    email = models.EmailField(max_length=254, unique=True)
+    password = models.CharField(max_length=254, blank=False)
+    
+    objects = CustomUserManager()
+    
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['email', 'first_name', 'last_name']
+
+    def __str__(self):
+        return self.email
+
 
     groups = models.ManyToManyField(
         'auth.Group',

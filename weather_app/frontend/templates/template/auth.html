@@ -17,13 +17,14 @@
 
     <link rel="stylesheet" href="{% static '//css//animate//animate.min.css' %}">
     <link rel="stylesheet" href="{% static '//css//owlcarousel//assets//owl.carousel.min.css' %}">
-    <!-- <link rel="stylesheet" href="{% static '//css//bootstrap.min.css' %}"> -->
+    <link rel="stylesheet" href="{% static '//css//bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static '//css//main.css' %}">  
     <link rel="stylesheet" href="{% static '//css//stories//stories.css' %}">
 
     <link rel="stylesheet" href="{% static '//css//responsive.css' %}">
-    <link rel="stylesheet" href="{% static '//css//nav.css' %}">
 
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
     {% block header %}{% endblock %}
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -37,55 +38,9 @@
         </div>
     </div>
 
-    <nav class="navbar flex-column align-items-center navbar-expand-lg p-0" id="sidebar">
-        <!-- Logo on top -->
-        <div class="nav navbar-nav mb-auto" id="atc-link" style="margin-left: 35px">
-            <a class="navbar-brand mt-2 mb-auto" href="/atc/">
-            <img src="{% static '//images//logos//atc//atc-crest-white.svg' %}" alt="" style="width:30px;">
-            </a>
-        </div>
-        
-
-        <!-- Navbar icons in the center -->
-        <div class="nav navbar-nav" id="pages-link" style="margin-left:5px">
-            <a class="nav-item nav-link" href="/search"><i class="bi bi-search"></i><span class="visually-hidden">Search</span></a>
-            <a class="nav-item nav-link" href="/routes"><i class="bi bi-map"></i><span class="visually-hidden">RainCheck Routes</span></a>
-            <a class="nav-item nav-link" href="/"><i class="bi bi-house-door"></i><span class="visually-hidden">Home</span></a>
-            <a class="nav-item nav-link" href="/saved"><i class="bi bi-flag"></i><span class="visually-hidden">Saved Locations</span></a>
-            <a class="nav-item nav-link" href="/radar"><i class="bi bi-droplet"></i><span class="visually-hidden">RainCheck Radar</span></a>
-        </div>
-
-        <!-- Account link on the bottom -->
-        {% if is_authenticated %}
-          <div class="nav navbar-nav mt-auto" id="account-link" style="margin-left:5px">
-              <a class="nav-item nav-link mb-2 mt-auto" href="/logout/"> <!-- account -->
-                  <i class="bi bi-person-circle"></i><span class="visually-hidden">Account</span>
-              </a>
-          </div>
-        {% else %}
-          <div class="nav navbar-nav mt-auto" id="account-link" style="margin-left:5px">
-              <a class="nav-item nav-link mb-2 mt-auto" href="/login">
-                  <i class="bi bi-box-arrow-in-right"></i><span class="visually-hidden">Login</span> 
-              </a>
-          </div>
-        {% endif %}
-        
-    </nav>
-
     {% block content %}{% endblock %}
 
     <script type="text/javascript">
-        var latitude = 153.02207;
-        var longitude = -27.46917;
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
-                latitude = position.coords.latitude;
-                longitude = position.coords.longitude;
-            });
-        }
-
-        var locationAjaxUrl = "{% url 'get_user_location' %}";
-
         function getCookie(name) {
             let cookieValue = null;
             if (document.cookie && document.cookie !== '') {
@@ -101,19 +56,6 @@
             return cookieValue;
         }
 
-        $.ajax({
-          url : locationAjaxUrl, 
-          type : "POST", 
-          data : {
-              'latitude': latitude,
-              'longitude': longitude,
-          },
-          headers: { 'X-CSRFToken': getCookie('csrftoken') },
-          success : function(json) {
-              console.log(json);
-          },
-        });
-        //! send ip to backend
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
