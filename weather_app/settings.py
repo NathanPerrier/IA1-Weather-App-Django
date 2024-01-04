@@ -41,18 +41,18 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'allauth',
     'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
     'django_otp',
     'django_otp.plugins.otp_static',
     'django_otp.plugins.otp_totp',
     'two_factor',
+    
+    "weather_app.backend.chatbot",
+        
     "weather_app",
     
     "django_browser_reload",
     # Local apps
     
-    "weather_app.backend.chatbot",
     "weather_app.backend.atc_site",
 ]
 
