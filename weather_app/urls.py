@@ -35,6 +35,10 @@ urlpatterns = [
     
     path('login', views.login_view, name='login'),
     
+    path('register/', views.register_view, name='register'),
+    
+    path('logout/', views.logout_view, name='logout'),
+    
     path("admin", admin.site.urls),
     
     path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),

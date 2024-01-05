@@ -23,24 +23,24 @@
         </div>
         <div class="form">
           <form action="" method="POST">
-            <h1 class="text-center mb-1">Login</h1>
+            <h1 class="text-center mb-1">REGISTER</h1>
             {% csrf_token %}
             {% if error %}
               <div class="error-div">
                 <p class="text-center">{{ error }}</p>
               </div>
             {% endif %}
+            <input type="text" class="mb-1" id="first_name" name="first_name" placeholder="First Name" required>
+            <input type="text" class="mb-1" id="last_name" name="last_name" placeholder="Last Name" required>
             <input type="text" class="mb-1" id="email" name="email" placeholder="Email" required>
-            <div class='mb-3'>
-              <input type="password" class="mb-0" id="password" name="password" placeholder="Password" required>
-              <br><small class="form-text text-muted"><a class="text-secondary" href="/reset-password">Forgot password?</a></small>
-            </div>
+            <input type="password" class="mb-1" id="password1" name="password1" placeholder="Password" required>
+            <input type="password" class="mb-3" id="password2" name="password2" placeholder="Confirm Password" required>
             <div class="mb-3 buttons">
-              <button type="submit" class="btn btn-primary">Login</button>
+              <button type="submit" class="btn btn-primary">Register</button>
               <a type="submit" onclick="window.history.back()" class="btn go_back">Go Back</a>
             </div>
             <div class="mb-3">
-              <p class="text-center">Don't have an account? <a href="/register/" class="text-secondary">Register</a></p>
+              <p class="text-center">Already have an account? <a href="/login/" class="text-secondary">Login</a></p>
             </div>
         </div>
       </div>
