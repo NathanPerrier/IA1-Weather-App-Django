@@ -5,6 +5,11 @@
     --dark: #000;
 }
 
+p, h1, h2, h3, h4, h5 {
+    font-family: url(../fonts/Tungsten-Bold.ttf);
+    color: var(--light);
+}
+
 .overflow-hidden {
     overflow: hidden;
 }
@@ -894,10 +899,6 @@ h6,
     margin-right: 0;
     padding-right: 0;
     border-right: none;
-}
-
-p {
-    font-family: 'Open Sans';
 }
 
 

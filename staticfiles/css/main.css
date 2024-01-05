@@ -5,6 +5,10 @@
     --dark: #000;
 }
 
+p, h1, h2, h3, h4, h5 {
+    font-family: url(../fonts/Roboto-Regular.ttf);
+}
+
 .overflow-hidden {
     overflow: hidden;
 }
