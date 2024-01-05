@@ -14,6 +14,7 @@ daphne==4.0.0
 psycopg2-binary==2.9.5
 python-decouple==3.6
 redis==4.3.4
+pytest==6.2.5
 wheel==0.32.3
 django-tailwind==3.4.0
 openai==1.6.1
