@@ -15,7 +15,6 @@ h1, .header-text {
 
 p {
     color: var(--light);
-    font-family: url(../fonts/Roboto-Regular.ttf);
 }
 
 body{

@@ -6,7 +6,8 @@
 }
 
 p, h1, h2, h3, h4, h5 {
-    font-family: url(../fonts/Roboto-Regular.ttf);
+    font-family: url(../fonts/Tungsten-Bold.ttf);
+    color: var(--light);
 }
 
 .overflow-hidden {
@@ -898,10 +899,6 @@ h6,
     margin-right: 0;
     padding-right: 0;
     border-right: none;
-}
-
-p {
-    font-family: 'Open Sans';
 }
 
 
