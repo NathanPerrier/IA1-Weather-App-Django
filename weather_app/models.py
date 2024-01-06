@@ -18,6 +18,9 @@ class CustomUserManager(BaseUserManager):
             return user
         return None
     
+    def normalize_email(self, email):
+        return email.lower()
+    
     def get_by_email(self, email):
         try:
             return self.get(email=email)  #! issue so defualts to none

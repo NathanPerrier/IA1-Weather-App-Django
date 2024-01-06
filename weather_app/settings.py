@@ -55,6 +55,8 @@ INSTALLED_APPS = [
     # Local apps
     
     "weather_app.backend.atc_site",
+    
+    "weather_app.unitTests",
 ]
 
 MIDDLEWARE = [
