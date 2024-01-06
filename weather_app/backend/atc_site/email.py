@@ -48,7 +48,7 @@ def send_newsletter_emails(user_email, admin_email):
         'name': 'New User',
         'email': user_email,
         'subject': 'New Subscriber',
-        'message': f'{email} has just subscribed to the newsletter',
+        'message': f'{user_email} has just subscribed to the newsletter',
     }
     email_body = render_to_string('atc_site/email.html', context)
 
@@ -66,7 +66,7 @@ def send_newsletter_emails(user_email, admin_email):
         'name': 'New User',
         'email': user_email,
         'subject': 'Thank you for subscribing!',
-        'message': f'Thanks {email} for subscribing to our newsletter. You will now recieve our weekly newsletter.',
+        'message': f'Thanks {user_email} for subscribing to our newsletter. You will now recieve our weekly newsletter.',
     }
     email_body = render_to_string('atc_site/email.html', context)
 

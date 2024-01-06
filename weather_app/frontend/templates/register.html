@@ -37,7 +37,7 @@
               <input name="first_name" type="text" class="text mb-1" autocomplete="new-password" placeholder="First Name" minlength="2" required />
               <input name="last_name" type="text" class="text mb-1" autocomplete="new-password" placeholder="Last Name" minlength="2" required />
               <input name="email" type="email" class="text mb-2" placeholder="Email" minlength="10" required />
-              <button type="button" id="nextBtn" class="button" onclick="submitEmail()">
+              <button id="nextBtn" onclick="submitEmail()">
                   <span class="buttton__text">Next</span>
               </button>
               <a onclick="window.history.back()" class="go_back btn-a">Go Back</a>
@@ -53,7 +53,7 @@
               {% endif %}
               <!--<p style="mb-3" style="text-align:center">Please Enter The Signup Code</p>-->
               <input name="reset_code" type="text" class="text mb-3" autocomplete="new-password" placeholder="Reset Code" minlength="6" maxlength="6" required />
-              <button type="button" id="nextBtn" onclick="submitResetCode()">Next</button>
+              <button id="nextBtn" onclick="submitResetCode()">Next</button>
               <button type="button" class="go_back" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
               <p class="message">Have An Account? <a href="/login">Login</a></p>
           </div>
@@ -154,10 +154,10 @@
             emailData.append('last_name', last_name);
             emailData.append('email', document.querySelector('input[name="email"]').value);
 
-            /*
-            fetch('', {
+            fetch('/register/get_email/', {
               method: 'POST',
-              body: emailData
+              body: emailData,
+              headers: { 'X-CSRFToken': getCookie('csrftoken') },
             })
             .then(response => response.json())
             .then(data => {
@@ -170,17 +170,18 @@
                 thebutton.prop("disabled", false)
               }
             });
-            */
+            
         }
 
         function submitResetCode() {
             var codeData = new FormData();
-            codeData.append('reset_code', document.querySelector('input[name="reset_code"]').value);
+            codeData.append('code', document.querySelector('input[name="reset_code"]').value);
             codeData.append('email', document.querySelector('input[name="email"]').value);
 
-            fetch('', {
+            fetch('/register/get_code/', {
                 method: 'POST',
-                body: codeData
+                body: codeData,
+                headers: { 'X-CSRFToken': getCookie('csrftoken') },
             })
             .then(response => response.json())
             .then(data => {
@@ -222,9 +223,10 @@
                 passwordData.append('new_password', document.querySelector('input[name="password"]').value);
                 passwordData.append('email', document.querySelector('input[name="email"]').value);
 
-                fetch('', {
+                fetch('/register/set_password/', {
                     method: 'POST',
-                    body: passwordData
+                    body: passwordData,
+                    headers: { 'X-CSRFToken': getCookie('csrftoken') },
                 })
                 .then(response => response.json())
                 .then(data => {

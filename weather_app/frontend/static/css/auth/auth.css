@@ -34,7 +34,7 @@
     z-index: 5;
     width: 100px;
     height: 100%;
-    background: linear-gradient(to left, var(--dark), #f00000);
+    background: linear-gradient(to left, var(--dark), #00000000);
     transform: skewX(-15.5deg);
 }
 

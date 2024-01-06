@@ -36,21 +36,45 @@ def login_view(request):
     
 
 def register_view(request):
+    return register_page(request)
+    
+def register_get_email_view(request):
+    if request.method == 'POST':
+        name = request.POST['first_name']
+        email = request.POST['email']
+        lname = request.POST['last_name']
+        print(name, email)
+        if CustomUser.objects.filter(email=email).exists() == False:
+            CustomUserManager().send_code(name, lname, email)
+            return JsonResponse({'success': True, 'error': ''})
+        return JsonResponse({'success': False, 'error': 'Email already in use'})
+    return register_page(request)
+
+def register_get_code_view(request):    
+    if request.method == 'POST':
+        email = request.POST['email']
+        code = request.POST['code']
+        if CustomUser.objects.filter(code=code).exists():
+            user = CustomUser.objects.get(email=email)
+            user.code = ''
+            user.save()
+            return JsonResponse({'success': True, 'error': ''})
+        return JsonResponse({'success': False, 'error': 'Invalid Code'})
+    return register_page(request)
+
+def register_set_password_view(request):
     if request.method == 'POST':
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
         email = request.POST['email']
         password = request.POST['password1']
         if password == request.POST['password2']:
-            if CustomUser.objects.filter(email=email).exists() == False:
-                user = CustomUser.objects.create_user(first_name=first_name, last_name=last_name, email=email, password=password)
-                # Specify the backend and log the user in
-                login(request, user, backend='django.contrib.auth.backends.ModelBackend')
-                return index(request)
-            return register_page(request, error='Email already in use')
-        return register_page(request, error='Passwords do not match')
-    return register_page(request)
-    
+            user = CustomUser.objects.create_user(first_name=first_name, last_name=last_name, email=email, password=password)
+            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+            return index(request)
+        return JsonResponse({'success': False, 'error': 'Passwords do not match'})
+    return register_page(request)    
+
 def logout_view(request):
     logout(request)
     return index(request)

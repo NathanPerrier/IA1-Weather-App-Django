@@ -36,6 +36,9 @@ urlpatterns = [
     path('login', views.login_view, name='login'),
     
     path('register/', views.register_view, name='register'),
+    path('register/get_email/', views.register_get_email_view, name='register_get_email'),
+    path('register/get_code/', views.register_get_code_view, name='register_get_code'),
+    path('register/set_password/', views.register_set_password_view, name='register_set_password'),
     
     path('logout/', views.logout_view, name='logout'),
     
