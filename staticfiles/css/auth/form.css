@@ -9,20 +9,21 @@ p, h1, h2, h3, h4, h5 {
 .submit, #nextBtn {
   text-transform: uppercase;
   outline: 0;
-  background: var(--secondary); 
+  background: var(--primary); 
   width: 300px;
   border: 0;
   padding: 15px;
-  color: #FFFFFF;
-  font-size: 14px;
-  -webkit-transition: all 0.5 ease;
-  transition: all 0.5s ease-in-out;
+  font-weight: 500;
+  color: var(--light);
+  font-size: 1rem;
+  -webkit-transition: all 0.2 ease;
+  transition: all 0.2s ease-in-out;
   cursor: pointer;
 }
 .submit:hover,.submit:active,.submit:focus, 
 #nextBtn:hover, #nextBtn:active, #nextBtn:focus {
-  background: var(--primary); 
-  transition: all 0.5s ease-in-out;
+  background: var(--secondary); 
+  transition: all 0.2s ease-in-out;
 }
 
 .btn-a {
@@ -31,6 +32,10 @@ p, h1, h2, h3, h4, h5 {
   padding: 15px 0px;
   cursor: pointer;
   display: block;
+}
+
+.button_text {
+    font-size: 1.2em;
 }
 
 .go_back {
@@ -42,16 +47,18 @@ p, h1, h2, h3, h4, h5 {
   width: 300px;
   border: 0;
   padding: 15px 0px;
-  color: #FFFFFF;
-  font-size: 14px;
+  font-weight: 500;
+  color: var(--light);
+  font-size: 1rem;
   -webkit-transition: all 0.5 ease;
-  transition: all ease-in-out 0.5s;
+  transition: all ease-in-out 0.2s;
   cursor: pointer;
   display: block;
 }
 .go_back:hover, .go_back:active, .go_back:focus {
-  background-color: #4d4d4d;
-  transition: all ease-in-out 0.5s;
+  background-color: #3c3c3c;
+  color: var(--light);
+  transition: all ease-in-out 0.2s;
 }
 
 .form .message {
@@ -59,8 +66,11 @@ p, h1, h2, h3, h4, h5 {
   color: #6e6e6e;
   font-size: 12px;
 }
+
+
 .form .message a {
-  color: var(--primary);
+  color: var(--secondary);
+  font-weight: 400;
   text-decoration: none;
 }
 .form .register-form {

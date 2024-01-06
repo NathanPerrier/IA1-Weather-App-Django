@@ -35,7 +35,7 @@
     width: 100px;
     height: 100%;
     background: linear-gradient(to left, var(--dark), rgba(255, 255, 255, 0));
-    transform: skewX(-16deg);
+    transform: skewX(-15.5deg);
 }
 
 #page .weather-radar #map {
@@ -106,7 +106,7 @@
 
 
 #page .auth-form .form {
-    width: 100%;
+    width: 50%;
     height: 100%;
     display: flex;
     align-items: center;
@@ -149,12 +149,14 @@
 #page .auth-form .form form input {
     width: 300px;
     height: 3rem;
-    margin-bottom: 1rem;
+    /* margin-bottom: .25rem; */
+    text-align: center;
     color: var(--dark);
     background-color: var(--light); 
     border: none;
+    display: flex;
+    align-items: center;
     border-radius: 0px;
-    padding-left: 1rem;
     font-size: 1.2rem;
 }
 
@@ -174,8 +176,7 @@
     background-color: var(--primary);
     border: none;
     border-radius: 0px;
-    font-size: 1.2rem;
-    font-weight: 700;
+    font-size: 1rem;
     cursor: pointer;
     text-transform: uppercase;
 
@@ -197,8 +198,7 @@
     background-color: #292929;
     border: none;
     border-radius: 0px;
-    font-size: 1.2rem;
-    font-weight: 700;
+    font-size: 1rem;
     cursor: pointer;
     text-transform: uppercase;
 
@@ -211,6 +211,11 @@
 #page .auth-form .form form .buttons .go_back:active {
     background-color: #3a3a3a;
 }
+
+#page .auth-form .form form .message {
+    color: #6e6e6e;
+    font-size: 12px;
+  }
 
 @media(max-width:560.99px){
     #page .auth-form .logos {
