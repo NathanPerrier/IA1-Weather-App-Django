@@ -30,7 +30,7 @@
 
 #page .weather-radar .right {
     position: absolute;
-    right: 80px;
+    right: 10vw; /* 80px */
     z-index: 5;
     width: 100px;
     height: 100%;
