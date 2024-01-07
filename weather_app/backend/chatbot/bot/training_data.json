@@ -9,7 +9,7 @@
 				"properties": {
 					"location": {
 						"type": "string",
-						"description": "Defualt is None (gathers location for user's ip). if a location was provided in the prompt, use that location (sould be just what the user imputted, nothing else. e.g. if user inputs 'gold coast' do not change it to 'gold coast, Australia', keep it as is). if not return None"
+						"description": "Defualt is None (gathers location for user's ip). if a location was provided in the prompt, use that location (sould be just what the user imputted, nothing else. e.g. if user inputs 'gold coast' do not change it to 'gold coast, Australia', keep it as is). if no loaction was provided in the prompt, return Nothing!"
 					},
 					"unit": {
 						"type": "string",
@@ -156,7 +156,7 @@
 							},
 							"uvIndex": {
 								"type": "string",
-								"description": "The uv index in which The UV Index is a Standard measurement of the strength of sunburn producing UV radiation at a particular place and time. The index is based on the following scale, 0-2 (low), 3-5 (moderate), 6-7 (high), 8-10 (very high), 11+ (extreme)"
+								"description": "The UV Index is a Standard measurement of the strength of sunburn producing UV radiation at a particular place and time. The index is based on the following scale, 0-2 (low), 3-5 (moderate), 6-7 (high), 8-10 (very high), 11+ (extreme)"
 							},
 							"uvHealthConcern": {
 								"type": "string",
@@ -199,7 +199,7 @@
 				"properties": {
 					"location": {
 						"type": "string",
-						"description": "Defualt is None (gathers location for users ip). if a location was provided in the prompt, use that location (sould be just what the user imputted, nothing else. e.g. if user inputs 'gold coast' DO NOT change it to 'gold coast, Australia', keep it as is). if not return None"
+						"description": "Defualt is None (gathers location for users ip). if a location was provided in the prompt, use that location (sould be just what the user imputted, nothing else. e.g. if user inputs 'gold coast' DO NOT change it to 'gold coast, Australia', keep it as is). if no loaction was provided in the prompt, return Nothing!"
 					},
 					"unit": {
 						"type": "string",
@@ -346,7 +346,7 @@
 							},
 							"uvIndex": {
 								"type": "string",
-								"description": "The uv index in which The UV Index is a Standard measurement of the strength of sunburn producing UV radiation at a particular place and time. The index is based on the following scale, 0-2 (low), 3-5 (moderate), 6-7 (high), 8-10 (very high), 11+ (extreme)"
+								"description": "The UV Index is a Standard measurement of the strength of sunburn producing UV radiation at a particular place and time. The index is based on the following scale, 0-2 (low), 3-5 (moderate), 6-7 (high), 8-10 (very high), 11+ (extreme)"
 							},
 							"uvHealthConcern": {
 								"type": "string",
@@ -396,7 +396,8 @@
 				"type": "object",
 				"properties": {
 					"location": {
-						"type": "string"
+						"type": "string",
+						"description": "Defualt is None (gathers location for users ip). if a location was provided in the prompt, use that location (sould be just what the user imputted, nothing else. e.g. if user inputs 'gold coast' DO NOT change it to 'gold coast, Australia', keep it as is). if no loaction was provided in the prompt, return Nothing!"
 					},
 					"unit": {
 						"type": "string",
@@ -535,7 +536,7 @@
 							},
 							"uvIndex": {
 								"type": "string",
-								"description": "The uv index in which The UV Index is a Standard measurement of the strength of sunburn producing UV radiation at a particular place and time. The index is based on the following scale, 0-2 (low), 3-5 (moderate), 6-7 (high), 8-10 (very high), 11+ (extreme)"
+								"description": "The UV Index is a Standard measurement of the strength of sunburn producing UV radiation at a particular place and time. The index is based on the following scale, 0-2 (low), 3-5 (moderate), 6-7 (high), 8-10 (very high), 11+ (extreme)"
 							},
 							"uvHealthConcern": {
 								"type": "string",
@@ -574,7 +575,7 @@
 				"properties": {
 					"location": {
 						"type": "string",
-						"description": "Defualt is None (gathers location for user's ip). if a location was provided in the prompt, use that location (sould be just what the user imputted, nothing else. e.g. if user inputs 'gold coast' DO NOT change it to 'gold coast, Australia', keep it as is). if not return None or if the user wants to know the weather in their current location, return None"
+						"description": "Defualt is None (gathers location for user's ip). if a location was provided in the prompt, use that location (sould be just what the user imputted, nothing else. e.g. if user inputs 'gold coast' DO NOT change it to 'gold coast, Australia', keep it as is). if no loaction was provided in the prompt, return Nothing! or if the user wants to know the weather in their current location, return None"
 					},
 					"unit": {
 						"type": "string",

@@ -5,7 +5,7 @@ import json
 
 client = OpenAI(api_key=config("OPENAI_API_KEY"))
 
-GPT_MODEL = "gpt-3.5-turbo-1106"
+GPT_MODEL = "gpt-4-1106-preview" #"gpt-3.5-turbo-1106"
 
 TOOLS = json.load(open('weather_app/backend/chatbot/bot/training_data.json', 'r'))
 

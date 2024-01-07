@@ -1,10 +1,9 @@
+from typing import Any
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
 from django.conf import settings
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
-import string
-import random
 
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
@@ -25,54 +24,32 @@ class CustomUserManager(BaseUserManager):
     def normalize_email(self, email):
         return email.lower()
     
-    def generate_code(self, length=6):
-        """Generate a random numerical reset code of the given length."""
-        return ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(length)) 
-    
-    def send_code(self, name, lname, user_email):
-        # Create user but don't save to database yet
-        user = CustomUser.objects.create_user(email=user_email, first_name=name, last_name=lname, username=user_email)
-        user.set_unusable_password()
-        user.save()
-
-        # Generate code
-        code = self.generate_code()
-
-        # Save code to user and save user to database
-        user.code = code
-        user.save()
-
-        # Send email to the admin
-        context = {
-            'name': 'New User',
-            'email': user_email,
-            'subject': 'Your Registration Code',
-            'message': f'Hi {name}, here is your registration code: {code}',
-        }
-        email_body = render_to_string('atc_site/email.html', context)
-
-        email = EmailMessage(
-            'RainCheck - Registration Code',
-            email_body,
-            settings.EMAIL_HOST_USER,
-            [user_email]
-        )
-        email.content_subtype = 'html'
-        email.fail_silently = False
-        email.send()
-    
     def get_by_email(self, email):
         try:
-            return self.get(email=email)  #! issue so defualts to none
+            print(CustomUser.objects.get(email=email))
+            return CustomUser.objects.get(email=email)  #! issue so defualts to none
         except:
             return None
 
     def get_by_id(self, id):
         try:
-            return self.get(id=id)
-        except:
+            return CustomUser.objects.get(id=id)
+        except CustomUser.DoesNotExist:
             return None
         
+    def delete_by_id(self, id):
+        try:
+            self.get(id=id).delete()
+            return True
+        except CustomUser.DoesNotExist:
+            return False
+    
+    def delete_by_email(self, email):
+        try:
+            self.get(email=email).delete()
+            return True
+        except:
+            return False
     
     
 class CustomUser(AbstractUser):
@@ -82,6 +59,7 @@ class CustomUser(AbstractUser):
     password = models.CharField(max_length=254, blank=False)
     
     objects = CustomUserManager()
+    
     
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['email', 'first_name', 'last_name']

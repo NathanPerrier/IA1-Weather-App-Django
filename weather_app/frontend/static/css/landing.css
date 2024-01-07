@@ -150,15 +150,15 @@ i{
     font-family: url(../fonts/NetflixSans-Regular.ttf);
     justify-content: space-between; 
     align-items: center; 
-    top:0;
+    top: 5px;
     margin-top: 0px
 }
 
 .datetime-div .datetime-divider {
-    width: 50px; 
-    height: 0px; 
+    /* width: 80px;  */
+    height: 100%; 
     top:0px;
-    transform: rotate(90deg); 
+    /* transform: rotate(90deg);  */
     transform-origin: 0 0; 
     border: 1px var(--light) solid
 }

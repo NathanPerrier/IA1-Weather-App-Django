@@ -30,12 +30,12 @@
 
 #page .weather-radar .right {
     position: absolute;
-    right: 6vw;
+    right: 6.65vw;
     z-index: 5;
     width: 100px;
     height: 100%;
     background: linear-gradient(to left, var(--dark), #00000000);
-    transform: skewX(-15.5deg);
+    transform: skewX(-14.95deg);
 }
 
 #page .weather-radar #map {
@@ -188,7 +188,6 @@
 
 #page .auth-form .form form .buttons button:active {
     background-color: var(--secondary);
-    border: none;
 }
 
 #page .auth-form .form form .buttons .go_back {
@@ -281,4 +280,9 @@
         display: none;
     }
 
+}
+
+form {
+    opacity: 1 !important;
+    transform: scale(1) !important;
 }
