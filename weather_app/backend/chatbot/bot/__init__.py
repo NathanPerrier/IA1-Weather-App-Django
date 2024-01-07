@@ -8,7 +8,7 @@ client = OpenAI(api_key=config("OPENAI_API_KEY"))
 GPT_MODEL = "gpt-3.5-turbo-1106"
 
 TOOLS = json.load(open('weather_app/backend/chatbot/bot/training_data.json', 'r'))
-print(TOOLS)
+
 # "epaHealthConcern": {"type": "string", "description": "The epa health concern of the envirourmnt caused by pollutants in the air, from 0 (good) to 5 (hazardous)"},
 # "epaIndex": {"type": "string", "description": "The epa index of how toxic the air quality is, from 0 (good) to 5 (hazardous)"},
 # "epaPrimaryPollutant": {"type": "string", "description": "The epa primary pollutant (the primary air pollutant). PM2.5 (0), PM10 (1), O3 (2), NO2 (3), CO (4), SO2 (5)"},

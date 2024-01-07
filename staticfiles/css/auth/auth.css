@@ -30,11 +30,11 @@
 
 #page .weather-radar .right {
     position: absolute;
-    right: 10vw; /* 80px */
+    right: 80px;
     z-index: 5;
     width: 100px;
     height: 100%;
-    background: linear-gradient(to left, var(--dark), rgba(255, 255, 255, 0));
+    background: linear-gradient(to left, var(--dark), #00000000);
     transform: skewX(-15.5deg);
 }
 

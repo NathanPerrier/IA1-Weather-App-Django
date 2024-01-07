@@ -144,21 +144,19 @@ i{
 
 .datetime-div {
     width: 116px; 
-    height: 80px; 
+    height: 50px; 
     display: flex; 
     flex-direction: row; 
     font-family: url(../fonts/NetflixSans-Regular.ttf);
     justify-content: space-between; 
     align-items: center; 
-    position: absolute;
     top:0;
     margin-top: 0px
 }
 
 .datetime-div .datetime-divider {
-    width: 80px; 
+    width: 50px; 
     height: 0px; 
-    position: absolute;
     top:0px;
     transform: rotate(90deg); 
     transform-origin: 0 0; 

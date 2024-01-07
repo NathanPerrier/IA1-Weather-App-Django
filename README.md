@@ -103,7 +103,7 @@ The application's design is user-friendly and intuitive, making it easy for user
 
     NOTE: To use a Gmail account to send emails, you must set up an app password - but to do this you first need to enable 2-Step Verification, then select ‘App passwords’ under ‘2-Step Verification’. You must also turn on the ‘Less Secure App Access’ option in your google account.
 
-4. Build the Docker image:
+4. Build the Docker image (ensure docker is running):
 
     ```sh
     docker build -t weather_app -f DockerFile .
