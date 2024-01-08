@@ -58,19 +58,23 @@ The application's design is user-friendly and intuitive, making it easy for user
 
     NOTE: To use a Gmail account to send emails, you must set up an app password - but to do this you first need to enable 2-Step Verification, then select ‘App passwords’ under ‘2-Step Verification’. You must also turn on the ‘Less Secure App Access’ option in your google account.
 
-3. Install the required Python packages using pip:
+4.  create a virtual environment using `control + shift + p` then search create environment.
+
+5. Install the required Python packages using pip:
 
     ```sh
     pip install -r requirements.txt
     ```
 
-4. Navigate to the project directory and run the Django server:
+6. mirgrate the app using `python manage.py makemigrations` then `python manage.py migrate` or if that did not work try use `docker-compose run app python manage.py makemigrations` then `docker-compose run app python manage.py migrate`
+
+7. Navigate to the project directory and run the Django server:
 
     ```sh
     python manage.py runserver
     ```
 
-5. Open your web browser and visit `http://127.0.0.1:8000/`.
+8. Open your web browser and visit `http://127.0.0.1:8000/`.
 
 ### Running the Application Using Docker
 
@@ -80,7 +84,9 @@ The application's design is user-friendly and intuitive, making it easy for user
 
     `git clone https://github.com/nathan-perrier23/IA1-Weather-App-Django`
 
-3. Set up environment variables for configuration. These are stored in a `.env` file at the root of the        
+3. create a virtual environment using `control + shift + p` then search create environment. make sure you pip install libaries to the environment using `pip install -r requirements.txt`.
+
+4. Set up environment variables for configuration. These are stored in a `.env` file at the root of the        
     project. You'll need to create this file and add the following parameters. REMEMBER to replace the values with your own and to change set and change the password for the redis server:
 
     ```properties
@@ -103,13 +109,15 @@ The application's design is user-friendly and intuitive, making it easy for user
 
     NOTE: To use a Gmail account to send emails, you must set up an app password - but to do this you first need to enable 2-Step Verification, then select ‘App passwords’ under ‘2-Step Verification’. You must also turn on the ‘Less Secure App Access’ option in your google account.
 
-4. Build the Docker image (ensure docker is running):
+5. mirgrate the app using `python manage.py makemigrations` then `python manage.py migrate` or if that did not work try use `docker-compose run app python manage.py makemigrations` then `docker-compose run app python manage.py migrate`
+
+6. Build the Docker image (ensure docker is running):
 
     ```sh
     docker build -t weather_app -f DockerFile .
     ```
 
-5. Run the Docker container:
+7. Run the Docker container:
 
     For Deployment:
 
@@ -125,16 +133,13 @@ The application's design is user-friendly and intuitive, making it easy for user
     docker run -p 8000:8000 -v "$(pwd):/app" weather_app
     ```
 
-6. Open your web browser and visit `http://localhost:8000/`.
+8. Open your web browser and visit `http://localhost:8000/`.
 
-7. When you make changes , you will need to rebuild the Docker images and restart the Docker containers. You 
-    can do this with `docker-compose down` and then `docker-compose up --build`.
+9. When you make changes , you will need to rebuild the Docker images and restart the Docker containers. You can do this with `docker-compose down` and then `docker-compose up --build`.
 
 ### NOTE
 
 If you are using Docker Toolbox, you will need to visit the IP address of the Docker Machine instead of `localhost`. You can find the IP address by running `docker-machine ip` in the terminal.
-
-if you are trying to migrate us `docker-compose run app python manage.py makemigrations` then `docker-compose run app python manage.py migrate`
 
  Use `docker system prune -a` to remove all unused containers, networks, images (both dangling and unreferenced), and optionally, volumes.
 
