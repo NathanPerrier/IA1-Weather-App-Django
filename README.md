@@ -54,6 +54,8 @@ The application's design is user-friendly and intuitive, making it easy for user
     EMAIL_HOST_PASSWORD = 'your-gmail-app-password'
    
     OPENWEATHERMAP_API_KEY = 'your-openweathermap-api-key'
+
+    DJANGO_SETTINGS_MODULE= weather_app.settings
     ```
 
     NOTE: To use a Gmail account to send emails, you must set up an app password - but to do this you first need to enable 2-Step Verification, then select ‘App passwords’ under ‘2-Step Verification’. You must also turn on the ‘Less Secure App Access’ option in your google account.
@@ -125,6 +127,8 @@ The application's design is user-friendly and intuitive, making it easy for user
     EMAIL_HOST_PASSWORD = 'your-gmail-app-password'
     
     OPENWEATHERMAP_API_KEY = 'your-openweathermap-api-key'
+
+    DJANGO_SETTINGS_MODULE= weather_app.settings
     ```
 
     NOTE: To use a Gmail account to send emails, you must set up an app password - but to do this you first need to enable 2-Step Verification, then select ‘App passwords’ under ‘2-Step Verification’. You must also turn on the ‘Less Secure App Access’ option in your google account.
