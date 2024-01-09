@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-from django.views.decorators.http import require_POST
+from django.views.decorators.csrf import csrf_protect
 from decouple import config
 
 from .chatbot.bot.main import chat_completion_request
@@ -18,8 +18,10 @@ def index(request):
 def radar(request):
     return render(request, 'radar.html', {'tomorrowio_api_key': config("TOMORROWIO_API_KEY"), 'is_authenticated': request.user.is_authenticated, 'mapbox_access_token': config('MAPBOX_ACCESS_TOKEN')}) #'google_maps_api_key': config("GOOGLE_MAPS_API_KEY")
 
+@csrf_protect
 def login_page(request, error=''):
     return render(request, 'login.html', {'tomorrowio_api_key': config("TOMORROWIO_API_KEY"), 'is_authenticated': request.user.is_authenticated, 'mapbox_access_token': config('MAPBOX_ACCESS_TOKEN'), 'error': error}) #'google_maps_api_key': config("GOOGLE_MAPS_API_KEY")
 
+@csrf_protect
 def register_page(request, error=''):
     return render(request, 'register.html', {'tomorrowio_api_key': config("TOMORROWIO_API_KEY"), 'is_authenticated': request.user.is_authenticated, 'mapbox_access_token': config('MAPBOX_ACCESS_TOKEN'), 'error': error}) #'google_maps_api_key': config("GOOGLE_MAPS_API_KEY")

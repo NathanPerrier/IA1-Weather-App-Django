@@ -44,21 +44,18 @@ INSTALLED_APPS = [
     'django_otp.plugins.otp_static',
     'django_otp.plugins.otp_totp',
     'two_factor',
+    'corsheaders',
+    "django_browser_reload",
     # "axes",
     
     "weather_app.backend.chatbot",
-        
     "weather_app",
-    
-    "django_browser_reload",
-    # Local apps
-    
     "weather_app.backend.atc_site",
-    
     "weather_app.unitTests",
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -79,6 +76,13 @@ AUTHENTICATION_BACKENDS = (
 )
 
 ROOT_URLCONF = "weather_app.urls"
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+# Or, if you want to allow specific origins
+CORS_ALLOWED_ORIGINS = [
+    "http://host.docker.internal:8000",
+]
 
 TEMPLATES = [
     {

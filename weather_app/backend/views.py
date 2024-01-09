@@ -5,10 +5,12 @@ from django.http import StreamingHttpResponse, JsonResponse
 from django.conf import settings
 from .chatbot.bot.data import BotData
 from django.core.cache import cache
+from django.views.decorators.http import require_POST
+from django.contrib.auth import logout
+
 from .main import *
 from ..models import CustomUser, CustomUserManager
 from .auth.register.models import RegisterAuth
-from django.contrib.auth import logout
 
 
 def login_view(request):

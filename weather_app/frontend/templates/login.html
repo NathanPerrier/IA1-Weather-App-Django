@@ -46,6 +46,8 @@
       </div>
   </div>
   <script>
+      alert(let csrfToken = document.querySelector('[name="csrfmiddlewaretoken"]').value);
+
       mapboxgl.accessToken = "{{ mapbox_access_token }}";
 
       const API_KEY = "{{ tomorrowio_api_key }}";
