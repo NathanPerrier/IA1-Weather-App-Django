@@ -24,6 +24,4 @@ django-tailwind==3.4.0
 openai==1.6.1
 python-ipware==2.0.1
 tenacity==8.2.3
-bs4==4.12.2
-lxml==5.1.0
 weather-au==0.0.7
