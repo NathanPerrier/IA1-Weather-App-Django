@@ -1,6 +1,6 @@
-from ..__init__ import *
+from .. import *
 
-class RetrieveForecast():
+class RetrieveUvIndex():
     def __init__(self, request):
         self.request = request
         

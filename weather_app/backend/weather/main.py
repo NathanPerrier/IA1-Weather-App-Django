@@ -13,16 +13,26 @@ class RetrieveWeather():
         
         
     class Forecast(RetrieveForecast):
+        ''' usage: RetrieveWeather('brisbane', 'qld').Forecast.get_daily() '''
         def __init__(self, request):
             super().__init__(request)
 
         def get_current(self):
-            return self.request.current
+            return self.get_current_data_fields()  #  forcast_rain??
 
         def get_daily(self): #, days=7, type=''
-            return self.get_daily_data_fields()  #/ get_daily
+            return self.get_daily_data_fields()  #? get_daily
 
         def get_hourly(self):
-            return self.request.hourly
+            return self.get_hourly_data_fields()
         
-    # usage: RetrieveWeather('brisbane', 'qld').Forecast.get_daily()
+    class UvIndex(RetrieveUvIndex):
+        ''' usage: RetrieveWeather('brisbane', 'qld').UvIndex.get_uv_descriptions() '''
+        def __init__(self, request):
+            super().__init__(request)
+
+        def get_uv_descriptions(self):
+            return self.get_uv_descriptions()
+
+        def get_uv_message(self):
+            return self.get_uv_message()
