@@ -7,10 +7,34 @@ from pathlib import Path
 import socket
 import os
 
-from decouple import config, Csv
+env_path = '.env'
 
-from weather_app.backend import atc_site
+try:
+    from decouple import config, Csv
+    SECRET_KEY = config("SECRET_KEY")
+except:
+    from dotenv import load_dotenv, set_key
+    # Create the .env file if it doesn't exist
+    if not os.path.exists(env_path):
+        with open(env_path, 'w'):
+            pass
 
+    # Load the .env file
+    load_dotenv(dotenv_path=env_path)
+
+    # Set environment variables
+    set_key(env_path, "SECRET_KEY", "django-insecure-_@8c=m2aimoga43jzw#h3w4%t)4+s(@guy1&s_v08h_)yjl-o1")
+    set_key(env_path, "CELERY_BROKER_URL", "redis://:A45H2sg23hd2hdjhAG211hkyJKJ89@localhost:6379/0")
+    set_key(env_path, "CELERY_RESULT_BACKEND", "redis://:A45H2sg23hd2hdjhAG211hkyJKJ89@localhost:6379/0")
+    set_key(env_path, "REDIS_HOST", "redis")
+    set_key(env_path, "REDIS_BAKCEND", "redis://192.68.55:6379")
+    set_key(env_path, "OPENAI_API_KEY", "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")
+    set_key(env_path, "TOMORROWIO_API_KEY", "AuOjEmIx61jlSiJayrYoMV5TEQ9uA3OK")
+    set_key(env_path, "MAPBOX_ACCESS_TOKEN", "pk.eyJ1IjoibmF0aGFuLXBlcnJpZXIyMyIsImEiOiJjbG8ybW9pYnowOTRiMnZsZWZ6NHFhb2diIn0.NDD8iEfYO1t9kg6q_vkVzQ")
+    set_key(env_path, "OPENEATHERMAP_API_KEY", "2d5323a42384860f12456db107631a5a")
+    set_key(env_path, "EMAIL_HOST_USER", "contact.webgenieai@gmail.com")
+    set_key(env_path, "EMAIL_HOST_PASSWORD", "tlwzdvpfotedwjdi")
+    set_key(env_path, "DJANGO_SETTINGS_MODULE", "weather_app.settings")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
