@@ -1,5 +1,5 @@
 {
     "DEBUG": false,
-    "ALLOWED_HOSTS": ["localhost"],
+    "ALLOWED_HOSTS": ["localhost", "127.0.0.1", "ouguiya-wooden.runblade.host", "host.docker.internal:8000"],
     "DJANGO_SETTINGS_MODULE": "weather_app.settings"
   }
