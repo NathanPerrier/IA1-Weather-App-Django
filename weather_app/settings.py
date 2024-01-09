@@ -27,7 +27,7 @@ PORT = '8000'
 #** SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [socket.gethostbyname(socket.gethostname()), '127.0.0.1', 'localhost', 'host.docker.internal:8000', 'ouguiya-wooden.runblade.host', '192.168.68.67', '192.168.0.178', '192.168.68.64']
+ALLOWED_HOSTS = [socket.gethostbyname(socket.gethostname()), '127.0.0.1', 'localhost', 'host.docker.internal', 'ouguiya-wooden.runblade.host', '192.168.68.67', '192.168.0.178', '192.168.68.64']
 
 # Application definition
 
