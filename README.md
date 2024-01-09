@@ -38,8 +38,8 @@ The application's design is user-friendly and intuitive, making it easy for user
     project. You'll need to create this file and add the following parameters. REMEMBER to replace the values with your own and to change set and change the password for the redis server:
 
     ```properties
-    CELERY_BROKER_URL = 'redis://:{password}@localhost:6379/0'
-    CELERY_RESULT_BACKEND = 'redis://:{password}@localhost:6379/0'
+    CELERY_BROKER_URL = 'redis://:A45H2sg23hd2hdjhAG211hkyJKJ89@localhost:6379/0'
+    CELERY_RESULT_BACKEND = 'redis://:A45H2sg23hd2hdjhAG211hkyJKJ89@localhost:6379/0'
     REDIS_HOST = 'redis'
     REDIS_BACKEND = 'redis://192.168.68.55:6379'
 
@@ -110,8 +110,8 @@ The application's design is user-friendly and intuitive, making it easy for user
     project. You'll need to create this file and add the following parameters. REMEMBER to replace the values with your own and to change set and change the password for the redis server:
 
     ```properties
-    CELERY_BROKER_URL = 'redis://:{password}@localhost:6379/0'
-    CELERY_RESULT_BACKEND = 'redis://:{password}@localhost:6379/0'
+    CELERY_BROKER_URL = 'redis://:A45H2sg23hd2hdjhAG211hkyJKJ89@localhost:6379/0'
+    CELERY_RESULT_BACKEND = 'redis://:A45H2sg23hd2hdjhAG211hkyJKJ89@localhost:6379/0'
     REDIS_HOST = 'redis'
     REDIS_BACKEND = 'redis://192.168.68.55:6379'
 
