@@ -66,7 +66,27 @@ The application's design is user-friendly and intuitive, making it easy for user
     pip install -r requirements.txt
     ```
 
-6. mirgrate the app using `python manage.py makemigrations` then `python manage.py migrate` or if that did not work try use `docker-compose run app python manage.py makemigrations` then `docker-compose run app python manage.py migrate`
+6. You will need to mirgrate the app using:
+
+    ```sh
+    python manage.py makemigrations
+    ```
+    then after that use:
+    ```sh
+    python manage.py migrate
+    ```
+
+    or if that did not work try use:
+
+    ```sh
+    docker-compose run app python manage.py makemigrations
+    ``` 
+
+    then after that use: 
+
+    ```sh
+    docker-compose run app python manage.py migrate
+    ```
 
 7. Navigate to the project directory and run the Django server:
 
@@ -109,7 +129,27 @@ The application's design is user-friendly and intuitive, making it easy for user
 
     NOTE: To use a Gmail account to send emails, you must set up an app password - but to do this you first need to enable 2-Step Verification, then select ‘App passwords’ under ‘2-Step Verification’. You must also turn on the ‘Less Secure App Access’ option in your google account.
 
-5. mirgrate the app using `python manage.py makemigrations` then `python manage.py migrate` or if that did not work try use `docker-compose run app python manage.py makemigrations` then `docker-compose run app python manage.py migrate`
+5. You will need to mirgrate the app using:
+
+    ```sh
+    python manage.py makemigrations
+    ```
+    then after that use:
+    ```sh
+    python manage.py migrate
+    ```
+
+    or if that did not work try use:
+
+    ```sh
+    docker-compose run app python manage.py makemigrations
+    ``` 
+
+    then after that use: 
+
+    ```sh
+    docker-compose run app python manage.py migrate
+    ```
 
 6. Build the Docker image (ensure docker is running):
 
