@@ -8,10 +8,12 @@ from .chatbot.bot.data import BotData
 
 from .chatbot.models import Message
 
+from .weatherIcon.main import GetWeatherIcon
+
 @csrf_protect
 def index(request):
-    BotData().get_user_ip(request)
-    context = {'is_authenticated': request.user.is_authenticated}
+    # BotData().get_user_ip(request)
+    context = {'is_authenticated': request.user.is_authenticated, 'icon': GetWeatherIcon().get_weather_icon()}
     Message.objects.all().delete()
     Message.objects.create(role='system', content='You Are a helpful weather assistant that has access to almost all weather data. you are to answer purely weather based questions. try include figures in your reposnse to justify yor reasoning')
     return render(request, 'landing.html', context)

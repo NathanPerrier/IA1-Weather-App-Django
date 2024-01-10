@@ -31,7 +31,7 @@
             </div>
             <div class="current-weather">
               <div class="icon">
-                <img src="{% static '//images//weather//icons//rain.svg' %}" alt="">
+                <img src="{% static ''|add:icon %}" alt="weather icon">
               </div>
               <div class="text">
                 <div class="temp">
@@ -1364,6 +1364,5 @@
     .catch((error) => {
         console.error('Error:', error);
     });
-
   </script>
 {% endblock %}  
