@@ -25,14 +25,6 @@
     font-family: url(../fonts/Tungsten-Bold.ttf);
 }
 
-h1, .header-text {
-    color: var(--light);
-    font-family: url(../fonts/Tungsten-Bold.ttf);
-    font-size: 112px; 
-    font-weight: 400; 
-    word-wrap: break-word
-}
-
 p {
     color: var(--light);
 }

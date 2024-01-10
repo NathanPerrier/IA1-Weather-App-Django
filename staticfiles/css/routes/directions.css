@@ -1,7 +1,7 @@
 :root {
     --primary: #144283;
     --secondary: #37883e;
-    --light: #fff;
+    --light: var(--light);
     --dark: #000;
 }
 .mapboxgl-ctrl-geocoder,
@@ -13,17 +13,19 @@
           box-sizing:border-box;
 }
 .mapboxgl-ctrl-geocoder {
-  font:15px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font:15px/20px;
+  font-family: url(../../fonts/NetflixSans-Regular.ttf);
   position:relative;
-  background-color:white;
+  background-color:var(--light);
   width:calc(100% - 360px);;
   min-width:calc(100% - 40px);;
   max-width:calc(100% - 40px);;
   margin-left:40px;
-  border-radius:0 0 3px 0;
+  color: var(--dark);
+  border-radius:0 0 10px 0;
 }
 .mapbox-directions-origin .mapboxgl-ctrl-geocoder {
-    border-radius:0 3px 0 0;
+    border-radius:0 10px 0 0;
 }
 
 .mapboxgl-ctrl-geocoder input[type='text'] {
@@ -33,19 +35,20 @@
   background-color:transparent;
   height:40px;
   margin:0;
-  color:rgba(0,0,0,.5);
+  color:var(--dark);
   padding:10px 40px 10px 10px;
   text-overflow:ellipsis;
-  white-space:nowrap;
+  var(--light)-space:nowrap;
   overflow:hidden;
 }
 .mapbox-directions-origin input[type='text'] {
     box-shadow:0 1px 0 0 #ddd;
+    color: var(--dark);
     position:relative;
     z-index:1;
 }
 .mapboxgl-ctrl-geocoder input:focus {
-    color:rgba(0,0,0,.75);
+    color:var(--dark);
     outline:0;
     outline:thin dotted\8;
 }
@@ -58,12 +61,12 @@
 .mapboxgl-ctrl-geocoder button {
   padding:0;
   margin:0;
-  background-color:#fff;
+  background-color: var(--light);
   border:none;
   cursor:pointer;
   }
 .mapboxgl-ctrl-geocoder .geocoder-pin-right * {
-  background-color:#fff;
+  background-color:var(--light);
   z-index:2;
   position:absolute;
   right:10px;
@@ -79,7 +82,8 @@
 
 /* Suggestions */
 .mapboxgl-ctrl-geocoder ul {
-  background-color:#fff;
+  background-color: var(--light);
+  color: var(--black);
   border-radius: 0 0 3px 3px;
   left:0;
   list-style:none;
@@ -102,10 +106,11 @@ top:auto;
     cursor:default;
     display:block;
     padding:5px 10px;
-    white-space:nowrap;
+    var(--light)-space:nowrap;
     overflow:hidden;
     text-overflow:ellipsis;
-    white-space:nowrap;
+    var(--light)-space:nowrap;
+    color: var(--black);
     border-bottom:1px solid rgba(0,0,0,0.1);
 }
 .mapboxgl-ctrl-geocoder ul > li:last-child > a { border-bottom:none; }
@@ -113,6 +118,7 @@ top:auto;
 .mapboxgl-ctrl-geocoder ul > li > a:hover {
       background-color:#eee;
       text-decoration:none;
+      color: var(--black);
       cursor:pointer;
 }
 
@@ -176,9 +182,9 @@ top:auto;
   z-index:1;
 }
 .directions-control.directions-control-directions {
-    background:rgba(0,0,0,0.75);
+    background:var(--dark);  /*??  keep?????????????????? */
     margin: 7px 0 0;
-    color:#fff;
+    color:var(--light);
     top:0;
     right:0;
     bottom:0;
@@ -199,14 +205,14 @@ top:auto;
 .mapbox-form-label {
   position:absolute;
   top:0;left:0;
-  background:#8a8acb;
-  color:#fff;
+  background:var(--secondary);
+  color:var(--light);
   padding:0;
   width:40px;
   height:40px;
   text-align:center;
   line-height:38px;
-  border-radius:0 0 0 3px;
+  border-radius:0 0 0 10px;
 }
 .mapbox-form-label .directions-icon {
     background-position: center;
@@ -214,16 +220,20 @@ top:auto;
     height: 40px;
 }
 .mapbox-directions-origin .mapbox-form-label {
-    background-color:#3bb2d0;
-    border-radius:3px 0 0 0;
+    background-color:var(--primary);
+    border-radius: 10px 0 0 0;
     box-shadow:0 1px 0 0 rgba(0,0,0,0.1);
     z-index:1;
+}
+
+.mapbox-directions-origin {
+    border-radius: 10px 0 0 0;
 }
 
 .directions-reverse {
   position:absolute;
   z-index:10;
-  background:white;
+  background:var(--light);
   left:40px;
   top:30px;
   cursor:pointer;
@@ -232,12 +242,12 @@ top:auto;
 .mapbox-directions-inputs button {
   padding:0;
   margin:0;
-  background-color:#fff;
+  background-color:var(--light);
   border:none;
   cursor:pointer;
 }
 .mapbox-directions-inputs .directions-pin-right * {
-  background-color:#fff;
+  background-color:var(--light);
   z-index:2;
   position:absolute;
   right:10px;
@@ -247,28 +257,28 @@ top:auto;
 .mapbox-directions-inputs .directions-pin-right *.active { display:block; }
 
 .mapbox-directions-profile {
-  background:#fff;
+  background:var(--light);
   margin:7px 0 0;
   padding:2px;
   border-radius:15px;
   vertical-align:middle;
 }
 .mapbox-directions-profile label {
-cursor:pointer;
-vertical-align:top;
-display:block;
-border-radius:16px;
-padding:3px 5px;
-font-size:12px;
-color:rgba(0,0,0,.5);
-line-height:20px;
-text-align:center;
-width: 25%;
-float:left;
+    cursor:pointer;
+    vertical-align:top;
+    display:block;
+    border-radius:16px;
+    padding:3px 5px;
+    font-size:12px;
+    color:var(--black);
+    line-height:20px;
+    text-align:center;
+    width: 25%;
+    float:left;
 }
 .mapbox-directions-profile label:hover {
-    color:rgba(0,0,0,.75);
-    }
+    color:var(--black);
+}
 .mapbox-directions-profile input[type=radio] {
 display:none;
 }
@@ -298,7 +308,7 @@ color:rgba(0,0,0,.75);
 
 .mapbox-directions-routes li:hover,
 .mapbox-directions-routes .mapbox-directions-route-active {
-  color:white;
+  color:var(--light);
   }
 
 .mapbox-directions-route-heading {
@@ -313,7 +323,7 @@ color:rgba(0,0,0,.75);
   z-index:1;
   width:100%;
   background-color:rgba(0,0,0,0.75);
-  color:#fff;
+  color:var(--light);
   padding:5px 10px;
   font-size:15px;
   line-height:28px;
@@ -399,7 +409,7 @@ letter-spacing:0.1em;
 }
 .mapbox-directions-step * { pointer-events:none; }
 .mapbox-directions-step:hover {
-    color:white;
+    color:var(--light);
     }
 .mapbox-directions-step:after {
     content:'';
@@ -412,16 +422,17 @@ letter-spacing:0.1em;
 .mapbox-directions-step:last-child:after,
 .mapbox-directions-step:last-child .mapbox-directions-step-distance {
     display:none;
-    }
+}
+
 
 .mapbox-marker-drag-icon {
-display:block;
-background-color:#444;
-border-radius:50%;
-box-shadow:0 0 5px 0 rgba(0,0,0,0.5);
+    display:block;
+    background-color:#444;
+    border-radius:50%;
+    box-shadow:0 0 5px 0 rgba(0,0,0,0.5);
 }
 .mapbox-marker-drag-icon-step {
-background-color:#3BB2D0;
+    background-color: var(--primary);
 }
 
 .mapbox-directions-clearfix:after {
@@ -431,6 +442,20 @@ height:0;
 clear:both;
 visibility:hidden;
 }
+
+#directions-origin-point {
+    background-color: var(--primary);
+}
+
+.mapboxgl-popup {
+  max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+
 
 /* Mobile */
 @media only screen and (max-width:640px) {
@@ -456,12 +481,12 @@ visibility:hidden;
 
 /* icons */
 .directions-icon {
-display:inline-block;
-width:20px;
-height:20px;
-vertical-align:middle;
-speak:none;
-background-repeat:no-repeat;
+    display:inline-block;
+    width:20px;
+    height:20px;
+    vertical-align:middle;
+    speak:none;
+    background-repeat:no-repeat;
 }
 .directions-icon-arrive {
 background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxuczpzdmc9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgaWQ9InN2ZzUzMjciIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDIwIDIwIj48ZGVmcyBpZD0iZGVmczUzMjkiLz48bWV0YWRhdGEgaWQ9Im1ldGFkYXRhNTMzMiIvPjxnIGlkPSJsYXllcjEiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0zMjAwLC05OTIuMzYyMTgpIj48ZyBpZD0iZzU5MzYiIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLC0xLDEsMjAwNC43MjQ0KSIgb3BhY2l0eT0iMC41Ii8+PGcgaWQ9Imc1OTMyIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxLC0yKSIvPjxnIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLC0xLDEsMjAyNC43MjQ0KSIgaWQ9Imc2MDM4IiBmaWxsPSIjZmZmIi8+PGcgaWQ9InRleHQ2NjA2IiBzdHlsZT0iLWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjonT3BlbiBTYW5zIEJvbGQnO2Jsb2NrLXByb2dyZXNzaW9uOnRiO2NvbG9yOiNGRkY7ZGlyZWN0aW9uOmx0cjtkaXNwbGF5OmlubGluZTtlbmFibGUtYmFja2dyb3VuZDphY2N1bXVsYXRlO2ZpbGwtcnVsZTpub256ZXJvO2ZpbGw6I0ZGRjtmb250LWZhbWlseTonT3BlbiBTYW5zJztmb250LXNpemU6MTYuODE7Zm9udC13ZWlnaHQ6Ym9sZDtsZXR0ZXItc3BhY2luZzpub3JtYWw7bGluZS1oZWlnaHQ6MTI1O292ZXJmbG93OnZpc2libGU7dGV4dC1hbGlnbjpjZW50ZXI7dGV4dC1hbmNob3I6bWlkZGxlO3RleHQtZGVjb3JhdGlvbi1saW5lOm5vbmU7dGV4dC1kZWNvcmF0aW9uOm5vbmU7dGV4dC1pbmRlbnQ6MDt0ZXh0LXRyYW5zZm9ybTpub25lO3dvcmQtc3BhY2luZzpub3JtYWw7d3JpdGluZy1tb2RlOmxyLXRiIj48cGF0aCBkPSJtMzIwNiA5OTYuMzYgMy43MyAwcTIuNTUgMCAzLjcgMC43MyAxLjE2IDAuNzIgMS4xNiAyLjMxIDAgMS4wOC0wLjUxIDEuNzYtMC41IDAuNjktMS4zNCAwLjgzbDAgMC4wOHExLjE0IDAuMjUgMS42NCAwLjk1IDAuNTEgMC43IDAuNTEgMS44NiAwIDEuNjQtMS4xOSAyLjU2LTEuMTggMC45Mi0zLjIyIDAuOTJsLTQuNDkgMCAwLTEyem0yLjU0IDQuNzUgMS40OCAwcTEuMDMgMCAxLjQ5LTAuMzIgMC40Ny0wLjMyIDAuNDctMS4wNiAwLTAuNjktMC41MS0wLjk4LTAuNS0wLjMtMS41OS0wLjNsLTEuMzQgMCAwIDIuNjd6bTAgMi4wMiAwIDMuMTMgMS42NiAwcTEuMDUgMCAxLjU1LTAuNCAwLjUtMC40IDAuNS0xLjIzIDAtMS40OS0yLjEzLTEuNDlsLTEuNTggMHoiIGlkPSJwYXRoMjcyMTIiLz48L2c+PC9nPjwvc3ZnPg==);
