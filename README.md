@@ -1,6 +1,6 @@
 # Weather App
 
-Created by [Nathan Perrier](https://github.com/nathan-perrier23) of Ambrose Treacy College
+Created by [Nathan Perrier](https://github.com/nathan-perrier23) of [Ambrose Treacy College](https://www.atc.qld.edu.au/)
 
 IA1 - Digital Solutions - Year 12
 
