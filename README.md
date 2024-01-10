@@ -1,8 +1,6 @@
 # Weather App
 
-Created by Nathan Danial Perrier
-
-16/12/2023
+Created by [Nathan Perrier](https://github.com/nathan-perrier23)
 
 IA1 - Digital Solutions - Year 12
 
