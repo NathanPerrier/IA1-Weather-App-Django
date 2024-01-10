@@ -8,6 +8,7 @@ from .chatbot.bot.data import BotData
 
 from .chatbot.models import Message
 
+@csrf_protect
 def index(request):
     BotData().get_user_ip(request)
     context = {'is_authenticated': request.user.is_authenticated}
@@ -17,6 +18,9 @@ def index(request):
 
 def radar(request):
     return render(request, 'radar.html', {'tomorrowio_api_key': config("TOMORROWIO_API_KEY"), 'is_authenticated': request.user.is_authenticated, 'mapbox_access_token': config('MAPBOX_ACCESS_TOKEN')}) #'google_maps_api_key': config("GOOGLE_MAPS_API_KEY")
+
+def routes(request):
+    return render(request, 'routes.html', {'tomorrowio_api_key': config("TOMORROWIO_API_KEY"), 'is_authenticated': request.user.is_authenticated, 'mapbox_access_token': config('MAPBOX_ACCESS_TOKEN')})
 
 @csrf_protect
 def login_page(request, error=''):

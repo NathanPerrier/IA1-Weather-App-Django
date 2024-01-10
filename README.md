@@ -12,8 +12,6 @@ This is a weather application built with Django, inspired by the innovative desi
 
 The application uses various APIs and AI technologies to provide users with accurate and up-to-date weather information. This allows users to make informed decisions based on the current and forecasted weather conditions.
 
-the main sources for data in this project are [Tomorrow.io API](https://www.tomorrow.io/) and [BOM Weather](http://www.bom.gov.au/australia/observations/). The data from BOM was sourced from the Python library, [Weather-au](https://github.com/tonyallan/weather-au/tree/master).
-
 The application's design is user-friendly and intuitive, making it easy for users to navigate and find the information they're looking for. The design is also responsive, ensuring a seamless experience on desktop, tablets, and mobile devices.
 
 ## Features

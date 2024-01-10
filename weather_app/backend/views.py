@@ -6,6 +6,7 @@ from django.conf import settings
 from .chatbot.bot.data import BotData
 from django.core.cache import cache
 from django.views.decorators.http import require_POST
+from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import logout
 
 from .main import *
@@ -61,7 +62,8 @@ def stream_video(request, video_path):
     response = StreamingHttpResponse(play_video(video_path))
     response['Content-Type'] = 'video/mp4'
     return response
-
+@csrf_protect
+@require_POST
 def get_user_location(request):
     if request.method == 'POST':
         print(request.POST['latitude'], request.POST['longitude'])
