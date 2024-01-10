@@ -8,6 +8,9 @@
 {% endblock %}
 {% block content %}
     <style>
+        body {
+            overflow-y: hidden !important;
+        }
         #map {
             position: absolute;
             top: 0;
@@ -15,7 +18,8 @@
             bottom: 0;
             width: calc(100vw - 50px);
             right: 0;
-            height: 100vh;
+            height: calc(100vh + 30px);
+            overflow-y: hidden !important;
         }
     </style>
     <div id="map"></div>

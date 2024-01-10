@@ -26,7 +26,16 @@ PORT = '8000'
 #** SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [socket.gethostbyname(socket.gethostname()), '127.0.0.1', 'localhost', 'host.docker.internal', 'ouguiya-wooden.runblade.host', '192.168.68.67', '192.168.0.178', '192.168.68.64']
+CSRF_TRUSTED_ORIGIN = [
+    "https://host.docker.internal:8000/",
+    "https://host.docker.internal:8000",
+    "host.docker.internal",
+    "localhost",
+    'https://*.host.docker.internal:8000',
+    'https://*.127.0.0.1'
+]
+
+ALLOWED_HOSTS = [socket.gethostbyname(socket.gethostname()), '127.0.0.1', 'localhost', 'app-ia1-weather-app-django-1-dev-ok-z1qk8tbu.livecycle.run', 'host.docker.internal', 'ouguiya-wooden.runblade.host', '192.168.68.67', '192.168.0.178', '192.168.68.64']
 
 # Application definition
 
@@ -77,12 +86,18 @@ AUTHENTICATION_BACKENDS = (
 
 ROOT_URLCONF = "weather_app.urls"
 
-CORS_ALLOW_ALL_ORIGINS = True
 
-# Or, if you want to allow specific origins
-CORS_ALLOWED_ORIGINS = [
-    "http://host.docker.internal:8000",
-]
+# CORS_ALLOW_ALL_ORIGINS = True
+
+# # Or, if you want to allow specific origins
+# CORS_ALLOWED_ORIGINS = [
+#     "http://host.docker.internal:8000",
+# ]
+
+# CORS_ORIGIN_WHITELIST = [
+#     "http://host.docker.internal:8000",
+#     "localhost"
+# ]
 
 TEMPLATES = [
     {

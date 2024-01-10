@@ -12,7 +12,7 @@ from django.contrib.auth import logout
 from .main import *
 from ..models import CustomUser, CustomUserManager
 from .auth.register.models import RegisterAuth
-
+from .auth.views import *
 
 def login_view(request):
     if request.method == 'POST':
@@ -27,26 +27,7 @@ def login_view(request):
 def register_view(request):
     return register_page(request)
     
-def register_get_email_view(request, error=''):
-    if request.method == 'POST':
-        success, error = RegisterAuth.create_and_send_reset_code(request.POST['first_name'], request.POST['last_name'], request.POST['email'])
-        return JsonResponse({'success': success, 'error': error})
-    return register_page(request)
 
-def register_get_code_view(request):    
-    if request.method == 'POST':
-        print(request.POST['email'], request.POST['code'])
-        success, error = RegisterAuth.check_code_entry(request.POST['email'], request.POST['code'])
-        return JsonResponse({'success': success, 'error': error})
-    return register_page(request)
-
-def register_set_password_view(request):
-    if request.method == 'POST':
-        user = CustomUser.objects.create_user(first_name=request.POST['first_name'], last_name=request.POST['last_name'], email=request.POST['email'], password=request.POST['password'])
-        print(user)
-        login(request, user, backend='django.contrib.auth.backends.ModelBackend')
-        return index(request)
-    return register_page(request)    
 
 def logout_view(request):
     logout(request)
@@ -62,7 +43,7 @@ def stream_video(request, video_path):
     response = StreamingHttpResponse(play_video(video_path))
     response['Content-Type'] = 'video/mp4'
     return response
-@csrf_protect
+
 @require_POST
 def get_user_location(request):
     if request.method == 'POST':

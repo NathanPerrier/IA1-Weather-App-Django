@@ -1,0 +1,1 @@
+from .register.views import register_get_code_view, register_get_email_view, register_set_password_view
