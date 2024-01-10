@@ -1,4 +1,5 @@
 from .weather import GetWeatherCode
+from weather_app.settings import STATIC_ROOT
 
 class GetWeatherIcon:
     def __init__(self):
@@ -8,6 +9,7 @@ class GetWeatherIcon:
         ''' returns a weather code '''
         try:
             time_of_day = GetWeatherCode().get_time_of_day()
+            print(f'{GetWeatherCode().get_weather_code()}-{time_of_day}')
             return f'{GetWeatherCode().get_weather_code()}-{time_of_day}'
         except Exception as e:
             print('error:', e)
@@ -27,7 +29,7 @@ class GetWeatherIcon:
         
     def does_icon_exist(self, icon):
         try:
-            with open(f'./weather_app/static/{icon}') as f:
+            with open(f'{STATIC_ROOT}{icon}') as f:
                 return True
         except:
             return False

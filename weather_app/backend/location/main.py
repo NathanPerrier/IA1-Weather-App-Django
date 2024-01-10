@@ -14,6 +14,7 @@ class GetLocation:
         print('ip address:', ip_address)
         try:
             location_info = get(f'http://ip-api.com/json/{str(ip_address)}', timeout=5).json()
+            print('location info:', location_info)
             return location_info
         except ReadTimeout:
             return None

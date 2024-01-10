@@ -10,9 +10,11 @@ from .chatbot.models import Message
 
 from .weatherIcon.main import GetWeatherIcon
 from .location.main import GetLocation
+from .locationImage.images import GetImagesFromLocation
 
 @csrf_protect
 def index(request):
+    GetImagesFromLocation().downloadimages()
     Message.objects.all().delete()
     Message.objects.create(role='system', content='You Are a helpful weather assistant that has access to almost all weather data. you are to answer purely weather based questions. try include figures in your reposnse to justify yor reasoning')
     return render(request, 'landing.html', {'is_authenticated': request.user.is_authenticated, 'icon': GetWeatherIcon().get_weather_icon(), 'location': GetLocation().get_location()})

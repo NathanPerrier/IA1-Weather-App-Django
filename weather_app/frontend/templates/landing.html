@@ -26,8 +26,8 @@
               </div>
             </div> 
             <div class="location-header">
-              <h2 class="pt-5 mb-0 pb-0 font-netflix-medium wow fadeIn country-text" data-wow-delay="2s">{{ location.country|default:"AUSTRALIA" }}</h2>
-              <h1 class="text-white header-text pt-0 ml-0 mt-0 wow slideInLeft font-tungston-bold">{{ location.city|default:"BRISBANE" }}</h1>
+              <h2 class="pt-5 mb-0 pb-0 font-netflix-medium wow fadeIn country-text" data-wow-delay="2s">{{ location.country|upper|default:"AUSTRALIA" }}</h2>
+              <h1 class="text-white header-text pt-0 ml-0 mt-0 wow slideInLeft font-tungston-bold">{{ location.city|upper|default:"BRISBANE" }}</h1>
             </div>
             <div class="current-weather">
               <div class="icon">

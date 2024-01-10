@@ -37,7 +37,7 @@ The application's design is user-friendly and intuitive, making it easy for user
     `git clone https://github.com/nathan-perrier23/IA1-Weather-App-Django`
 
 3. Set up environment variables for configuration. These are stored in a `.env` file at the root of the        
-    project. You'll need to create this file and add the following parameters. REMEMBER to replace the values with your own and to change set and change the password for the redis server:
+    project. You'll need to create this file and add the following parameters. REMEMBER to change the API values and to `create a Google project with VertexAI API enabled`:
 
     ```properties
     CELERY_BROKER_URL = 'redis://:A45H2sg23hd2hdjhAG211hkyJKJ89@localhost:6379/0'
@@ -56,6 +56,8 @@ The application's design is user-friendly and intuitive, making it easy for user
     EMAIL_HOST_PASSWORD = 'your-gmail-app-password'
    
     OPENWEATHERMAP_API_KEY = 'your-openweathermap-api-key'
+
+    GOOGLE_PROJECT_ID = 'your-google-project-id'
 
     DJANGO_SETTINGS_MODULE= weather_app.settings
     ```
@@ -111,7 +113,7 @@ The application's design is user-friendly and intuitive, making it easy for user
 3. create a virtual environment using `control + shift + p` then search create environment. make sure you pip install libaries to the environment using `pip install -r requirements.txt`.
 
 4. Set up environment variables for configuration. These are stored in a `.env` file at the root of the        
-    project. You'll need to create this file and add the following parameters. REMEMBER to replace the values with your own and to change set and change the password for the redis server:
+    project. You'll need to create this file and add the following parameters. REMEMBER to change the API values and to `create a Google project with VertexAI API enabled`:
 
     ```properties
     CELERY_BROKER_URL = 'redis://:A45H2sg23hd2hdjhAG211hkyJKJ89@localhost:6379/0'
@@ -129,6 +131,8 @@ The application's design is user-friendly and intuitive, making it easy for user
     EMAIL_HOST_PASSWORD = 'your-gmail-app-password'
     
     OPENWEATHERMAP_API_KEY = 'your-openweathermap-api-key'
+
+    GOOGLE_PROJECT_ID = 'your-google-project-id'
 
     DJANGO_SETTINGS_MODULE= weather_app.settings
     ```
