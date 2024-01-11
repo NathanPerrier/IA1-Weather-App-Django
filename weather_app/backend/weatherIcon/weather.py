@@ -43,3 +43,4 @@ class GetWeatherCode:
             response = requests.post(url, headers=headers, data=json.dumps(data)).json()
             return response['data']['timelines'][0]['intervals'][0]['values']['weatherCode']
         except: return '1000'
+        
