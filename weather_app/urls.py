@@ -42,14 +42,14 @@ urlpatterns = [
     path('register/get_code/', views.register_get_code_view, name='register_get_code'),
     path('register/set_password/', views.register_set_password_view, name='register_set_password'),
     
+    path('forgot/', views.forgot_password_view, name='forgot_password'),
+    path('forgot/get_email/', views.forgot_password_get_email_view, name='forgot_password_get_email'),
+    path('forgot/get_code/', views.forgot_password_get_code_view, name='forgot_password_get_code'),
+    path('forgot/set_password/', views.forgot_password_set_password_view, name='forgot_password_set_password'),
+    
     path('logout/', views.logout_view, name='logout'),
     
     path("admin", admin.site.urls),
-    
-    path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
-    path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
-    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
-    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
     
     path('stream_video/<str:video_path>/', stream_video, name='stream_video'),
     path('get_user_location/', get_user_location, name='get_user_location'),

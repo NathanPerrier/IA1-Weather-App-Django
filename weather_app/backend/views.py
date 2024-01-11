@@ -11,7 +11,6 @@ from django.contrib.auth import logout
 
 from .main import *
 from ..models import CustomUser, CustomUserManager
-from .auth.register.models import RegisterAuth
 from .auth.views import *
 
 def login_view(request):
@@ -27,7 +26,8 @@ def login_view(request):
 def register_view(request):
     return register_page(request)
     
-
+def forgot_password_view(request):
+    return forgot_password_page(request)
 
 def logout_view(request):
     logout(request)

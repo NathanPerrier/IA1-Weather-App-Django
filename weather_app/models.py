@@ -15,6 +15,12 @@ class CustomUserManager(BaseUserManager):
         user.save(using=self._db)
         return user
     
+    def update_password(self, email, password):
+        user = self.get_by_email(email)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+    
     def authenticate(self, email, password):
         user = self.get_by_email(email)
         if user is not None and user.check_password(password):
