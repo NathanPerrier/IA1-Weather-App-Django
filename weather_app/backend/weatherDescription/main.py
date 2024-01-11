@@ -25,11 +25,11 @@ class GetWeatherDescription():
                 'content-type': 'application/json',
             }
             data = {
-                "location": self.location['city'],
+                "location": self.location.city,
                 "fields": ['weatherCode'],
                 "units": 'metric',
                 "timesteps": ['current'],
-                "timezone": self.location['timezone']
+                "timezone": self.location.timezone
             }
 
             response = requests.post(url, headers=headers, data=json.dumps(data)).json()

@@ -27,8 +27,8 @@ def forgot_password_get_code_view(request):
 
 def forgot_password_set_password_view(request):
     if request.method == 'POST':
-        user = CustomUser.objects.update(email=request.POST['email'], password=request.POST['password'])
+        user = CustomUserManager().update_password(email=request.POST['email'], password=request.POST['password'])
         print(user)
         login(request, user, backend='django.contrib.auth.backends.ModelBackend')
-        return index(request)
+        return JsonResponse({'success': True, 'error': ''})
     return register_page(request)    

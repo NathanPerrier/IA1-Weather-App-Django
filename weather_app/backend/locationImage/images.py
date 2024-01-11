@@ -8,7 +8,7 @@ class GetImagesFromLocation:
         
         self.location = GetLocation().get_location()
         
-        self.query = f'{self.location["city"]}-{self.location["zip"]}-{self.location["country"]},{self.location["city"]}'
+        self.query = f'{self.location.city}-{self.location.zip}-{self.location.country},{self.location.city}'
         
         self.response = google_images_download.googleimagesdownload()
 

@@ -15,7 +15,7 @@ class GetWeatherCode:
         try:
             ''' returns 'day' or 'night' '''
             locationData = GetLocation().get_location()
-            timezone = pytz.timezone(locationData['timezone'])
+            timezone = pytz.timezone(locationData.timezone)
             print('time: ', datetime.datetime.now(timezone))
             current_time = datetime.datetime.now(timezone)
             if current_time.hour >= 6 and current_time.hour < 18:
@@ -34,11 +34,11 @@ class GetWeatherCode:
                 'content-type': 'application/json',
             }
             data = {
-                "location": location['city'],
+                "location": location.city,
                 "fields": ['weatherCode'],
                 "units": 'metric',
                 "timesteps": ['current'],
-                "timezone": location['timezone']
+                "timezone": location.timezone
             }
 
             response = requests.post(url, headers=headers, data=json.dumps(data)).json()

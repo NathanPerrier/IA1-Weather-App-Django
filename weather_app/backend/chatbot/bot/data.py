@@ -2,7 +2,6 @@ import requests
 from requests import get
 from decouple import config
 from django.db import models
-from ipware import get_client_ip
 from django.core.cache import cache
 import json
 
@@ -11,23 +10,20 @@ from ...location.main import GetLocation
 class BotData(models.Model):
     def __init__(self):
         self.ip_address = None
-             
-    def get_user_ip(self, request):
-        self.ip_address = get_client_ip(request)[0]
-        cache.set('ip_address', self.ip_address)
-        print(self.ip_address)
+            
         
     def get_city_from_ip(self, ip_address=None):
-        print(cache.get('latitude'), cache.get('longitude'))
-        if cache.get('latitude') is not None and cache.get('longitude') is not None:
-            try:
-                url = f'http://api.openweathermap.org/geo/1.0/reverse?lat={cache.get("longitude")}&lon={cache.get("latitude")}&limit=1&appid={config("OPENWEATHERMAP_API_KEY")}'
-                data = requests.get(url).json()
-                return data[0]['name']
-            except Exception as e:
-                print('Error:', e)
-                pass       
-        return GetLocation().get_location()['city']
+        return GetLocation().get_location().city
+        # print(cache.get('latitude'), cache.get('longitude'))
+        # if cache.get('latitude') is not None and cache.get('longitude') is not None:
+        #     try:
+        #         url = f'http://api.openweathermap.org/geo/1.0/reverse?lat={cache.get("longitude")}&lon={cache.get("latitude")}&limit=1&appid={config("OPENWEATHERMAP_API_KEY")}'
+        #         data = requests.get(url).json()
+        #         return data[0]['name']
+        #     except Exception as e:
+        #         print('Error:', e)
+        #         pass       
+        # return GetLocation().get_location()['city']
 
     def get_current_weather(self, fields, location=None, unit="metric", timesteps='current'): #="temperature,humidity,weatherCode"
         try:

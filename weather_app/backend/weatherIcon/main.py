@@ -16,16 +16,19 @@ class GetWeatherIcon:
             return None
     
     def get_weather_icon(self):
+        name = self.get_icon_name()
         try:
-            return (f'//images//weatherIcons//animated//{self.get_icon_name()}.svg' if self.does_icon_exist(f'//images//weatherIcons//animated//{self.get_icon_name()}.svg') else self.get_backup_icon())
+            return (f'//images//weatherIcons//animated//{name}.svg' if self.does_icon_exist(f'//images//weatherIcons//animated//{name}.svg') else self.get_backup_icon())
         except:
             return self.get_backup_icon()
         
     def get_backup_icon(self):
+        code = GetWeatherCode().get_weather_code()
+        time = GetWeatherCode().get_time_of_day()
         try:
-            return (f'//images//weatherIcons//animated//{GetWeatherCode.get_weather_code()}.svg' if self.does_icon_exist(f'//images//weatherIcons//animated//{GetWeatherCode.get_weather_code()}.svg') else f'//images//weatherIcons//animated//1000-{GetWeatherCode().get_time_of_day()}.svg')
+            return (f'//images//weatherIcons//animated//{code}.svg' if self.does_icon_exist(f'//images//weatherIcons//animated//{code}.svg') else f'//images//weatherIcons//animated//1000-{time}.svg')
         except:
-            return f'//images//weatherIcons//animated//1000-{GetWeatherCode().get_time_of_day()}.svg'
+            return f'//images//weatherIcons//animated//1000-{time}.svg'
         
     def does_icon_exist(self, icon):
         try:

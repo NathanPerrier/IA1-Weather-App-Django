@@ -30,5 +30,5 @@ def register_set_password_view(request):
         user = CustomUser.objects.create_user(first_name=request.POST['first_name'], last_name=request.POST['last_name'], email=request.POST['email'], password=request.POST['password'])
         print(user)
         login(request, user, backend='django.contrib.auth.backends.ModelBackend')
-        return index(request)
+        return JsonResponse({'success': True, 'error': ''})
     return register_page(request)    
