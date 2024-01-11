@@ -9,7 +9,7 @@
 #sidebar {
     z-index: 1000;
     position: fixed;
-    margin-left: 10px;
+    padding-left: 10px;
     width: 50px;
     min-height: 100vh; /* full height */
     background-color: var(--dark); /* Change as per your preference */
@@ -34,7 +34,7 @@
 }
 
 #atc-link, #pages-link, #account-link {
-    margin-left: 10px
+    padding-left: 10px
 }
 
 /* Responsive adjustment */

@@ -17,9 +17,10 @@ class GetWeatherCode:
             locationData = GetLocation().get_location()
             timezone = pytz.timezone(locationData['timezone'])
             print('time: ', datetime.datetime.now(timezone))
-            if datetime.datetime.now(timezone) > datetime.datetime.now(timezone).replace(hour=18) or datetime.datetime.now(timezone) < datetime.datetime.now(timezone).replace(hour=6):
-                return 'night'
-            return 'day'
+            current_time = datetime.datetime.now(timezone)
+            if current_time.hour >= 6 and current_time.hour < 18:
+                return 'day'
+            return 'night'
         except: return 'day'
     
     def get_weather_code(self):

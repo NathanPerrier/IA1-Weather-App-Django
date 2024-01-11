@@ -1,0 +1,35 @@
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Adjust this value to position the search input vertically */
+    width: 100vw; /* Adjust this value to position the search input horizontally */
+}
+
+.search-input {
+    border: 2px solid var(--primary);
+    padding: 10px;
+    width: 50vw; /* Adjust this value to change the width of the search input */
+    border-radius: 50px;
+    outline: none;
+}
+
+.search-button {
+    background-color: var(--primary);
+    border: none;
+    margin-left: -45px; /* Adjust this value to disconnect the button from the input */
+    width: 40px; /* Adjust as needed */
+    height: 40px;
+    border-radius: 100%;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    font-family: url(../fonts/NetflixSans-Regular.ttf);
+}
+
+.search-button:hover {
+    background-color: var(--secondary);
+}
+
+.search-button i {
+    margin-left: -15px;
+}

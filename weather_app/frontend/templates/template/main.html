@@ -31,7 +31,7 @@
 
     {% block header %}{% endblock %}
   </head>
-  <body style="background-color:#000000">
+  <body style="background-color:#000000" id="background">
 
     <div id="spinner"
         class="show position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center" style="background-color:#000">
@@ -40,9 +40,9 @@
         </div>
     </div>
 
-    <nav class="navbar flex-column align-items-center navbar-expand-lg p-0" id="sidebar">
+    <nav class="navbar flex-column align-items-center navbar-expand-lg m-0" id="sidebar">
         <!-- Logo on top -->
-        <div class="nav navbar-nav mb-auto" id="atc-link" style="margin-left: 35px">
+        <div class="nav navbar-nav mb-auto" id="atc-link" style="padding-left: 22.5px">
             <a class="navbar-brand mt-2 mb-auto" href="/atc/">
             <img src="{% static '//images//logos//atc//atc-crest-white.svg' %}" alt="" style="width:30px;">
             </a>
@@ -50,7 +50,7 @@
         
 
         <!-- Navbar icons in the center -->
-        <div class="nav navbar-nav" id="pages-link" style="margin-left:5px">
+        <div class="nav navbar-nav" id="pages-link" style="padding-left:7.5px">
             <a class="nav-item nav-link" href="/search"><i class="bi bi-search"></i><span class="visually-hidden">Search</span></a>
             <a class="nav-item nav-link" href="/routes"><i class="bi bi-map"></i><span class="visually-hidden">RainCheck Routes</span></a>
             <a class="nav-item nav-link" href="/"><i class="bi bi-house-door"></i><span class="visually-hidden">Home</span></a>
@@ -60,13 +60,13 @@
 
         <!-- Account link on the bottom -->
         {% if is_authenticated %}
-          <div class="nav navbar-nav mt-auto" id="account-link" style="margin-left:5px">
+          <div class="nav navbar-nav mt-auto" id="account-link" style="padding-left:5px">
               <a class="nav-item nav-link mb-2 mt-auto" href="/logout/"> <!-- account -->
                   <i class="bi bi-person-circle"></i><span class="visually-hidden">Account</span>
               </a>
           </div>
         {% else %}
-          <div class="nav navbar-nav mt-auto" id="account-link" style="margin-left:5px">
+          <div class="nav navbar-nav mt-auto" id="account-link" style="padding-left:5px">
               <a class="nav-item nav-link mb-2 mt-auto" href="/login">
                   <i class="bi bi-box-arrow-in-right"></i><span class="visually-hidden">Login</span> 
               </a>

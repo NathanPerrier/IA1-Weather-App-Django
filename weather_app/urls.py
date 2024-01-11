@@ -33,6 +33,7 @@ urlpatterns = [
     path("", main.index, name="index"),
     path("radar", main.radar, name="radar"),
     path("routes", main.routes, name="routes"),
+    path("search", main.search, name="search"),
     
     path('login', views.login_view, name='login'),
     
