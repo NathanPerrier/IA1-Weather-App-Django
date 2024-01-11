@@ -11,7 +11,7 @@ class Chatbot:
         
     #*@retry(wait=wait_random_exponential(multiplier=1, max=60), stop=stop_after_attempt(3))
     def chat_completion_request(self, messages, tools=None):
-        
+        print('model:', self.model)
         response = client.chat.completions.create(
             model=self.model,
             messages=messages,

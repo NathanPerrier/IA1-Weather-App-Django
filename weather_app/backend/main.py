@@ -3,7 +3,6 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_protect
 from decouple import config
 
-from .chatbot.bot.main import chat_completion_request
 from .chatbot.bot.data import BotData
 
 from .chatbot.models import Message

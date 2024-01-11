@@ -281,7 +281,7 @@ i{
 
 .current-weather {
     width: calc(40% - 50px);
-    height: 20vh;
+    height: 10vh;
     position: relative;
     display: flex;
     flex-direction: row;
@@ -294,17 +294,29 @@ i{
     width: 50%;
     height: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     text-align: center;
     align-items: center;
-    padding-right: 5px; /* remove */
-    font-size: 1.2em; /* change the font size */
 }
 
-.icon img {
-    width: 100%; /* make the icon as big as possible */
-    height: auto; /* maintain the aspect ratio */
+.current-weather .icon .icon-img {
+    width: auto; 
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.current-weather .icon img {
+    margin-top:62.5%;
+    /* width: 100%;  */
+    height: 200%; 
+    /* transform: scaleY(4);
+    transform: scaleX(1); */
+    /* overflow: hidden;
+    object-position: center;
+    object-fit: fill; */
 }
 
 .current-weather .text {
@@ -316,9 +328,13 @@ i{
 }
 
 .current-weather .text .temp {
-    font-size: 10vw;
+    font-size: 6vw;
     font-weight: 500;
     color: var(--light);
+}
+
+.current-weather .text .temp span, .current-weather .text span {
+    height: 100%;
 }
 
 .current-weather .text .temp .unit-top {

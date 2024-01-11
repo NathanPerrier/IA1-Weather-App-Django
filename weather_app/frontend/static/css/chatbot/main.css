@@ -194,6 +194,45 @@
  -webkit-animation-fill-mode:forwards;
  animation-fill-mode:forwards
 }
+#Smallchat .Messenger_header .model_switch {
+    display: inline-block;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--light);
+}
+
+#Smallchat .Messenger_header .model_switch select {
+    border: var(--light) 1px solid;
+    background-color: var(--secondary);
+    font-family: url(../../fonts/NetflixSans-Medium.ttf);
+    font-weight: 500;
+}
+
+#Smallchat .Messenger_header .model_switch select option:hover, 
+#Smallchat .Messenger_header .model_switch select option:focus,
+#Smallchat .Messenger_header .model_switch select option:active,
+#Smallchat .Messenger_header .model_switch select option:checked {
+    opacity: 0.8;
+}
+
+#Smallchat .Messenger_header .model_switch select option {
+    background-color: var(--secondary);
+    font-family: url(../../fonts/NetflixSans-Medium.ttf);
+    font-weight: 500;
+}
+
+#Smallchat .Messenger_header .model-selector {
+    display: inline-block;
+    font-size: 16px;
+    text-align: center;
+    color: var(--light);
+    border: #fff 1px solid;
+    background-color: var(--secondary);
+    border-radius: 1rem; /* 4px */
+}
+
+
 
 #Smallchat .Messenger_prompt {
  margin:0;

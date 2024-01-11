@@ -9,13 +9,20 @@
     <div class="Layout Layout-open Layout-expand Layout-right" style="background-color: var(--primary);color: rgb(255, 255, 255);opacity: 5;border-radius: 10px;">
       <div class="Messenger_messenger">
         <div class="Messenger_header" style="background-color: var(--primary); color: rgb(255, 255, 255); box-shadow: #000000 10px">
-          <h4 class="Messenger_prompt">How can we help you?</h4> <span class="chat_close_icon"><i class="fa fa-window-close" aria-hidden="true"></i></span> 
+          <h4 class="Messenger_prompt">RainCheckAI</h4>
+          <span class="chat_close_icon"><i class="fa fa-window-close" aria-hidden="true"></i></span> 
+          <div class="model_switch ms-2 wow fadeIn" data-wow-delay="1s">
+            <select id="modelSelect" onchange="SelectModel()" class="model-selector">
+                <option id="gpt-3.5-turbo-1106" value="gpt-3.5-turbo-1106">GPT-3</option>
+                <option id="gpt-4-1106-preview" value="gpt-4-1106-preview">GPT-4</option>
+            </select>
+          </div>
         </div>
         <div class="Messenger_content">
           <div class="Messages">
             <div class="Messages_list">
               <div class="d-flex flex-row p-1" style="justify-content: flex-end">
-                <div class="chat message mr-2 p-3"><small>Raincheck</small><br>Hello! I am RainCheck, your personal weather assistant. How can I help you?</div>
+                <div class="chat message mr-2 p-3 wow jackInTheBox" data-wow-delay=".25s"><small>Raincheck</small><br>Hello! I am RainCheck, your personal weather assistant. How can I help you?</div>
               </div>
             </div>
           </div>
@@ -106,6 +113,29 @@
         $('.Input_button-send').click(); // Trigger the button click event
     }
   });
+
+  function SelectModel() {
+    requestInProgress = true;
+
+    var model = document.getElementById('modelSelect').value;
+    var model_user = document.getElementById(model).innerHTML;
+
+    $.ajax({
+      url: '/chat/change_model/',  // The URL to your chat endpoint
+      method: 'POST',
+      data: {
+          model: model,
+      },
+      success: function(response) {
+          // This is where you handle the chatbot's response
+          $('.Messages_list').append('<div class="d-flex flex-row p-1"><div class="chat message mr-2 p-3"><small>Raincheck</small><br>You are now using the ' + model_user + ' model</div></div>');
+      },
+      complete: function() {
+        // Set the flag back to false to indicate that the request is complete
+        requestInProgress = false;
+      }
+    });
+  }
 
   </script>
   <script src="{% static '//js//chatbot//shadow.js' %}"></script>
