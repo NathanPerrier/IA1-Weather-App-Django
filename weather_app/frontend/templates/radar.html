@@ -34,14 +34,18 @@
         // set the ISO timestamp (now for all fields, up to 6 hour out for precipitationIntensity)
         const TIMESTAMP = (new Date()).toISOString();
 
-        var latitude = 153.02207;
-        var longitude = -27.46917;
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
-                latitude = position.coords.latitude;
-                longitude = position.coords.longitude;
-            });
+        if '{{ location.lat}}' == 'None' || '{{ location.lng}}' == 'None' {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    latitude = position.coords.latitude;
+                    longitude = position.coords.longitude;
+                });
+            }
+        } else {
+            var latitude = '{{ location.lat}}';
+            var longitude = '{{ location.lng}}';
         }
+        
 
         // initialize the map
         var map = (window.map = new mapboxgl.Map({

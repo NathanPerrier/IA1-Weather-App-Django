@@ -16,6 +16,7 @@ class RegisterAuth(models.Model):
     reset_code = models.CharField(max_length=6, blank=False)
     expiration_time = models.DateTimeField(blank=False)
     creation_time = models.DateTimeField(auto_now_add=True, blank=False)
+    
     @classmethod
     def create_entry(cls, email, reset_code, expiration_time):
         return RegisterAuth(email=email, reset_code=reset_code, expiration_time=expiration_time)
