@@ -1,4 +1,4 @@
-import weatherAU
+from .. import weatherAU
 
 # https://lxml.de/elementsoup.html
 

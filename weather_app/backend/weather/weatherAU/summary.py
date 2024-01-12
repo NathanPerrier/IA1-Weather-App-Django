@@ -1,5 +1,5 @@
 import collections
-from weatherAU import api
+from . import api
 
 class Summary:
     """

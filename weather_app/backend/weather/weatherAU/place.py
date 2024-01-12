@@ -3,7 +3,7 @@ import urllib.request
 
 from bs4 import BeautifulSoup
 
-import weatherAU
+from .. import weatherAU
 
 
 class PlaceException(Exception):

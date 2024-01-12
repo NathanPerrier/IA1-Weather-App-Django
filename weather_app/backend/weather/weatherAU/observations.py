@@ -1,4 +1,4 @@
-import weatherAU
+from .. import weatherAU
 
 # https://docs.python.org/3/library/xml.dom.html#module-xml.dom
 
