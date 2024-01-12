@@ -17,8 +17,7 @@ from .weatherDescription.main import GetWeatherDescription
 def index(request):
     location = GetLocation().get_location()
     Wrequest = RetrieveWeather(location.zip)
-    print(RetrieveWeather(location.zip).request)
-    print(Wrequest.Forecast(Wrequest.request).get_current())
+    print(Wrequest.Summary(Wrequest.request).get_summary())
     # GetImagesFromLocation().downloadimages()  #! fix
     return render(request, 'landing.html', {'is_authenticated': request.user.is_authenticated, 'icon': GetWeatherIcon().get_weather_icon(), 'location': GetLocation().get_location(), 'weather_desc': GetWeatherDescription(GetLocation().get_location()).get_weather_description()})
 

@@ -6,8 +6,11 @@ class Observations:
 
     def __init__(self, state=None):
 
-        self.state = state
-        self.url = weatherAU.OBSERVATION_PRODUCT_URL[state]
+        if not state:
+            state = weatherAU.api.WeatherApi.search(weatherAU.api.WeatherApi.q)[0]
+
+        self.state = (state['state'].lower()).capitalize()
+        self.url = weatherAU.uv_PRODUCT_URL[self.state]
         self.soup = weatherAU.fetch_xml(self.url)
         self.identifier = self.soup.identifier.contents[0]
         self.acknowedgment = f'Data courtesy of Bureau of Meteorology ({self.url})'

@@ -11,7 +11,7 @@ class Summary:
     """
 
     def __init__(self, geohash=None, search=None, debug=0):
-        self.api = api.WeatherApi(geohash=geohash, search=search, debug=debug)
+        self.api = api.WeatherApi(geohash=geohash, q=search, debug=debug)
         self.refresh()
 
 

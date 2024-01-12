@@ -36,7 +36,8 @@ class WeatherApi:
     ACKNOWLEDGEMENT = 'Data courtesy of the Australian Bureau of Meteorology (https://api.weather.bom.gov.au)'
 
 
-    def __init__(self, geohash=None, search=None, debug=0):
+    def __init__(self, geohash=None, q=None, debug=0):
+        self.q = q
 
         self._location = None
         self.geohash = geohash
@@ -47,8 +48,8 @@ class WeatherApi:
         self.debug = debug
 
         # set self.geohash and self.location
-        if search is not None:
-            self.search(search=search)
+        if q is not None:
+            self.search(search=q)
 
 
     def _fetch_json(self, url):
@@ -114,8 +115,9 @@ class WeatherApi:
 
             if self.geohash is None:
                 return None
-
-            result = self._fetch_json('/'.join(filter(None, [self.API_BASE, type, self.geohash, api])))
+            if isinstance(self.geohash, dict) and 'geohash' in self.geohash:
+                result = self._fetch_json('/'.join(filter(None, [self.API_BASE, type, self.geohash['geohash'], api])))
+            else: result = self._fetch_json('/'.join(filter(None, [self.API_BASE, type, self.geohash, api])))
 
         else:
             result = self._fetch_json('/'.join(filter(None, [self.API_BASE, type, api])))
@@ -270,6 +272,6 @@ class WeatherApi:
         else:
             geohash = "'" + self.geohash + "'"
 
-        return f"WeatherApi(geohash={geohash}, search='{loc}', debug={self.debug}), " + \
+        return f"WeatherApi(geohash={geohash}, q='{loc}', debug={self.debug}), " + \
             f"timestamp={self.response_timestamp}"
 

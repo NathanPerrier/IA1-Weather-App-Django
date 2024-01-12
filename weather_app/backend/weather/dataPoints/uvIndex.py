@@ -1,14 +1,14 @@
-from .. import *
+from ..__init__ import *
 
 class RetrieveUvIndex():
     def __init__(self, request):
         self.request = request
         
-        self.data = uv_index.UVIndex(self.request.location())  #? location works? if not parse state into class and use that
-        self.accumulative_list = self.data.acc_list()
+        self.data = uv_index.UvIndex(self.request.location())  #? location works? if not parse state into class and use that
+        self.accumulative_list = self.data.aac_list()
 
-    def get_uv_descriptions(self):
-        return [desc for desc in self.accumulative_list]
+    # def get_uv_descriptions(self):
+    #     return [desc for desc in self.accumulative_list]
     
     def get_uv_message(self):
         return self.data.uv_message(self.accumulative_list)  #? works
