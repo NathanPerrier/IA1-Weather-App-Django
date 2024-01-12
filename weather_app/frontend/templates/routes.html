@@ -33,20 +33,23 @@
         mapboxgl.accessToken = "{{ mapbox_access_token }}";
 
         const API_KEY = "{{ tomorrowio_api_key }}";
+       
 
         var latitude = 153.02207;
         var longitude = -27.46917;
-        if '{{ location.lat }}' == 'None' || '{{ location.lon }}' == 'None' {
+        if ('{{ location }}') {
+          latitude = '{{ location.lon }}';
+          longitude = '{{ location.lat }}';
+        } else {
           if (navigator.geolocation) {
               navigator.geolocation.getCurrentPosition(function(position) {
                   latitude = position.coords.latitude;
                   longitude = position.coords.longitude;
               });
           }
-        } else {
-            latitude = '{{ location.lon }}';
-            longitude = '{{ location.lat }}';
-        }
+        }; 
+            
+        
       
         
         var map = new mapboxgl.Map({
