@@ -12,7 +12,14 @@ class GetWeatherDescription():
     def get_weather_description(self):
         ''' returns a weather description '''
         try:
-            return self.weather_code_desc[str(self.get_weather_code())]
+            desc = self.weather_code_desc[str(self.get_weather_code())]
+            if str(desc) != 'Clear, Sunny': 
+                if 'Fog' not in str(desc):
+                    if not any(word in str(desc) for word in ['Rain', 'Snow', 'Drizzle']):
+                        return str(desc)
+                    return f'{str(desc)}ing' if 'Drizzle' not in str(desc) else f'{str(desc)[:-1]}ing'
+                return f'{str(desc)}gy'
+            return 'Clear'
         except KeyError: return 'Unknown'
         
     def get_weather_code(self):

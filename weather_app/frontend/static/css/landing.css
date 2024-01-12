@@ -309,14 +309,8 @@ i{
 }
 
 .current-weather .icon img {
-    margin-top:62.5%;
-    /* width: 100%;  */
-    height: 200%; 
-    /* transform: scaleY(4);
-    transform: scaleX(1); */
-    /* overflow: hidden;
-    object-position: center;
-    object-fit: fill; */
+    width: 100%;
+    height: auto;
 }
 
 .current-weather .text {
@@ -347,7 +341,7 @@ i{
 
 .weather-data {
     width: calc(40% - 50px);
-    height: 10vh;
+    height: 25vh;
     position: relative;
     background-color: var(--light);
     display: flex;

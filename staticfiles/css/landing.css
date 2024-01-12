@@ -281,7 +281,7 @@ i{
 
 .current-weather {
     width: calc(40% - 50px);
-    height: 10vh;
+    height: 20vh;
     position: relative;
     display: flex;
     flex-direction: row;

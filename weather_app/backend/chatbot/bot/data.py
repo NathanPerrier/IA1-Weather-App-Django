@@ -30,7 +30,6 @@ class BotData(models.Model):
             print('current')
             print(list(fields.keys()))
             location = self.get_city_from_ip() if location is None else location
-            print('location:', location)
             if 'sunsetTime' or 'sunriseTime' in fields:
                 timesteps='1d'
             url = f'https://api.tomorrow.io/v4/timelines?apikey={config("TOMORROWIO_API_KEY")}'
@@ -50,7 +49,7 @@ class BotData(models.Model):
             }
 
             response = requests.post(url, headers=headers, data=json.dumps(data))
-            print('response:', response.text)
+            print('location:', location, '\nresponse:', response.text)
             return response.text
 
         except Exception as e:
@@ -81,7 +80,6 @@ class BotData(models.Model):
             }
 
             response = requests.post(url, headers=headers, data=json.dumps(data))
-            print('response (json):', json.loads(response.text))
             return self.format_response_forecast(json.loads(response.text), location, unit)
 
         except Exception as e:

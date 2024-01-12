@@ -9,11 +9,16 @@ from .chatbot.models import Message
 
 from .weatherIcon.main import GetWeatherIcon
 from .location.main import GetLocation
+from .weather.main import RetrieveWeather
 from .locationImage.images import GetImagesFromLocation
 from .weatherDescription.main import GetWeatherDescription
 
 @csrf_protect
 def index(request):
+    location = GetLocation().get_location()
+    Wrequest = RetrieveWeather(location.zip)
+    print(RetrieveWeather(location.zip).request)
+    print(Wrequest.Forecast(Wrequest.request).get_current())
     # GetImagesFromLocation().downloadimages()  #! fix
     return render(request, 'landing.html', {'is_authenticated': request.user.is_authenticated, 'icon': GetWeatherIcon().get_weather_icon(), 'location': GetLocation().get_location(), 'weather_desc': GetWeatherDescription(GetLocation().get_location()).get_weather_description()})
 

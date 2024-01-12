@@ -3,14 +3,14 @@ from .__init__ import *
 from .dataPoints.__init__ import *
 
 class RetrieveWeather():
-    def __init__(self, city, state):
-        self.city = city
-        self.state = state
+    def __init__(self, zipCode):
+        self.zip = zipCode
 
-        self.request = api.WeatherApi(search=(f'{city}+{state}'), debug=0)
+        self.request = api.WeatherApi(search=(f'{self.zip}'), debug=0)
         
         self.location = self.request.location()
-        
+
+        print('location:', self.location)
         
     class Forecast(RetrieveForecast):
         ''' usage: RetrieveWeather('brisbane', 'qld').Forecast.get_daily() '''

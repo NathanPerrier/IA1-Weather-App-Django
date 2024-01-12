@@ -62,7 +62,7 @@ The application's design is user-friendly and intuitive, making it easy for user
 
     NOTE: To use a Gmail account to send emails, you must set up an app password - but to do this you first need to enable 2-Step Verification, then select ‘App passwords’ under ‘2-Step Verification’. You must also turn on the ‘Less Secure App Access’ option in your google account.
 
-4.  create a virtual environment using `control + shift + p` then search create environment.
+4.  create a virtual environment using `control + shift + p` then search create environment. After you have created the venv then restart vs code.
 
 5. Install the required Python packages using pip:
 
@@ -108,7 +108,7 @@ The application's design is user-friendly and intuitive, making it easy for user
 
     `git clone https://github.com/nathan-perrier23/IA1-Weather-App-Django`
 
-3. create a virtual environment using `control + shift + p` then search "create environment". Make sure you pip install libraries to the environment using `pip install -r requirements.txt`.
+3. create a virtual environment using `control + shift + p` then search "create environment". After you have created the venv then restart vs code. Make sure you pip install libraries to the environment using `pip install -r requirements.txt`.
 
 4. Set up environment variables for configuration. These are stored in a `.env` file at the root of the        
     project. You'll need to create this file and add the following parameters. REMEMBER to change the API values and to `create a Google project with VertexAI API enabled`:
