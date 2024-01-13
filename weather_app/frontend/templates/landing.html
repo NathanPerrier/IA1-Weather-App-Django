@@ -34,32 +34,20 @@
             <div class="current-weather">
               <div class="icon d-flex">
                 <div class="icon-img">
-                  <img src="{% static icon %}" alt="weather icon">
+                  {% with icon_path='//images//weatherIcons//static//'|add:forecast_hourly.0.icon_descriptor|add:'.svg' %}
+                    <img src="{% static icon_path %}" alt="weather icon">
+                  {% endwith %}
                 </div>
                 <span class="temp">{{ weather_desc }}</span>
               </div>
               <div class="text">
                 <div class="temp">
-                  <span>{{ forecast.0.now.temp_now }}°C</span> 
+                  <span>{{ forecast_hourly.0.temp }}°C</span> 
                 </div>
               </div>
             </div>
             <div class="weather-data mt-2"> <!-- add .weather-data to css-->
-                <!-- weather data  -->
-                <div class="owl-carousel weahter-data-carousel-long">
-                  <div class="testimonial-item ms-2 widget">
-                      <div class="label">Temperature</div>
-                      <div class="value">25<span class="unit-top">°C</span></div>
-                  </div>
-                  <div class="testimonial-item ms-2 widget">
-                    <div class="label">Wind Speed</div>
-                      <div class="value">2.5<span class="unit-bottom">km/h</span></div>
-                  </div>
-                  <div class="testimonial-item ms-2 widget"></div>
-                  <div class="testimonial-item ms-2 widget"></div>
-                  <div class="testimonial-item ms-2 widget"></div>
-                  <div class="testimonial-item ms-2 widget"></div>
-                </div>
+                <span>{{ forecast_daily.0.extended_text }}</span>
             </div>
           </section>         
         </div>
@@ -99,7 +87,7 @@
             <span class="visually-hidden">Next</span>
           </button>
           <div class="carousel-inner" style="position: relative; overflow: visible;width: calc(100vw - 60px)" >
-            {% for day in forecast %}
+            {% for day in forecast_daily %}
               {% if forloop.counter|divisibleby:4 or forloop.first %}
                 {% if not forloop.first %}
                   </div>

@@ -354,7 +354,7 @@ i{
     width: 40%;
     height: 20vh;
     position: relative;
-    background-color: var(--light);
+    color: var(--light);
     display: flex;
     overflow-y: hidden;
 }
