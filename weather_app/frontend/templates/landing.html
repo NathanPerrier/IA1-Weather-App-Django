@@ -1,5 +1,6 @@
 {% extends 'template/main.html' %} 
 {% load static %} 
+{% load date_extras %}
 {% block header %}
   <link rel="stylesheet" href="{% static '//css//landing.css' %}">
 {% endblock %}
@@ -78,8 +79,8 @@
   <!-- video -->
 
     <!-- sliders -->
-    <div class="slider-box mb-2" style="margin-left:50px">
-      <div class="container-fluid ps-0 slide1">
+    <div class="slider-box" >
+      <div class="container-fluid mb-0 p-0 ps-0 slide1">
         <section class="d-flex justify-content-between margin-right margin-title">
           <p class="text-white font-netflix-bold"> <b>7 Day Forecast</b> </p>
           <div class="">
@@ -89,397 +90,6 @@
           </div>
         </section>
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-          
-          <div class="carousel-inner" style="position: relative; overflow: visible;">
-            <div class="carousel-item active">
-              <section class="d-flex" >
-                <div class="card" >
-                  <img src="{% static '//images/trending/img6.rm' %}" class="card-img-top" alt="...">
-                  <div class="card-body"> 
-                      <section class="d-flex justify-content-between">
-                        <div>
-                          <i class="bi bi-play-circle-fill card-icon"  ></i>
-                          <i  class="bi bi-plus-circle card-icon"></i>
-                        </div>
-                        <div>
-                          <i class="bi bi-arrow-down-circle card-icon"></i>
-                        </div>
-                      </section>
-                      <section class="d-flex align-items-center justify-content-between" >
-                        <p class="weather-app-card-text m-0" style="color: rgb(0, 186, 0);">97% match</p> 
-                          <span class="m-2 weather-app-card-text text-white">Limited Series</span> <span class="border weather-app-card-text p-1 text-white">HD</span>
-                        
-                        </section>
-                        <span class="weather-app-card-text text-white">Provocative • Psychological • Thriller</span>
-                  </div>
-                </div>
-                <div class="card">
-                  <img src="{% static '//images/trending/img2.rm' %}" class="card-img-top" alt="...">
-                  <div class="card-body"> 
-                    <section class="d-flex justify-content-between">
-                      <div>
-                        <i class="bi bi-play-circle-fill card-icon"  ></i>
-                        <i  class="bi bi-plus-circle card-icon"></i>
-                      </div>
-                      <div>
-                        <i class="bi bi-arrow-down-circle card-icon"></i>
-                      </div>
-                    </section>
-                    <section class="d-flex align-items-center justify-content-between" >
-                      <p class="weather-app-card-text m-0" style="color: rgb(0, 186, 0);">97% match</p> 
-                        <span class="m-2 weather-app-card-text text-white">Limited Series</span> <span class="border weather-app-card-text p-1 text-white">HD</span>
-                      
-                      </section>
-                      <span class="weather-app-card-text text-white">Provocative • Psychological • Thriller</span>
-                </div>
-                </div>
-                <div class="card">
-                  <img src="{% static '//images/trending/img3.rm' %}" class="card-img-top" alt="...">
-                  <div class="card-body"> 
-                    <section class="d-flex justify-content-between">
-                      <div>
-                        <i class="bi bi-play-circle-fill card-icon"  ></i>
-                        <i  class="bi bi-plus-circle card-icon"></i>
-                      </div>
-                      <div>
-                        <i class="bi bi-arrow-down-circle card-icon"></i>
-                      </div>
-                    </section>
-                    <section class="d-flex align-items-center justify-content-between" >
-                      <p class="weather-app-card-text m-0" style="color: rgb(0, 186, 0);">97% match</p> 
-                        <span class="m-2 weather-app-card-text text-white">Limited Series</span> <span class="border weather-app-card-text p-1 text-white">HD</span>
-                      
-                      </section>
-                      <span class="weather-app-card-text text-white">Provocative • Psychological • Thriller</span>
-                </div> <div class="card-body"> 
-                      <section class="d-flex justify-content-between">
-                        <div>
-                          <i class="bi bi-play-circle-fill card-icon"  ></i>
-                          <i  class="bi bi-plus-circle card-icon"></i>
-                        </div>
-                        <div>
-                          <i class="bi bi-arrow-down-circle card-icon"></i>
-                        </div>
-                      </section>
-                      <section class="d-flex align-items-center justify-content-between" >
-                        <p class="weather-app-card-text m-0" style="color: rgb(0, 186, 0);">97% match</p> 
-                          <span class="m-2 weather-app-card-text text-white">Limited Series</span> <span class="border weather-app-card-text p-1 text-white">HD</span>
-                        
-                        </section>
-                        <span class="weather-app-card-text text-white">Provocative • Psychological • Thriller</span>
-                  </div>
-                </div>
-                <div class="card" >
-                  <img src="{% static '//images/trending/img4.rm' %}" class="card-img-top" alt="...">
-                  <div class="card-body"> 
-                    <section class="d-flex justify-content-between">
-                      <div>
-                        <i class="bi bi-play-circle-fill card-icon"  ></i>
-                        <i  class="bi bi-plus-circle card-icon"></i>
-                      </div>
-                      <div>
-                        <i class="bi bi-arrow-down-circle card-icon"></i>
-                      </div>
-                    </section>
-                    <section class="d-flex align-items-center justify-content-between" >
-                      <p class="weather-app-card-text m-0" style="color: rgb(0, 186, 0);">97% match</p> 
-                        <span class="m-2 weather-app-card-text text-white">Limited Series</span> <span class="border weather-app-card-text p-1 text-white">HD</span>
-                      
-                      </section>
-                      <span class="weather-app-card-text text-white">Provocative • Psychological • Thriller</span>
-                </div>
-                </div>
-                <div class="card" >
-                  <img src="{% static '//images/trending/img1.rm' %}" class="card-img-top" alt="...">
-                  <div class="card-body"> 
-                    <section class="d-flex justify-content-between">
-                      <div>
-                        <i class="bi bi-play-circle-fill card-icon"  ></i>
-                        <i  class="bi bi-plus-circle card-icon"></i>
-                      </div>
-                      <div>
-                        <i class="bi bi-arrow-down-circle card-icon"></i>
-                      </div>
-                    </section>
-                    <section class="d-flex align-items-center justify-content-between" >
-                      <p class="weather-app-card-text m-0" style="color: rgb(0, 186, 0);">97% match</p> 
-                        <span class="m-2 weather-app-card-text text-white">Limited Series</span> <span class="border weather-app-card-text p-1 text-white">HD</span>
-                      
-                      </section>
-                      <span class="weather-app-card-text text-white">Provocative • Psychological • Thriller</span>
-                </div>
-                </div>
-                <div class="card" >
-                  <img src="{% static '//images/trending/img2.rm' %}" class="card-img-top" alt="...">
-                  <div class="card-body"> 
-                    <section class="d-flex justify-content-between">
-                      <div>
-                        <i class="bi bi-play-circle-fill card-icon"  ></i>
-                        <i  class="bi bi-plus-circle card-icon"></i>
-                      </div>
-                      <div>
-                        <i class="bi bi-arrow-down-circle card-icon"></i>
-                      </div>
-                    </section>
-                    <section class="d-flex align-items-center justify-content-between" >
-                      <p class="weather-app-card-text m-0" style="color: rgb(0, 186, 0);">97% match</p> 
-                        <span class="m-2 weather-app-card-text text-white">Limited Series</span> <span class="border weather-app-card-text p-1 text-white">HD</span>
-                      
-                      </section>
-                      <span class="weather-app-card-text text-white">Provocative • Psychological • Thriller</span>
-                </div>
-                </div>
-              </section>
-            </div>
-            <div class="carousel-item">
-              <section class="d-flex ">
-                <div class="card">
-                  <img src="{% static '//images/trending/img1.rm' %}" class="card-img-top" alt="...">
-                  <div class="card-body"> 
-                    <section class="d-flex justify-content-between">
-                      <div>
-                        <i class="bi bi-play-circle-fill card-icon"  ></i>
-                        <i  class="bi bi-plus-circle card-icon"></i>
-                      </div>
-                      <div>
-                        <i class="bi bi-arrow-down-circle card-icon"></i>
-                      </div>
-                    </section>
-                    <section class="d-flex align-items-center justify-content-between" >
-                      <p class="weather-app-card-text m-0" style="color: rgb(0, 186, 0);">97% match</p> 
-                        <span class="m-2 weather-app-card-text text-white">Limited Series</span> <span class="border weather-app-card-text p-1 text-white">HD</span>
-                      
-                      </section>
-                      <span class="weather-app-card-text text-white">Provocative • Psychological • Thriller</span>
-                </div>
-                </div>
-                <div class="card" >
-                  <img src="{% static '//images/trending/img2.rm' %}" class="card-img-top" alt="...">
-                  <div class="card-body"> 
-                    <section class="d-flex justify-content-between">
-                      <div>
-                        <i class="bi bi-play-circle-fill card-icon"  ></i>
-                        <i  class="bi bi-plus-circle card-icon"></i>
-                      </div>
-                      <div>
-                        <i class="bi bi-arrow-down-circle card-icon"></i>
-                      </div>
-                    </section>
-                    <section class="d-flex align-items-center justify-content-between" >
-                      <p class="weather-app-card-text m-0" style="color: rgb(0, 186, 0);">97% match</p> 
-                        <span class="m-2 weather-app-card-text text-white">Limited Series</span> <span class="border weather-app-card-text p-1 text-white">HD</span>
-                      
-                      </section>
-                      <span class="weather-app-card-text text-white">Provocative • Psychological • Thriller</span>
-                </div>
-                </div>
-                <div class="card">
-                  <img src="{% static '//images/trending/img3.rm' %}" class="card-img-top" alt="...">
-                  <div class="card-body"> 
-                    <section class="d-flex justify-content-between">
-                      <div>
-                        <i class="bi bi-play-circle-fill card-icon"  ></i>
-                        <i  class="bi bi-plus-circle card-icon"></i>
-                      </div>
-                      <div>
-                        <i class="bi bi-arrow-down-circle card-icon"></i>
-                      </div>
-                    </section>
-                    <section class="d-flex align-items-center justify-content-between" >
-                      <p class="weather-app-card-text m-0" style="color: rgb(0, 186, 0);">97% match</p> 
-                        <span class="m-2 weather-app-card-text text-white">Limited Series</span> <span class="border weather-app-card-text p-1 text-white">HD</span>
-                      
-                      </section>
-                      <span class="weather-app-card-text text-white">Provocative • Psychological • Thriller</span>
-                </div>
-                </div>
-                <div class="card" >
-                  <img src="{% static '//images/trending/img4.rm' %}" class="card-img-top" alt="...">
-                  <div class="card-body"> 
-                    <section class="d-flex justify-content-between">
-                      <div>
-                        <i class="bi bi-play-circle-fill card-icon"  ></i>
-                        <i  class="bi bi-plus-circle card-icon"></i>
-                      </div>
-                      <div>
-                        <i class="bi bi-arrow-down-circle card-icon"></i>
-                      </div>
-                    </section>
-                    <section class="d-flex align-items-center justify-content-between" >
-                      <p class="weather-app-card-text m-0" style="color: rgb(0, 186, 0);">97% match</p> 
-                        <span class="m-2 weather-app-card-text text-white">Limited Series</span> <span class="border weather-app-card-text p-1 text-white">HD</span>
-                      
-                      </section>
-                      <span class="weather-app-card-text text-white">Provocative • Psychological • Thriller</span>
-                </div>
-                </div>
-                <div class="card" >
-                  <img src="{% static '//images/trending/img1.rm' %}" class="card-img-top" alt="...">
-                  <div class="card-body"> 
-                    <section class="d-flex justify-content-between">
-                      <div>
-                        <i class="bi bi-play-circle-fill card-icon"  ></i>
-                        <i  class="bi bi-plus-circle card-icon"></i>
-                      </div>
-                      <div>
-                        <i class="bi bi-arrow-down-circle card-icon"></i>
-                      </div>
-                    </section>
-                    <section class="d-flex align-items-center justify-content-between" >
-                      <p class="weather-app-card-text m-0" style="color: rgb(0, 186, 0);">97% match</p> 
-                        <span class="m-2 weather-app-card-text text-white">Limited Series</span> <span class="border weather-app-card-text p-1 text-white">HD</span>
-                      
-                      </section>
-                      <span class="weather-app-card-text text-white">Provocative • Psychological • Thriller</span>
-                </div>
-                </div>
-                <div class="card" >
-                  <img src="{% static '//images/trending/img2.rm' %}" class="card-img-top" alt="...">
-                  <div class="card-body"> 
-                    <section class="d-flex justify-content-between">
-                      <div>
-                        <i class="bi bi-play-circle-fill card-icon"  ></i>
-                        <i  class="bi bi-plus-circle card-icon"></i>
-                      </div>
-                      <div>
-                        <i class="bi bi-arrow-down-circle card-icon"></i>
-                      </div>
-                    </section>
-                    <section class="d-flex align-items-center justify-content-between" >
-                      <p class="weather-app-card-text m-0" style="color: rgb(0, 186, 0);">97% match</p> 
-                        <span class="m-2 weather-app-card-text text-white">Limited Series</span> <span class="border weather-app-card-text p-1 text-white">HD</span>
-                      
-                      </section>
-                      <span class="weather-app-card-text text-white">Provocative • Psychological • Thriller</span>
-                </div>
-                </div>
-              </section>
-            </div>
-            <div class="carousel-item">
-              <section class="d-flex ">
-                <div class="card" >
-                  <img src="{% static '//images/trending/img7.rm' %}" class="card-img-top" alt="...">
-                  <div class="card-body"> 
-                    <section class="d-flex justify-content-between">
-                      <div>
-                        <i class="bi bi-play-circle-fill card-icon"  ></i>
-                        <i  class="bi bi-plus-circle card-icon"></i>
-                      </div>
-                      <div>
-                        <i class="bi bi-arrow-down-circle card-icon"></i>
-                      </div>
-                    </section>
-                    <section class="d-flex align-items-center justify-content-between" >
-                      <p class="weather-app-card-text m-0" style="color: rgb(0, 186, 0);">97% match</p> 
-                        <span class="m-2 weather-app-card-text text-white">Limited Series</span> <span class="border weather-app-card-text p-1 text-white">HD</span>
-                      
-                      </section>
-                      <span class="weather-app-card-text text-white">Provocative • Psychological • Thriller</span>
-                </div>
-                </div>
-                <div class="card" >
-                  <img src="{% static '//images/trending/img2.rm' %}" class="card-img-top" alt="...">
-                  <div class="card-body"> 
-                    <section class="d-flex justify-content-between">
-                      <div>
-                        <i class="bi bi-play-circle-fill card-icon"  ></i>
-                        <i  class="bi bi-plus-circle card-icon"></i>
-                      </div>
-                      <div>
-                        <i class="bi bi-arrow-down-circle card-icon"></i>
-                      </div>
-                    </section>
-                    <section class="d-flex align-items-center justify-content-between" >
-                      <p class="weather-app-card-text m-0" style="color: rgb(0, 186, 0);">97% match</p> 
-                        <span class="m-2 weather-app-card-text text-white">Limited Series</span> <span class="border weather-app-card-text p-1 text-white">HD</span>
-                      
-                      </section>
-                      <span class="weather-app-card-text text-white">Provocative • Psychological • Thriller</span>
-                </div>
-                </div>
-                <div class="card" >
-                  <img src="{% static '//images/trending/img3.rm' %}" class="card-img-top" alt="...">
-                  <div class="card-body"> 
-                    <section class="d-flex justify-content-between">
-                      <div>
-                        <i class="bi bi-play-circle-fill card-icon"  ></i>
-                        <i  class="bi bi-plus-circle card-icon"></i>
-                      </div>
-                      <div>
-                        <i class="bi bi-arrow-down-circle card-icon"></i>
-                      </div>
-                    </section>
-                    <section class="d-flex align-items-center justify-content-between" >
-                      <p class="weather-app-card-text m-0" style="color: rgb(0, 186, 0);">97% match</p> 
-                        <span class="m-2 weather-app-card-text text-white">Limited Series</span> <span class="border weather-app-card-text p-1 text-white">HD</span>
-                      
-                      </section>
-                      <span class="weather-app-card-text text-white">Provocative • Psychological • Thriller</span>
-                </div>
-                </div>
-                <div class="card" >
-                  <img src="{% static '//images/trending/img4.rm' %}" class="card-img-top" alt="...">
-                  <div class="card-body"> 
-                    <section class="d-flex justify-content-between">
-                      <div>
-                        <i class="bi bi-play-circle-fill card-icon"  ></i>
-                        <i  class="bi bi-plus-circle card-icon"></i>
-                      </div>
-                      <div>
-                        <i class="bi bi-arrow-down-circle card-icon"></i>
-                      </div>
-                    </section>
-                    <section class="d-flex align-items-center justify-content-between" >
-                      <p class="weather-app-card-text m-0" style="color: rgb(0, 186, 0);">97% match</p> 
-                        <span class="m-2 weather-app-card-text text-white">Limited Series</span> <span class="border weather-app-card-text p-1 text-white">HD</span>
-                      
-                      </section>
-                      <span class="weather-app-card-text text-white">Provocative • Psychological • Thriller</span>
-                </div>
-                </div>
-                <div class="card" >
-                  <img src="{% static '//images/trending/img1.rm' %}" class="card-img-top" alt="...">
-                  <div class="card-body"> 
-                    <section class="d-flex justify-content-between">
-                      <div>
-                        <i class="bi bi-play-circle-fill card-icon"  ></i>
-                        <i  class="bi bi-plus-circle card-icon"></i>
-                      </div>
-                      <div>
-                        <i class="bi bi-arrow-down-circle card-icon"></i>
-                      </div>
-                    </section>
-                    <section class="d-flex align-items-center justify-content-between" >
-                      <p class="weather-app-card-text m-0" style="color: rgb(0, 186, 0);">97% match</p> 
-                        <span class="m-2 weather-app-card-text text-white">Limited Series</span> <span class="border weather-app-card-text p-1 text-white">HD</span>
-                      
-                      </section>
-                      <span class="weather-app-card-text text-white">Provocative • Psychological • Thriller</span>
-                </div>
-                </div>
-                <div class="card" >
-                  <img src="{% static '//images/trending/img2.rm' %}" class="card-img-top" alt="...">
-                  <div class="card-body"> 
-                    <section class="d-flex justify-content-between">
-                      <div>
-                        <i class="bi bi-play-circle-fill card-icon"  ></i>
-                        <i  class="bi bi-plus-circle card-icon"></i>
-                      </div>
-                      <div>
-                        <i class="bi bi-arrow-down-circle card-icon"></i>
-                      </div>
-                    </section>
-                    <section class="d-flex align-items-center justify-content-between" >
-                      <p class="weather-app-card-text m-0" style="color: rgb(0, 186, 0);">97% match</p> 
-                        <span class="m-2 weather-app-card-text text-white">Limited Series</span> <span class="border weather-app-card-text p-1 text-white">HD</span>
-                      
-                      </section>
-                      <span class="weather-app-card-text text-white">Provocative • Psychological • Thriller</span>
-                </div>
-                </div>
-              </section>
-            </div>
-          </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
@@ -488,6 +98,48 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
+          <div class="carousel-inner" style="position: relative; overflow: visible;" >
+            <div class="carousel-item active">
+              <section class="d-flex" >
+                {% for day in forecast %}
+                  {% current_date|add_days:1 as next_date %}
+                  {% if day.now %} <!-- doesn't work because day.date time is not current-->
+                    <div class="weather-card card current-day mr-4">
+                  {% else %}
+                    <div class="weather-card card ms-4">
+                  {% endif %}
+                    <div class="top-info">
+                        <span class="day">{{ current_date|date:"l" }}</span>
+                        <span class="temp">{{day.temp_max}}°C</span>
+                    </div>
+                    <div class="icon">
+                      {% if day.icon_descriptor == 'partly_cloudy' or day.icon_descriptor == 'mostly_sunny' or day.icon_descriptor == 'cloudy' %}
+                          <div class="highlight" style="background-color:#fff"></div>
+                      {% elif day.icon_descriptor == 'heavy_shower' or day.icon_descriptor == 'light_shower' or day.icon_descriptor == 'fog' or day.icon_descriptor == 'light_rain' or day.icon_descriptor == 'shower' or day.icon_descriptor == 'rain' or day.icon_descriptor == 'snow' or day.icon_descriptor == 'windy' or day.icon_descriptor == 'frost' %}
+                          <div class="highlight" style="background-color:#56a0ee"></div>
+                      {% elif day.icon_descriptor == 'hazy' or day.icon_descriptor == 'dusty' %}
+                          <div class="highlight" style="background-color:#cd9e73"></div>
+                      {% elif day.icon_descriptor == 'sunny' or day.icon_descriptor == 'clear' %}
+                          <div class="highlight" style="background-color:#ffa500"></div>
+                      {% else %}
+                          <div class="highlight" style="background-color:#ff0000"></div>
+                      {% endif %}
+                      {% with icon_path='//images//weatherIcons//static//'|add:day.icon_descriptor|add:'.svg' %}
+                        <img src="{% static icon_path %}" alt="Weather Icon">
+                      {% endwith %}
+                    </div>
+                    <div class="description">{{ day.short_text }}</div>
+                    <div class="bottom-info">
+                        <span class="humidity">Rain Chance: {{ day.rain.chance }}%</span>
+                        <span class="aqi">UV: {{ day.uv.max_index }}</span>
+                    </div>
+                  </div>
+                {% endfor %}
+              
+              </section>
+            </div>
+          </div>
+          
         </div>
       </div>
       <div class="container-fluid ps-0 slide2">

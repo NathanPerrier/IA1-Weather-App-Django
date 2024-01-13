@@ -13,6 +13,7 @@ from .main import *
 from ..models import CustomUser, CustomUserManager
 from .auth.views import *
 
+
 def login_view(request):
     if request.method == 'POST':
         user = CustomUserManager().authenticate(email=request.POST['email'], password=request.POST['password']) 
@@ -53,4 +54,4 @@ def get_user_location(request):
         return JsonResponse({'success': True})
     else:
         return JsonResponse({'success': False})
-    
+

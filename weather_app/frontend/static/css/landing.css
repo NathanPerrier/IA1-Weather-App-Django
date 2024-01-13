@@ -1,5 +1,5 @@
 :root {
-    --primary: #144283;
+    --primary: #144282;
     --secondary: #37883e;
     --light: #fff;
     --dark: #000;
@@ -8,18 +8,18 @@
 body{
     background-color: var(--dark);
     overflow-x: hidden;
-    width: 100vw;
     /* position: relative; */
 }
 
-.weather-app-padding-left{
-    padding-left: 57px;
+.body-container {
+    width: calc(100vw - 50px) !important;
+    left: 0 !important;
 }
 
 
-.weather-app-padding-right{
-    padding-right: 57px;
-}
+
+
+
 
 
 .navbar-brand img{
@@ -104,13 +104,11 @@ i{
 
 .hero-background {
     top: 0;
-    margin-left: 50px;
     height: max-content;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     flex-wrap: wrap;
-    width: 100vw;
     height: 70vh;
     z-index: 10;
     position: relative;
@@ -280,7 +278,7 @@ i{
 }
 
 .current-weather {
-    width: calc(40% - 50px);
+    width: 40%;
     height: 10vh;
     position: relative;
     display: flex;
@@ -340,7 +338,7 @@ i{
 }
 
 .weather-data {
-    width: calc(40% - 50px);
+    width: 40%;
     height: 25vh;
     position: relative;
     background-color: var(--light);
@@ -372,7 +370,7 @@ i{
 }
 
 
-.card{
+.card-old { /* old */
     width: 250px;
     background-color: var(--dark);
     border-radius: 4px;
@@ -478,3 +476,66 @@ ul{
       margin-left: 28px;
 }
 
+
+
+.weather-card {
+    border-radius: 15px;
+    border: 1px solid var(--Light-Pop_boder, rgba(255, 255, 255, 0.15));
+    background: #121212;
+    box-shadow: 0px 5.231px 17.435px 0px rgba(20, 66, 131, 0.20);
+    backdrop-filter: blur(34.87031936645508px);
+    color: white;
+    transition: 0.2s linear;
+    position: relative;
+    width:200px;
+    padding: 20px;
+    text-align: center;
+}
+
+.weather-card:hover {
+    transform: scale(1.3);
+    z-index: 9999;
+}
+
+.weather-card.current-day {
+    border: 1px solid var(--Light-Pop_boder, rgba(255, 255, 255, 0.15));
+    background: linear-gradient(0deg, rgba(55, 136, 62, 0.08) 0%, rgba(55, 136, 62, 0.08) 100%), #121212;
+    box-shadow: 0px 5.231px 17.435px 0px rgba(0, 0, 0, 0.20);
+    backdrop-filter: blur(34.87031936645508px);
+}
+
+.highlight {
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    z-index: -10;
+    content: '';
+    opacity: 0.2;
+    filter: blur(30.87031936645508px);
+}
+
+.weather-card .top-info,
+.weather-card .bottom-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+}
+
+.weather-card .icon {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.weather-card .icon img {
+    width: 100%;
+    height: auto;
+    z-index: 1;
+}
+
+.weather-card .description {
+    font-size: 12px;
+    margin: 10px 0;
+}
