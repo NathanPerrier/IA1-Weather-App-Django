@@ -15,9 +15,8 @@ from .weatherDescription.main import GetWeatherDescription
 
 @csrf_protect
 def index(request):
-    location = GetLocation().get_location()
-    Wrequest = RetrieveWeather(location.zip)
-    print(Wrequest.Summary(Wrequest.request).get_summary())
+    # location = GetLocation().get_location()
+    # model = RetrieveWeather(location.zip)
     # GetImagesFromLocation().downloadimages()  #! fix
     return render(request, 'landing.html', {'is_authenticated': request.user.is_authenticated, 'icon': GetWeatherIcon().get_weather_icon(), 'location': GetLocation().get_location(), 'weather_desc': GetWeatherDescription(GetLocation().get_location()).get_weather_description()})
 

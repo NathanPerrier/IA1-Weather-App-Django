@@ -4,7 +4,7 @@ class RetrieveUvIndex():
     def __init__(self, request):
         self.request = request
         
-        self.data = uv_index.UvIndex(self.request.location())  #? location works? if not parse state into class and use that
+        self.data = uv_index.UvIndex(api.WeatherApi().search(self.request.zip)[0])  #? location works? if not parse state into class and use that
         self.accumulative_list = self.data.aac_list()
 
     # def get_uv_descriptions(self):

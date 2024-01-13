@@ -3,10 +3,13 @@ from ..__init__ import *
 class RetrieveSummary():
     def __init__(self, request):
         self.request = request
-        self.model = summary.Summary(self.request.location(), debug=0)
+        self.model = summary.Summary(search=self.request.zip, debug=0)
         
     def get_summary(self):
-        return self.model.summary()
+        summarydict = {}
+        for item in self.model.summary().values():
+            summarydict[item.label] = (f'{item.value}{item.unit}' if item.unit != '°' else f'{item.value}{item.unit}C')
+        return summarydict
         
     def get_summary_text(self):
         result = ''

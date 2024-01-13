@@ -183,13 +183,14 @@ class WeatherApi:
         """
         Example https://api.weather.bom.gov.au/v1/locations/r1r143/observations
 
-        {temp, 
+        {     
+              temp, 
               temp_feels_like, 
               wind:{speed_kilometre, speed_knot, direction},
               rain_since_9am,
               humidity,
               station:{bom_id, name, distance}
-            }
+        }
         or None
         
         station bom_id      e.g. '086338'

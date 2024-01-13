@@ -14,7 +14,7 @@ class UvIndex:
     def __init__(self, state=None):
 
         if not state:
-            state = weatherAU.api.WeatherApi.search(weatherAU.api.WeatherApi.q)[0]
+            state = weatherAU.api.WeatherApi().search(weatherAU.api.WeatherApi().q)[0]
 
         self.state = (state['state'].lower()).capitalize()
         self.url = weatherAU.uv_PRODUCT_URL[self.state]
