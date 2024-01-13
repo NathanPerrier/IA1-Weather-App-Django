@@ -15,7 +15,7 @@ $(document).ready(function(){
 
 
 function position(id){
-  var card = document.getElementsByClassName('card')[id];
+  var card = document.getElementsByClassName('weather-card')[id];
   // card.style.transform = 'scale(1.5)';
   console.log(id)
 }

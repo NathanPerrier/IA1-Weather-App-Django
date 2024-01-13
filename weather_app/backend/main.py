@@ -21,7 +21,7 @@ def index(request):
     location = GetLocation().get_location()
     model = RetrieveWeather(location.zip)
     # GetImagesFromLocation().downloadimages()  #! fix
-    return render(request, 'landing.html', {'is_authenticated': request.user.is_authenticated, 'icon': GetWeatherIcon().get_weather_icon(), 'location': GetLocation().get_location(), 'weather_desc': GetWeatherDescription(GetLocation().get_location()).get_weather_description(), 'forecast': model.Forecast(model.request).get_daily(), 'current_date': datetime.now(pytz.timezone(GetLocation().get_location().timezone)).strftime('%Y-%m-%d')})
+    return render(request, 'landing.html', {'is_authenticated': request.user.is_authenticated, 'icon': GetWeatherIcon().get_weather_icon(), 'location': GetLocation().get_location(), 'weather_desc': GetWeatherDescription(GetLocation().get_location()).get_weather_description(), 'forecast': model.Forecast(model.request).get_daily(), 'mapbox_access_token': config('MAPBOX_ACCESS_TOKEN'), 'tomorrowio_api_key': config("TOMORROWIO_API_KEY")})
 
 def radar(request):
     return render(request, 'radar.html', {'tomorrowio_api_key': config("TOMORROWIO_API_KEY"), 'location': GetLocation().get_location(), 'is_authenticated': request.user.is_authenticated, 'mapbox_access_token': config('MAPBOX_ACCESS_TOKEN')}) #'google_maps_api_key': config("GOOGLE_MAPS_API_KEY")

@@ -10,6 +10,7 @@
     z-index: 1000;
     position: fixed;
     padding-left: 10px;
+    z-index: 10;
     width: 50px;
     min-height: 100vh; /* full height */
     background-color: var(--dark); /* Change as per your preference */
