@@ -34,8 +34,7 @@
   <body style="background-color:#000000;{% if warning %}padding-top: 45px;{% endif %}" id="background">
     {% if warning %}
         <div id="alert-ribbon" class="bg-danger fixed-top mb-0 ps-5 pt-2 pb-2 text-center">
-            <h3 id="warning-title" class="text-white font-netflix-bold mb-1">{{ warning.0.title }} | </h3>
-            <p id="warning-description" class="text-white mb-0">{{ warning.0.description }}</p>
+            <h3 id="warning-title" class="text-white font-netflix-bold mb-1">{{ warning.0.title }}</h3>
         </div>
     {% endif %}
     <div id="spinner"

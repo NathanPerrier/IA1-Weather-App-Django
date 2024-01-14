@@ -7,11 +7,11 @@ class GenerateLocationImage:
     def __init__(self, location=None, city=None, region=None, country=None, lat=None, lon=None):
         self.location = location
         if location:
-            self.city = city
-            self.region = region
-            self.country = country
-            self.lat = lat
-            self.lon = lon
+            self.city = location.city
+            self.region = location.region
+            self.country = location.country
+            self.lat = location.lat
+            self.lon = location.lon
         else:
             self.city = city
             self.region = region
@@ -20,6 +20,7 @@ class GenerateLocationImage:
             self.lon = lon
             
         self.prompt = f'{self.city}, {self.region}, {self.country}' 
+        print('CREATIN AI IMAGE WITH PROMPT:', self.prompt)
     
     def generate(self):
         response = client.images.generate(

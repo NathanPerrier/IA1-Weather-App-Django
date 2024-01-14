@@ -286,7 +286,7 @@ i{
 
 .header-weather {
     width: 40%;
-    height: 35vh;
+    height: 40vh;
     position: relative;
     display: flex;
     flex-direction: row;
@@ -376,6 +376,7 @@ i{
 .header-weather .weather-data span {
     width: 100%;
     height: 100%;
+    font-size: 1.1vw;
 }
 
 

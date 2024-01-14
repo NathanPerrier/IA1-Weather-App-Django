@@ -34,19 +34,19 @@
             <div class="header-weather">
               <div class="current-weather">
                 <div class="icon">
-                  <div class="icon-img">  <!-- change to forecast_daily.0. ?? more accurate ?? -->
-                    {% if forecast_daily.0.icon_descriptor == 'partly_cloudy' or forecast_daily.0.icon_descriptor == 'mostly_sunny' or forecast_daily.0.icon_descriptor == 'cloudy' %}
+                  <div class="icon-img">  <!-- change to forecast_hourly.0. ?? more accurate ?? -->
+                    {% if forecast_hourly.0.icon_descriptor == 'partly_cloudy' or forecast_hourly.0.icon_descriptor == 'mostly_sunny' or forecast_hourly.0.icon_descriptor == 'cloudy' %}
                         <div class="highlight-header" style="background-color:#fff"></div>
-                    {% elif forecast_daily.0.icon_descriptor == 'heavy_shower' or forecast_daily.0.icon_descriptor == 'light_shower' or forecast_daily.0.icon_descriptor == 'fog' or forecast_daily.0.icon_descriptor == 'light_rain' or forecast_daily.0.icon_descriptor == 'shower' or forecast_daily.0.icon_descriptor == 'rain' or forecast_daily.0.icon_descriptor == 'snow' or forecast_daily.0.icon_descriptor == 'windy' or forecast_daily.0.icon_descriptor == 'frost' %}
+                    {% elif forecast_hourly.0.icon_descriptor == 'heavy_shower' or forecast_hourly.0.icon_descriptor == 'light_shower' or forecast_hourly.0.icon_descriptor == 'fog' or forecast_hourly.0.icon_descriptor == 'light_rain' or forecast_hourly.0.icon_descriptor == 'shower' or forecast_hourly.0.icon_descriptor == 'rain' or forecast_hourly.0.icon_descriptor == 'snow' or forecast_hourly.0.icon_descriptor == 'windy' or forecast_hourly.0.icon_descriptor == 'frost' %}
                         <div class="highlight-header" style="background-color:#56a0ee"></div>
-                    {% elif forecast_daily.0.icon_descriptor == 'hazy' or forecast_daily.0.icon_descriptor == 'dusty' %}
+                    {% elif forecast_hourly.0.icon_descriptor == 'hazy' or forecast_hourly.0.icon_descriptor == 'dusty' %}
                         <div class="highlight-header" style="background-color:#cd9e73"></div>
-                    {% elif forecast_daily.0.icon_descriptor == 'sunny' or forecast_daily.0.icon_descriptor == 'clear' %}
+                    {% elif forecast_hourly.0.icon_descriptor == 'sunny' or forecast_hourly.0.icon_descriptor == 'clear' %}
                         <div class="highlight-header" style="background-color:#ffa500"></div>
                     {% else %}
                         <div class="highlight-header" style="background-color:#ff0000"></div>
                     {% endif %}
-                    {% with icon_path_hb='//images//weatherIcons//static//'|add:forecast_daily.0.icon_descriptor|add:'.svg' %}
+                    {% with icon_path_hb='//images//weatherIcons//static//'|add:forecast_hourly.0.icon_descriptor|add:'.svg' %}
                       <img src="{% static icon_path_hb %}" alt="weather icon">
                     {% endwith %}
                   </div>
@@ -327,18 +327,18 @@
               <a href="/search/4000"><div class="location card-location">
                 <div class="temp-symbol">
                   <span class="temperature">{{ forecast_hourly.0.temp }}°C</span>
-                  {% if forecast_hourly.0.icon_descriptor == 'partly_cloudy' or forecast_hourly.0.icon_descriptor == 'mostly_sunny' or forecast_hourly.0.icon_descriptor == 'cloudy' %}
+                  {% if forecast_daily.0.icon_descriptor == 'partly_cloudy' or forecast_daily.0.icon_descriptor == 'mostly_sunny' or forecast_daily.0.icon_descriptor == 'cloudy' %}
                       <div class="highlight-header" style="background-color:#fff"></div>
-                  {% elif forecast_hourly.0.icon_descriptor == 'heavy_shower' or forecast_hourly.0.icon_descriptor == 'light_shower' or forecast_hourly.0.icon_descriptor == 'fog' or forecast_hourly.0.icon_descriptor == 'light_rain' or forecast_hourly.0.icon_descriptor == 'shower' or forecast_hourly.0.icon_descriptor == 'rain' or forecast_hourly.0.icon_descriptor == 'snow' or forecast_hourly.0.icon_descriptor == 'windy' or forecast_hourly.0.icon_descriptor == 'frost' %}
+                  {% elif forecast_daily.0.icon_descriptor == 'heavy_shower' or forecast_daily.0.icon_descriptor == 'light_shower' or forecast_daily.0.icon_descriptor == 'fog' or forecast_daily.0.icon_descriptor == 'light_rain' or forecast_daily.0.icon_descriptor == 'shower' or forecast_daily.0.icon_descriptor == 'rain' or forecast_daily.0.icon_descriptor == 'snow' or forecast_daily.0.icon_descriptor == 'windy' or forecast_daily.0.icon_descriptor == 'frost' %}
                       <div class="highlight-header" style="background-color:#56a0ee"></div>
-                  {% elif forecast_hourly.0.icon_descriptor == 'hazy' or forecast_hourly.0.icon_descriptor == 'dusty' %}
+                  {% elif forecast_daily.0.icon_descriptor == 'hazy' or forecast_daily.0.icon_descriptor == 'dusty' %}
                       <div class="highlight-header" style="background-color:#cd9e73"></div>
-                  {% elif forecast_hourly.0.icon_descriptor == 'sunny' or forecast_hourly.0.icon_descriptor == 'clear' %}
+                  {% elif forecast_daily.0.icon_descriptor == 'sunny' or forecast_daily.0.icon_descriptor == 'clear' %}
                       <div class="highlight-header" style="background-color:#ffa500"></div>
                   {% else %}
                       <div class="highlight-header" style="background-color:#ff0000"></div>
                   {% endif %}
-                  {% with icon_path='//images//weatherIcons//static//'|add:forecast_hourly.0.icon_descriptor|add:'.svg' %}
+                  {% with icon_path='//images//weatherIcons//static//'|add:forecast_daily.0.icon_descriptor|add:'.svg' %}
                     <img src="{% static icon_path %}" alt="weather icon">
                   {% endwith %}
                 </div>
