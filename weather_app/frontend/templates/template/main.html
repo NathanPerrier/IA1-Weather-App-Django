@@ -31,8 +31,13 @@
 
     {% block header %}{% endblock %}
   </head>
-  <body style="background-color:#000000" id="background">
-
+  <body style="background-color:#000000;{% if warning %}padding-top: 45px;{% endif %}" id="background">
+    {% if warning %}
+        <div id="alert-ribbon" class="bg-danger fixed-top mb-0 ps-5 pt-2 pb-2 text-center">
+            <h3 id="warning-title" class="text-white font-netflix-bold mb-1">{{ warning.0.title }} | </h3>
+            <p id="warning-description" class="text-white mb-0">{{ warning.0.description }}</p>
+        </div>
+    {% endif %}
     <div id="spinner"
         class="show position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center" style="background-color:#000">
         <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem; background-color:var(--primary)" role="status">

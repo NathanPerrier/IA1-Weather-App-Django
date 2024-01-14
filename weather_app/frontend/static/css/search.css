@@ -15,7 +15,6 @@
 }
 
 .search-button {
-    background-color: var(--primary);
     border: none;
     margin-left: -45px; /* Adjust this value to disconnect the button from the input */
     width: 40px; /* Adjust as needed */
@@ -27,6 +26,7 @@
 }
 
 .search-button:hover {
+    opacity: 0.8;
     background-color: var(--secondary);
 }
 

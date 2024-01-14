@@ -5,6 +5,7 @@ from django.http import StreamingHttpResponse, JsonResponse
 from django.conf import settings
 from .chatbot.bot.data import BotData
 from django.core.cache import cache
+from decouple import config
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import logout
@@ -12,6 +13,7 @@ from django.contrib.auth import logout
 from .main import *
 from ..models import CustomUser, CustomUserManager
 from .auth.views import *
+from .weather.main import RetrieveWeather
 
 
 def login_view(request):
@@ -44,6 +46,17 @@ def stream_video(request, video_path):
     response = StreamingHttpResponse(play_video(video_path))
     response['Content-Type'] = 'video/mp4'
     return response
+
+def search_location(request, location):
+    print('search_location: ',location.replace(' ', '+'))
+    location = location.replace(' ', '+')
+    model = RetrieveWeather(location)
+    location = model.request.location()
+    print('location:', location)
+    locationDict = {'city': location['name'], 'timezone': location['timezone'], 'country': location['timezone'].split('/')[0], 'lat': location['latitude'], 'lon': location['longitude']}
+    if location is not None:
+        return render(request, 'landing.html', {'is_authenticated': request.user.is_authenticated, 'location': locationDict, 'image': GenerateLocationImage(city=location['name'], region=location['state'], country=location['timezone'].split('/')[0], lat=location['latitude'], lon=location['longitude']).get_image(), 'forecast_daily': model.Forecast(model.request).get_daily(), 'forecast_hourly': model.Forecast(model.request).get_hourly(), 'mapbox_access_token': config('MAPBOX_ACCESS_TOKEN'), 'tomorrowio_api_key': config("TOMORROWIO_API_KEY"), 'hervey_bay': (lambda model: model.Forecast(model.request).get_hourly())(RetrieveWeather('4655')), 'perth': (lambda model: model.Forecast(model.request).get_hourly())(RetrieveWeather('6000')), 'sydney': (lambda model: model.Forecast(model.request).get_hourly())(RetrieveWeather('2000')), 'gold_coast': (lambda model: model.Forecast(model.request).get_hourly())(RetrieveWeather('4217')), 'melbourne': (lambda model: model.Forecast(model.request).get_hourly())(RetrieveWeather('3000')), 'warning': model.Warnings(model.request).get_warnings()})
+    return search(request, error='Invalid Location')
 
 @require_POST
 def get_user_location(request):

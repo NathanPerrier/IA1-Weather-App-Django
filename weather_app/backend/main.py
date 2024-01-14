@@ -21,7 +21,7 @@ def index(request):
     location = GetLocation().get_location()
     model = RetrieveWeather(location.zip)
     # GetImagesFromLocation().downloadimages()  #! fix
-    return render(request, 'landing.html', {'is_authenticated': request.user.is_authenticated, 'location': location, 'image': GenerateLocationImage(location).get_image(), 'forecast_daily': model.Forecast(model.request).get_daily(), 'forecast_hourly': model.Forecast(model.request).get_hourly(), 'mapbox_access_token': config('MAPBOX_ACCESS_TOKEN'), 'tomorrowio_api_key': config("TOMORROWIO_API_KEY")})  #* removed 'icon': GetWeatherIcon().get_weather_icon(), 'weather_desc': GetWeatherDescription(GetLocation().get_location()).get_weather_description()
+    return render(request, 'landing.html', {'is_authenticated': request.user.is_authenticated, 'location': location, 'image': GenerateLocationImage(location=location).get_image(), 'forecast_daily': model.Forecast(model.request).get_daily(), 'forecast_hourly': model.Forecast(model.request).get_hourly(), 'mapbox_access_token': config('MAPBOX_ACCESS_TOKEN'), 'tomorrowio_api_key': config("TOMORROWIO_API_KEY"), 'hervey_bay': (lambda model: model.Forecast(model.request).get_hourly())(RetrieveWeather('4655')), 'perth': (lambda model: model.Forecast(model.request).get_hourly())(RetrieveWeather('6000')), 'sydney': (lambda model: model.Forecast(model.request).get_hourly())(RetrieveWeather('2000')), 'gold_coast': (lambda model: model.Forecast(model.request).get_hourly())(RetrieveWeather('4217')), 'melbourne': (lambda model: model.Forecast(model.request).get_hourly())(RetrieveWeather('3000')), 'warning': model.Warnings(model.request).get_warnings()})  #* removed 'icon': GetWeatherIcon().get_weather_icon(), 'weather_desc': GetWeatherDescription(GetLocation().get_location()).get_weather_description()
 
 def radar(request):
     return render(request, 'radar.html', {'tomorrowio_api_key': config("TOMORROWIO_API_KEY"), 'location': GetLocation().get_location(), 'is_authenticated': request.user.is_authenticated, 'mapbox_access_token': config('MAPBOX_ACCESS_TOKEN')}) #'google_maps_api_key': config("GOOGLE_MAPS_API_KEY")
@@ -29,8 +29,8 @@ def radar(request):
 def routes(request):
     return render(request, 'routes.html', {'tomorrowio_api_key': config("TOMORROWIO_API_KEY"), 'location': GetLocation().get_location(), 'is_authenticated': request.user.is_authenticated, 'mapbox_access_token': config('MAPBOX_ACCESS_TOKEN')})
 
-def search(request):
-    return render(request, 'search.html', {'tomorrowio_api_key': config("TOMORROWIO_API_KEY"), 'location': GetLocation().get_location(), 'is_authenticated': request.user.is_authenticated})
+def search(request, error=''):
+    return render(request, 'search.html', {'tomorrowio_api_key': config("TOMORROWIO_API_KEY"), 'location': GetLocation().get_location(), 'is_authenticated': request.user.is_authenticated, 'error': error})
 
 def saved(request):
     if request.user.is_authenticated:

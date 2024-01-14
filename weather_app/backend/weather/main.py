@@ -149,3 +149,4 @@ class RetrieveWeather():
             return super().get_place_timezone()
         
     
+    

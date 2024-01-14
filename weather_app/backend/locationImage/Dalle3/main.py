@@ -4,13 +4,27 @@ from ..visionAI import VisionAIModel
 from django.core.files.base import ContentFile
 
 class GenerateLocationImage:
-    def __init__(self, location):
+    def __init__(self, location=None, city=None, region=None, country=None, lat=None, lon=None):
         self.location = location
-
+        if location:
+            self.city = city
+            self.region = region
+            self.country = country
+            self.lat = lat
+            self.lon = lon
+        else:
+            self.city = city
+            self.region = region
+            self.country = country
+            self.lat = lat
+            self.lon = lon
+            
+        self.prompt = f'{self.city}, {self.region}, {self.country}' 
+    
     def generate(self):
         response = client.images.generate(
             model=MODEL,
-            prompt=f'{self.location.city}, {self.location.region}, {self.location.zip}, {self.location.country}',
+            prompt=self.prompt,
             size="1024x1024",
             style="natural", #natural or vivid
             quality="hd", #standard
@@ -21,9 +35,9 @@ class GenerateLocationImage:
         # return self.save_image('https://oaidalleapiprodscus.blob.core.windows.net/private/org-mZwyRow8Epk0kqfzKFmqI3Ki/user-vMp0uddvjlLDJLZMfzXQztu8/img-c6BypJmDSpMhHSpmVsB3bYUB.png?st=2024-01-14T05%3A46%3A12Z&se=2024-01-14T07%3A46%3A12Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2024-01-14T02%3A42%3A46Z&ske=2024-01-15T02%3A42%3A46Z&sks=b&skv=2021-08-06&sig=WedVWJskG6fx3FYz2cCeu74qfkkbwjq7IipKLZe5fEA%3D')
     
     def get_image(self):
-        # LocationImagesModel.objects.filter(city=self.location.city).delete()
-        if LocationImagesModel.objects.filter(city=self.location.city).exists():
-            return LocationImagesModel.objects.get(city=self.location.city)
+        # LocationImagesModel.objects.filter(city=self.city).delete()
+        if LocationImagesModel.objects.filter(city=self.city).exists():
+            return LocationImagesModel.objects.get(city=self.city)
         return self.generate()
         
 
@@ -39,11 +53,10 @@ class GenerateLocationImage:
     
     def add_image_to_db(self, response, file_name):
         self.location_image = LocationImagesModel(
-            country=self.location.country,
-            city=self.location.city,
-            zip=self.location.zip,
-            lat=self.location.lat,
-            lon=self.location.lon,
+            country=self.country,
+            city=self.city,
+            lat=self.lat,
+            lon=self.lon,
             is_safe=True
         )
         self.location_image.image_url.save(file_name, ContentFile(response.content), save=True)

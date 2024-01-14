@@ -16,7 +16,6 @@ class GetLocationImage:
                     self.location_image = LocationImagesModel.objects.create(
                         country=self.location.country,
                         city=self.location.city,
-                        zip=self.location.zip,
                         lat=self.location.lat,
                         lon=self.location.lon,
                         image_url=image,

@@ -46,8 +46,8 @@
                     {% else %}
                         <div class="highlight-header" style="background-color:#ff0000"></div>
                     {% endif %}
-                    {% with icon_path='//images//weatherIcons//static//'|add:forecast_daily.0.icon_descriptor|add:'.svg' %}
-                      <img src="{% static icon_path %}" alt="weather icon">
+                    {% with icon_path_hb='//images//weatherIcons//static//'|add:forecast_daily.0.icon_descriptor|add:'.svg' %}
+                      <img src="{% static icon_path_hb %}" alt="weather icon">
                     {% endwith %}
                   </div>
                 </div>
@@ -145,8 +145,7 @@
                             <div class="highlight" style="background-color:#ff0000"></div>
                         {% endif %}
                         {% with icon_path='//images//weatherIcons//static//'|add:day.icon_descriptor|add:'.svg' %}
-                          
-                            <img src="{% static icon_path %}" alt="Weather Icon">
+                          <img src="{% static icon_path %}" alt="Weather Icon">
                         {% endwith %}
                       </div>
                       <div class="description mt-0">{{ day.short_text }}</div>
@@ -178,43 +177,177 @@
     <!--<div class="carousel-item {% if forloop.first %}active{% endif %} d-flex">
       <section class='d-flex'>-->
 
-    <div class="mt-2 location-container">
+    <div class="m-0 mt-2 p-0 location-container" style="text-align: left;">
       <div class="left">
         <div class="location-header" style="text-align: left;">
-          <p class="mt-1 mb-1 p-0 text-white font-netflix-bold text" style="text-align: left;"> 
+          <!--<p class="mt-1 mb-1 p-0 text-white font-netflix-bold text" style="text-align: left;"> 
               <b>{{ location.city }} Radar</b> 
-          </p>
+          </p>-->
         </div>
-        <div class="radar p-2 pt-0 pr-0">
+        <div class="radar" style="padding-left:0;padding-right:.8rem">
           <div id="map"></div>
         </div>
       </div>
-      <div class="right p-2">
-        <div class="locations">
-          <div class="left">
+      <div class="pt-0 pb-0 right">
+        <!--<p class="mt-1 mb-0 p-0 text-white font-netflix-bold" style="text-align: left;"> 
+          <b>Top Locations</b>
+        </p>-->
+        <div class="locations pt-0 mt-0">
+          <div class="left pt-0">
             <div class="top">
-              <a href=""><div class="location">
-                <div class="overlay-black"></div>
-                Brisbane
+              <a href="/search/4655"><div class="location card-location">  <!-- LINK!! -->
+                  <div class="temp-symbol">
+                    <span class="temperature">{{ hervey_bay.0.temp }}°C</span>
+                    {% if hervey_bay.0.icon_descriptor == 'partly_cloudy' or hervey_bay.0.icon_descriptor == 'mostly_sunny' or hervey_bay.0.icon_descriptor == 'cloudy' %}
+                        <div class="highlight-header" style="background-color:#fff"></div>
+                    {% elif hervey_bay.0.icon_descriptor == 'heavy_shower' or hervey_bay.0.icon_descriptor == 'light_shower' or hervey_bay.0.icon_descriptor == 'fog' or hervey_bay.0.icon_descriptor == 'light_rain' or hervey_bay.0.icon_descriptor == 'shower' or hervey_bay.0.icon_descriptor == 'rain' or hervey_bay.0.icon_descriptor == 'snow' or hervey_bay.0.icon_descriptor == 'windy' or hervey_bay.0.icon_descriptor == 'frost' %}
+                        <div class="highlight-header" style="background-color:#56a0ee"></div>
+                    {% elif hervey_bay.0.icon_descriptor == 'hazy' or hervey_bay.0.icon_descriptor == 'dusty' %}
+                        <div class="highlight-header" style="background-color:#cd9e73"></div>
+                    {% elif hervey_bay.0.icon_descriptor == 'sunny' or hervey_bay.0.icon_descriptor == 'clear' %}
+                        <div class="highlight-header" style="background-color:#ffa500"></div>
+                    {% else %}
+                        <div class="highlight-header" style="background-color:#ff0000"></div>
+                    {% endif %}
+                    {% with icon_path='//images//weatherIcons//static//'|add:hervey_bay.0.icon_descriptor|add:'.svg' %}
+                      <img src="{% static icon_path %}" alt="weather icon">
+                    {% endwith %}
+                  </div>
+                  <div class="location-description">
+                    <span class="location-name">Hervey Bay</span>
+                    <span class="weather-description descriptor">{{ hervey_bay.0.icon_descriptor }}</span>
+                  </div>     
               </div></a>
             </div>
             <div class="bottom">
-              <div class="left">
-                <a href=""><div class="location">
-                  Hervey Bay
-                </div></a>
-              </div>
-              <div class="right">
-                <a href=""><div class="location">
-                  Perth
-                </div></a>
-              </div>
+              <a href="/search/6000"><div class="location card-location">
+                <div class="temp-symbol">
+                  <span class="temperature">{{ perth.0.temp }}°C</span>
+                    {% if perth.0.icon_descriptor == 'partly_cloudy' or perth.0.icon_descriptor == 'mostly_sunny' or perth.0.icon_descriptor == 'cloudy' %}
+                        <div class="highlight-header" style="background-color:#fff"></div>
+                    {% elif perth.0.icon_descriptor == 'heavy_shower' or perth.0.icon_descriptor == 'light_shower' or perth.0.icon_descriptor == 'fog' or perth.0.icon_descriptor == 'light_rain' or perth.0.icon_descriptor == 'shower' or perth.0.icon_descriptor == 'rain' or perth.0.icon_descriptor == 'snow' or perth.0.icon_descriptor == 'windy' or perth.0.icon_descriptor == 'frost' %}
+                        <div class="highlight-header" style="background-color:#56a0ee"></div>
+                    {% elif perth.0.icon_descriptor == 'hazy' or perth.0.icon_descriptor == 'dusty' %}
+                        <div class="highlight-header" style="background-color:#cd9e73"></div>
+                    {% elif perth.0.icon_descriptor == 'sunny' or perth.0.icon_descriptor == 'clear' %}
+                        <div class="highlight-header" style="background-color:#ffa500"></div>
+                    {% else %}
+                        <div class="highlight-header" style="background-color:#ff0000"></div>
+                    {% endif %}
+                    {% with icon_path='//images//weatherIcons//static//'|add:perth.0.icon_descriptor|add:'.svg' %}
+                      <img src="{% static icon_path %}" alt="weather icon">
+                    {% endwith %}
+                  </div>
+                  <div class="location-description">
+                    <span class="location-name">Perth</span>
+                    <span class="weather-description descriptor">{{ perth.0.icon_descriptor }}</span>
+                  </div>     
+              </div></a>
+            </div>
+          </div>
+          <div class="middle">
+            <div class="top">
+              <a href="/search/3000"><div class="location card-location">
+                <div class="temp-symbol">
+                  <span class="temperature">{{ melbourne.0.temp }}°C</span>
+                  {% if melbourne.0.icon_descriptor == 'partly_cloudy' or melbourne.0.icon_descriptor == 'mostly_sunny' or melbourne.0.icon_descriptor == 'cloudy' %}
+                      <div class="highlight-header" style="background-color:#fff"></div>
+                  {% elif melbourne.0.icon_descriptor == 'heavy_shower' or melbourne.0.icon_descriptor == 'light_shower' or melbourne.0.icon_descriptor == 'fog' or melbourne.0.icon_descriptor == 'light_rain' or melbourne.0.icon_descriptor == 'shower' or melbourne.0.icon_descriptor == 'rain' or melbourne.0.icon_descriptor == 'snow' or melbourne.0.icon_descriptor == 'windy' or melbourne.0.icon_descriptor == 'frost' %}
+                      <div class="highlight-header" style="background-color:#56a0ee"></div>
+                  {% elif melbourne.0.icon_descriptor == 'hazy' or melbourne.0.icon_descriptor == 'dusty' %}
+                      <div class="highlight-header" style="background-color:#cd9e73"></div>
+                  {% elif melbourne.0.icon_descriptor == 'sunny' or melbourne.0.icon_descriptor == 'clear' %}
+                      <div class="highlight-header" style="background-color:#ffa500"></div>
+                  {% else %}
+                      <div class="highlight-header" style="background-color:#ff0000"></div>
+                  {% endif %}
+                  {% with icon_path='//images//weatherIcons//static//'|add:melbourne.0.icon_descriptor|add:'.svg' %}
+                    <img src="{% static icon_path %}" alt="weather icon">
+                  {% endwith %}
+                </div>
+                <div class="location-description">
+                  <span class="location-name">Melbourne</span>
+                  <span class="weather-description descriptor">{{ melbourne.0.icon_descriptor }}</span>
+                </div> 
+              </div></a>
+            </div>
+            <div class="bottom">
+              <a href="/search/4217"><div class="location card-location">
+                <div class="temp-symbol">
+                  <span class="temperature">{{ gold_coast.0.temp }}°C</span>
+                  {% if gold_coast.0.icon_descriptor == 'partly_cloudy' or gold_coast.0.icon_descriptor == 'mostly_sunny' or gold_coast.0.icon_descriptor == 'cloudy' %}
+                      <div class="highlight-header" style="background-color:#fff"></div>
+                  {% elif gold_coast.0.icon_descriptor == 'heavy_shower' or gold_coast.0.icon_descriptor == 'light_shower' or gold_coast.0.icon_descriptor == 'fog' or gold_coast.0.icon_descriptor == 'light_rain' or gold_coast.0.icon_descriptor == 'shower' or gold_coast.0.icon_descriptor == 'rain' or gold_coast.0.icon_descriptor == 'snow' or gold_coast.0.icon_descriptor == 'windy' or gold_coast.0.icon_descriptor == 'frost' %}
+                      <div class="highlight-header" style="background-color:#56a0ee"></div>
+                  {% elif gold_coast.0.icon_descriptor == 'hazy' or gold_coast.0.icon_descriptor == 'dusty' %}
+                      <div class="highlight-header" style="background-color:#cd9e73"></div>
+                  {% elif gold_coast.0.icon_descriptor == 'sunny' or gold_coast.0.icon_descriptor == 'clear' %}
+                      <div class="highlight-header" style="background-color:#ffa500"></div>
+                  {% else %}
+                      <div class="highlight-header" style="background-color:#ff0000"></div>
+                  {% endif %}
+                  {% with icon_path='//images//weatherIcons//static//'|add:gold_coast.0.icon_descriptor|add:'.svg' %}
+                    <img src="{% static icon_path %}" alt="weather icon">
+                  {% endwith %}
+                </div>
+                <div class="location-description">
+                  <span class="location-name">Gold Coast</span>
+                  <span class="weather-description descriptor">{{ gold_coast.0.icon_descriptor }}</span>
+                </div> 
+              </div></a>
             </div>
           </div>
           <div class="right">
-            <a href=""><div class="location">
-              Sydney
-            </div></a>
+            <div class="top">
+              <a href="/search/2000"><div class="location card-location">
+                <div class="temp-symbol">
+                  <span class="temperature">{{ sydney.0.temp }}°C</span>
+                  {% if sydney.0.icon_descriptor == 'partly_cloudy' or sydney.0.icon_descriptor == 'mostly_sunny' or sydney.0.icon_descriptor == 'cloudy' %}
+                      <div class="highlight-header" style="background-color:#fff"></div>
+                  {% elif sydney.0.icon_descriptor == 'heavy_shower' or sydney.0.icon_descriptor == 'light_shower' or sydney.0.icon_descriptor == 'fog' or sydney.0.icon_descriptor == 'light_rain' or sydney.0.icon_descriptor == 'shower' or sydney.0.icon_descriptor == 'rain' or sydney.0.icon_descriptor == 'snow' or sydney.0.icon_descriptor == 'windy' or sydney.0.icon_descriptor == 'frost' %}
+                      <div class="highlight-header" style="background-color:#56a0ee"></div>
+                  {% elif sydney.0.icon_descriptor == 'hazy' or sydney.0.icon_descriptor == 'dusty' %}
+                      <div class="highlight-header" style="background-color:#cd9e73"></div>
+                  {% elif sydney.0.icon_descriptor == 'sunny' or sydney.0.icon_descriptor == 'clear' %}
+                      <div class="highlight-header" style="background-color:#ffa500"></div>
+                  {% else %}
+                      <div class="highlight-header" style="background-color:#ff0000"></div>
+                  {% endif %}
+                  {% with icon_path='//images//weatherIcons//static//'|add:sydney.0.icon_descriptor|add:'.svg' %}
+                    <img src="{% static icon_path %}" alt="weather icon">
+                  {% endwith %}
+                </div>
+                <div class="location-description">
+                  <span class="location-name">Sydney</span>
+                  <span class="weather-description descriptor">{{ sydney.0.icon_descriptor }}</span>
+                </div> 
+              </div></a>
+            </div>
+            <div class="bottom">
+              <a href="/search/4000"><div class="location card-location">
+                <div class="temp-symbol">
+                  <span class="temperature">{{ forecast_hourly.0.temp }}°C</span>
+                  {% if forecast_hourly.0.icon_descriptor == 'partly_cloudy' or forecast_hourly.0.icon_descriptor == 'mostly_sunny' or forecast_hourly.0.icon_descriptor == 'cloudy' %}
+                      <div class="highlight-header" style="background-color:#fff"></div>
+                  {% elif forecast_hourly.0.icon_descriptor == 'heavy_shower' or forecast_hourly.0.icon_descriptor == 'light_shower' or forecast_hourly.0.icon_descriptor == 'fog' or forecast_hourly.0.icon_descriptor == 'light_rain' or forecast_hourly.0.icon_descriptor == 'shower' or forecast_hourly.0.icon_descriptor == 'rain' or forecast_hourly.0.icon_descriptor == 'snow' or forecast_hourly.0.icon_descriptor == 'windy' or forecast_hourly.0.icon_descriptor == 'frost' %}
+                      <div class="highlight-header" style="background-color:#56a0ee"></div>
+                  {% elif forecast_hourly.0.icon_descriptor == 'hazy' or forecast_hourly.0.icon_descriptor == 'dusty' %}
+                      <div class="highlight-header" style="background-color:#cd9e73"></div>
+                  {% elif forecast_hourly.0.icon_descriptor == 'sunny' or forecast_hourly.0.icon_descriptor == 'clear' %}
+                      <div class="highlight-header" style="background-color:#ffa500"></div>
+                  {% else %}
+                      <div class="highlight-header" style="background-color:#ff0000"></div>
+                  {% endif %}
+                  {% with icon_path='//images//weatherIcons//static//'|add:forecast_hourly.0.icon_descriptor|add:'.svg' %}
+                    <img src="{% static icon_path %}" alt="weather icon">
+                  {% endwith %}
+                </div>
+                <div class="location-description">
+                  <span class="location-name">Brisbane</span>
+                  <span class="weather-description">{{ forecast_daily.0.short_text }}</span>
+                </div> 
+              </div></a>
+            </div>
           </div>
         </div>
       </div>
@@ -241,6 +374,13 @@
           }, 1600);
       } else {
         document.getElementById('welcome-screen').style.display = 'none';
+      }
+    };
+
+    window.onload = function() {
+      var weatherDescriptions = document.getElementsByClassName('descriptor');
+      for (var i = 0; i < weatherDescriptions.length; i++) {
+          weatherDescriptions[i].textContent = weatherDescriptions[i].textContent.replace(/_/g, ' ');
       }
     };
   
@@ -305,7 +445,7 @@
     // initialize the map
     var map = (window.map = new mapboxgl.Map({
       container: 'map',
-      zoom: 7,
+      zoom: 10,
       center: [latitude, longitude],
       style: 'mapbox://styles/nathan-perrier23/clr7wfpx6000101ood22cfm8u', //* 'mapbox://styles/nathan-perrier23/clqthibtm00ci01pp38f03g3w',   ------ LEGACY ------
       antialias: true
