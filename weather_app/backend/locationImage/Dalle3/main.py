@@ -21,7 +21,7 @@ class GenerateLocationImage:
         # return self.save_image('https://oaidalleapiprodscus.blob.core.windows.net/private/org-mZwyRow8Epk0kqfzKFmqI3Ki/user-vMp0uddvjlLDJLZMfzXQztu8/img-c6BypJmDSpMhHSpmVsB3bYUB.png?st=2024-01-14T05%3A46%3A12Z&se=2024-01-14T07%3A46%3A12Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2024-01-14T02%3A42%3A46Z&ske=2024-01-15T02%3A42%3A46Z&sks=b&skv=2021-08-06&sig=WedVWJskG6fx3FYz2cCeu74qfkkbwjq7IipKLZe5fEA%3D')
     
     def get_image(self):
-        LocationImagesModel.objects.filter(city=self.location.city).delete()
+        # LocationImagesModel.objects.filter(city=self.location.city).delete()
         if LocationImagesModel.objects.filter(city=self.location.city).exists():
             return LocationImagesModel.objects.get(city=self.location.city)
         return self.generate()

@@ -34,6 +34,7 @@ urlpatterns = [
     path("radar", main.radar, name="radar"),
     path("routes", main.routes, name="routes"),
     path("search", main.search, name="search"),
+    path("saved", main.saved, name="saved"),
     
     path('login', views.login_view, name='login'),
     

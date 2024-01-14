@@ -3,16 +3,8 @@
 {% load date_extras %}
 {% block header %}
   <link rel="stylesheet" href="{% static '//css//landing.css' %}">
-  <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
 {% endblock %}
 {% block content %}
-  <div id="welcome-screen" class="wow fadeOut" data-wow-delay="1.4s" style="position: fixed; width: 100%; height: 100%; top: 0; left: 0; background: #000; display: none; align-items: center; justify-content: center; z-index: 9999;">
-    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
-      <h1 class="text-white header-text pt-0 ml-0 mt-0 wow fadeInLeftBig" style="overflow-x:hidden;font-family: Tungsten;font-size: 7rem;letter-spacing: -0.375rem; font-weight: 700;word-wrap: break-word; padding:0; margin-top: 0;">Rain<span style="color:var(--secondary)">Check</span></h1>
-      <h2 class="pb-0 wow fadeInRightBig" style="color: #B9BBB9; font-size: 1.25rem; font-family: Netflix Sans; font-weight: 500; letter-spacing: 0.5rem; word-wrap: break-word; margin-bottom: 0;">POWERED BY AMBROSE TREACY COLLEGE</h2>
-    </div>
-  </div>
-
   <div class="" style="position: absolute">
   <!-- video -->
     <div class="hero-background pt-0 mt-0">
@@ -28,8 +20,8 @@
               </div>
             </div> 
             <div class="location-header">
-              <h2 class="pt-5 mb-0 pb-0 font-netflix-medium wow fadeIn country-text" data-wow-delay="2s">{{ location.country|upper }}</h2>
-              <h1 class="text-white header-text pt-0 ml-0 mt-0 wow slideInLeft font-tungston-bold">{{ location.city|upper }}</h1>
+              <h2 class="pt-5 mb-0 pb-0 font-netflix-medium wow fadeIn country-text" data-wow-delay="2s">NATHAN PERRIER</h2>
+              <h1 class="text-white header-text pt-0 ml-0 mt-0 wow slideInLeft font-tungston-bold">SAVED LOCATIONS</h1>
             </div>
             <div class="header-weather">
               <div class="current-weather">
@@ -174,158 +166,6 @@
       </div>
     </div>
     <!-- sliders-end -->
+    <script src="{% static '//js//landing.js' %}"></script>
+{% endblock %}
 
-    <!--<div class="carousel-item {% if forloop.first %}active{% endif %} d-flex">
-      <section class='d-flex'>-->
-
-    <div class="mt-2 location-container">
-      <div class="left">
-        <div class="location-header" style="text-align: left;">
-          <p class="mt-1 mb-1 p-0 text-white font-netflix-bold text" style="text-align: left;"> 
-              <b>{{ location.city }} Radar</b> 
-          </p>
-        </div>
-        <div class="radar p-2 pt-0 pr-0">
-          <div id="map"></div>
-        </div>
-      </div>
-      <div class="right p-2">
-        <div class="locations">
-          <div class="left">
-            <div class="top">
-              <a href=""><div class="location">
-                <div class="overlay-black"></div>
-                Brisbane
-              </div></a>
-            </div>
-            <div class="bottom">
-              <div class="left">
-                <a href=""><div class="location">
-                  Hervey Bay
-                </div></a>
-              </div>
-              <div class="right">
-                <a href=""><div class="location">
-                  Perth
-                </div></a>
-              </div>
-            </div>
-          </div>
-          <div class="right">
-            <a href=""><div class="location">
-              Sydney
-            </div></a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  {% include 'chatbot/chat.html' %}
-
-  <script src="{% static '//js//landing.js' %}"></script>
-  <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
-  <script>    
-    window.onload = function () {
-      // Check if the cookie indicating the welcome screen has been shown exists
-      if (document.cookie.indexOf('welcomeScreenShown=true') === -1) {
-          document.getElementById('welcome-screen').style.display = 'flex';
-          // If not, execute the code
-          setTimeout(function () {
-              document.getElementById('welcome-screen').style.display = 'none';
-  
-              var date = new Date();
-              date.setDate(date.getDate() + 1); // Set the date to one day in the future
-              document.cookie = 'welcomeScreenShown=true; expires=' + date.toUTCString() + '; path=/';
-          }, 1600);
-      } else {
-        document.getElementById('welcome-screen').style.display = 'none';
-      }
-    };
-  
-
-    function getGeoLocation() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            return {
-              latitude: position.coords.latitude,
-              longitude: position.coords.longitude
-            }
-        });
-      } else {
-        return {
-          latitude: 153.02207,
-          longitude: -27.46917
-        }
-      }
-    }
-
-    fetch('http://worldtimeapi.org/api/ip')
-    .then(response => response.json())
-    .then(data => {
-        const datetime = new Date(data.datetime);
-        document.getElementById('date').textContent = datetime.toLocaleDateString();
-        const timeOptions = { hour: '2-digit', minute: '2-digit' };
-        document.getElementById('time').textContent = datetime.toLocaleTimeString([], timeOptions);
-        document.getElementById('divider').removeClass('hide');
-        document.getElementById('timedate').removeClass('hide');
-        document.getElementById('timedate').addClass('wow');
-        document.getElementById('timedate').addClass('slideInLeft');
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
-  
-    mapboxgl.accessToken = "{{ mapbox_access_token }}";
-
-    const API_KEY = "{{ tomorrowio_api_key }}";
-
-    // pick the field (like temperature, precipitationIntensity or cloudCover)
-    const DATA_FIELD = 'precipitationIntensity';
-
-    // set the ISO timestamp (now for all fields, up to 6 hour out for precipitationIntensity)
-    const TIMESTAMP = (new Date()).toISOString();
-
-    var latitude = 153.02207;
-    var longitude = -27.46917;
-    if ('{{ location }}') {
-      latitude = '{{ location.lon }}';
-      longitude = '{{ location.lat }}';
-    } else {
-      if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-              latitude = position.coords.latitude;
-              longitude = position.coords.longitude;
-          });
-      }
-    }; 
-  
-
-    // initialize the map
-    var map = (window.map = new mapboxgl.Map({
-      container: 'map',
-      zoom: 7,
-      center: [latitude, longitude],
-      style: 'mapbox://styles/nathan-perrier23/clr7wfpx6000101ood22cfm8u', //* 'mapbox://styles/nathan-perrier23/clqthibtm00ci01pp38f03g3w',   ------ LEGACY ------
-      antialias: true
-    }));
-
-    // inject the tile layer
-    map.on('load', function() {
-      map.addSource('tomorrow-io-api', {
-          "type": 'raster',
-          "tiles": [`https://api.tomorrow.io/v4/map/tile/{z}/{x}/{y}/${DATA_FIELD}/${TIMESTAMP}.png?apikey=${API_KEY}`],
-          "tileSize": 256,
-          "attribution": '&copy; <a href="http://127.0.0.1:8000/atc/">Powered by Ambrose Treacy College</a>'
-      });
-      map.addLayer({
-          "id": "radar-tiles",
-          "type": "raster",
-          "source": "tomorrow-io-api",
-          "minzoom": 1,
-          "maxzoom": 12
-      });
-    });
-  </script>
-{% endblock %}  

@@ -328,6 +328,8 @@ i{
 .header-weather .current-weather .icon .icon-img img {
     width: auto;
     height: 100%;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -368,6 +370,11 @@ i{
     display: flex;
     overflow-y: hidden;
     text-align: center;
+}
+
+.header-weather .weather-data span {
+    width: 100%;
+    height: 100%;
 }
 
 
@@ -638,7 +645,110 @@ ul{
     width: 100%;
     height: 100%;
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     padding-top: 0;
 }
+
+.location-container .right .locations .left {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0;
+}
+
+.location-container .right .locations .left .top {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    margin-bottom: 5px;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0;
+}
+
+.location-container .right .locations .left .top .location {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background: url(../images/brisbane.jpg);
+    justify-content: center;
+    align-items: center;
+    border-radius: 2em;
+}
+
+.location-container .right .locations .left .bottom {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    margin-top: 5px;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 0;
+}
+
+.location-container .right .locations .left .bottom .left {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0;
+}
+
+.location-container .right .locations .left .bottom .left .location {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background: url(../images/hervey_bay.jpg);
+    justify-content: center;
+    align-items: center;
+    border-radius: 2em;
+}
+
+.location-container .right .locations .left .bottom .right {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    margin-left: 5px;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0;
+}
+
+.location-container .right .locations .left .bottom .right .location {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background: url(../images/perth.jpg);
+    justify-content: center;
+    align-items: center;
+    border-radius: 2em;
+}
+
+.location-container .right .locations .right {
+    width: 100%;
+    height: 50%;
+    margin-left: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0;
+}
+
+.location-container .right .locations .right .location {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background: url(../images/sydney.jpg);
+    justify-content: center;
+    align-items: center;
+    border-radius: 2em;
+}
+
