@@ -89,24 +89,27 @@ class WeatherApi:
         Location is returned as a 6 character precision geohash such as '1r143n'.
         (https://en.wikipedia.org/wiki/Geohash)
         """
-        self._location = None
-        self.geohash = None
+        try:
+            self._location = None
+            self.geohash = None
 
-        if search == '':
-            return []
+            if search == '':
+                return []
 
-        # The search API doesn't like the dash character.
-        search = search.replace('-', '+')
+            # The search API doesn't like the dash character.
+            search = search.replace('-', '+')
 
-        data = self._fetch_json(f'{self.API_BASE}/{self.SEARCH}{search}')
+            data = self._fetch_json(f'{self.API_BASE}/{self.SEARCH}{search}')
 
-        if len(data['data']) > select:
-            self._location = data['data'][select]
+            if len(data['data']) > select:
+                self._location = data['data'][select]
 
-            if 'geohash' in self._location:
-                self.geohash = self._location['geohash'][:6]
+                if 'geohash' in self._location:
+                    self.geohash = self._location['geohash'][:6]
 
-        return data['data']
+            return data['data']
+        except:
+            return None
 
 
     def api(self, api=None, type='locations'):
@@ -142,7 +145,10 @@ class WeatherApi:
         longitude   e.g. 144.95155334472656
         timezone    e.g. 'Australia/Melbourne'
         """
-        return self.api()
+        try:
+            return self.api()
+        except: 
+            return None
 
 
     def warnings(self):

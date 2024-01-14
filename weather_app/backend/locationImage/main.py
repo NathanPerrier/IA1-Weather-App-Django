@@ -14,11 +14,11 @@ class GetLocationImage:
             for image in images:
                 if VisionAIModel().is_image_safe(image):
                     self.location_image = LocationImagesModel.objects.create(
-                        country=self.location['country'],
-                        city=self.location['city'],
-                        zip=self.location['zip'],
-                        lat=self.location['lat'],
-                        lon=self.location['lon'],
+                        country=self.location.country,
+                        city=self.location.city,
+                        zip=self.location.zip,
+                        lat=self.location.lat,
+                        lon=self.location.lon,
                         image_url=image,
                         is_safe=True
                     )

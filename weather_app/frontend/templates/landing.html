@@ -28,26 +28,38 @@
               </div>
             </div> 
             <div class="location-header">
-              <h2 class="pt-5 mb-0 pb-0 font-netflix-medium wow fadeIn country-text" data-wow-delay="2s">{{ location.country|upper|default:"AUSTRALIA" }}</h2>
-              <h1 class="text-white header-text pt-0 ml-0 mt-0 wow slideInLeft font-tungston-bold">{{ location.city|upper|default:"BRISBANE" }}</h1>
+              <h2 class="pt-5 mb-0 pb-0 font-netflix-medium wow fadeIn country-text" data-wow-delay="2s">{{ location.country|upper }}</h2>
+              <h1 class="text-white header-text pt-0 ml-0 mt-0 wow slideInLeft font-tungston-bold">{{ location.city|upper }}</h1>
             </div>
-            <div class="current-weather">
-              <div class="icon d-flex">
-                <div class="icon-img">
-                  {% with icon_path='//images//weatherIcons//static//'|add:forecast_hourly.0.icon_descriptor|add:'.svg' %}
-                    <img src="{% static icon_path %}" alt="weather icon">
-                  {% endwith %}
+            <div class="header-weather">
+              <div class="current-weather">
+                <div class="icon">
+                  <div class="icon-img">  <!-- change to forecast_daily.0. ?? more accurate ?? -->
+                    {% if forecast_daily.0.icon_descriptor == 'partly_cloudy' or forecast_daily.0.icon_descriptor == 'mostly_sunny' or forecast_daily.0.icon_descriptor == 'cloudy' %}
+                        <div class="highlight-header" style="background-color:#fff"></div>
+                    {% elif forecast_daily.0.icon_descriptor == 'heavy_shower' or forecast_daily.0.icon_descriptor == 'light_shower' or forecast_daily.0.icon_descriptor == 'fog' or forecast_daily.0.icon_descriptor == 'light_rain' or forecast_daily.0.icon_descriptor == 'shower' or forecast_daily.0.icon_descriptor == 'rain' or forecast_daily.0.icon_descriptor == 'snow' or forecast_daily.0.icon_descriptor == 'windy' or forecast_daily.0.icon_descriptor == 'frost' %}
+                        <div class="highlight-header" style="background-color:#56a0ee"></div>
+                    {% elif forecast_daily.0.icon_descriptor == 'hazy' or forecast_daily.0.icon_descriptor == 'dusty' %}
+                        <div class="highlight-header" style="background-color:#cd9e73"></div>
+                    {% elif forecast_daily.0.icon_descriptor == 'sunny' or forecast_daily.0.icon_descriptor == 'clear' %}
+                        <div class="highlight-header" style="background-color:#ffa500"></div>
+                    {% else %}
+                        <div class="highlight-header" style="background-color:#ff0000"></div>
+                    {% endif %}
+                    {% with icon_path='//images//weatherIcons//static//'|add:forecast_daily.0.icon_descriptor|add:'.svg' %}
+                      <img src="{% static icon_path %}" alt="weather icon">
+                    {% endwith %}
+                  </div>
                 </div>
-                <span class="temp">{{ weather_desc }}</span>
-              </div>
-              <div class="text">
-                <div class="temp">
-                  <span>{{ forecast_hourly.0.temp }}°C</span> 
+                <div class="text">
+                  <div class="temp">
+                    <span>{{ forecast_hourly.0.temp }}°C</span> 
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="weather-data mt-2"> <!-- add .weather-data to css-->
-                <span>{{ forecast_daily.0.extended_text }}</span>
+              <div class="weather-data mt-2"> <!-- add .weather-data to css-->
+                <span class="p-3 pt-0">{{ forecast_daily.0.extended_text }}</span>
+              </div>
             </div>
           </section>         
         </div>
@@ -57,7 +69,7 @@
           <div class="left-2"></div>
           <div class="top"></div>
           <div class="bottom"></div>
-          <img src="{% static '//images//brisbane.jpg' %}" alt="">
+          <img src="{{ image.image_url.url }}" alt="">
           <!-- <video autoplay muted loop>
             <source src="{% url 'stream_video' video_path='video.mp4' %}" type="video/mp4">
               Your browser does not support the video tag.
@@ -71,7 +83,7 @@
     <div class="slider-box" >
       <div class="container-fluid mb-0 p-0 ps-0 slide1">
         <section class="d-flex justify-content-between margin-right margin-title">
-          <p class="mt-2 text-white font-netflix-bold"> <b>6 Day Forecast</b> </p>
+          <p class="mt-2 text-white font-netflix-bold"> <b>Forecast</b> </p>
           <div> <!-- why?? -->
             <button  type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active tab-change-btn" aria-current="true" aria-label="Slide 1"></button>
             <button class="tab-change-btn" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -179,7 +191,18 @@
       </div>
       <div class="right p-2">
         <div class="locations">
-        
+          <div class="left">
+            <div class="top"></div>
+            <div class="bottom">
+              <div class="left">
+              </div>
+              <div class="right">
+              </div>
+            </div>
+          </div>
+          <div class="right">
+            <div class="location"></div>
+          </div>
         </div>
       </div>
     </div>

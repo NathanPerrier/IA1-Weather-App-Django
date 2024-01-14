@@ -27,7 +27,9 @@ tenacity==8.2.3
 vertexai==0.0.1
 beautifulsoup4==4.12.2
 lxml==5.1.0
-google-cloud-aiplatform==1.39.0
+google-api-core
+google-cloud-aiplatform
 google_images_download==2.8.0
 httplib2==0.22.0
+Pillow==10.2.0
 urllib3==2.1.0

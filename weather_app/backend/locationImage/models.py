@@ -1,11 +1,11 @@
 from django.db import models
 
 class LocationImagesModel(models.Model):
-    country = models.CharField(max_length=200, black=False)
-    city = models.TextField(black=False)
+    country = models.CharField(max_length=200, blank=False)
+    city = models.TextField(blank=False)
     zip = models.TextField(blank=False)
     lat = models.FloatField()
     lon = models.FloatField()
-    image_url = models.TextField(black=False)
+    image_url = models.ImageField(upload_to='images/ai_images/')
     is_safe = models.BooleanField(default=False)
     

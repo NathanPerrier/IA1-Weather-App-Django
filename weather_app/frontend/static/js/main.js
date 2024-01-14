@@ -20,3 +20,19 @@ function position(id){
   console.log(id)
 }
 
+// Get all nav links
+var navLinks = document.querySelectorAll('#sidebar .navbar-item .nav-link');
+
+// Get current URL
+var currentUrl = window.location.href;
+
+navLinks.forEach(function(link) {
+    // Check if the nav link's href matches the current URL
+    if (link.href === currentUrl) {
+        // Add the 'active' class
+        link.classList.add('active');
+    } else {
+        // Remove the 'active' class
+        link.classList.remove('active');
+    }
+});

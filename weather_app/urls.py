@@ -53,7 +53,7 @@ urlpatterns = [
     
     path('stream_video/<str:video_path>/', stream_video, name='stream_video'),
     path('get_user_location/', get_user_location, name='get_user_location'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if not settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

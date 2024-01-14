@@ -10,6 +10,7 @@
     z-index: 1000;
     position: fixed;
     padding-left: 10px;
+    z-index: 10;
     width: 50px;
     min-height: 100vh; /* full height */
     background-color: var(--dark); /* Change as per your preference */
@@ -25,6 +26,11 @@
     flex-direction: column;
     width: 150%;
     gap: 1rem; /* space between icons */
+}
+
+#sidebar .navbar-nav .active {
+    text-decoration: underline;
+    text-decoration-color: var(--primary);
 }
 
 #sidebar .navbar-brand, #sidebar .nav-item {

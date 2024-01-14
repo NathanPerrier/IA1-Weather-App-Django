@@ -7,7 +7,7 @@ class VisionAIModel():
         
         self.source_image = Image.load_from_file(location=image)
         
-        vertexai.init(project=config('GOOGLE_PROJECT_ID'), location='us-central1 (Iowa)')
+        vertexai.init(project=config('GOOGLE_PROJECT_ID'), location='australia-southeast1')
         self.model = ImageTextModel.from_pretrained("imagetext@001")
     
     def get_image_description(self):
