@@ -35,7 +35,7 @@ The application's design is user-friendly and intuitive, making it easy for user
     `git clone https://github.com/nathan-perrier23/IA1-Weather-App-Django`
 
 3. Set up environment variables for configuration. These are stored in a `.env` file at the root of the        
-    project. You'll need to create this file and add the following parameters. REMEMBER to change the API values and to `create a Google project with VertexAI API enabled`:
+    project. You'll need to create this file and add the following parameters. REMEMBER to change the API values and to `create a Google project with VertexAI API enabled, also enable google places api`:
 
     ```properties
     CELERY_BROKER_URL = 'redis://:A45H2sg23hd2hdjhAG211hkyJKJ89@localhost:6379/0'
@@ -56,6 +56,8 @@ The application's design is user-friendly and intuitive, making it easy for user
     OPENWEATHERMAP_API_KEY = 'your-openweathermap-api-key'
 
     GOOGLE_PROJECT_ID = 'your-google-project-id'
+
+    GOOGLE_PLACES_API_KEY = 'your-google-places-api-key'
 
     DJANGO_SETTINGS_MODULE= weather_app.settings
     ```
@@ -111,7 +113,7 @@ The application's design is user-friendly and intuitive, making it easy for user
 3. create a virtual environment using `control + shift + p` then search "create environment". After you have created the venv then restart vs code. Make sure you pip install libraries to the environment using `pip install -r requirements.txt`.
 
 4. Set up environment variables for configuration. These are stored in a `.env` file at the root of the        
-    project. You'll need to create this file and add the following parameters. REMEMBER to change the API values and to `create a Google project with VertexAI API enabled`:
+    project. You'll need to create this file and add the following parameters. REMEMBER to change the API values and to `create a Google project with VertexAI API enabled and to also enable google places api`:
 
     ```properties
     CELERY_BROKER_URL = 'redis://:A45H2sg23hd2hdjhAG211hkyJKJ89@localhost:6379/0'
@@ -131,6 +133,8 @@ The application's design is user-friendly and intuitive, making it easy for user
     OPENWEATHERMAP_API_KEY = 'your-openweathermap-api-key'
 
     GOOGLE_PROJECT_ID = 'your-google-project-id'
+
+    GOOGLE_PLACES_API_KEY = 'your-google-places-api-key'
 
     DJANGO_SETTINGS_MODULE= weather_app.settings
     ```

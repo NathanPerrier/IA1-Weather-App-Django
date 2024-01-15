@@ -4,6 +4,7 @@
 {% block header %}
     <link rel="stylesheet" href="{% static '//css//landing.css' %}">
     <link rel="stylesheet" href="{% static 'css/search.css' %}">
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ google_places_api_key }}&libraries=places"></script>
 {% endblock %}
 
 {% block content %}
@@ -40,6 +41,13 @@
         window.onload = function() {
             var searchInput = document.getElementById('search-input');
             var searchButton = document.getElementById('search-button');
+            
+            var options = {
+                componentRestrictions: {country: 'au'},
+                types: ['postal_code', 'locality', 'route']
+            };
+
+            var autocomplete = new google.maps.places.Autocomplete(searchInput, options);
 
             searchButton.addEventListener('click', function(event) {
                 event.preventDefault();

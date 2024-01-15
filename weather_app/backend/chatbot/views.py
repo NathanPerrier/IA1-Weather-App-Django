@@ -1,11 +1,14 @@
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
+from django.views.decorators.csrf import csrf_protect
 
 from .bot.main import Chatbot
+
 from .models import Message
 
 from .bot.__init__ import GPT_MODEL
+from .bot.data import BotData
 
 try:
     Message.objects.all().delete()
@@ -35,3 +38,16 @@ def chat(request):
 def change_model(request):
     Message.objects.create(role='system', content=f'You are now using the {request.POST.get("model")} model', model=request.POST.get('model'))
     return JsonResponse({'success': True})
+
+@csrf_protect
+@require_POST
+def get_directions(request):
+    if request.method == 'POST':
+        print(request.POST['route'])
+        BotData().route = request.POST['route']
+        BotData().routeStart = request.POST['start']
+        BotData().routeEnd = request.POST['end']
+        BotData().routeMode = request.POST['mode']
+        return JsonResponse({'success': True})
+    else:
+        return JsonResponse({'success': False}) 

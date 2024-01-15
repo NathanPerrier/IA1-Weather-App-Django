@@ -10,6 +10,8 @@
     <style>
         body {
             overflow-y: hidden !important;
+            position: relative;
+            min-height: 100vh;
         }
         #map {
             position: absolute;
@@ -21,8 +23,58 @@
             height: calc(100vh + 30px);
             overflow-y: hidden !important;
         }
+        #radar-weather-select {
+            z-index: 400;
+            bottom: 20px;
+            position: absolute;
+            left: 65px;
+        }
+        .dropdown-menu {
+            display: none;
+        }
+
+        .dropdown:hover {
+            opacity: 1;
+        }
+        .dropdown .dropdown-menu .dropdown-item {
+            cursor: pointer;
+        }
+
+        .dropdown .dropdown-menu .dropdown-item.active {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .dropdown.show .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+            opacity: 1;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            transform: translate3d(0px, -100%, 0px);
+            top: 0;
+            left: 0;
+        }
+        
     </style>
-    <div id="map"></div>
+    <div id="map">
+    </div>
+    <div id="radar-weather-select" class="dropup">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Select Field
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" id="temperature" onclick="changeField('temperature')">Temperature</a>
+            <a class="dropdown-item active" id="precipitationIntensity" onclick="changeField('precipitationIntensity')">Precipitation Intensity</a>
+            <a class="dropdown-item" id="cloudCover" onclick="changeField('cloudCover')">Cloud Cover</a>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         mapboxgl.accessToken = "{{ mapbox_access_token }}";
 
@@ -74,6 +126,34 @@
             "maxzoom": 12
         });
         });
+
+        $(document).ready(function() {
+            $('.dropdown-toggle').click(function() {
+                $(this).next('.dropdown-menu').toggle();
+            });
+
+            $(document).click(function(event) {
+                var target = $(event.target);
+                if (!target.closest('.dropup').length) {
+                    $('.dropdown-menu').hide();
+                }
+            });
+        });
+
+        function changeField(field) {
+            alert(field);
+            var currentField = $('.active').first();
+            var newField = $('#' + field);
+
+            DATA_FIELD = field;
+
+            alert(currentField);
+            alert(newField);
+            alert(DATA_FIELD);
+
+            currentField.removeClass('active');
+            newField.addClass('active');
+        }
     </script>
 
     {% include 'chatbot/chat.html' %}

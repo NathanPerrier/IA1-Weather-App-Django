@@ -70,22 +70,27 @@
           controls: { instructions: true },
           flyTo: false,
         });
+
         
         
         map.addControl(directions, 'top-right');
     
         directions.on('route', function(e) {
-          var route = e.route[0].legs[0].steps; //.intersections?
+          var route = e.route[0] //.legs[0].steps; //.intersections?
     
           var origin = directions.getOrigin().geometry.coordinates;
           var destination = directions.getDestination().geometry.coordinates;
+
+          var mode = directions.getProfile();
     
           var coordinates = {
             start: origin,
             end: destination,
-            route: route
+            route: route,
+            mode: mode
           };
-          fetch('/checkcoordinates', {   //!   CHANGE!!!!!!!!
+          alert(coordinates.route);
+          fetch('/chat/getCoordinates/', {    //* VALID?
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

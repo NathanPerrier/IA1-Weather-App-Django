@@ -11,6 +11,10 @@ class BotData(models.Model):
     def __init__(self):
         self.ip_address = None
             
+        self.route = None
+        self.routeStart = None
+        self.routeEnd = None
+        self.routeMode = None
         
     def get_city_from_ip(self, ip_address=None):
         return GetLocation().get_location().city
