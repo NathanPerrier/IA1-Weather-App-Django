@@ -106,9 +106,10 @@ class WeatherApi:
 
                 if 'geohash' in self._location:
                     self.geohash = self._location['geohash'][:6]
-
+            
             return data['data']
-        except:
+        except Exception as e:
+            print('error:', e)
             return None
 
 

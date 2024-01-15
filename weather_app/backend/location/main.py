@@ -13,11 +13,11 @@ class GetLocation:
 
     def get_location(self):
         ip_address = self.get_ip_address()
+        print('ip_address:', ip_address)
         if ip_address is not None:
             if UserLocationModel.objects.filter(ip=(UserLocationModel().hash_ip(ip_address))).exists() == False:
-                print('ip address:', ip_address)
                 try:
-                    location_info = get(f'http://ip-api.com/json/{str(ip_address)}', timeout=5).json()
+                    location_info = get(f'http://ip-api.com/json/{str(ip_address)}', timeout=10).json()
                     if location_info['status'] == 'success':
                         return self.store_user_location(location_info, ip_address)
                     return None
@@ -27,7 +27,7 @@ class GetLocation:
         
     def get_ip_address(self):
         try:
-            return get('https://api.ipify.org?format=json', timeout=5).json()['ip']
+            return get('https://api.ipify.org?format=json', timeout=10).json()['ip']
         except ReadTimeout:
             return None
         
