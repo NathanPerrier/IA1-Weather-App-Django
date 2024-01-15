@@ -757,6 +757,10 @@ ul{
     transition: all 0.5s ease-in-out;
     position: relative;
 }
+
+.location:hover, .card-location:hover {
+    transform: scale(1.2);
+}
 /* .location:hover {
     transition: all 0.5s ease-in-out !important;
     border: 1px solid var(--Light-Pop_boder, rgba(255, 255, 255, 0.15));
