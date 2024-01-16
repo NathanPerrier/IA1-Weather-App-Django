@@ -3,9 +3,19 @@ from requests import get
 from decouple import config
 from django.db import models
 from django.core.cache import cache
+import requests
+import urllib.request, json
 import json
+from ...weather.main import RetrieveWeather
+import pygeohash_fast as pgh 
+from geopy.geocoders import Nominatim
+from geopy.point import Point
+
+
+from ..models import Route
 
 from ...location.main import GetLocation
+from .get_zip import PostcodeDatabase
 
 class BotData(models.Model):
     def __init__(self):
@@ -18,16 +28,76 @@ class BotData(models.Model):
         
     def get_city_from_ip(self, ip_address=None):
         return GetLocation().get_location().city
-        # print(cache.get('latitude'), cache.get('longitude'))
-        # if cache.get('latitude') is not None and cache.get('longitude') is not None:
-        #     try:
-        #         url = f'http://api.openweathermap.org/geo/1.0/reverse?lat={cache.get("longitude")}&lon={cache.get("latitude")}&limit=1&appid={config("OPENWEATHERMAP_API_KEY")}'
-        #         data = requests.get(url).json()
-        #         return data[0]['name']
-        #     except Exception as e:
-        #         print('Error:', e)
-        #         pass       
-        # return GetLocation().get_location()['city']
+        
+    def does_route_exist(self):
+        ip = GetLocation().get_ip_address()
+        if Route.objects.filter(ip=Route.hash_ip(ip)).exists():
+            route = Route.objects.filter(ip=Route.hash_ip(ip)).last()
+            self.route = route.route
+            self.routeStart = route.start
+            self.routeEnd = route.end
+            self.routeMode = route.mode
+            return True
+        return False
+    
+    def get_route(self):
+        print(self.routeStart, self.routeEnd, self.routeMode)
+        url = f'https://api.mapbox.com/directions/v5/mapbox/{ self.routeMode }/{ str(self.routeStart[0]) }%2C{ str(self.routeStart[1]) }%3B{ str(self.routeEnd[0]) }%2C{ str(self.routeEnd[1]) }?alternatives=false&geometries=geojson&language=en&overview=simplified&steps=false&notifications=none&access_token={config("MAPBOX_ACCESS_TOKEN")}'
+        print(url)
+        with urllib.request.urlopen(url) as url:
+            data = json.load(url)
+        print(data)
+        return list(data['routes'][0]['geometry']['coordinates'])
+    
+    def get_weather_on_route(self, startLocation=None, endLocation=None, mode='driving', startTime='now', timezones='auto', unit='metric'):
+        if startLocation is None:
+            startLocation = (lambda location: [location.lat, location.lon])(GetLocation().get_location())
+        if not self.does_route_exist():
+            self.routeStart = startLocation
+            self.routeEnd = endLocation
+            self.routeMode = mode
+            self.route = self.get_route()[0]
+            
+        coord_list = []
+        
+        for coordinate in self.route.strip('[]],').split('],'):
+            coordinates = coordinate.strip(' [')
+            coord_list.append(list(coordinates.split(', ')))
+            
+        print('coord_list:', coord_list)
+        
+        for coordinates in coord_list: #! issue
+            print('geohash ', PostcodeDatabase(coordinates[1], coordinates[0]).get_postcode()) # i think issue is with this line +- <--
+            model = RetrieveWeather(PostcodeDatabase(coordinates[1], coordinates[0]).get_postcode())
+            print(model.request)
+            print(model.request.location())
+            print(model.Warnings(model.request).get_warnings())
+        
+        
+    
+    def lat_lon_to_geohash(self, coordinates): #limit reaches too quickly
+        print('latitude:', coordinates[0], 'coordinates[1]:', coordinates[1])
+        try:
+            return pgh.encode(float(coordinates[0]), float(coordinates[1]), len=8)
+        except Exception as e:
+            print('error:', e)
+            response = requests.get(f"https://us1.locationiq.com/v1/reverse?key={config('LOCATIONIQ_API_KEY')}&lat={coordinates[1]}&lon={coordinates[0]}&format=json&statecode=1&accept-language=en")
+            data = response.json() #['geohash']
+            print('data:', data)
+            try:
+                return data['address']['postcode']
+            except:
+                return data['address']['city_district'] if 'city_district' in data['address'] else data['address']['city'] if 'city' in data['address'] else None
+
+    def lat_lon_to_postcode(self, coordinates):
+        print('latitude:', coordinates[0], 'longitude:', coordinates[1])
+        try:
+            geolocator = Nominatim(user_agent="geoapiExercises")
+            location = geolocator.reverse(Point(float(coordinates[1]), float(coordinates[0])), exactly_one=True)
+            return location.raw['address']['postcode']
+        except Exception as e:
+            print('error:', e)
+            return None
 
     def get_current_weather(self, fields, location=None, unit="metric", timesteps='current'): #="temperature,humidity,weatherCode"
         try:

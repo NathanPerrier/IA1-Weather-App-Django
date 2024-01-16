@@ -76,12 +76,12 @@
         map.addControl(directions, 'top-right');
     
         directions.on('route', function(e) {
-          var route = e.route[0] //.legs[0].steps; //.intersections?
+          var route = e.route[0].legs[0].steps //legs?? //.legs[0].steps; 
     
           var origin = directions.getOrigin().geometry.coordinates;
           var destination = directions.getDestination().geometry.coordinates;
 
-          var mode = directions.getProfile();
+          var mode = route[0].mode; 
     
           var coordinates = {
             start: origin,
@@ -89,11 +89,12 @@
             route: route,
             mode: mode
           };
-          alert(coordinates.route);
-          fetch('/chat/getCoordinates/', {    //* VALID?
+
+          fetch('/chat/getCoordinates/', {   
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken')
             },
             body: JSON.stringify(coordinates)
           })

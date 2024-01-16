@@ -2,13 +2,16 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_protect
+import json
 
 from .bot.main import Chatbot
 
-from .models import Message
+from .models import Message, Route
+
+from .bot.data import BotData
 
 from .bot.__init__ import GPT_MODEL
-from .bot.data import BotData
+from ..location.main import GetLocation
 
 try:
     Message.objects.all().delete()
@@ -43,11 +46,15 @@ def change_model(request):
 @require_POST
 def get_directions(request):
     if request.method == 'POST':
-        print(request.POST['route'])
-        BotData().route = request.POST['route']
-        BotData().routeStart = request.POST['start']
-        BotData().routeEnd = request.POST['end']
-        BotData().routeMode = request.POST['mode']
+        route = Route.objects.filter(ip=Route.hash_ip(GetLocation().get_ip_address())).last() if Route.objects.filter(ip=Route.hash_ip(GetLocation().get_ip_address())).exists() else Route()
+        data = json.loads(request.body)
+        bot = BotData()
+        bot.routeStart, route.start = data['start'], data['start']
+        bot.routeEnd, route.end = data['end'], data['end']
+        bot.routeMode, route.mode = data['mode'], data['mode']
+        route.route = list(bot.get_route())
+        route.ip = Route.hash_ip(GetLocation().get_ip_address())
+        route.save()
+        BotData().get_weather_on_route(data['start'], data['end'])
         return JsonResponse({'success': True})
-    else:
-        return JsonResponse({'success': False}) 
+    return JsonResponse({'success': False})

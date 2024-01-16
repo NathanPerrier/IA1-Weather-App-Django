@@ -52,10 +52,12 @@ class RetrieveWeather():
             
     '''
     
-    def __init__(self, zipCode):
-        self.zip = zipCode
+    def __init__(self, location):
+        self.locationOrg = location
 
-        self.request = api.WeatherApi(q=(f'{self.zip}'), debug=0)
+        self.zip = location
+        
+        self.request = api.WeatherApi(q=f'{self.locationOrg}', debug=0)
         
         self.location = self.request.location()
 

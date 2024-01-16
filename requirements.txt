@@ -33,3 +33,5 @@ google_images_download==2.8.0
 httplib2==0.22.0
 Pillow==10.2.0
 urllib3==2.1.0
+geopy==2.4.1
+pygeohash-fast==0.3.0

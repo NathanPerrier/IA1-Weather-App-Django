@@ -3,7 +3,10 @@ from ..__init__ import *
 class RetrieveSummary():
     def __init__(self, request):
         self.request = request
-        self.model = summary.Summary(search=self.request.zip, debug=0)
+        try:
+            self.model = summary.Summary(search=self.request.zip, debug=0)
+        except:
+            self.model = summary.Summary(search=self.request.location, debug=0)
         
     def get_summary(self):
         summarydict = {}
