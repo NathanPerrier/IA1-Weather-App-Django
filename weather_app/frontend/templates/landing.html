@@ -84,7 +84,7 @@
       <div class="container-fluid mb-0 p-0 ps-0 slide1">
         <section class="d-flex justify-content-between margin-right margin-title">
           <p class="mt-2 text-white font-netflix-bold"> <b>Forecast</b> </p>
-          <div> <!-- why?? -->
+          <div> 
             <button  type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active tab-change-btn" aria-current="true" aria-label="Slide 1"></button>
             <button class="tab-change-btn" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
           </div>
@@ -98,9 +98,9 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
-          <div class="carousel-inner" style="position: relative; overflow: visible;width: calc(100vw - 60px)" >
+          <div class="carousel-inner" style="position: relative; overflow: visible;width: calc(100vw - 55px)" >
             {% for day in forecast_daily %}
-              {% if forloop.counter|divisibleby:4 or forloop.first %}
+              {% if forloop.counter|divisibleby:5 or forloop.first %}
                 {% if not forloop.first %}
                   </div>
                 {% endif %}
