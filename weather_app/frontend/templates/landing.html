@@ -58,7 +58,7 @@
                 </div>
               </div>
               <div class="weather-data mt-2"> <!-- add .weather-data to css-->
-                <span class="p-3 pt-0">{{ forecast_daily.0.extended_text }}</span>
+                <span class="p-3 pt-0 text-center">{{ forecast_daily.0.extended_text }}</span>
               </div>
             </div>
           </section>         
@@ -110,7 +110,7 @@
                   {% if day.now %} <!-- doesn't work because day.date time is not current-->
                   <div class="weather-card card current-day" style="margin-right:10px">
                   {% else %}
-                  <div class="weather-card card" style="{% if forloop.counter|divisibleby:4 %}margin-right:10px{% else %}margin: 0 10px{% endif %}">
+                  <div class="weather-card card" style="{% if forloop.counter|divisibleby:5 %}margin-right:10px{% else %}margin: 0 10px{% endif %}">
                   {% endif %}
                     <div class="content">
                       <div class="top-info">
