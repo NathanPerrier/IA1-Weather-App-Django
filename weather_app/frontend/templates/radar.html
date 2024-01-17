@@ -70,7 +70,7 @@
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" id="temperature" onclick="changeField('temperature')">Temperature</a>
-            <a class="dropdown-item active" id="precipitationIntensity" onclick="changeField('precipitationIntensity')">Precipitation Intensity</a>
+            <a class="dropdown-item" id="precipitationIntensity" onclick="changeField('precipitationIntensity')">Precipitation Intensity</a>
             <a class="dropdown-item" id="cloudCover" onclick="changeField('cloudCover')">Cloud Cover</a>
         </div>
     </div>
@@ -80,8 +80,17 @@
 
         const API_KEY = "{{ tomorrowio_api_key }}";
 
+
+        var DATA_FIELD = localStorage.getItem('selectedField');
         // pick the field (like temperature, precipitationIntensity or cloudCover)
-        const DATA_FIELD = 'precipitationIntensity';
+        $(document).ready(function() {
+            var field = localStorage.getItem('selectedField');
+            if (field) {
+                changeField(field);
+            } else {
+                changeField('precipitationIntensity');
+            }
+        });
 
         // set the ISO timestamp (now for all fields, up to 6 hour out for precipitationIntensity)
         const TIMESTAMP = (new Date()).toISOString();
@@ -104,7 +113,7 @@
         // initialize the map
         var map = (window.map = new mapboxgl.Map({
         container: 'map',
-        zoom: 7,
+        zoom: 5,
         center: [latitude, longitude],
         style: 'mapbox://styles/nathan-perrier23/clr7bpszt00ls01ob5pxjboov', //mapbox://styles/nathan-perrier23/clqthibtm00ci01pp38f03g3w
         antialias: true
@@ -141,18 +150,19 @@
         });
 
         function changeField(field) {
-            alert(field);
-            var currentField = $('.active').first();
-            var newField = $('#' + field);
+            if (field != DATA_FIELD) {
+                var currentField = $('.active').first();
+                var newField = $('#' + field);
 
-            DATA_FIELD = field;
+                currentField.removeClass('active');
+                newField.addClass('active');
 
-            alert(currentField);
-            alert(newField);
-            alert(DATA_FIELD);
+                // Store the selected field in local storage
+                localStorage.setItem('selectedField', field);
+                DATA_FIELD = field;
 
-            currentField.removeClass('active');
-            newField.addClass('active');
+                window.location.reload();
+            }
         }
     </script>
 
