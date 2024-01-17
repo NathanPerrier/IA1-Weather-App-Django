@@ -605,7 +605,7 @@
 		"type": "function",
 		"function": {
 			"name": "get_weather_on_route",
-			"description": "Gets the weahter warnings and rain forecast on a route. If the route does not exist (call does_route_exist), it will create a new route using startLocation (if specified, if not specified then the function will use user's current location so leave blank), and endlocation (required) and mode (defualt is driving) and get the weather on that route",
+			"description": "Gets the weahter warnings and rain forecast on a route. If the route does not exist (You are to assume that there is an active route if the user has not supplied a start and end location), it will create a new route using startLocation (if specified, if not specified then the function will use user's current location so leave blank), and endlocation (required) and mode (defualt is driving) and get the weather on that route",
 			"parameters": {
 				"type": "object",
 				"properties": {
