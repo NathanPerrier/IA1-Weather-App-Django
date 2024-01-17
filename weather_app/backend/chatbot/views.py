@@ -55,6 +55,11 @@ def get_directions(request):
         route.route = list(bot.get_route())
         route.ip = Route.hash_ip(GetLocation().get_ip_address())
         route.save()
-        BotData().get_weather_on_route(data['start'], data['end'])
         return JsonResponse({'success': True})
+    return JsonResponse({'success': False})
+
+def set_directions(request):
+    if Route.objects.filter(ip=Route.hash_ip(GetLocation().get_ip_address())).exists():
+        route = Route.objects.filter(ip=Route.hash_ip(GetLocation().get_ip_address())).last()
+        return JsonResponse({'success': True, 'route': route.route, 'mode': route.mode})
     return JsonResponse({'success': False})

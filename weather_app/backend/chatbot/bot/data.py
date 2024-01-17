@@ -49,31 +49,48 @@ class BotData(models.Model):
         print(data)
         return list(data['routes'][0]['geometry']['coordinates'])
     
-    def get_weather_on_route(self, startLocation=None, endLocation=None, mode='driving', startTime='now', timezones='auto', unit='metric'):
+    def get_weather_on_route(self, startLocation=None, endLocation=None, mode='driving'):
         if startLocation is None:
             startLocation = (lambda location: [location.lat, location.lon])(GetLocation().get_location())
         if not self.does_route_exist():
-            self.routeStart = startLocation
-            self.routeEnd = endLocation
+            self.routeStart = startLocation.replace(' ', '+')
+            self.routeEnd = endLocation.replace(' ', '+')
             self.routeMode = mode
             self.route = self.get_route()[0]
             
         coord_list = []
         
+        weatherData = [
+            {
+                "name": "weather_data",
+                "results": [
+                    {
+                        'warnings': [],
+                        'rain_forecast': []
+                    }
+                ],
+            }
+        ]
+        
+        warning_list = weatherData[0]['results'][0]['warnings']
+        rain_forecast_list = weatherData[0]['results'][0]['rain_forecast']
+        
         for coordinate in self.route.strip('[]],').split('],'):
             coordinates = coordinate.strip(' [')
-            coord_list.append(list(coordinates.split(', ')))
+            coord_list.append(list([float(cord.strip("'")) for cord in coordinates.split(', ')]))
             
-        print('coord_list:', coord_list)
-        
         for coordinates in coord_list: #! issue
-            print('geohash ', PostcodeDatabase(coordinates[1], coordinates[0]).get_postcode()) # i think issue is with this line +- <--
-            model = RetrieveWeather(PostcodeDatabase(coordinates[1], coordinates[0]).get_postcode())
-            print(model.request)
-            print(model.request.location())
-            print(model.Warnings(model.request).get_warnings())
-        
-        
+            postcode = PostcodeDatabase(coordinates[1], coordinates[0])
+            print('cords ', coordinates[1], coordinates[0]) 
+            model = RetrieveWeather(postcode.get_postcode())
+            forecast_rain = model.Forecast(model.request).get_rain()
+            warning = model.Warnings(model.request).get_warnings()
+            if warning and warning[0] not in warning_list:
+                warning_list.append(warning[0])
+            if forecast_rain:
+                rain_forecast_list.append({'lat': coordinates[1], 'lon': coordinates[0], 'amount': forecast_rain['amount'], 'chance': forecast_rain['chance']})
+        response = json.dumps(weatherData)
+        return response
     
     def lat_lon_to_geohash(self, coordinates): #limit reaches too quickly
         print('latitude:', coordinates[0], 'coordinates[1]:', coordinates[1])

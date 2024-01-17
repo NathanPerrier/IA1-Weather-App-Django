@@ -32,6 +32,8 @@ class Chatbot:
                 "get_daily_weather_forecast": BotData().get_daily_weather_forecast,
                 "get_hourly_weather_forecast": BotData().get_hourly_weather_forecast,
                 'get_recent_weather_history': BotData().get_recent_weather_history,
+                "get_weather_on_route": BotData().get_weather_on_route,
+                "does_route_exist": BotData().does_route_exist,
             }  
             
             messages.append(response_message)  # extend conversation with assistant's reply
@@ -40,15 +42,7 @@ class Chatbot:
             for tool_call in tool_calls:
                 function_name = tool_call.function.name
                 print('function name:', function_name)
-                if function_name != 'get_recent_weather_history':
-                    function_to_call = available_functions[function_name]
-                    function_args = json.loads(tool_call.function.arguments)
-                    function_response = function_to_call(
-                        location=function_args.get("location"),
-                        unit=function_args.get("unit", "metric"),
-                        fields=function_args.get("fields"),
-                    )
-                else:
+                if function_name == 'get_current_weather' or function_name == 'get_daily_weather_forecast' or function_name == 'get_hourly_weather_forecast':
                     function_to_call = available_functions[function_name]
                     function_args = json.loads(tool_call.function.arguments)
                     function_response = function_to_call(
@@ -56,6 +50,26 @@ class Chatbot:
                         unit=function_args.get("unit", "metric"),
                         timestep=function_args.get("timestep"),
                     )
+                else:
+                    if function_name == 'get_recent_weather_history':
+                        function_to_call = available_functions[function_name]
+                        function_args = json.loads(tool_call.function.arguments)
+                        function_response = function_to_call(
+                            location=function_args.get("location"),
+                            unit=function_args.get("unit", "metric"),
+                            fields=function_args.get("fields"),
+                        )
+                        
+                    else:
+                        function_to_call = available_functions[function_name]
+                        function_args = json.loads(tool_call.function.arguments)
+                        if function_name == 'get_weather_on_route':
+                            function_response = function_to_call(
+                                startLocation=function_args.get("startLocation"),
+                                endLocation=function_args.get("endLocation"),
+                                mode=function_args.get("mode"),
+                            )
+                print('function response:', function_response)
                 messages.append(
                     {
                         "tool_call_id": tool_call.id,

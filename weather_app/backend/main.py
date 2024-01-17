@@ -32,7 +32,9 @@ def index(request):
 def radar(request):
     return render(request, 'radar.html', {'tomorrowio_api_key': config("TOMORROWIO_API_KEY"), 'location': GetLocation().get_location(), 'is_authenticated': request.user.is_authenticated, 'mapbox_access_token': config('MAPBOX_ACCESS_TOKEN')}) #'google_maps_api_key': config("GOOGLE_MAPS_API_KEY")
 
-def routes(request):
+def routes(request, start=None, end=None, mode=None):
+    if start:
+        return render(request, 'routes.html', {'tomorrowio_api_key': config("TOMORROWIO_API_KEY"), 'location': GetLocation().get_location(), 'is_authenticated': request.user.is_authenticated, 'mapbox_access_token': config('MAPBOX_ACCESS_TOKEN'), 'start': start, 'end': end, 'mode': mode})
     return render(request, 'routes.html', {'tomorrowio_api_key': config("TOMORROWIO_API_KEY"), 'location': GetLocation().get_location(), 'is_authenticated': request.user.is_authenticated, 'mapbox_access_token': config('MAPBOX_ACCESS_TOKEN')})
 
 def search(request, error=''):

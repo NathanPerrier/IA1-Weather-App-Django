@@ -48,7 +48,23 @@
               });
           }
         }; 
-            
+          
+        var route;
+
+        fetch('/chat/setRoute/', {
+            method: 'GET', // or 'POST'
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            if (data.success) {
+                route = data.route;
+                mode = data.mode;
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
         
       
         
@@ -71,7 +87,12 @@
           flyTo: false,
         });
 
-        
+        if (route) {
+          directions.mode = mode;
+          directions.setOrigin(route[0]);
+          directions.setDestination(route[route.length - 1]);
+          directions.setRouteIndex(0);
+        }
         
         map.addControl(directions, 'top-right');
     
