@@ -7,10 +7,6 @@ import requests
 import urllib.request, json
 import json
 from ...weather.main import RetrieveWeather
-import pygeohash_fast as pgh 
-from geopy.geocoders import Nominatim
-from geopy.point import Point
-
 
 from ..models import Route
 
@@ -92,29 +88,6 @@ class BotData(models.Model):
         response = json.dumps(weatherData)
         return response
     
-    def lat_lon_to_geohash(self, coordinates): #limit reaches too quickly
-        print('latitude:', coordinates[0], 'coordinates[1]:', coordinates[1])
-        try:
-            return pgh.encode(float(coordinates[0]), float(coordinates[1]), len=8)
-        except Exception as e:
-            print('error:', e)
-            response = requests.get(f"https://us1.locationiq.com/v1/reverse?key={config('LOCATIONIQ_API_KEY')}&lat={coordinates[1]}&lon={coordinates[0]}&format=json&statecode=1&accept-language=en")
-            data = response.json() #['geohash']
-            print('data:', data)
-            try:
-                return data['address']['postcode']
-            except:
-                return data['address']['city_district'] if 'city_district' in data['address'] else data['address']['city'] if 'city' in data['address'] else None
-
-    def lat_lon_to_postcode(self, coordinates):
-        print('latitude:', coordinates[0], 'longitude:', coordinates[1])
-        try:
-            geolocator = Nominatim(user_agent="geoapiExercises")
-            location = geolocator.reverse(Point(float(coordinates[1]), float(coordinates[0])), exactly_one=True)
-            return location.raw['address']['postcode']
-        except Exception as e:
-            print('error:', e)
-            return None
 
     def get_current_weather(self, fields, location=None, unit="metric", timesteps='current'): #="temperature,humidity,weatherCode"
         try:
@@ -177,7 +150,7 @@ class BotData(models.Model):
             print('error:', e)
             return str(('error occured:', e))
         
-    def get_hourly_weather_forecast(self, fields, location=None, unit="metric"):
+    def get_hourly_weather_forecast(self, fields, location=None, unit="metric", timestep='1h'):
         try:
             print(list(fields.keys()))
             url = f'https://api.tomorrow.io/v4/timelines?apikey={config("TOMORROWIO_API_KEY")}'
