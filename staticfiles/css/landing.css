@@ -286,7 +286,7 @@ i{
 
 .header-weather {
     width: 40%;
-    height: 40vh;
+    height: calc(37.5vh + .5rem);
     position: relative;
     display: flex;
     flex-direction: row;

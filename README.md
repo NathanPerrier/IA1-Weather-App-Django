@@ -191,7 +191,7 @@ The application's design is user-friendly and intuitive, making it easy for user
 
 8. Open your web browser and visit `http://localhost:8000/`.
 
-9. When you make changes , you will need to rebuild the Docker images and restart the Docker containers. You can do this with `docker-compose down` and then `docker-compose up --build`.
+9. When you make changes, you will need to rebuild the Docker images and restart the Docker containers. You can do this with `docker-compose down` and then `docker-compose up --build`.
 
 ### NOTE
 
