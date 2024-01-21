@@ -361,19 +361,7 @@
   <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
   <script>    
     window.onload = function () {
-      // Check if the cookie indicating the welcome screen has been shown exists
-      if (document.cookie.indexOf('welcomeScreenShown=true') === -1) {
-          document.getElementById('welcome-screen').style.display = 'flex';
-          // If not, execute the code
-          setTimeout(function () {
-              document.getElementById('welcome-screen').style.display = 'none';
-  
-              var date = new Date();
-              date.setDate(date.getDate() + 1); // Set the date to one day in the future
-              document.cookie = 'welcomeScreenShown=true; expires=' + date.toUTCString() + '; path=/';
-          }, 1600);
-
-        fetch('http://worldtimeapi.org/api/ip')
+      fetch('http://worldtimeapi.org/api/ip')
         .then(response => response.json())
         .then(data => {
             const datetime = new Date(data.datetime);
@@ -387,7 +375,18 @@
         })
         .catch((error) => {
             console.error('Error:', error);
-        });
+      });
+      // Check if the cookie indicating the welcome screen has been shown exists
+      if (document.cookie.indexOf('welcomeScreenShown=true') === -1) {
+          document.getElementById('welcome-screen').style.display = 'flex';
+          // If not, execute the code
+          setTimeout(function () {
+              document.getElementById('welcome-screen').style.display = 'none';
+  
+              var date = new Date();
+              date.setDate(date.getDate() + 1); // Set the date to one day in the future
+              document.cookie = 'welcomeScreenShown=true; expires=' + date.toUTCString() + '; path=/';
+          }, 1600);
       } else {
         document.getElementById('welcome-screen').style.display = 'none';
       }
