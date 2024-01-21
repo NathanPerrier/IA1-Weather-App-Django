@@ -400,22 +400,23 @@
         }
       }
     }
-
-    fetch('http://worldtimeapi.org/api/ip')
-    .then(response => response.json())
-    .then(data => {
-        const datetime = new Date(data.datetime);
-        document.getElementById('date').textContent = datetime.toLocaleDateString();
-        const timeOptions = { hour: '2-digit', minute: '2-digit' };
-        document.getElementById('time').textContent = datetime.toLocaleTimeString([], timeOptions);
-        document.getElementById('divider').removeClass('hide');
-        document.getElementById('timedate').removeClass('hide');
-        document.getElementById('timedate').addClass('wow');
-        document.getElementById('timedate').addClass('slideInLeft');
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
+    setInterval(function() {
+      fetch('http://worldtimeapi.org/api/ip')
+      .then(response => response.json())
+      .then(data => {
+          const datetime = new Date(data.datetime);
+          document.getElementById('date').textContent = datetime.toLocaleDateString();
+          const timeOptions = { hour: '2-digit', minute: '2-digit' };
+          document.getElementById('time').textContent = datetime.toLocaleTimeString([], timeOptions);
+          document.getElementById('divider').removeClass('hide');
+          document.getElementById('timedate').removeClass('hide');
+          document.getElementById('timedate').addClass('wow');
+          document.getElementById('timedate').addClass('slideInLeft');
+      })
+      .catch((error) => {
+          console.error('Error:', error);
+      });
+    }, 60000);
   
     mapboxgl.accessToken = "{{ mapbox_access_token }}";
 
