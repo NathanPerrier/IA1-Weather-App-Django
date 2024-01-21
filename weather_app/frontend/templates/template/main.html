@@ -64,13 +64,13 @@
 
         <!-- Account link on the bottom -->
         {% if is_authenticated %}
-          <div class="nav navbar-nav mt-auto" id="account-link" style="padding-left:5px">
+          <div class="nav navbar-nav mt-auto mb-4" id="account-link" style="padding-left:5px">
               <a class="nav-item nav-link mb-2 mt-auto" href="/logout/"> <!-- account -->
                   <i class="bi bi-person-circle"></i><span class="visually-hidden">Account</span>
               </a>
           </div>
         {% else %}
-          <div class="nav navbar-nav mt-auto" id="account-link" style="padding-left:5px">
+          <div class="nav navbar-nav mt-auto mb-4" id="account-link" style="padding-left:5px">
               <a class="nav-item nav-link mb-2 mt-auto" href="/login">
                   <i class="bi bi-box-arrow-in-right"></i><span class="visually-hidden">Login</span> 
               </a>
