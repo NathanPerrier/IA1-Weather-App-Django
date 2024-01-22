@@ -17,7 +17,7 @@ class GetLocation:
         if ip_address is not None:
             if UserLocationModel.objects.filter(ip=(UserLocationModel().hash_ip(ip_address))).exists() == False:
                 try:
-                    location_info = get(f'http://ip-api.com/json/{str(ip_address)}', timeout=10).json()
+                    location_info = get(f'http://ip-api.com/json/{str(ip_address)}', timeout=8).json()
                     if location_info['status'] == 'success':
                         return self.store_user_location(location_info, ip_address)
                     return None
