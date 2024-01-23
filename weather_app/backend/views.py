@@ -69,7 +69,8 @@ def search_location(request, location):
                 'timezone': locationData['timezone'], 
                 'country': locationData['timezone'].split('/')[0], 
                 'lat': locationData['latitude'], 
-                'lon': locationData['longitude']}
+                'lon': locationData['longitude']
+            }
         except Exception as e: 
             print(e)
             return render(request, 'landing-error.html', {'tomorrowio_api_key': config("TOMORROWIO_API_KEY"), 'is_authenticated': request.user.is_authenticated})
