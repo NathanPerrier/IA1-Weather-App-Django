@@ -6,6 +6,7 @@ from .database_auth_test import AuthDbModelTest
 from .weather_test import WeatherModelTest
 from .chatbot_test import ChatbotModelTest
 from .database_test import BaseModelTest
+from ..backend.weather.tests.__init__ import *
 
 class TestAllModels(TestCase):
     AuthModelTest()
@@ -13,3 +14,10 @@ class TestAllModels(TestCase):
     BaseModelTest()
     WeatherModelTest()
     ChatbotModelTest()
+    
+    # WeatherAU models
+    
+    TestAPI()
+    TestObservations()
+    TestPlace()
+    TestUVIndex()
