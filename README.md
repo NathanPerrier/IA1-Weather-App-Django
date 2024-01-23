@@ -180,7 +180,7 @@ The application's design is user-friendly and intuitive, making it easy for user
     or 
 
     ```sh
-    docker compose up
+    docker compose watch
     ```
 
     For Development:

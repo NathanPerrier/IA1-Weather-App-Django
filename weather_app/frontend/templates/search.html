@@ -11,7 +11,7 @@
     <div class="search-container" style="margin-left: -50px;">
         <form action="/search" method="get">
             {% csrf_token %}
-            <input type="text" id="search-input" name="q" class="search-input" style="{% if error %}border: 2px solid #dc3545;{% else %}border: 2px solid var(--primary);{% endif %}" placeholder="{% if error %}{{error}}...{% else %}Search........{% endif %}">
+            <input type="text" id="search-input" name="q" class="search-input" style="{% if error %}border: 2px solid #dc3545;{% else %}border: 2px solid var(--primary);{% endif %}" placeholder="{% if error %}{{error}}...{% else %}Search...{% endif %}">
             <button id="search-button" class="search-button {% if error %}bg-danger{%else%}bg-primary{% endif %}">  <!-- make it call /search/{input} -->
                 {% if error %}
                     <i id="icon" class="bi bi-exclamation-circle"></i>
