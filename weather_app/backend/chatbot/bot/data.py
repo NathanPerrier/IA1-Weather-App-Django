@@ -89,13 +89,13 @@ class BotData(models.Model):
         return response
     
 
-    def get_current_weather(self, fields, location=None, unit="metric", timesteps='current'): #="temperature,humidity,weatherCode"
+    def get_current_weather(self, fields, location=None, unit="metric", timestep='current'): #="temperature,humidity,weatherCode"
         try:
             print('current')
             print(list(fields.keys()))
             location = self.get_city_from_ip() if location is None else location
             if 'sunsetTime' or 'sunriseTime' in fields:
-                timesteps='1d'
+                timestep='1d'
             url = f'https://api.tomorrow.io/v4/timelines?apikey={config("TOMORROWIO_API_KEY")}'
             headers = {
                 'Accept-Encoding': 'gzip',
@@ -107,7 +107,7 @@ class BotData(models.Model):
                 "fields": list(fields.keys()),
                 "units": unit,
                 "timesteps": [
-                    timesteps
+                    timestep
                 ],
                 "timezone": 'auto'
             }
@@ -121,7 +121,7 @@ class BotData(models.Model):
             return str(('error occured:', e))
     
 
-    def get_daily_weather_forecast(self, fields, location=None, unit="metric"):
+    def get_daily_weather_forecast(self, fields, location=None, unit="metric", timestep="1d"):
         try:
             print('daily')
             print(list(fields.keys()))
@@ -138,7 +138,7 @@ class BotData(models.Model):
                 "fields": list(fields.keys()),
                 "units": unit,
                 "timesteps": [
-                    "1d"
+                    timestep
                 ],
                 "timezone": "auto"
             }
@@ -164,7 +164,7 @@ class BotData(models.Model):
                 "fields": list(fields.keys()),
                 "units": unit,
                 "timesteps": [
-                    "1h"
+                    timestep
                 ],
                 "timezone": "auto"
             }
