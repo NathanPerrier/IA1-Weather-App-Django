@@ -34,13 +34,13 @@ services:
     ports:
       - "6379:6379"
   
-  sever:
-    build:
-      context: .
-      dockerfile: ./DockerFile
-    ports:
-      - "3000:3000"
-    develop:
-      watch:
-        - action: rebuild
-          path: .
+# sever:
+#   build:
+#     context: ./weather_app
+#     dockerfile: ./DockerFile
+#   ports:
+#     - "3000:3000"
+#   develop:
+#     watch:
+#       - action: rebuild
+#         path: ./weather_app
