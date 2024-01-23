@@ -1,4 +1,7 @@
 from django.test import TestCase
 
 class ChatbotModelTest(TestCase):
-    pass
+    
+    def setUp(self):
+        pass
+    
