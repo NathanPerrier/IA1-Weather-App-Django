@@ -57,7 +57,7 @@ class RetrieveWeather():
 
         self.zip = location
         
-        self.request = api.WeatherApi(q=f'{self.locationOrg}', debug=0)
+        self.request = api.WeatherApi(q=f'{self.locationOrg}', debug=1)
         
         self.location = self.request.location()
 
@@ -67,10 +67,10 @@ class RetrieveWeather():
         def __init__(self, request):
             super().__init__(request)
 
-        def get_rain(self):  #?  self or super()?
+        def get_rain(self):  
             return super().get_rain_data_fields()  
 
-        def get_daily(self): #, days=7, type=''
+        def get_daily(self): 
             return super().get_daily_data_fields()  
 
         def get_hourly(self):

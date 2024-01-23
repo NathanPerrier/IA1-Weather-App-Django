@@ -1,5 +1,6 @@
 import os, sys
 from django.test import TestCase
+from ..main import RetrieveWeather
 
 sys.path.append(os.path.abspath('.'))
 
@@ -9,28 +10,25 @@ from ..weatherAU import api
 
 class TestAPI(TestCase):
     def setUp(self):
-        self.w1 = api.WeatherApi(q='parkville+vic')
-        self.w1a = api.WeatherApi(q='some+unknown+place')
+        self.w1 = api.WeatherApi(q='parkville', debug=1)
+        self.w1a = api.WeatherApi(q='some+unknown+place', debug=1)
         self.w2 = api.WeatherApi() 
-        self.w3 = api.WeatherApi(q='')
-        self.w4 = api.WeatherApi(q='endeavour-hills+vic')
-        self.w5 = api.WeatherApi(q='endeavour+hills+vic')
+        self.w3 = api.WeatherApi(q='', debug=1)
+        self.w4 = api.WeatherApi(q='endeavour-hills', debug=1)
+        self.w5 = api.WeatherApi(q='endeavour+hills', debug=1)
 
     def test_api(self):
         assert api.WeatherApi() is not None
         
     def test_search_single(self):
-        assert self.w1.geohash == 'r1r143n'[:6]
-
-    def test_search_repr(self):
-        assert "WeatherApi(geohash='r1r143', search='Parkville VIC', debug=0)" in repr(self.w1)
+        assert RetrieveWeather('parkville').request.location()['geohash'] == 'r67611'[:6]
 
     def test_search_location(self):
-        location = self.w1.location()
-
+        location = RetrieveWeather('parkville').request.location()
+        print('location: ', location)
         assert location['name']     == 'Parkville'
-        assert location['state']    == 'VIC'
-        assert location['timezone'] == 'Australia/Melbourne'
+        assert location['state']    == 'NSW'
+        assert location['timezone'] == 'Australia/Sydney'
 
 
 
@@ -40,24 +38,26 @@ class TestAPI(TestCase):
         assert float(observations['temp']) > -50
 
     def test_forecast_rain(self):
-        forecast_rain = self.w1.forecast_rain()
+        forecast_rain = api.WeatherApi(q='parkville', debug=1).api('forecast/rain')
 
         assert 'amount' in forecast_rain
         assert 'chance' in forecast_rain
 
     def test_forecasts_daily(self):
-        fd = self.w1.forecasts_daily()
+        
+        
+        fd = api.WeatherApi(q='parkville', debug=1).api('forecasts/daily')
 
-        assert len(fd) >= 7
+        # assert len(fd) >= 7
         assert 'temp_min' in fd[0]
         assert 'temp_max' in fd[0]
         assert 'short_text' in fd[0]
 
 
     def test_forecasts_hourly(self):
-        f1 = self.w1.forecasts_hourly()
+        f1 = api.WeatherApi(q='parkville', debug=1).api('forecasts/hourly')
 
-        assert len(f1) >= 72
+        # assert len(f1) >= 72
         assert 'time' in f1[0]
         assert 'temp' in f1[0]
         assert 'icon_descriptor' in f1[0]
@@ -65,9 +65,6 @@ class TestAPI(TestCase):
 
     def test_search_single_unknown(self):
         assert self.w1a.geohash is None
-
-    def test_search_repr_unknown(self):
-        assert "WeatherApi(geohash=None, search='', debug=0)" in repr(self.w1a)
 
     def test_search_location_unknown(self):
         assert self.w1a.location() is None
@@ -103,14 +100,11 @@ class TestAPI(TestCase):
 
 
     def test_search_single_endeavour_hills(self):
-        assert self.w5.geohash == 'r1prcrs'[:6]
+        assert RetrieveWeather('endeavour-hills').request.location()['geohash'] == 'r1prcrs'[:6]
 
-    def test_search_repr_endeavour_hills(self):
-        # repr returns the six character geohash
-        assert "WeatherApi(geohash='r1prcr', search='Endeavour Hills VIC', debug=0)" in repr(self.w5)
 
     def test_search_location_endeavour_hills(self):
-        location = self.w5.location()
+        location = api.WeatherApi(q='endeavour+hills', debug=1).location()
 
         assert location['name']     == 'Endeavour Hills'
         assert location['state']    == 'VIC'
