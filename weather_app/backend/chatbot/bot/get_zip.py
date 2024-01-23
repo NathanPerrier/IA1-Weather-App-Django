@@ -2,11 +2,7 @@ import math
 from .postcodes import DATA
 
 class PostcodeDatabase:
-    """A class to interact with the postcodes_geo database."""
-
-    def __init__(self, lat, lon):
-        """Initialize the database connection and cursor."""
-        
+    def __init__(self, lat, lon): 
         self.lat = lat
         self.lon = lon
         

@@ -24,10 +24,11 @@ def chat(request):
     user_message = request.POST.get('message')
     previous_messages = Message.objects.all().order_by('timestamp')
     Message.objects.create(role='user', content=user_message, model=previous_messages.last().model)
-    previous_messages = Message.objects.all().order_by('timestamp')
     
-    # Format previous messages
+    previous_messages = Message.objects.all().order_by('timestamp')
     formatted_messages = [{'role': msg.role, 'content': msg.content} for msg in previous_messages]
+    
+    # For Testing 
     print('###############################################################################################')
     print('formatted_messages:', formatted_messages)
     print('###############################################################################################')

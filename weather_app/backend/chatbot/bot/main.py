@@ -28,12 +28,12 @@ class Chatbot:
             # Step 3: call the function
             # Note: the JSON response may not always be valid; be sure to handle errors
             available_functions = {
-                "get_current_weather": BotData().get_current_weather,
-                "get_daily_weather_forecast": BotData().get_daily_weather_forecast,
-                "get_hourly_weather_forecast": BotData().get_hourly_weather_forecast,
-                'get_recent_weather_history': BotData().get_recent_weather_history,
-                "get_weather_on_route": BotData().get_weather_on_route,
-                "does_route_exist": BotData().does_route_exist,
+                "get_current_weather": (lambda botData: botData.WeatherForecast().get_current_forecast)(BotData()),
+                "get_daily_weather_forecast": (lambda botData: botData.WeatherForecast().get_daily_forecast)(BotData()),
+                "get_hourly_weather_forecast": (lambda botData: botData.WeatherForecast().get_hourly_forecast)(BotData()),
+                'get_recent_weather_history': (lambda botData: botData.WeatherHistory().get_weather_history)(BotData()),
+                "get_weather_on_route": (lambda botData: botData.WeatherRoute().get_weather_on_route)(BotData()),
+                "does_route_exist": (lambda botData: botData.WeatherRoute().does_route_exist)(BotData()),
             }  
             
             messages.append(response_message)  # extend conversation with assistant's reply
