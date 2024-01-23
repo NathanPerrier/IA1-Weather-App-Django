@@ -42,7 +42,7 @@ class Chatbot:
             for tool_call in tool_calls:
                 function_name = tool_call.function.name
                 print('function name:', function_name)
-                if function_name == 'get_current_weather' or function_name == 'get_daily_weather_forecast' or function_name == 'get_hourly_weather_forecast':
+                if function_name == 'get_recent_weather_history':
                     function_to_call = available_functions[function_name]
                     function_args = json.loads(tool_call.function.arguments)
                     function_response = function_to_call(
@@ -51,7 +51,7 @@ class Chatbot:
                         timestep=function_args.get("timestep"),
                     )
                 else:
-                    if function_name == 'get_recent_weather_history':
+                    if function_name == 'get_current_weather' or function_name == 'get_daily_weather_forecast' or function_name == 'get_hourly_weather_forecast':
                         function_to_call = available_functions[function_name]
                         function_args = json.loads(tool_call.function.arguments)
                         function_response = function_to_call(
