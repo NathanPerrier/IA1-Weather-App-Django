@@ -5,7 +5,7 @@ sys.path.append(os.path.abspath('.'))
 
 import pytest
 
-from weatherAU import api
+from ..weatherAU import api
 
 class TestAPI(TestCase):
     def setUp(self):

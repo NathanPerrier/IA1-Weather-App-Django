@@ -7,7 +7,7 @@ import pytest
 import urllib
 
 
-from weatherAU import place
+from ..weatherAU import place
 
 class TestPlace(TestCase):
     def setUp(self):

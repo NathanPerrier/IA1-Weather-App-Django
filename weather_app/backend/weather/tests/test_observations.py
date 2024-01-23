@@ -7,7 +7,7 @@ import pytest
 import urllib
 
 
-from weatherAU import observations
+from ..weatherAU import observations
 
 class TestObservations(TestCase):
     

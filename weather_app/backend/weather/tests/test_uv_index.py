@@ -7,7 +7,7 @@ import pytest
 import urllib
 
 
-from weatherAU import uv_index
+from ..weatherAU import uv_index
 
 class TestUVIndex(TestCase):  
     def setUp(self):
