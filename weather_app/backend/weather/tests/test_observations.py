@@ -20,7 +20,7 @@ class TestObservations(TestCase):
 
 
     def test_obs(self):
-        assert self.bs_data is not None
+        assert self.obs_data is not None
 
     def test_acknowedgment_url(self):
         assert len(self.obs_data.url) > 0

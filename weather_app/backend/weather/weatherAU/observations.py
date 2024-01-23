@@ -8,8 +8,12 @@ class Observations:
 
         if not state:
             state = weatherAU.api.WeatherApi().search(weatherAU.api.WeatherApi().q)[0]
-
-        self.state = (state['state'].lower()).capitalize()
+            
+        try:
+            self.state = (state['state'].lower()).capitalize()
+        except:
+            self.state = state
+            
         self.url = weatherAU.OBSERVATION_PRODUCT_URL[self.state]
         self.soup = weatherAU.fetch_xml(self.url)
         self.identifier = self.soup.identifier.contents[0]
