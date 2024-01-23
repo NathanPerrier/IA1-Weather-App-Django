@@ -1,20 +1,10 @@
 from django.shortcuts import render
-from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_protect
 from decouple import config
-from datetime import datetime
-import pytz
 
-
-from .chatbot.bot.data import BotData
-
-from .chatbot.models import Message
-
-from .weatherIcon.main import GetWeatherIcon
 from .location.main import GetLocation
 from .weather.main import RetrieveWeather
 from .locationImage.Dalle3.main import GenerateLocationImage
-from .weatherDescription.main import GetWeatherDescription
 
 @csrf_protect
 def index(request):

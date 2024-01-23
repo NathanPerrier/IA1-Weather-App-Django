@@ -1,32 +1,21 @@
 import os
-from django.contrib.auth import authenticate, login
 from django.shortcuts import render
 from django.http import StreamingHttpResponse, JsonResponse
 from django.conf import settings
-from .chatbot.bot.data import BotData
 from django.core.cache import cache
 from decouple import config
 from django.views.decorators.http import require_POST
-from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import logout
 import urllib.parse
-import json
 import re
 
 from .main import *
-from ..models import CustomUser, CustomUserManager
 from .auth.views import *
 from .weather.main import RetrieveWeather
 
 
 def login_view(request):
-    if request.method == 'POST':
-        user = CustomUserManager().authenticate(email=request.POST['email'], password=request.POST['password']) 
-        if user is not None:
-            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
-            return index(request)
-        return login_page(request, error='Invalid Login')
-    return login_page(request)
+    login(request)
     
 
 def register_view(request):

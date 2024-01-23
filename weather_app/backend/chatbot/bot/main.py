@@ -10,14 +10,14 @@ class Chatbot:
         self.model = model_type
         
     #*@retry(wait=wait_random_exponential(multiplier=1, max=60), stop=stop_after_attempt(3))
-    def chat_completion_request(self, messages, tools=None):
+    def chat_completion_request(self, messages):
         print('model:', self.model)
         response = client.chat.completions.create(
             model=self.model,
             messages=messages,
             tools=TOOLS,
             # temperature=0.01,
-            tool_choice="auto",  # auto is default, but we'll be explicit
+            tool_choice="auto",  
         )
         response_message = response.choices[0].message
         tool_calls = response_message.tool_calls
@@ -77,12 +77,12 @@ class Chatbot:
                         "name": function_name,
                         "content": function_response,
                     }
-                )  # extend conversation with function response
+                )  
             second_response = client.chat.completions.create(
                 model=GPT_MODEL,
                 # temperature=0.2,
                 messages=messages,
-            )  # get a new response from the model where it can see the function response
+            )  
             print('------------------------------------------------------------------------------------------')
             return second_response.choices[0].message.content
         else:

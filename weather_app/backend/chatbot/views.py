@@ -49,7 +49,7 @@ def get_directions(request):
     if request.method == 'POST':
         route = Route.objects.filter(ip=Route.hash_ip(GetLocation().get_ip_address())).last() if Route.objects.filter(ip=Route.hash_ip(GetLocation().get_ip_address())).exists() else Route()
         data = json.loads(request.body)
-        bot = BotData()
+        bot = BotData().WeatherRoute()
         bot.routeStart, route.start = data['start'], data['start']
         bot.routeEnd, route.end = data['end'], data['end']
         bot.routeMode, route.mode = data['mode'], data['mode']

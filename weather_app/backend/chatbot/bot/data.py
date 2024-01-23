@@ -18,7 +18,7 @@ class BotData(models.Model):
             super().__init__()
         
         def get_weather_on_route(self, startLocation=None, endLocation=None, mode='driving'):
-            super().get_weather_on_route(startLocation, endLocation, mode)
+            return super().get_weather_on_route(startLocation, endLocation, mode)
             
         def does_route_exist(self):
             return super().does_route_exist()
@@ -34,7 +34,7 @@ class BotData(models.Model):
             return super().get_current_weather(fields, location, unit)
             
         def get_daily_forecast(self, fields, location=None, unit="metric"):
-            super().get_daily_weather_forecast(fields, location, unit)
+            return super().get_daily_weather_forecast(fields, location, unit)
         
     class WeatherHistory(GetWeatherHistory):
         def __init__(self):
