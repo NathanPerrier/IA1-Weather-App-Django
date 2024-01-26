@@ -13,11 +13,6 @@ from .main import *
 from .auth.views import *
 from .weather.main import RetrieveWeather
 
-
-def login_view(request):
-    login(request)
-    
-
 def register_view(request):
     return register_page(request)
     

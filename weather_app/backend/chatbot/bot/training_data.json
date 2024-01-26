@@ -632,5 +632,47 @@
 				]
 			}
 		}
+	},
+	{
+		"type": "function",
+		"function": {
+			"name": "atc_current_weather",
+			"description": "Gets the current weather from the atc (ambrose treacy college) weather station. this is a school weather station that has data for the on site location only. should only use this function is the user requests data from the atc weather station"
+		}
+	},
+	{
+		"type": "function",
+		"function": {
+			"name": "atc_hourly_weather",
+			"description": "Gets the hourly weather forecast from the atc (ambrose treacy college) weather station. this is a school weather station that has data for the on site location only. should only use this function is the user requests data from the atc weather station"
+		}
+	},
+	{
+		"type": "function",
+		"function": {
+			"name": "atc_daily_weather",
+			"description": "Gets the daily weather forecast from the atc (ambrose treacy college) weather station. this is a school weather station that has data for the on site location only. should only use this function is the user requests data from the atc weather station"
+		}
+	},
+	{
+		"type": "function",
+		"function": {
+			"name": "atc_rain_weather",
+			"description": "Gets the rain weather forecast from the atc (ambrose treacy college) weather station. this is a school weather station that has data for the on site location only. should only use this function is the user requests data from the atc weather station"
+		}
+	},
+	{
+		"type": "function",
+		"function": {
+			"name": "atc_uv_message",
+			"description": "Gets the current uv message (how strong the uv is) from the atc (ambrose treacy college) weather station. this is a school weather station that has data for the on site location only. should only use this function is the user requests data from the atc weather station"
+		}
+	},
+	{
+		"type": "function",
+		"function": {
+			"name": "atc_weather_warning",
+			"description": "Gets all current or expired weather warnings from the atc (ambrose treacy college) weather station. this is a school weather station that has data for the on site location only. should only use this function is the user requests data from the atc weather station"
+		}
 	}
 ]

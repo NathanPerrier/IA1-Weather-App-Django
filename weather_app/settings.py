@@ -21,7 +21,7 @@ SECRET_KEY = config("SECRET_KEY")
 
 PORT = '8000'
 
-DEBUG = False
+DEBUG = True
 
 CSRF_TRUSTED_ORIGIN = [
     "https://host.docker.internal:8000/",

@@ -38,7 +38,7 @@ urlpatterns = [
     path("saved", main.saved, name="saved"),
     path("search/", main.search, name="search"),
     
-    path('login', views.login_view, name='login'),
+    path('login', views.loginView, name='login'),
     
     path('register/', views.register_view, name='register'),
     path('register/get_email/', views.register_get_email_view, name='register_get_email'),

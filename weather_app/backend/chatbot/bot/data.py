@@ -7,6 +7,7 @@ from ...location.main import GetLocation
 from .botWeather.route import GetWeatherOnRoute
 from .botWeather.forecast import GetWeatherForecast
 from .botWeather.history import GetWeatherHistory
+from .botWeather.ATCWeather import ATCWeather
 
 class BotData(models.Model):
 
@@ -42,3 +43,5 @@ class BotData(models.Model):
             
         def get_weather_history(self, location=None, unit="metric", timestep='1d'):
             return super().get_recent_weather_history(location, unit, timestep)
+        
+    ATCWeather = ATCWeather()
