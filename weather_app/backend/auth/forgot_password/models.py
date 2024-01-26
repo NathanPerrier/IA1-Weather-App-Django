@@ -1,12 +1,11 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.contrib.auth.hashers import make_password, check_password
 from django.core.validators import EmailValidator
 from django.utils import timezone
 from django.conf import settings
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
-from weather_app.models import CustomUser
+from weather_app.models import CustomUser, CustomUserManager
 import random
 import string
 
@@ -36,8 +35,8 @@ class ForgotPasswordAuth(models.Model):
             return None
         
     @classmethod
-    def delete_by_user_id(cls, db, user):
-        user = cls.get_by_user_id(db, user)  
+    def delete_by_user_id(cls, user):
+        user = cls.get_by_user_id(user)  
         if user:
             user.delete()
             
@@ -66,7 +65,7 @@ class ForgotPasswordAuth(models.Model):
             if cls.check_active_code(email):
                 code = cls.generate_code()
                 cls.store_code(email, code)
-                cls.send_code(code, email)
+                cls.send_code(code, cls.check_email(email))
                 return True, None
             return True, None
         return False, "Invalid Email"
@@ -98,13 +97,13 @@ class ForgotPasswordAuth(models.Model):
         return True, None
 
     @classmethod
-    def send_code(cls, code, user_email):
+    def send_code(cls, code, user):
         # Send email to the admin
         context = {
             'name': 'New User',
-            'email': user_email,
-            'subject': 'Your Registration Code',
-            'message': f'Hi {user_email}, here is your registration link:\n\n {code}',
+            'email': user.email,
+            'subject': 'Your Password Reset Code',
+            'message': f'Hi {user.first_name}, here is your registration code:\n\n {code}',
         }
         email_body = render_to_string('email.html', context)
 
@@ -112,7 +111,7 @@ class ForgotPasswordAuth(models.Model):
             'RainCheck - Registration Code',
             email_body,
             settings.EMAIL_HOST_USER,
-            [user_email]
+            [user.email]
         )
         email.content_subtype = 'html'
         email.fail_silently = False

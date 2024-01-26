@@ -30,5 +30,6 @@ def forgot_password_set_password_view(request):
         user = CustomUserManager().update_password(email=request.POST['email'], password=request.POST['password'])
         print(user)
         login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+        ForgotPasswordAuth().delete_by_user_id(user)
         return JsonResponse({'success': True, 'error': ''})
     return register_page(request)    

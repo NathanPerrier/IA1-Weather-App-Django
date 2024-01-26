@@ -1,9 +1,6 @@
 from typing import Any
-from django.contrib.auth.models import AbstractUser, BaseUserManager
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
-from django.conf import settings
-from django.core.mail import EmailMessage
-from django.template.loader import render_to_string
 
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
@@ -14,6 +11,12 @@ class CustomUserManager(BaseUserManager):
         user.set_password(password)
         user.save(using=self._db)
         return user
+    
+    def create_superuser(self, email, password=None, **extra_fields):
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
+        return self.create_user(email, password, **extra_fields)
+
     
     def update_password(self, email, password):
         user = self.get_by_email(email)
@@ -26,6 +29,7 @@ class CustomUserManager(BaseUserManager):
         if user is not None and user.check_password(password):
             return user
         return None
+    
     
     def normalize_email(self, email):
         return email.lower()
@@ -58,17 +62,17 @@ class CustomUserManager(BaseUserManager):
             return False
     
     
-class CustomUser(AbstractUser):
+class CustomUser(AbstractBaseUser):
     first_name = models.CharField(max_length=30, blank=False)
     last_name = models.CharField(max_length=150, blank=False)
     email = models.EmailField(max_length=254, unique=True)
     password = models.CharField(max_length=254, blank=False)
     
-    objects = CustomUserManager()
-    
     
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['email', 'first_name', 'last_name']
+    REQUIRED_FIELDS = ['first_name', 'last_name']
+    
+    objects = CustomUserManager()
 
     def __str__(self):
         return self.email

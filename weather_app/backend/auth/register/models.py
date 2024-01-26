@@ -116,7 +116,7 @@ class RegisterAuth(models.Model):
             'name': 'New User',
             'email': user_email,
             'subject': 'Your Registration Code',
-            'message': f'Hi {name}, here is your registration link:\n\n {code}',
+            'message': f'Hi {name}, here is your registration code:\n\n {code}',
         }
         email_body = render_to_string('email.html', context)
 
