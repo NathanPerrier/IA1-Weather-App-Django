@@ -20,7 +20,6 @@ def register_get_email_view(request, error=''):
 
 def register_get_code_view(request):    
     if request.method == 'POST':
-        print(request.POST['email'], request.POST['code'])
         success, error = RegisterAuth.check_code_entry(request.POST['email'], request.POST['code'])
         return JsonResponse({'success': success, 'error': error})
     return register_page(request)
@@ -28,7 +27,6 @@ def register_get_code_view(request):
 def register_set_password_view(request):
     if request.method == 'POST':
         user = CustomUser.objects.create_user(first_name=request.POST['first_name'], last_name=request.POST['last_name'], email=request.POST['email'], password=request.POST['password'])
-        print(user)
         login(request, user, backend='django.contrib.auth.backends.ModelBackend')
         return JsonResponse({'success': True, 'error': ''})
     return register_page(request)    

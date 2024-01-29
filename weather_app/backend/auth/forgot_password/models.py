@@ -12,7 +12,7 @@ import string
 class ForgotPasswordAuth(models.Model):
     '''Model to store the signup code and its expiration time'''
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    reset_code = models.CharField(max_length=6, blank=False)
+    reset_code = models.CharField(max_length=256, blank=False)
     expiration_time = models.DateTimeField(blank=False)
     creation_time = models.DateTimeField(auto_now_add=True, blank=False)
     
