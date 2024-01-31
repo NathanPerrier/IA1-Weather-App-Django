@@ -13,19 +13,29 @@ from .bot.data import BotData
 from .bot.__init__ import GPT_MODEL
 from ..location.main import GetLocation
 
-try:
-    Message.objects.all().delete(user=request.user)
-    Message.objects.create(role='system', content='You Are a helpful weather assistant that has access to almost all weather data. you are to answer purely weather based questions. try include figures in your reposnse to justify yor reasoning', model=GPT_MODEL)
-except: pass
+
+@csrf_exempt
+def reset_messages(request):
+    # Delete messages for the current user
+    #Message.objects.filter(user=request.user).delete()
+
+    # Create a system message
+    try:
+        Message.objects.create(role='system', content='You are a helpful weather assistant that has access to almost all weather data. You are to answer purely weather-based questions. Try to include figures in your response to justify your reasoning.', model=GPT_MODEL, user=request.user)
+    except Exception as e:
+        print('error:', e)
+        
+    return JsonResponse({'status': 'Messages reset successfully.'})
+
 
 @require_POST
 @csrf_exempt
 def chat(request):
     print(request.user.first_name)
     user_message = request.POST.get('message')
-    Message.objects.create(role='user', content=user_message, model=Message.objects.all().order_by('timestamp').last().model)
+    Message.objects.create(role='user', content=user_message, model=Message.objects.filter(user=request.user).all().order_by('timestamp').last().model, user=request.user)
     
-    previous_messages = Message.objects.all().order_by('timestamp')
+    previous_messages = Message.objects.filter(user=request.user).all().order_by('timestamp')
     formatted_messages = [{'role': msg.role, 'content': msg.content} for msg in previous_messages]
     
     # For Testing 
@@ -34,13 +44,13 @@ def chat(request):
     print('###############################################################################################')
 
     bot_response = Chatbot(previous_messages.last().model).chat_completion_request(formatted_messages)
-    Message.objects.create(role='assistant', content=bot_response, model=previous_messages.last().model)
+    Message.objects.create(role='assistant', content=bot_response, model=previous_messages.last().model, user=request.user)
     return JsonResponse({'message': bot_response})
 
 @require_POST
 @csrf_exempt
 def change_model(request):
-    Message.objects.create(role='system', content=f'You are now using the {request.POST.get("model")} model', model=request.POST.get('model'))
+    Message.objects.create(role='system', content=f'You are now using the {request.POST.get("model")} model', model=request.POST.get('model'), user=request.user)
     return JsonResponse({'success': True})
 
 @csrf_protect

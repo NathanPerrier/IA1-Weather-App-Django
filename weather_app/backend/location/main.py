@@ -21,29 +21,36 @@ class GetLocation:
                     if location_info['status'] == 'success':
                         return self.store_user_location(location_info, ip_address)
                     return None
-                except ReadTimeout: return None
+                except Exception as e:
+                    print('error: ', e)
+                    return None
             return UserLocationModel.objects.get(ip=UserLocationModel().hash_ip(ip_address))
         return None
         
     def get_ip_address(self):
         try:
             return get('https://api.ipify.org?format=json', timeout=10).json()['ip']
-        except ReadTimeout:
+        except Exception as e:
+            print('error: ', e)
             return None
         
     def store_user_location(self, location, ip):
-        return UserLocationModel.objects.create(
-            ip=UserLocationModel().hash_ip(ip), 
-            city=location['city'], 
-            region=location['region'], 
-            region_name=location['regionName'], 
-            country=location['country'], 
-            timezone=location['timezone'], 
-            lat=location['lat'], 
-            lon=location['lon'],
-            zip=location['zip'],
-            country_code=location['countryCode'],
-            isp=location['isp']
-        )
+        try:
+            return UserLocationModel.objects.create(
+                ip=UserLocationModel().hash_ip(ip), 
+                city=location['city'], 
+                region=location['region'], 
+                region_name=location['regionName'], 
+                country=location['country'], 
+                timezone=location['timezone'], 
+                lat=location['lat'], 
+                lon=location['lon'],
+                zip=location['zip'],
+                country_code=location['countryCode'],
+                isp=location['isp']
+            )
+        except Exception as e:
+            print(f"Error creating user location: {e}")
+            return None
         
         

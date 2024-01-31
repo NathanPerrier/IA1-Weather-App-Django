@@ -12,7 +12,11 @@ from .botWeather.ATCWeather import ATCWeather
 class BotData(models.Model):
 
     def get_city_from_ip(self):
-        return GetLocation().get_location().city
+        try:
+            return GetLocation().get_location().city
+        except Exception as e:
+            print('error:', e)
+            return None
     
     class WeatherRoute(GetWeatherOnRoute):
         def __init__(self):
