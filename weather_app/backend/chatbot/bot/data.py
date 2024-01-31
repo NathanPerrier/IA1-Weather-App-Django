@@ -32,7 +32,7 @@ class BotData(models.Model):
             return super().get_current_weather(fields, location, unit)
             
         def get_hourly_forecast(self, fields, location=None, unit="metric"):
-            return super().get_current_weather(fields, location, unit)
+            return super().get_hourly_weather_forecast(fields, location, unit)
             
         def get_daily_forecast(self, fields, location=None, unit="metric"):
             return super().get_daily_weather_forecast(fields, location, unit)
