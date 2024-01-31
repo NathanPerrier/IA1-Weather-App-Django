@@ -381,7 +381,7 @@ i{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: calc(3px + 1vw);
+    font-size: max(4px, 1vw);
 }
 
 

@@ -17,7 +17,7 @@ from ..location.main import GetLocation
 @csrf_exempt
 def reset_messages(request):
     # Delete messages for the current user
-    #Message.objects.filter(user=request.user).delete()
+    Message.objects.filter(user=request.user).delete()
 
     # Create a system message
     try:
@@ -36,15 +36,21 @@ def chat(request):
     Message.objects.create(role='user', content=user_message, model=Message.objects.filter(user=request.user).all().order_by('timestamp').last().model, user=request.user)
     
     previous_messages = Message.objects.filter(user=request.user).all().order_by('timestamp')
-    formatted_messages = [{'role': msg.role, 'content': msg.content} for msg in previous_messages]
-    
-    # For Testing 
-    print('###############################################################################################')
-    print('formatted_messages:', formatted_messages)
-    print('###############################################################################################')
+    if previous_messages.count() > 0:
+        
+        formatted_messages = [{'role': msg.role, 'content': msg.content} for msg in previous_messages]
+        
+        # For Testing 
+        print('###############################################################################################')
+        print('formatted_messages:', formatted_messages)
+        print('###############################################################################################')
 
-    bot_response = Chatbot(previous_messages.last().model).chat_completion_request(formatted_messages)
-    Message.objects.create(role='assistant', content=bot_response, model=previous_messages.last().model, user=request.user)
+        bot_response = Chatbot(previous_messages.last().model).chat_completion_request(formatted_messages)
+        Message.objects.create(role='assistant', content=bot_response, model=previous_messages.last().model, user=request.user)
+    else:
+        bot_response = Chatbot(GPT_MODEL).chat_completion_request(request.POST.get('message'))
+        Message.objects.create(role='assistant', content=bot_response, model=GPT_MODEL, user=request.user)
+    print(Message.objects.all())
     return JsonResponse({'message': bot_response})
 
 @require_POST
