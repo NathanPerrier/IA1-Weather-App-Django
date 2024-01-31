@@ -10,6 +10,9 @@ services:
       dockerfile: ./DockerFile
     ports:
       - "8000:8000"
+    # volumes:
+    #   - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    #   - ./redis.conf:/etc/redis/redis.conf
     develop:
       watch:
         - action: sync
@@ -21,7 +24,7 @@ services:
   nginx:
     image: nginx:latest
     volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx.conf:/etc/nginx/conf.d/nginx.conf
       - ./staticfiles:/usr/src/app/staticfiles
     ports:
       - "80:80"

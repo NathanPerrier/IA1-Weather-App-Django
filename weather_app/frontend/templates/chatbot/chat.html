@@ -92,17 +92,16 @@
       requestInProgress = true;
 
       $.ajax({
-          url: '/chat/',  // The URL to your chat endpoint
+          url: '/chat/',  // The URL to chat endpoint
           method: 'POST',
           data: {
               message: userMessage,
           },
           success: function(response) {
-              // This is where you handle the chatbot's response
+              // Add chatbot Message
               $('.Messages_list').append('<div class="d-flex flex-row p-1"><div class="chat message mr-2 p-3"><small>Raincheck</small><br>' + response.message + '</div></div>');
           },
           complete: function() {
-            // Set the flag back to false to indicate that the request is complete
             requestInProgress = false;
           }
       });
