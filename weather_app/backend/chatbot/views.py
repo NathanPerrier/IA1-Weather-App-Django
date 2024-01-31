@@ -14,13 +14,14 @@ from .bot.__init__ import GPT_MODEL
 from ..location.main import GetLocation
 
 try:
-    Message.objects.all().delete()
+    Message.objects.all().delete(user=request.user)
     Message.objects.create(role='system', content='You Are a helpful weather assistant that has access to almost all weather data. you are to answer purely weather based questions. try include figures in your reposnse to justify yor reasoning', model=GPT_MODEL)
 except: pass
 
 @require_POST
 @csrf_exempt
 def chat(request):
+    print(request.user.first_name)
     user_message = request.POST.get('message')
     Message.objects.create(role='user', content=user_message, model=Message.objects.all().order_by('timestamp').last().model)
     
