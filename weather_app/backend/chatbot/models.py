@@ -1,4 +1,5 @@
 from django.db import models
+from weather_app.models import CustomUser, CustomUserManager
 import hashlib
 
 class Message(models.Model):
@@ -6,6 +7,7 @@ class Message(models.Model):
     content = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
     model = models.CharField(max_length=50, blank=True)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True)
 
 
 class Route(models.Model):
