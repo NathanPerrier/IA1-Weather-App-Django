@@ -45,10 +45,9 @@
     font-family: url(../fonts/NetflixSans-Regular.ttf);
     margin-top: 0px;
     padding: 0;
-    max-width: max(550px, 20vw);
+    width: calc(100% - 60px);
     margin-left: 20px;
-    padding-right: 20px;
-    /* margin-right: 20px; */
+    margin-right:20px
 }
 
 .pac-item {
