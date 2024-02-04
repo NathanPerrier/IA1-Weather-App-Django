@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_protect
 from decouple import config
 
-from .location.main import GetLocation
+from .location.main import *
 from .weather.main import RetrieveWeather
 from .locationImage.Dalle3.main import GenerateLocationImage
 
@@ -12,7 +12,7 @@ def index(request):
         location = GetLocation().get_location()
         print(location)
         model = RetrieveWeather(location.zip)
-        if location or model:
+        if location and model:
             return render(request, 'landing.html', {'is_authenticated': request.user.is_authenticated, 'location': location, 'image': GenerateLocationImage(location=location).get_image(), 'forecast_daily': model.Forecast(model.request).get_daily(), 'forecast_hourly': model.Forecast(model.request).get_hourly(), 'mapbox_access_token': config('MAPBOX_ACCESS_TOKEN'), 'tomorrowio_api_key': config("TOMORROWIO_API_KEY"), 'hervey_bay': (lambda model: model.Forecast(model.request).get_hourly())(RetrieveWeather('Hervey+Bay')), 'perth': (lambda model: model.Forecast(model.request).get_hourly())(RetrieveWeather('6000')), 'sydney': (lambda model: model.Forecast(model.request).get_hourly())(RetrieveWeather('2000')), 'gold_coast': (lambda model: model.Forecast(model.request).get_hourly())(RetrieveWeather('4217')), 'melbourne': (lambda model: model.Forecast(model.request).get_hourly())(RetrieveWeather('3000')), 'warning': model.Warnings(model.request).get_warnings()})  #* removed 'icon': GetWeatherIcon().get_weather_icon(), 'weather_desc': GetWeatherDescription(GetLocation().get_location()).get_weather_description()
         return render(request, 'landing-error.html', {'tomorrowio_api_key': config("TOMORROWIO_API_KEY"), 'is_authenticated': request.user.is_authenticated})
     except Exception as e:
