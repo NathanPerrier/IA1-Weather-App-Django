@@ -33,7 +33,7 @@ CSRF_TRUSTED_ORIGIN = [
     'https://stunning-carnival-5jvx655grg4h457v-8000.preview.app.github.dev'
 ]
 
-ALLOWED_HOSTS = [socket.gethostbyname(socket.gethostname()), 'https://stunning-carnival-5jvx655grg4h457v-8000.preview.app.github.dev', '127.0.0.1', 'localhost', 'app-ia1-weather-app-django-1-dev-ok-z1qk8tbu.livecycle.run', 'host.docker.internal', 'ouguiya-wooden.runblade.host', '192.168.68.67', '192.168.0.178', '192.168.68.64', '192.168.68.62']
+ALLOWED_HOSTS = [socket.gethostbyname(socket.gethostname()), '192.168.68.71', 'https://stunning-carnival-5jvx655grg4h457v-8000.preview.app.github.dev', '127.0.0.1', 'localhost', 'app-ia1-weather-app-django-1-dev-ok-z1qk8tbu.livecycle.run', 'host.docker.internal', 'ouguiya-wooden.runblade.host', '192.168.68.67', '192.168.0.178', '192.168.68.64', '192.168.68.62']
 
 # Application definition
 
