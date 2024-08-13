@@ -2,8 +2,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Adjust this value to position the search input vertically */
+    height: 100vh !important; /* Adjust this value to position the search input vertically */
     width: 100vw; /* Adjust this value to position the search input horizontally */
+    overflow-y: hidden;
 }
 
 .search-input {

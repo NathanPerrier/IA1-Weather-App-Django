@@ -118,7 +118,7 @@
                             {% if day.now %}
                               Today
                             {% else %}
-                              {{ day.date }}
+                              {{ day.date|add_day|date:"d M, Y" }}
                             {% endif %}
                           </span>
                           {% if day.now %}

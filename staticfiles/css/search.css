@@ -45,7 +45,7 @@
     font-family: url(../fonts/NetflixSans-Regular.ttf);
     margin-top: 0px;
     padding: 0;
-    width: calc(100% - 60px);
+    max-width: calc(50vw - 40px);
     margin-left: 20px;
     margin-right:20px
 }
