@@ -9,8 +9,6 @@
     </h1>
     <p>
         Created by <a href="https://github.com/nathan-perrier23">Nathan Perrier</a> of <a href="https://www.atc.qld.edu.au/">Ambrose Treacy College</a>
-
-        IA1 - Digital Solutions - Year 12
     </p>
 </div>
 
