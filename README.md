@@ -4,7 +4,7 @@
     </a>
     <h1>
         <a href="https://github.com/NathanPerrier/IA3-Perrier-Fishing-Website-Digital">
-            IA3 Fishing Website
+            RainCheck | Weather Website
         </a>
     </h1>
     <p>
