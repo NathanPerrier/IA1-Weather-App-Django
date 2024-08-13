@@ -1,8 +1,22 @@
-# Weather App
+<div align="center">
+    <a href="https://appseed.us/product/rocket/django/">
+        <img src="/static/dist/images/atc-main.png" width="64" height="64" alt="Rocket Icon">
+    </a>
+    <h1>
+        <a href="https://github.com/NathanPerrier/IA3-Perrier-Fishing-Website-Digital">
+            IA3 Fishing Website
+        </a>
+    </h1>
+    <p>
+        Created by [Nathan Perrier](https://github.com/nathan-perrier23) of [Ambrose Treacy College](https://www.atc.qld.edu.au/)
 
-Created by [Nathan Perrier](https://github.com/nathan-perrier23) of [Ambrose Treacy College](https://www.atc.qld.edu.au/)
+        IA1 - Digital Solutions - Year 12
+    </p>
+</div>
 
-IA1 - Digital Solutions - Year 12
+<div align="center">
+    <img src="./DEMO.gif" alt="IA1 Demo GIF">
+</div>
 
 ## Description
 
