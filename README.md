@@ -1,6 +1,6 @@
 <div align="center">
-    <a href="https://appseed.us/product/rocket/django/">
-        <img src="/static/dist/images/atc-main.png" width="64" height="64" alt="Rocket Icon">
+    <a href="https://www.atc.qld.edu.au/">
+        <img src="./weather_app/frontend/static/images/logos/atc/atc-main.png" width="64" height="64" alt="ATC Logo">
     </a>
     <h1>
         <a href="https://github.com/NathanPerrier/IA3-Perrier-Fishing-Website-Digital">
@@ -13,6 +13,8 @@
         IA1 - Digital Solutions - Year 12
     </p>
 </div>
+
+<br />
 
 <div align="center">
     <img src="./DEMO.gif" alt="IA1 Demo GIF">
